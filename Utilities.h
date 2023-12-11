@@ -6,5 +6,4 @@
 
 std::string TrimString(const std::string& toTrim);
 
-
 #endif //AED_AEROPORTO_UTILITIES_H
