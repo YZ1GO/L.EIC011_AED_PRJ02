@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.27)
-project(untitled)
+project(aed_aeroporto)
 
 set(CMAKE_CXX_STANDARD 17)
 
