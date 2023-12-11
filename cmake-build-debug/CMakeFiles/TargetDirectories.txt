@@ -1,3 +1,0 @@
-/home/chill/CodeUbuntu/aed_aeroporto/cmake-build-debug/CMakeFiles/untitled.dir
-/home/chill/CodeUbuntu/aed_aeroporto/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/chill/CodeUbuntu/aed_aeroporto/cmake-build-debug/CMakeFiles/rebuild_cache.dir
