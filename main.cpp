@@ -57,13 +57,13 @@ int main() {
     ReadData readData;
 
     vector<Airport> airports = readData.ReadAirports("data/airports.csv");
-    convertAirportsToTextFile(airports, "Airports.txt");
+    convertAirportsToTextFile(airports, "data_text/Airports.txt");
 
     vector<Airline> airlines = readData.ReadAirlines("data/airlines.csv");
-    convertAirlinesToTextFile(airlines, "Airlines.txt");
+    convertAirlinesToTextFile(airlines, "data_text/Airlines.txt");
 
     vector<Flight> flights = readData.ReadFlights("data/flights.csv");
-    convertFlightsToTextFile(flights, "Flights.txt");
+    convertFlightsToTextFile(flights, "data_text/Flights.txt");
 
     return 0;
 }
