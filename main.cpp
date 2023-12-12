@@ -56,13 +56,13 @@ void convertFlightsToTextFile(const std::vector<Flight>& flights, const std::str
 int main() {
     ReadData readData;
 
-    vector<Airport> airports = readData.ReadAirports("airports.csv");
+    vector<Airport> airports = readData.ReadAirports("data/airports.csv");
     convertAirportsToTextFile(airports, "Airports.txt");
 
-    vector<Airline> airlines = readData.ReadAirlines("airlines.csv");
+    vector<Airline> airlines = readData.ReadAirlines("data/airlines.csv");
     convertAirlinesToTextFile(airlines, "Airlines.txt");
 
-    vector<Flight> flights = readData.ReadFlights("flights.csv");
+    vector<Flight> flights = readData.ReadFlights("data/flights.csv");
     convertFlightsToTextFile(flights, "Flights.txt");
 
     return 0;
