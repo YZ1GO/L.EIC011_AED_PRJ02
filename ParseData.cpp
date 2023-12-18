@@ -103,45 +103,46 @@ void ParseData::ParseFlights() {
 
     string line;
     getline(file, line);
-    Airport source;
-    Airport target;
-    Airline airline;
 
-    while(getline(file, line)){
+    while(getline(file, line)) {
         stringstream ss(line);
 
-        string src, tgt, ac;
+        string source, target, airlineCode;
         Flight flightObj;
 
-        getline(ss, src, ',');
-        flightObj.source = TrimString(src);
+        getline(ss, source, ',');
+        source = TrimString(source);
 
-        getline(ss, tgt, ',');
-        flightObj.target = TrimString(tgt);
+        getline(ss, target, ',');
+        target = TrimString(target);
 
-        getline(ss, ac, ',');
-        flightObj.airlineCode = TrimString(ac);
+        getline(ss, airlineCode, ',');
+        airlineCode = TrimString(airlineCode);
 
-        for (auto v : airportGraph.getVertexSet()) {
-            auto airport = v->getInfo();
-            if (flightObj.source == airport.code) {
-                source = airport;
-            }
-            if (flightObj.target == airport.code) {
-                target = airport;
+        for (auto v: dataGraph) {
+            Airport &sourceAirport = v->getInfo().airport;
+            if (sourceAirport.getCode == source) {
+                v.addEdge(findAirport(target), sourceAirport.getDistance(findAirport(target)));
+                v->addOutdegree();
             }
         }
-        double distance = HarversineDistance(source.latitude, source.longitude, target.latitude, target.longitude);
 
-        airportGraph.addEdge(source, target, flightObj.airlineCode, distance);
-    }
-
-    for (auto v : airportGraph.getVertexSet()) {
-        v->setOutdegree(v->getAdj().size());
-        for (auto e : v->getAdj()) {
-            e.getDest()->addIndegree();
+        for (auto v: dataGraph) {
+            Airport &targetAirport = v->getInfo().airport;
+            if (targetAirport.getCode == target) {
+                v->addIndegree();
+            }
         }
     }
 
     file.close();
+}
+
+Airport ParseData::findAirport(const string& airportCode) {
+    for (auto v : dataGraph) {
+        Airport& airport = v->getInfo().airport;
+        if (airport.getCode == airportCode) {
+            return airport;
+        }
+    }
 }

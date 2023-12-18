@@ -9,14 +9,16 @@
 class ParseData {
 private:
     string airportsCSV, airlinesCSV, flightsCSV;
-    Graph<AirportAndAirline> dataGraph;
+    Graph<AirportAndAirline>* dataGraph;
     void parseAirports();
     void parseAirlines();
     void parseFlights();
     void addAirlineToAirport(Airline airline);
+
 public:
     ParseData(const string& airportsCSV, const string& airlinesCSV, const string& flightsCSV);
     Graph<AirportAndAirline> getData() { return this.dataGraph; }
+    Airport findAirport(const string& airportCode);
 };
 
 

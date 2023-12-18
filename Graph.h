@@ -28,7 +28,7 @@ class Vertex {
     int num;
     int low;
 
-    void addEdge(Vertex<T> *dest, string code, double w);
+    void addEdge(Vertex<T> *dest, double w);
     bool removeEdgeTo(Vertex<T> *d, string code);
 
 public:

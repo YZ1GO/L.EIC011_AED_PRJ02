@@ -43,6 +43,8 @@ public:
     double getLongitude() const { return longitude; }
     void setLongitude(double lon) { longitude = lon; }
 
+    double getDistance(const Airport& other) const;
+
     bool operator==(const Airport& other) const { return code == other.code; }
 };
 
@@ -73,6 +75,7 @@ public:
     bool operator==(const Airline& other) const { return code == other.code; }
 };
 
+/*
 class Flight {
 private:
     std::string source;
@@ -92,6 +95,6 @@ public:
 
     std::string getAirlineCode() const { return airlineCode; }
     void setAirlineCode(const std::string& ac) { airlineCode = ac; }
-};
+};*/
 
 #endif //AED_AEROPORTO_DATA_H
