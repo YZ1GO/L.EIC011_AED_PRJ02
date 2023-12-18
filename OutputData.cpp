@@ -46,6 +46,7 @@ void convertAirlinesToTextFile(const Graph<Airline>& airlineGraph, const std::st
 }
 */
 void convertGraphToText(const Graph<AirportAndAirline>& g, const std::string& filename) {
+    cout << "outputdata executed" << endl;
     std::ofstream outFile(filename);
     if (!outFile.is_open()) {
         std::cerr << "Error: Unable to open file " << filename << std::endl;
@@ -53,6 +54,7 @@ void convertGraphToText(const Graph<AirportAndAirline>& g, const std::string& fi
     }
 
     for (auto v : g.getVertexSet()) {
+        cout << "vertex executed" << endl;
         auto airport = v->getInfo().getAirport();
         auto airlines = v->getInfo().getAirlines();
         outFile << ">> [" << airport->getCode() << "] " << airport->getName() << " <<" << std::endl;
@@ -64,12 +66,15 @@ void convertGraphToText(const Graph<AirportAndAirline>& g, const std::string& fi
         outFile << "    Airlines at this airport:" << std::endl;
 
         for (auto airline : airlines) {
+            cout << "airlines executed" << endl;
             outFile << "        - [" << airline.getCode() << "] " << airline.getName() << " - Callsign: " << airline.getCallsign() << std::endl;
         }
 
 
         outFile << "    Flights from/to this airport: " << std::endl;
         for (auto& edge : v->getAdj()) {
+
+            cout << "edges executed" << endl;
             auto targetAirport = edge.getDest()->getInfo().getAirport();
             outFile << "        " << airport->getCode() << " -> " << targetAirport->getCode() << " by " << edge.getAirline() << " airline : " << edge.getWeight() << "km" << std::endl;
         }

@@ -45,12 +45,15 @@ void ParseData::parseAirports() {
         airportObj.setLongitude(longitude);
 
         AirportAndAirline airportAndAirline(&airportObj);
+
         dataGraph.addVertex(airportAndAirline);
+
     }
     file.close();
 }
 
 void ParseData::parseAirlines() {
+    cout << "airlines executed" << endl;
     ifstream file(airlinesCSV);
     if (!file.is_open()) {
         cerr << "Error: Unable to open file " << airlinesCSV << endl;
@@ -80,16 +83,19 @@ void ParseData::parseAirlines() {
 
         addAirlineToAirport(airlineObj);
     }
-
+    cout << "airlines executed sucessfully" << endl;
     file.close();
 }
 
 void ParseData::addAirlineToAirport(const Airline& airline) {
+    cout << "add airline to airport sucessfully" << endl;
     string airlineCountry = airline.getCountry();
 
-    for (auto& v : dataGraph.getVertexSet()) {
+    for (auto v : dataGraph.getVertexSet()) {
+        cout << "in loop" << endl;
         auto airportAndAirline = v->getInfo();
         if (airportAndAirline.getAirport()->getCountry() == airlineCountry) {
+            cout << "condition confirmed" << endl;
             airportAndAirline.addAirline(airline);
         }
     }
