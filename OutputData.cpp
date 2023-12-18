@@ -71,7 +71,7 @@ void convertGraphToText(const Graph<AirportAndAirline>& g, const std::string& fi
         outFile << "    Flights from/to this airport: " << std::endl;
         for (auto& edge : v->getAdj()) {
             auto targetAirport = edge.getDest()->getInfo().getAirport();
-            outFile << "        " << airport->getCode() << " -> " << targetAirport->getCode() << " by " << edge.getAirlineCode() << " airline : " << edge.getWeight() << "km" << std::endl;
+            outFile << "        " << airport->getCode() << " -> " << targetAirport->getCode() << " by " << edge.getAirline() << " airline : " << edge.getWeight() << "km" << std::endl;
         }
 
         outFile << std::endl;

@@ -4,6 +4,9 @@ ParseData::ParseData(const std::string& airportsCSV, const std::string& airlines
     this->airportsCSV = airportsCSV;
     this->airlinesCSV = airlinesCSV;
     this->flightsCSV = flightsCSV;
+    parseAirports();
+    parseAirlines();
+    parseFlights();
 }
 
 void ParseData::parseAirports() {
@@ -121,7 +124,7 @@ void ParseData::parseFlights() {
 
         if (sourceVertex && targetVertex) {
             double distance = sourceVertex->getInfo().getAirport()->getDistance(*findAirport(target));
-            dataGraph.addEdge(sourceVertex->getInfo(), targetVertex->getInfo(), distance);
+            dataGraph.addEdge(sourceVertex->getInfo(), targetVertex->getInfo(), airlineCode, distance);
             sourceVertex->setOutdegree(sourceVertex->getOutdegree() + 1);
             targetVertex->setIndegree(targetVertex->getIndegree() + 1);
         }
