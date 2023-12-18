@@ -8,9 +8,6 @@ int main() {
     vector<Airline> airlines = readData.ReadAirlines("data/airlines.csv");
     vector<Flight> flights = readData.ReadFlights("data/flights.csv");
 
-    convertAirportsToTextFile(airports, "data_text/Airports.txt");
-    convertAirlinesToTextFile(airlines, "data_text/Airlines.txt");
-    convertFlightsToTextFile(flights, "data_text/Flights.txt");
 
     return 0;
 }
