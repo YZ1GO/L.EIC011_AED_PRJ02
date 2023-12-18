@@ -79,7 +79,7 @@ public:
     AirportAndAirline(Airport* air) : airport(air) {}
     Airport* getAirport() const { return airport; }
     std::vector<Airline> getAirlines() const { return airlines; }
-    void addAirline(const Airline& airline) { airlines.push_back(airline); }
+    void addAirline(Airline airline) { airlines.push_back(airline); }
     bool operator==(const AirportAndAirline& other) const { return *airport == *(other.getAirport()); }
 };
 
