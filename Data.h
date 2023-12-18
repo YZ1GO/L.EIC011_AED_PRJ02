@@ -15,8 +15,9 @@ public:
     double longitude;
 
     Airport() {}
-    Airport(const std::string& c, const std::string& n, const std::string& ci, const std::string& co, double lat, double lon)
+    Airport(std::string& c, std::string& n, std::string& ci, std::string& co, double lat, double lon)
             : code(c), name(n), city(ci), country(co), latitude(lat), longitude(lon) {}
+    bool operator==(const Airport& other) const { return code == other.code; }
 };
 
 class Airline {
@@ -29,6 +30,7 @@ public:
     Airline() {}
     Airline(const std::string& c, const std::string& n, const std::string& cs, const std::string& co)
             : code(c), name(n), callsign(cs), country(co) {}
+    bool operator==(const Airline& other) const { return code == other.code; }
 };
 
 class Flight {
@@ -41,6 +43,5 @@ public:
     Flight(const std::string& src, const std::string& tgt, const std::string& ac)
             : source(src), target(tgt), airlineCode(ac) {}
 };
-
 
 #endif //AED_AEROPORTO_DATA_H
