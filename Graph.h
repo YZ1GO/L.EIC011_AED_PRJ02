@@ -48,6 +48,7 @@ public:
 
     int getIndegree() const;
     void setIndegree(int indegree);
+    void addIndegree();
 
     int getOutdegree() const;
     void setOutdegree(int outdegree);
@@ -143,6 +144,9 @@ int Vertex<T>::getIndegree() const { return indegree; }
 
 template<class T>
 void Vertex<T>::setIndegree(int indegree) { Vertex::indegree = indegree; }
+
+template<class T>
+void Vertex<T>::addIndegree() { Vertex::indegree++; }
 
 template<class T>
 int Vertex<T>::getOutdegree() const { return outdegree; }

@@ -87,15 +87,15 @@ void ParseData::ParseFlights(Graph<Airport>& airportGraph, const string& flights
 
     string line;
     getline(file, line);
+    Airport source;
+    Airport target;
+    Airline airline;
 
     while(getline(file, line)){
         stringstream ss(line);
 
         string src, tgt, ac;
         Flight flightObj;
-        Airport source;
-        Airport target;
-        Airline airline;
 
         getline(ss, src, ',');
         flightObj.source = TrimString(src);
@@ -118,6 +118,13 @@ void ParseData::ParseFlights(Graph<Airport>& airportGraph, const string& flights
         double distance = HarversineDistance(source.latitude, source.longitude, target.latitude, target.longitude);
 
         airportGraph.addEdge(source, target, flightObj.airlineCode, distance);
+    }
+
+    for (auto v : airportGraph.getVertexSet()) {
+        v->setOutdegree(v->getAdj().size());
+        for (auto e : v->getAdj()) {
+            e.getDest()->addIndegree();
+        }
     }
 
     file.close();
