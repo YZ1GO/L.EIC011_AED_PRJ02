@@ -1,5 +1,5 @@
 #include "Data.h"
 
-double Data::getDistance(const Airport& other) const {
-    return HarversineDistance(this.latitude, this.longitude, other.getLatitude, other.getLongitude);
+double Airport::getDistance(const Airport& other) const {
+    return HarversineDistance(latitude, longitude, other.getLatitude(), other.getLongitude());
 }

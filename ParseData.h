@@ -5,21 +5,23 @@
 #include "Graph.h"
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 
 class ParseData {
 private:
-    string airportsCSV, airlinesCSV, flightsCSV;
-    Graph<AirportAndAirline>* dataGraph;
+    std::string airportsCSV, airlinesCSV, flightsCSV;
+    Graph<AirportAndAirline> dataGraph;
     void parseAirports();
     void parseAirlines();
     void parseFlights();
-    void addAirlineToAirport(Airline airline);
+    void addAirlineToAirport(const Airline& airline);
 
 public:
-    ParseData(const string& airportsCSV, const string& airlinesCSV, const string& flightsCSV);
-    Graph<AirportAndAirline> getData() { return this.dataGraph; }
-    Airport findAirport(const string& airportCode);
+    ParseData(const std::string& airportsCSV, const std::string& airlinesCSV, const std::string& flightsCSV);
+    Graph<AirportAndAirline> getData() { return dataGraph; }
+    Airport* findAirport(const std::string& airportCode);
 };
+
 
 
 #endif //AED_AIRPORTS_PARSEDATA_H
