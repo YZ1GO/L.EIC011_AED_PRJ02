@@ -1,4 +1,5 @@
 #include "file_maker.h"
+#include <vector>
 
 void convertAirportsToTextFile(const std::vector<Airport>& airports, const std::string& filename) {
     std::ofstream outFile(filename);
