@@ -20,6 +20,7 @@ void ParseData::parseAirports() {
     while (getline(file, line)) {
         stringstream ss(line);
 
+        string airlineCountry;
         string nonTrimmed;
         Airport airportObj;
 
@@ -42,62 +43,16 @@ void ParseData::parseAirports() {
         AirportAndAirline airportAndAirline;
         airportAndAirline.setAirport(airportObj);
 
-        Data.addVertex(airportAndAirline);
+        dataGraph.addVertex(airportAndAirline);
     }
-
     file.close();
 }
 
-
-
-Graph<Airport> ParseData::ParseAirports(const std::string &airportsCSV) {
-    Graph<Airport> airportGraph;
-
-    ifstream file(airportsCSV);
-    if (!file.is_open()) {
-        cerr << "Error: Unable to open file " << airportsCSV << endl;
-        return airportGraph;
-    }
-
-    string line;
-    getline(file, line);
-
-    while(getline(file, line)) {
-        stringstream ss(line);
-
-        string nonTrimmed;
-        Airport airportObj;
-
-        getline(ss, nonTrimmed, ',');
-        airportObj.code = TrimString(nonTrimmed);
-
-        getline(ss, nonTrimmed, ',');
-        airportObj.name = TrimString(nonTrimmed);
-
-        getline(ss, nonTrimmed, ',');
-        airportObj.city = TrimString(nonTrimmed);
-
-        getline(ss, nonTrimmed, ',');
-        airportObj.country = TrimString(nonTrimmed);
-
-        ss >> airportObj.latitude;
-        ss.ignore(); // Ignore the comma separator
-        ss >> airportObj.longitude;
-
-        airportGraph.addVertex(airportObj);
-    }
-
-    file.close();
-    return airportGraph;
-}
-
-Graph<Airline> ParseData::ParseAirlines(const string& airlinesCSV) {
-    Graph<Airline> airlineGraph;
-
+void ParseData::parseAirlines() {
     ifstream file(airlinesCSV);
     if (!file.is_open()) {
         cerr << "Error: Unable to open file " << airlinesCSV << endl;
-        return airlineGraph;
+        return;
     }
 
     string line;
@@ -125,10 +80,21 @@ Graph<Airline> ParseData::ParseAirlines(const string& airlinesCSV) {
     }
 
     file.close();
-    return airlineGraph;
 }
 
-void ParseData::ParseFlights(Graph<Airport>& airportGraph, const string& flightsCSV) {
+void ParseData::addAirlineToAirport(Airline airline) {
+    string airlineCountry = airline.getCountry();
+
+    for (auto v : Data) {
+        AirportAndAirline& airportAndAirline = v->getInfo();
+        if (airportAndAirline.airport.getCountry() == airlineCountry) {
+            airportAndAirline.airlines.push_back(airline);
+        }
+    }
+}
+
+
+void ParseData::ParseFlights() {
     ifstream file(flightsCSV);
     if (!file.is_open()) {
         cerr << "Error: Unable to open file " << flightsCSV << endl;
