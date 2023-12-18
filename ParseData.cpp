@@ -1,12 +1,5 @@
 #include "ParseData.h"
 
-ParseData::ParseData(const string& airportsCSV, const string& airlinesCSV, const string& flightsCSV)
-        : airportsCSV(airportsCSV), airlinesCSV(airlinesCSV), flightsCSV(flightsCSV) {
-    parseAirports();
-    parseAirlines();
-    parseFlights();
-}
-
 void ParseData::parseAirports() {
     ifstream file(airportsCSV);
     if (!file.is_open()) {
@@ -15,14 +8,14 @@ void ParseData::parseAirports() {
     }
 
     string line;
-    getline(file, line);
+    getline(file, line); // Skipping header
 
     while (getline(file, line)) {
         stringstream ss(line);
 
-        string airlineCountry;
         string nonTrimmed;
         Airport airportObj;
+        double latitude, longitude;
 
         getline(ss, nonTrimmed, ',');
         airportObj.setCode(TrimString(nonTrimmed));
@@ -36,13 +29,13 @@ void ParseData::parseAirports() {
         getline(ss, nonTrimmed, ',');
         airportObj.setCountry(TrimString(nonTrimmed));
 
-        ss >> airportObj.setLatitude();
+        ss >> latitude;
         ss.ignore();
-        ss >> airportObj.setLongitude();
+        ss >> longitude;
+        airportObj.setLatitude(latitude);
+        airportObj.setLongitude(longitude);
 
-        AirportAndAirline airportAndAirline;
-        airportAndAirline.setAirport(airportObj);
-
+        AirportAndAirline airportAndAirline(&airportObj);
         dataGraph.addVertex(airportAndAirline);
     }
     file.close();
@@ -56,7 +49,7 @@ void ParseData::parseAirlines() {
     }
 
     string line;
-    getline(file, line);
+    getline(file, line); // Skipping header
 
     while(getline(file, line)){
         stringstream ss(line);
@@ -65,36 +58,35 @@ void ParseData::parseAirlines() {
         Airline airlineObj;
 
         getline(ss, nonTrimmed, ',');
-        airlineObj.code = TrimString(nonTrimmed);
+        airlineObj.setCode(TrimString(nonTrimmed));
 
         getline(ss, nonTrimmed, ',');
-        airlineObj.name = TrimString(nonTrimmed);
+        airlineObj.setName(TrimString(nonTrimmed));
 
         getline(ss, nonTrimmed, ',');
-        airlineObj.callsign = TrimString(nonTrimmed);
+        airlineObj.setCallsign(TrimString(nonTrimmed));
 
         getline(ss, nonTrimmed, ',');
-        airlineObj.country = TrimString(nonTrimmed);
+        airlineObj.setCountry(TrimString(nonTrimmed));
 
-        airlineGraph.addVertex(airlineObj);
+        addAirlineToAirport(airlineObj);
     }
 
     file.close();
 }
 
-void ParseData::addAirlineToAirport(Airline airline) {
+void ParseData::addAirlineToAirport(const Airline& airline) {
     string airlineCountry = airline.getCountry();
 
-    for (auto v : Data) {
-        AirportAndAirline& airportAndAirline = v->getInfo();
-        if (airportAndAirline.airport.getCountry() == airlineCountry) {
-            airportAndAirline.airlines.push_back(airline);
+    for (auto& v : dataGraph.getVertexSet()) {
+        auto airportAndAirline = v->getInfo();
+        if (airportAndAirline.getAirport()->getCountry() == airlineCountry) {
+            airportAndAirline.addAirline(airline);
         }
     }
 }
 
-
-void ParseData::ParseFlights() {
+void ParseData::parseFlights() {
     ifstream file(flightsCSV);
     if (!file.is_open()) {
         cerr << "Error: Unable to open file " << flightsCSV << endl;
@@ -102,13 +94,12 @@ void ParseData::ParseFlights() {
     }
 
     string line;
-    getline(file, line);
+    getline(file, line); // Skipping header
 
     while(getline(file, line)) {
         stringstream ss(line);
 
         string source, target, airlineCode;
-        Flight flightObj;
 
         getline(ss, source, ',');
         source = TrimString(source);
@@ -119,30 +110,26 @@ void ParseData::ParseFlights() {
         getline(ss, airlineCode, ',');
         airlineCode = TrimString(airlineCode);
 
-        for (auto v: dataGraph) {
-            Airport &sourceAirport = v->getInfo().airport;
-            if (sourceAirport.getCode == source) {
-                v.addEdge(findAirport(target), sourceAirport.getDistance(findAirport(target)));
-                v->addOutdegree();
-            }
-        }
+        Vertex<AirportAndAirline>* sourceVertex = dataGraph.findVertex(findAirport(source));
+        Vertex<AirportAndAirline>* targetVertex = dataGraph.findVertex(findAirport(target));
 
-        for (auto v: dataGraph) {
-            Airport &targetAirport = v->getInfo().airport;
-            if (targetAirport.getCode == target) {
-                v->addIndegree();
-            }
+        if (sourceVertex && targetVertex) {
+            double distance = sourceVertex->getInfo().getAirport()->getDistance(*findAirport(target));
+            dataGraph.addEdge(sourceVertex->getInfo(), targetVertex->getInfo(), distance);
+            sourceVertex->setOutdegree(sourceVertex->getOutdegree() + 1);
+            targetVertex->setIndegree(targetVertex->getIndegree() + 1);
         }
     }
 
     file.close();
 }
 
-Airport ParseData::findAirport(const string& airportCode) {
-    for (auto v : dataGraph) {
-        Airport& airport = v->getInfo().airport;
-        if (airport.getCode == airportCode) {
+Airport* ParseData::findAirport(const string& airportCode) {
+    for (auto& v : dataGraph.getVertexSet()) {
+        auto airport = v->getInfo().getAirport();
+        if (airport->getCode() == airportCode) {
             return airport;
         }
     }
+    return nullptr;
 }

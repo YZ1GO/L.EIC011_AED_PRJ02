@@ -6,11 +6,6 @@
 #include <string>
 #include <vector>
 
-struct AirportAndAirline {
-    Airport airport,
-    std::vector<Airline> airlines
-};
-
 class Airport {
 private:
     std::string code;
@@ -73,6 +68,19 @@ public:
     void setCountry(const std::string& co) { country = co; }
 
     bool operator==(const Airline& other) const { return code == other.code; }
+};
+
+class AirportAndAirline {
+private:
+    Airport* airport;
+    std::vector<Airline> airlines;
+
+public:
+    AirportAndAirline(Airport* air) : airport(air) {}
+    Airport* getAirport() const { return airport; }
+    std::vector<Airline> getAirlines() const { return airlines; }
+    void addAirline(const Airline& airline) { airlines.push_back(airline); }
+    bool operator==(const AirportAndAirline& other) const { return *airport == *(other.getAirport()); }
 };
 
 /*
