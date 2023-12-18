@@ -88,7 +88,7 @@ vector<Flight> ReadData::ReadFlights(const string& flightsCSV) {
     }
 
     string line;
-    getline(file, line); // Skip header line if present
+    getline(file, line);
 
     while(getline(file, line)){
         stringstream ss(line);

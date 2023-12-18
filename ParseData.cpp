@@ -1,5 +1,11 @@
 #include "ParseData.h"
 
+ParseData::ParseData(const std::string& airportsCSV, const std::string& airlinesCSV, const std::string& flightsCSV) {
+    this->airportsCSV = airportsCSV;
+    this->airlinesCSV = airlinesCSV;
+    this->flightsCSV = flightsCSV;
+}
+
 void ParseData::parseAirports() {
     ifstream file(airportsCSV);
     if (!file.is_open()) {
@@ -8,7 +14,7 @@ void ParseData::parseAirports() {
     }
 
     string line;
-    getline(file, line); // Skipping header
+    getline(file, line);
 
     while (getline(file, line)) {
         stringstream ss(line);
