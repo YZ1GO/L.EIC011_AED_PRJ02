@@ -2,7 +2,7 @@
 //#include "ReadData.h"
 //#include "file_maker.h"
 #include "ParseData.h"
-//#include "OutputData.h"
+#include "OutputData.h"
 
 int main() {
     /*ReadData readData;
@@ -23,6 +23,7 @@ int main() {
     convertAirlinesToTextFile(airlines, "text/Airlines.txt");*/
 
     ParseData parseData("data/airports.csv", "data/airlines.csv", "data/flights.csv");
+    convertGraphToText(parseData.getData(), "data_text/graph.txt");
 
 
     return 0;
