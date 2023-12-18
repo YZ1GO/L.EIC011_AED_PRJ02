@@ -1,5 +1,55 @@
 #include "ParseData.h"
 
+ParseData::ParseData(const string& airportsCSV, const string& airlinesCSV, const string& flightsCSV)
+        : airportsCSV(airportsCSV), airlinesCSV(airlinesCSV), flightsCSV(flightsCSV) {
+    parseAirports();
+    parseAirlines();
+    parseFlights();
+}
+
+void ParseData::parseAirports() {
+    ifstream file(airportsCSV);
+    if (!file.is_open()) {
+        cerr << "Error: Unable to open file " << airportsCSV << endl;
+        return;
+    }
+
+    string line;
+    getline(file, line);
+
+    while (getline(file, line)) {
+        stringstream ss(line);
+
+        string nonTrimmed;
+        Airport airportObj;
+
+        getline(ss, nonTrimmed, ',');
+        airportObj.setCode(TrimString(nonTrimmed));
+
+        getline(ss, nonTrimmed, ',');
+        airportObj.setName(TrimString(nonTrimmed));
+
+        getline(ss, nonTrimmed, ',');
+        airportObj.setCity(TrimString(nonTrimmed));
+
+        getline(ss, nonTrimmed, ',');
+        airportObj.setCountry(TrimString(nonTrimmed));
+
+        ss >> airportObj.setLatitude();
+        ss.ignore();
+        ss >> airportObj.setLongitude();
+
+        AirportAndAirline airportAndAirline;
+        airportAndAirline.setAirport(airportObj);
+
+        Data.addVertex(airportAndAirline);
+    }
+
+    file.close();
+}
+
+
+
 Graph<Airport> ParseData::ParseAirports(const std::string &airportsCSV) {
     Graph<Airport> airportGraph;
 

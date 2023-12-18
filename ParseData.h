@@ -7,11 +7,15 @@
 #include <sstream>
 
 class ParseData {
+private:
+    string airportsCSV, airlinesCSV, flightsCSV;
+    Graph<AirportAndAirline> Data;
+    void parseAirports();
+    void parseAirlines();
+    void parseFlights();
 public:
-    ParseData() {};
-    Graph<Airport> ParseAirports(const string& airportsCSV);
-    Graph<Airline> ParseAirlines(const string& airlinesCSV);
-    void ParseFlights(Graph<Airport>& airportGraph, const string& flightsCSV);
+    ParseData(const string& airportsCSV, const string& airlinesCSV, const string& flightsCSV);
+    Graph<AirportAndAirline> getData() { return this.Data; }
 };
 
 
