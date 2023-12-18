@@ -6,6 +6,8 @@
 #include <queue>
 #include <stack>
 #include <list>
+#include <string>
+#include <unordered_map>
 
 using namespace std;
 
@@ -26,8 +28,8 @@ class Vertex {
     int num;
     int low;
 
-    void addEdge(Vertex<T> *dest, double w);
-    bool removeEdgeTo(Vertex<T> *d);
+    void addEdge(Vertex<T> *dest, string code, double w);
+    bool removeEdgeTo(Vertex<T> *d, string code);
 
 public:
     Vertex(T in);
@@ -62,13 +64,17 @@ public:
 template <class T>
 class Edge {
     Vertex<T>* dest;
+    string airlineCode;
     double weight;
 
 public:
-    Edge(Vertex<T> *d, double w);
+    Edge(Vertex<T> *d, string code, double w);
 
     Vertex<T> *getDest() const;
     void setDest(Vertex<T> *dest);
+
+    string getAirline() const;
+    void setAirline(string code);
 
     double getWeight() const;
     void setWeight(double weight);
@@ -85,7 +91,6 @@ class Graph {
     list<list<T>> _list_sccs_;
 
     void dfsVisit(Vertex<T> *v, vector<T> &res) const;
-    bool dfsIsDAG(Vertex<T> *v) const;
 
 public:
     Vertex<T> *findVertex(const T &in) const;
@@ -95,14 +100,13 @@ public:
     bool addVertex(const T &in);
     bool removeVertex(const T &in);
 
-    bool addEdge(const T &source, const T &dest, double w);
-    bool removeEdge(const T &source, const T &dest);
+    bool addEdge(const T &source, const T &dest, string code, double w);
+    bool removeEdge(const T &source, const T &dest, string code);
 
     vector<T> dfs() const;
     vector<T> dfs(const T & source) const;
     vector<T> bfs(const T &source) const;
     vector<T> topsort() const;
-    bool isDAG() const;
 };
 
 /****************** Constructors and functions ********************/
@@ -161,13 +165,19 @@ void Vertex<T>::setLow(int low) { Vertex::low = low; }
 /**************************************************/
 
 template<class T>
-Edge<T>::Edge(Vertex<T> *d, double w): dest(d), weight(w) {}
+Edge<T>::Edge(Vertex<T> *d, string code, double w): dest(d), airlineCode(code), weight(w) {}
 
 template<class T>
 Vertex<T> *Edge<T>::getDest() const { return dest; }
 
 template<class T>
 void Edge<T>::setDest(Vertex<T> *d) { Edge::dest = d; }
+
+template<class T>
+string Edge<T>::getAirline() const { return airlineCode; }
+
+template<class T>
+void Edge<T>::setAirline(string code) { Edge::airlineCode = code; }
 
 template<class T>
 double Edge<T>::getWeight() const { return weight; }
@@ -179,9 +189,10 @@ void Edge<T>::setWeight(double weight) { Edge::weight = weight; }
 
 template <class T>
 Vertex<T> *Graph<T>::findVertex(const T &in) const {
-    for (auto v : vertexSet)
+    for (auto v : vertexSet) {
         if (v->info == in)
             return v;
+    }
     return NULL;
 }
 
@@ -214,33 +225,33 @@ bool Graph<T>::removeVertex(const T &in) {
 }
 
 template <class T>
-bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
-    auto v1 = findVertex(sourc);
+bool Graph<T>::addEdge(const T &source, const T &dest, string code, double w) {
+    auto v1 = findVertex(source);
     auto v2 = findVertex(dest);
     if (v1 == NULL || v2 == NULL)
         return false;
-    v1->addEdge(v2,w);
+    v1->addEdge(v2, code, w);
     return true;
 }
 
 template <class T>
-void Vertex<T>::addEdge(Vertex<T> *d, double w) {
-    adj.push_back(Edge<T>(d, w));
+void Vertex<T>::addEdge(Vertex<T> *d, string code,  double w) {
+    adj.push_back(Edge<T>(d, code, w));
 }
 
 template <class T>
-bool Graph<T>::removeEdge(const T &sourc, const T &dest) {
-    auto v1 = findVertex(sourc);
+bool Graph<T>::removeEdge(const T &source, const T &dest, string code) {
+    auto v1 = findVertex(source);
     auto v2 = findVertex(dest);
     if (v1 == NULL || v2 == NULL)
         return false;
-    return v1->removeEdgeTo(v2);
+    return v1->removeEdgeTo(v2, code);
 }
 
 template <class T>
-bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
+bool Vertex<T>::removeEdgeTo(Vertex<T> *d, string code) {
     for (auto it = adj.begin(); it != adj.end(); it++)
-        if (it->dest  == d) {
+        if (it->dest  == d && it->airlineCode == code) {
             adj.erase(it);
             return true;
         }
