@@ -76,26 +76,4 @@ public:
     bool operator==(const Airline& other) const { return code == other.code; }
 };
 
-/* //not used
-class Flight {
-private:
-    std::string source;
-    std::string target;
-    std::string airlineCode;
-
-public:
-    Flight() {}
-    Flight(const std::string& src, const std::string& tgt, const std::string& ac)
-            : source(src), target(tgt), airlineCode(ac) {}
-
-    std::string getSource() const { return source; }
-    void setSource(const std::string& src) { source = src; }
-
-    std::string getTarget() const { return target; }
-    void setTarget(const std::string& tgt) { target = tgt; }
-
-    std::string getAirlineCode() const { return airlineCode; }
-    void setAirlineCode(const std::string& ac) { airlineCode = ac; }
-};*/
-
 #endif //AED_AEROPORTO_DATA_H
