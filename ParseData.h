@@ -12,11 +12,10 @@ class ParseData {
 private:
     Graph<Airport> dataGraph;
     std::set<Airline> airlinesInfo;
-
     std::string airportsCSV, airlinesCSV, flightsCSV;
+    void parseAirlines();
     void parseAirports();
     void parseFlights();
-    void parseAirlines();
 
 public:
     ParseData(const std::string& airportsCSV, const std::string& airlinesCSV, const std::string& flightsCSV);
