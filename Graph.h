@@ -66,7 +66,7 @@ template <class T>
 class Edge {
     Vertex<T>* dest;
     string airlineCode;
-    double weight;
+    double distance;
 
 public:
     Edge(Vertex<T> *d, string code, double w);
@@ -74,11 +74,11 @@ public:
     Vertex<T> *getDest() const;
     void setDest(Vertex<T> *dest);
 
-    string getAirline() const;
-    void setAirline(string code);
+    string getAirlineCode() const;
+    void setAirlineCode(string code);
 
-    double getWeight() const;
-    void setWeight(double weight);
+    double getDistance() const;
+    void setDistance(double distance);
 
     friend class Graph<T>;
     friend class Vertex<T>;
@@ -169,7 +169,7 @@ void Vertex<T>::setLow(int low) { Vertex::low = low; }
 /**************************************************/
 
 template<class T>
-Edge<T>::Edge(Vertex<T> *d, string code, double w): dest(d), airlineCode(code), weight(w) {}
+Edge<T>::Edge(Vertex<T> *d, string code, double w): dest(d), airlineCode(code), distance(w) {}
 
 template<class T>
 Vertex<T> *Edge<T>::getDest() const { return dest; }
@@ -178,16 +178,16 @@ template<class T>
 void Edge<T>::setDest(Vertex<T> *d) { Edge::dest = d; }
 
 template<class T>
-string Edge<T>::getAirline() const { return airlineCode; }
+string Edge<T>::getAirlineCode() const { return airlineCode; }
 
 template<class T>
-void Edge<T>::setAirline(string code) { Edge::airlineCode = code; }
+void Edge<T>::setAirlineCode(string code) { Edge::airlineCode = code; }
 
 template<class T>
-double Edge<T>::getWeight() const { return weight; }
+double Edge<T>::getDistance() const { return distance; }
 
 template<class T>
-void Edge<T>::setWeight(double weight) { Edge::weight = weight; }
+void Edge<T>::setDistance(double distance) { Edge::distance = distance; }
 
 /**************************************************/
 

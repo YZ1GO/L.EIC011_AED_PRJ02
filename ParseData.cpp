@@ -41,19 +41,15 @@ void ParseData::parseAirports() {
         ss >> latitude;
         ss.ignore();
         ss >> longitude;
-        airportObj.setLatitude(latitude);
-        airportObj.setLongitude(longitude);
+        airportObj.setLocation(latitude, longitude);
 
-        AirportAndAirline airportAndAirline(&airportObj);
-
-        dataGraph.addVertex(airportAndAirline);
+        airportsGraph.addVertex(airportObj);
 
     }
     file.close();
 }
 
 void ParseData::parseAirlines() {
-    cout << "airlines executed" << endl;
     ifstream file(airlinesCSV);
     if (!file.is_open()) {
         cerr << "Error: Unable to open file " << airlinesCSV << endl;
@@ -81,24 +77,9 @@ void ParseData::parseAirlines() {
         getline(ss, nonTrimmed, ',');
         airlineObj.setCountry(TrimString(nonTrimmed));
 
-        addAirlineToAirport(airlineObj);
+        airlinesGraph.addVertex(airlineObj);
     }
-    cout << "airlines executed sucessfully" << endl;
     file.close();
-}
-
-void ParseData::addAirlineToAirport(const Airline& airline) {
-    cout << "add airline to airport sucessfully" << endl;
-    string airlineCountry = airline.getCountry();
-
-    for (auto v : dataGraph.getVertexSet()) {
-        cout << "in loop" << endl;
-        auto airportAndAirline = v->getInfo();
-        if (airportAndAirline.getAirport()->getCountry() == airlineCountry) {
-            cout << "condition confirmed" << endl;
-            airportAndAirline.addAirline(airline);
-        }
-    }
 }
 
 void ParseData::parseFlights() {
@@ -125,26 +106,27 @@ void ParseData::parseFlights() {
         getline(ss, airlineCode, ',');
         airlineCode = TrimString(airlineCode);
 
-        Vertex<AirportAndAirline>* sourceVertex = dataGraph.findVertex(findAirport(source));
-        Vertex<AirportAndAirline>* targetVertex = dataGraph.findVertex(findAirport(target));
+        Vertex<Airport>* sourceAirport = airportsGraph.findVertex(findAirport(source));
+        Vertex<Airport>* targetAirport = airportsGraph.findVertex(findAirport(target));
 
-        if (sourceVertex && targetVertex) {
-            double distance = sourceVertex->getInfo().getAirport()->getDistance(*findAirport(target));
-            dataGraph.addEdge(sourceVertex->getInfo(), targetVertex->getInfo(), airlineCode, distance);
-            sourceVertex->setOutdegree(sourceVertex->getOutdegree() + 1);
-            targetVertex->setIndegree(targetVertex->getIndegree() + 1);
+        if (sourceAirport && targetAirport) {
+            double distance = sourceAirport->getInfo().getDistance(targetAirport->getInfo().getLocation());
+            airportsGraph.addEdge(sourceAirport->getInfo(), targetAirport->getInfo(), airlineCode, distance);
+            sourceAirport->setOutdegree(sourceAirport->getOutdegree() + 1);
+            targetAirport->setIndegree(targetAirport->getIndegree() + 1);
         }
+
     }
 
     file.close();
 }
 
-Airport* ParseData::findAirport(const string& airportCode) {
-    for (auto& v : dataGraph.getVertexSet()) {
-        auto airport = v->getInfo().getAirport();
-        if (airport->getCode() == airportCode) {
+Airport ParseData::findAirport(const string& airportCode) {
+    for (auto& v : airportsGraph.getVertexSet()) {
+        auto airport = v->getInfo();
+        if (airport.getCode() == airportCode) {
             return airport;
         }
     }
-    return nullptr;
+    return {};
 }
