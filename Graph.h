@@ -8,6 +8,7 @@
 #include <stack>
 #include <list>
 #include <string>
+#include <set>
 #include <unordered_map>
 
 using namespace std;
@@ -179,7 +180,7 @@ template<class T>
 void Edge<T>::setDest(Vertex<T> *d) { Edge::dest = d; }
 
 template<class T>
-const Edge<T>::std::set<Airline>& getAirlines() const { return airlines; }
+const std::set<Airline>& Edge<T>::getAirlines() const { return airlines; }
 
 template<class T>
 void Edge<T>::addAirline(const Airline& airline) { airlines.insert(airline); }
@@ -254,7 +255,7 @@ bool Graph<T>::removeEdge(const T &source, const T &dest) {
 }
 
 template <class T>
-bool Vertex<T>::removeEdgeTo(Vertex<T> *d,) {
+bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
     for (auto it = adj.begin(); it != adj.end(); it++)
         if (it->dest == d) {
             adj.erase(it);

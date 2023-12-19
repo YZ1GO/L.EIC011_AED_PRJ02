@@ -11,8 +11,8 @@ int main() {
     // Creating ParseData object and calling the constructor
     ParseData parseData(airportsCSV, airlinesCSV, flightsCSV);
 
-    convertAirportsToTextFile(parseData.getAirportsGraph(), "text/airports.txt");
-    convertAirlinesToTextFile(parseData.getAirlinesGraph(), "text/airlines.txt");
+    //convertAirportsToTextFile(parseData.getAirportsGraph(), "text/airports.txt");
+    //convertAirlinesToTextFile(parseData.getAirlinesGraph(), "text/airlines.txt");
 
     return 0;
 }
