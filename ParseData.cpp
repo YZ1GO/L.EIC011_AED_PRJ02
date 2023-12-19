@@ -123,9 +123,6 @@ void ParseData::parseFlights() {
             double distance = sourceAirport->getInfo().getDistance(targetAirport->getInfo().getLocation());
             dataGraph.addEdge(sourceAirport->getInfo(), targetAirport->getInfo(), distance);
 
-            sourceAirport->setOutdegree(sourceAirport->getOutdegree() + 1);
-            targetAirport->setIndegree(targetAirport->getIndegree() + 1);
-
             for (auto& e : sourceAirport->getAdj()) {
                 auto t = e.getDest();
                 if (t->getInfo() == targetAirport->getInfo()) {
@@ -135,6 +132,9 @@ void ParseData::parseFlights() {
                 }
             }
         }
+
+        sourceAirport->setOutdegree(sourceAirport->getOutdegree() + 1);
+        targetAirport->setIndegree(targetAirport->getIndegree() + 1);
     }
     file.close();
 }
