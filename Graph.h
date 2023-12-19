@@ -1,6 +1,7 @@
 #ifndef AED_AIRPORTS_GRAPH_H
 #define AED_AIRPORTS_GRAPH_H
 
+#include "Data.h"
 #include <cstddef>
 #include <vector>
 #include <queue>
@@ -65,17 +66,17 @@ public:
 template <class T>
 class Edge {
     Vertex<T>* dest;
-    string airlineCode;
+    std::set<Airline> airlines;
     double distance;
 
 public:
-    Edge(Vertex<T> *d, string code, double distance);
+    Edge(Vertex<T> *d, double distance);
 
     Vertex<T> *getDest() const;
     void setDest(Vertex<T> *dest);
 
-    string getAirlineCode() const;
-    void setAirlineCode(string code);
+    const std::set<Airline>& getAirlines() const;
+    void addAirline(const Airline& airline);
 
     double getDistance() const;
     void setDistance(double distance);
@@ -101,7 +102,7 @@ public:
     bool addVertex(const T &in);
     bool removeVertex(const T &in);
 
-    bool addEdge(const T &source, const T &dest, string code, double distance);
+    bool addEdge(const T &source, const T &dest, const Airline& airline, double distance);
     bool removeEdge(const T &source, const T &dest, string code);
 
     vector<T> dfs() const;
@@ -178,10 +179,10 @@ template<class T>
 void Edge<T>::setDest(Vertex<T> *d) { Edge::dest = d; }
 
 template<class T>
-string Edge<T>::getAirlineCode() const { return airlineCode; }
+const Edge<T>::std::set<Airline>& getAirlines() const { return airlines; }
 
 template<class T>
-void Edge<T>::setAirlineCode(string code) { Edge::airlineCode = code; }
+void Edge<T>::addAirline(const Airline& airline) { airlines.insert(airline); }
 
 template<class T>
 double Edge<T>::getDistance() const { return distance; }
@@ -229,12 +230,12 @@ bool Graph<T>::removeVertex(const T &in) {
 }
 
 template <class T>
-bool Graph<T>::addEdge(const T &source, const T &dest, string code, double distance) {
+bool Graph<T>::addEdge(const T &source, const T &dest, const Airline& airline, double distance) {
     auto v1 = findVertex(source);
     auto v2 = findVertex(dest);
     if (v1 == NULL || v2 == NULL)
         return false;
-    v1->addEdge(v2, code, distance);
+    v1->addEdge(v2, airline, distance);
     return true;
 }
 
