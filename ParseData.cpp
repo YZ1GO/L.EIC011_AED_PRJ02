@@ -5,8 +5,8 @@ ParseData::ParseData(const std::string& airportsCSV, const std::string& airlines
     this->airlinesCSV = airlinesCSV;
     this->flightsCSV = flightsCSV;
     parseAirports();
-    parseAirlines();
     parseFlights();
+    parseAirlines();
 }
 
 void ParseData::parseAirports() {

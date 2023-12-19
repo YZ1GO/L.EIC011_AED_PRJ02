@@ -29,8 +29,8 @@ class Vertex {
     int num;
     int low;
 
-    void addEdge(Vertex<T> *dest, string code, double distance);
-    bool removeEdgeTo(Vertex<T> *d, string code);
+    void addEdge(Vertex<T> *dest, double distance);
+    bool removeEdgeTo(Vertex<T> *d);
 
 public:
     Vertex(T in);
@@ -102,8 +102,8 @@ public:
     bool addVertex(const T &in);
     bool removeVertex(const T &in);
 
-    bool addEdge(const T &source, const T &dest, const Airline& airline, double distance);
-    bool removeEdge(const T &source, const T &dest, string code);
+    bool addEdge(const T &source, const T &dest, double distance);
+    bool removeEdge(const T &source, const T &dest);
 
     vector<T> dfs() const;
     vector<T> dfs(const T & source) const;
@@ -170,7 +170,7 @@ void Vertex<T>::setLow(int low) { Vertex::low = low; }
 /**************************************************/
 
 template<class T>
-Edge<T>::Edge(Vertex<T> *d, string code, double w): dest(d), airlineCode(code), distance(w) {}
+Edge<T>::Edge(Vertex<T> *d, double w): dest(d), distance(w) {}
 
 template<class T>
 Vertex<T> *Edge<T>::getDest() const { return dest; }
@@ -230,33 +230,33 @@ bool Graph<T>::removeVertex(const T &in) {
 }
 
 template <class T>
-bool Graph<T>::addEdge(const T &source, const T &dest, const Airline& airline, double distance) {
+bool Graph<T>::addEdge(const T &source, const T &dest, double distance) {
     auto v1 = findVertex(source);
     auto v2 = findVertex(dest);
     if (v1 == NULL || v2 == NULL)
         return false;
-    v1->addEdge(v2, airline, distance);
+    v1->addEdge(v2, distance);
     return true;
 }
 
 template <class T>
-void Vertex<T>::addEdge(Vertex<T> *d, string code,  double distance) {
-    adj.push_back(Edge<T>(d, code, distance));
+void Vertex<T>::addEdge(Vertex<T> *d,  double distance) {
+    adj.push_back(Edge<T>(d, distance));
 }
 
 template <class T>
-bool Graph<T>::removeEdge(const T &source, const T &dest, string code) {
+bool Graph<T>::removeEdge(const T &source, const T &dest) {
     auto v1 = findVertex(source);
     auto v2 = findVertex(dest);
     if (v1 == NULL || v2 == NULL)
         return false;
-    return v1->removeEdgeTo(v2, code);
+    return v1->removeEdgeTo(v2);
 }
 
 template <class T>
-bool Vertex<T>::removeEdgeTo(Vertex<T> *d, string code) {
+bool Vertex<T>::removeEdgeTo(Vertex<T> *d,) {
     for (auto it = adj.begin(); it != adj.end(); it++)
-        if (it->dest  == d && it->airlineCode == code) {
+        if (it->dest == d) {
             adj.erase(it);
             return true;
         }
