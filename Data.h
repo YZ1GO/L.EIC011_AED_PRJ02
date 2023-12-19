@@ -5,6 +5,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
+struct Coordinates {
+    double latitude;
+    double longitude;
+};
 
 class Airport {
 private:
@@ -12,13 +16,12 @@ private:
     std::string name;
     std::string city;
     std::string country;
-    double latitude;
-    double longitude;
+    Coordinates location;
 
 public:
     Airport() {}
-    Airport(const std::string& c, const std::string& n, const std::string& ci, const std::string& co, double lat, double lon)
-            : code(c), name(n), city(ci), country(co), latitude(lat), longitude(lon) {}
+    Airport(const std::string& c, const std::string& n, const std::string& ci, const std::string& co, Coordinates l)
+            : code(c), name(n), city(ci), country(co), location(l) {}
 
     std::string getCode() const { return code; }
     void setCode(const std::string& c) { code = c; }
@@ -32,13 +35,13 @@ public:
     std::string getCountry() const { return country; }
     void setCountry(const std::string& co) { country = co; }
 
-    double getLatitude() const { return latitude; }
-    void setLatitude(double lat) { latitude = lat; }
+    Coordinates getLocation() const { return location; }
+    void setLocation(double latitude, double longitude) {
+        location.latitude = latitude;
+        location.longitude = longitude;
+    }
 
-    double getLongitude() const { return longitude; }
-    void setLongitude(double lon) { longitude = lon; }
-
-    double getDistance(const Airport& other) const;
+    double getDistance(const Coordinates& other) const;
 
     bool operator==(const Airport& other) const { return code == other.code; }
 };
@@ -70,20 +73,6 @@ public:
     bool operator==(const Airline& other) const { return code == other.code; }
 };
 
-class AirportAndAirline {
-private:
-    Airport* airport;
-    std::vector<Airline> airlines;
-
-public:
-    AirportAndAirline(Airport* air) : airport(air) {}
-    Airport* getAirport() const { return airport; }
-    std::vector<Airline> getAirlines() const { return airlines; }
-    void addAirline(Airline airline) { airlines.push_back(airline); }
-    bool operator==(const AirportAndAirline& other) const { return *airport == *(other.getAirport()); }
-};
-
-/*
 class Flight {
 private:
     std::string source;
@@ -103,6 +92,6 @@ public:
 
     std::string getAirlineCode() const { return airlineCode; }
     void setAirlineCode(const std::string& ac) { airlineCode = ac; }
-};*/
+};
 
 #endif //AED_AEROPORTO_DATA_H
