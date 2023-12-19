@@ -76,6 +76,7 @@ public:
     bool operator==(const Airline& other) const { return code == other.code; }
 };
 
+/* //not used
 class Flight {
 private:
     std::string source;
@@ -95,6 +96,6 @@ public:
 
     std::string getAirlineCode() const { return airlineCode; }
     void setAirlineCode(const std::string& ac) { airlineCode = ac; }
-};
+};*/
 
 #endif //AED_AEROPORTO_DATA_H

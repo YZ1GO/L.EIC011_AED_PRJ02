@@ -9,18 +9,16 @@
 
 class ParseData {
 private:
-    Graph<Airport> airportsGraph;
-    Graph<Airline> airlinesGraph;
+    Graph<Airport> dataGraph;
 
     std::string airportsCSV, airlinesCSV, flightsCSV;
     void parseAirports();
-    void parseAirlines();
     void parseFlights();
+    void parseAirlines();
 
 public:
     ParseData(const std::string& airportsCSV, const std::string& airlinesCSV, const std::string& flightsCSV);
-    Graph<Airport>& getAirportsGraph() { return airportsGraph; }
-    Graph<Airline>& getAirlinesGraph() { return airlinesGraph; }
+    Graph<Airport>& getDataGraph() { return dataGraph; }
     Airport findAirport(const std::string& airportCode);
 };
 
