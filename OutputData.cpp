@@ -1,7 +1,7 @@
 #include "OutputData.h"
 
 
-void convertAirportsToTextFile(const Graph<Airport>& airportGraph, const std::string& filename) {
+/*void convertAirportsToTextFile(const Graph<Airport>& airportGraph, const std::string& filename) {
     std::ofstream outFile(filename);
     if (!outFile.is_open()) {
         std::cerr << "Error: Unable to open file " << filename << std::endl;
@@ -42,7 +42,7 @@ void convertAirlinesToTextFile(const Graph<Airline>& airlineGraph, const std::st
     }
 
     outFile.close();
-}
+}*/
 
 void convertDataGraphToTextFile(const Graph<Airport>& airportGraph, const std::string& filename) {
     std::ofstream outFile(filename);
@@ -57,13 +57,19 @@ void convertDataGraphToTextFile(const Graph<Airport>& airportGraph, const std::s
         outFile << "    City       : " << airport.getCity() << std::endl;
         outFile << "    Country    : " << airport.getCountry() << std::endl;
         outFile << "    Coordinates: (" << airport.getLocation().latitude << ", " << airport.getLocation().longitude << ")" << std::endl;
-        outFile << "    Flights    : " << std::endl;
-        outFile << "    From this airport: " << a->getOutdegree() << std::endl;
-        outFile << "    To this airport: " << a->getIndegree() << std::endl;
+        outFile << "    Flights from this airport : " << a->getOutdegree() << std::endl;
+        outFile << "    Flights to this airport   : " << a->getIndegree() << std::endl;
+
         for (auto e : a->getAdj()) {
             auto target = e.getDest()->getInfo();
-            outFile << airport.getCode() << " -> " << target.getCode() << " by " << e.getAirlineCode() << " airline : " << e.getDistance() << "km" << std::endl;
+            outFile << airport.getCode() << " -> " << target.getCode() << " : " << e.getDistance() << "km" << std::endl;
+            outFile << "by Airlines: " << std::endl;
+            for (auto airline : e.getAirlines()) {
+                outFile << "[" << airline.getCode() << "] " << airline.getCallsign() << std::endl;
+            }
+            outFile << std::endl;
         }
+
         outFile << std::endl;
     }
     outFile.close();
