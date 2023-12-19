@@ -13,6 +13,7 @@ int main() {
 
     //convertAirportsToTextFile(parseData.getAirportsGraph(), "text/airports.txt");
     //convertAirlinesToTextFile(parseData.getAirlinesGraph(), "text/airlines.txt");
+    convertDataGraphToTextFile(parseData.getDataGraph(), "text/Global_Data.txt");
 
     return 0;
 }
