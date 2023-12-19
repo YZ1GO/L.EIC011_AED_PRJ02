@@ -169,7 +169,7 @@ void Vertex<T>::setLow(int low) { Vertex::low = low; }
 /**************************************************/
 
 template<class T>
-Edge<T>::Edge(Vertex<T> *d, string code, double distance): dest(d), airlineCode(code), distance(w) {}
+Edge<T>::Edge(Vertex<T> *d, string code, double w): dest(d), airlineCode(code), distance(w) {}
 
 template<class T>
 Vertex<T> *Edge<T>::getDest() const { return dest; }
