@@ -28,7 +28,7 @@ class Vertex {
     int num;
     int low;
 
-    void addEdge(Vertex<T> *dest, string code, double w);
+    void addEdge(Vertex<T> *dest, string code, double distance);
     bool removeEdgeTo(Vertex<T> *d, string code);
 
 public:
@@ -69,7 +69,7 @@ class Edge {
     double distance;
 
 public:
-    Edge(Vertex<T> *d, string code, double w);
+    Edge(Vertex<T> *d, string code, double distance);
 
     Vertex<T> *getDest() const;
     void setDest(Vertex<T> *dest);
@@ -101,7 +101,7 @@ public:
     bool addVertex(const T &in);
     bool removeVertex(const T &in);
 
-    bool addEdge(const T &source, const T &dest, string code, double w);
+    bool addEdge(const T &source, const T &dest, string code, double distance);
     bool removeEdge(const T &source, const T &dest, string code);
 
     vector<T> dfs() const;
@@ -169,7 +169,7 @@ void Vertex<T>::setLow(int low) { Vertex::low = low; }
 /**************************************************/
 
 template<class T>
-Edge<T>::Edge(Vertex<T> *d, string code, double w): dest(d), airlineCode(code), distance(w) {}
+Edge<T>::Edge(Vertex<T> *d, string code, double distance): dest(d), airlineCode(code), distance(w) {}
 
 template<class T>
 Vertex<T> *Edge<T>::getDest() const { return dest; }
@@ -229,18 +229,18 @@ bool Graph<T>::removeVertex(const T &in) {
 }
 
 template <class T>
-bool Graph<T>::addEdge(const T &source, const T &dest, string code, double w) {
+bool Graph<T>::addEdge(const T &source, const T &dest, string code, double distance) {
     auto v1 = findVertex(source);
     auto v2 = findVertex(dest);
     if (v1 == NULL || v2 == NULL)
         return false;
-    v1->addEdge(v2, code, w);
+    v1->addEdge(v2, code, distance);
     return true;
 }
 
 template <class T>
-void Vertex<T>::addEdge(Vertex<T> *d, string code,  double w) {
-    adj.push_back(Edge<T>(d, code, w));
+void Vertex<T>::addEdge(Vertex<T> *d, string code,  double distance) {
+    adj.push_back(Edge<T>(d, code, distance));
 }
 
 template <class T>
