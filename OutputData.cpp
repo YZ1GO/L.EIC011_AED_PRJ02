@@ -18,7 +18,7 @@ void convertDataGraphToTextFile(const Graph<Airport>& airportGraph, const std::s
 
         for (auto e : a->getAdj()) {
             auto target = e.getDest()->getInfo();
-            outFile << "    • " << airport.getCode() << " -> " << target.getCode() << " : " << e.getDistance() << "km" << std::endl;
+            outFile << "    • " << airport.getCode() << " -> " << target.getCode() << " : " << e.getDistance() << " km" << std::endl;
             outFile << "        by Airlines: " << std::endl;
             int i = 1;
             for (auto airline : e.getAirlines()) {
