@@ -37,6 +37,7 @@ public:
     void setCountry(const std::string& co) { country = co; }
 
     Coordinates getLocation() const { return location; }
+
     void setLocation(double latitude, double longitude) {
         location.latitude = latitude;
         location.longitude = longitude;
@@ -71,6 +72,7 @@ public:
     std::string getCountry() const { return country; }
     void setCountry(const std::string& co) { country = co; }
 
+    bool operator<(const Airline& other) const { return code < other.code; }
     bool operator==(const Airline& other) const { return code == other.code; }
 };
 
