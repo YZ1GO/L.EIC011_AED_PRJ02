@@ -15,8 +15,8 @@ void convertAirportsToTextFile(const Graph<Airport>& airportGraph, const std::st
         outFile << "    Country    : " << airport.getCountry() << std::endl;
         outFile << "    Coordinates: (" << airport.getLocation().latitude << ", " << airport.getLocation().longitude << ")" << std::endl;
         outFile << "    Flights    : " << std::endl;
-        outFile << "    To this airport: " << a->getIndegree() << std::endl;
         outFile << "    From this airport: " << a->getOutdegree() << std::endl;
+        outFile << "    To this airport: " << a->getIndegree() << std::endl;
         for (auto e : a->getAdj()) {
             auto target = e.getDest()->getInfo();
             outFile << airport.getCode() << " -> " << target.getCode() << " by " << e.getAirlineCode() << " airline : " << e.getDistance() << "km" << std::endl;
