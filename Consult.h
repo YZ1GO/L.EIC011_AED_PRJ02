@@ -3,10 +3,21 @@
 
 #include "ParseData.h"
 #include <map>
+#include <unordered_set>
+#include <limits>
 
 class Consult {
 private:
     const Graph<Airport>& consultGraph;
+
+    void dfsVisitFlightsPerCity(Vertex<Airport> *v, map<string, int> &res);
+    void dfsVisitFlightsPerAirline(Vertex<Airport> *v, map<string, int> &res);
+    void dfsVisitCityAirports(const string& city, const string& country, Vertex<Airport> *v, vector<Vertex<Airport>*>& res);
+    void dfs_greatestTrip(Vertex<Airport>* source, Vertex<Airport>* target, vector<vector<Airport>>& greatestTrips, vector<Airport> currentTrip, int& maxTrip);
+    void dfs_smallestTrip(Vertex<Airport>* source, Vertex<Airport>* target, vector<vector<Airport>>& smallestTrips, vector<Airport> currentTrip, int& minTrip);
+    vector<pair<Airport,int>> topTrafficCapacityAirports();
+    void dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_set<string> &l, int &i);
+
 public:
     Consult(const Graph<Airport>& dataGraph);
 
@@ -18,13 +29,10 @@ public:
     int searchNumberOfFlightsOutOfAirportFromDifferentAirlines(const Airport& airport);
 
     map<string, int> searchNumberOfFlightsPerCity();
-    void dfsVisitFlightsPerCity(Vertex<Airport> *v, map<string, int> &res);
     map<string, int> searchNumberOfFlightsPerAirline();
-    void dfsVisitFlightsPerAirline(Vertex<Airport> *v, map<string, int> &res);
 
     int searchNumberOfCountriesFlownToFromAirport(const Airport& airport);
     int searchNumberOfCountriesFlownToFromCity(const string& city, const string& country);
-    void dfsVisitCityAirports(const string& city, const string& country, Vertex<Airport> *v, vector<Vertex<Airport>*>& res);
 
     //int searchNumberOfAirportsAvailableForAirport(const Airport& airport);
     //int searchNumberOfCitiesAvailableForAirport(const Airport& airport);
@@ -33,6 +41,13 @@ public:
     int searchNumberOfReachableAirportsInXStopsFromAirport(const Airport& airport, int layOvers);
     int searchNumberOfReachableCitiesInXStopsFromAirport(const Airport& airport, int layOvers);
     int searchNumberOfReachableCountriesInXStopsFromAirport(const Airport& airport, int layOvers);
+
+    vector<vector<Airport>> searchTripGreatestNumberOfStopsBetweenThem(const Airport& source, const Airport& target);
+    vector<vector<Airport>> searchTripSmallestNumberOfStopsBetweenThem(const Airport& source, const Airport& target);
+
+    vector<pair<Airport,int>> searchTopKAirportGreatestAirTrafficCapacity(const int& k);
+
+    unordered_set<string> searchEssentialAirports();
 };
 
 
