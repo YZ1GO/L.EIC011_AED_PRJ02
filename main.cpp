@@ -10,6 +10,7 @@ int main() {
 
     // Creating ParseData object and calling the constructor
     ParseData parseData(airportsCSV, airlinesCSV, flightsCSV);
+    parseData.setupIndegreeOutDegree();
 
     //convertDataGraphToTextFile(parseData.getDataGraph(), "text/Global_Data.txt");
 
