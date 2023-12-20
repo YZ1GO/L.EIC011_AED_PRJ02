@@ -70,19 +70,22 @@ vector <Airport> OConsult::topTrafficCapacityAirports() {
         auto airport1 = consultGraph.findVertex(a1);
         auto airport2 = consultGraph.findVertex(a2);
 
+        //todo
+        int traffic1 =
+        int traffic2 =
 
-        int traffic1_out = 0;
-        for (const auto e : airport1->getAdj()) {
-            traffic1_out += e.getAirlines().size();
-        }
-
-
-
-        return traffic1 > traffic2; // Sorting in descending order
+        return traffic1 > traffic2;
     });
 
 }
 
 vector<Airport> OConsult::searchTopKairportGreatestAirTrafficCapacity(const int& k) {
+    vector<Airport> res;
+    for (int i = 0; i < topTrafficCapacityAirports().size(); i++) {
+        if (i < k) {
+            res.push_back(topTrafficCapacityAirports()[i]);
+        }
+    }
 
+    return res;
 }
