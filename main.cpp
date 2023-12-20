@@ -22,6 +22,9 @@ int main() {
     location.latitude = 34.6545;
     location.longitude = -112.42;
     Airport PRC = Airport("PRC", "Ernest A Love Fld", "Prescott", "United States", location);
+    for (const auto& pair : consult.searchNumberOfFlightsPerCity()) {
+        cout << pair.first << ": " << pair.second << endl;
+    }
 /*
     cout << consult.searchNumberOfAirports() << endl;                                         //expect 3019
     cout << consult.searchNumberOfAvailableFlights() << endl;                                 //expect 63832
@@ -29,17 +32,17 @@ int main() {
     cout << consult.searchNumberOfFlightsOutOfAirport(BSK) << endl;                           //expect 4
     cout << consult.searchNumberOfFlightsToAirport(BSK) << endl;                              //expect 4
     cout << consult.searchNumberOfFlightsOutOfAirportFromDifferentAirlines(BSK) << endl;      //expect 2
-    for (const auto& pair : consult.searchNumberOfFlightsPerCity()) {
-        cout << pair.first << ": " << pair.second << endl;
-    }
      for (const auto& pair : consult.searchNumberOfFlightsPerAirline()) {
         cout << pair.first << ": " << pair.second << endl;
     }
     cout << consult.searchNumberOfCountriesFlownToFromAirport(BSK) << endl;                   //expect 2
     cout << consult.searchNumberOfCountriesFlownToFromCity("London", "Canada") << endl;       //expect 2
     cout << consult.searchNumberOfAirportsAvailableForAirport(BSK) << endl;                   //expect 3
+
+Airport s;
+s.setCode("MUW");
     cout << consult.searchNumberOfReachableAirportsInXStopsFromAirport(PRC, 1) << endl;       //expect 150
-    cout << consult.searchNumberOfReachableAirportsInXStopsFromAirport(BSK, 2) << endl;       //expect 8839
+    cout << consult.searchNumberOfReachableAirportsInXStopsFromAirport(s, 1) << endl;       //expect 64
     cout << consult.searchNumberOfReachableCitiesInXStopsFromAirport(BSK, 0) << endl;         //expect 3
     cout << consult.searchNumberOfReachableCitiesInXStopsFromAirport(BSK, 1) << endl;         //expect 159
     cout << consult.searchNumberOfReachableCitiesInXStopsFromAirport(BSK, 2) << endl;         //expect 1065
@@ -84,7 +87,7 @@ int main() {
 
 
     int j = 1;
-    for (const auto& traffic : consult.searchTopKairportGreatestAirTrafficCapacity(192)) {
+    for (const auto& traffic : consult.searchTopKAirportGreatestAirTrafficCapacity(192)) {
         cout << j++ << ". [" << traffic.second << "] " << traffic.first.getCode() << endl;
     }*/
 
