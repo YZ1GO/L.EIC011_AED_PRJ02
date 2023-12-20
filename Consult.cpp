@@ -28,10 +28,11 @@ int Consult::searchNumberOfFlightsOutOfAirport(const Airport& airport) {
 
 int Consult::searchNumberOfFlightsToAirport(const Airport &airport) {
     int numberOfFlights = 0;
-    auto ap = consultGraph.findVertex(airport);
-    if (ap != nullptr) {
-        for (const auto& a : consultGraph.getVertexSet()) {
-            for (const auto& flight : a->getAdj()) {
+
+    auto a = consultGraph.findVertex(airport);
+    if (a != nullptr) {
+        for (const auto& v : consultGraph.getVertexSet()) {
+            for (const auto& flight : v->getAdj()) {
                 if (flight.getDest()->getInfo() == airport)
                     numberOfFlights++;
             }
@@ -157,6 +158,26 @@ void Consult::dfsVisitCityAirports(const string &city, const string& country, Ve
             dfsVisitCityAirports(city, country, d, res);
     }
 }
+
+int Consult::searchNumberOfAirportsAvailableForAirport(const Airport &airport) {
+    int numberOfAirports = 0;
+    auto a = consultGraph.findVertex(airport);
+    if (a != nullptr)
+        numberOfAirports = static_cast<int>(a->getAdj().size());
+    return numberOfAirports;
+}
+
+int Consult::searchNumberOfCitiesAvailableForAirport(const Airport &airport) {
+    set<string> cities;
+    auto a = consultGraph.findVertex(airport);
+    if (a != nullptr) {
+        for (auto flight : a->getAdj()) {
+            cities.insert(flight.getDest()->getInfo().getCity());
+        }
+    }
+    return static_cast<int>(cities.size());
+}
+
 
 
 
