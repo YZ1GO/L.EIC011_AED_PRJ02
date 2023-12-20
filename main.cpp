@@ -41,7 +41,9 @@ int main() {
     cout << consult.searchNumberOfReachableAirportsInXStopsFromAirport(PRC, 1) << endl;       //expect 150
     cout << consult.searchNumberOfReachableAirportsInXStopsFromAirport(BSK, 2) << endl;       //expect 8839
     */
-
+    cout << consult.searchNumberOfReachableCitiesInXStopsFromAirport(BSK, 0) << endl;
+    cout << consult.searchNumberOfReachableCitiesInXStopsFromAirport(BSK, 1) << endl;
+    cout << consult.searchNumberOfReachableCitiesInXStopsFromAirport(BSK, 2) << endl;
     /*
     Airport source, target;
     source.setCode("NAS");
