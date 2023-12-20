@@ -37,12 +37,13 @@ int main() {
     cout << consult.searchNumberOfAirportsAvailableForAirport(BSK) << endl;                   //expect 3
     */
 
+    /*
     Airport source, target;
     source.setCode("NAS");
     target.setCode("AXP");
     OConsult oConsult(parseData.getDataGraph());
 
-    for (auto trips : oConsult.searchTripGreatestNumberOfStopsBetweenThem(source, target)) {
+    for (auto trips : oConsult.searchTripGreatestNumberOfStopsBetweenThem(source, target)) {  //expect NAX->CRI->AXP (3)
         cout << "[" << trips.size() << "] ";
         auto it = trips.begin();
         while (it != trips.end()) {
@@ -54,6 +55,18 @@ int main() {
         }
         cout << endl;
     }
+    for (auto trips : oConsult.searchTripSmallestNumberOfStopsBetweenThem(source, target)) {    //expect NAX->AXP (2) [direct flight]
+        cout << "[" << trips.size() << "] ";
+        auto it = trips.begin();
+        while (it != trips.end()) {
+            cout << it->getCode();
+            if (next(it) != trips.end()) {
+                cout << "->";
+            }
+            ++it;
+        }
+        cout << endl;
+    }*/
 
     /*
     int i = 1;

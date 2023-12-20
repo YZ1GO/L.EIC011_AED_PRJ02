@@ -145,6 +145,27 @@ vector<vector<Airport>> OConsult::searchTripGreatestNumberOfStopsBetweenThem(con
     return greatestTrips;
 }
 
+vector<vector<Airport>> OConsult::searchTripSmallestNumberOfStopsBetweenThem(const Airport& source, const Airport& target) {
+    vector<vector<Airport>> smallestTrips;
+    vector<Airport> currentTrip;
+    int minTrip = numeric_limits<int>::max(); // Set to maximum possible initially
+
+    auto sourceAirport = consultGraph.findVertex(source);
+    auto targetAirport = consultGraph.findVertex(target);
+
+    if (sourceAirport == nullptr || targetAirport == nullptr) {
+        return smallestTrips;
+    }
+
+    for (auto v : consultGraph.getVertexSet()) {
+        v->setVisited(false);
+    }
+
+    dfs_smallestTrip(sourceAirport, targetAirport, smallestTrips, currentTrip, minTrip);
+
+    return smallestTrips;
+}
+
 void OConsult::dfs_greatestTrip(Vertex<Airport>* source, Vertex<Airport>* target, vector<vector<Airport>>& greatestTrips, vector<Airport> currentTrip, int& maxTrip) {
     currentTrip.push_back(source->getInfo());
 
@@ -164,6 +185,29 @@ void OConsult::dfs_greatestTrip(Vertex<Airport>* source, Vertex<Airport>* target
         auto w = e.getDest();
         if (!w->isVisited()) {
             dfs_greatestTrip(w, target, greatestTrips, currentTrip, maxTrip);
+        }
+    }
+}
+
+void OConsult::dfs_smallestTrip(Vertex<Airport>* source, Vertex<Airport>* target, vector<vector<Airport>>& smallestTrips, vector<Airport> currentTrip, int& minTrip) {
+    currentTrip.push_back(source->getInfo());
+
+    if (source->getInfo() == target->getInfo()) {
+        if (minTrip > currentTrip.size()) {
+            minTrip = currentTrip.size();
+            smallestTrips.clear();
+        }
+        if (minTrip == currentTrip.size()) {
+            smallestTrips.push_back(currentTrip);
+        }
+        return;
+    }
+    source->setVisited(true);
+
+    for (auto &e : source->getAdj()) {
+        auto w = e.getDest();
+        if (!w->isVisited()) {
+            dfs_smallestTrip(w, target, smallestTrips, currentTrip, minTrip);
         }
     }
 }
