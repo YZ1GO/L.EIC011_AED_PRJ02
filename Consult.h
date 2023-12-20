@@ -10,7 +10,7 @@ class Consult {
 private:
     const Graph<Airport>& consultGraph;
 
-    void dfs_art(Vertex<Airport> *v, stack<string> &s, unordered_set<string> &l, int &i);
+    void dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_set<string> &l, int &i);
     void dfs_greatestTrip(Vertex<Airport>* source, Vertex<Airport>* target, vector<vector<Airport>>& greatestTrips, vector<Airport> currentTrip, int& maxTrip);
     void dfs_smallestTrip(Vertex<Airport>* source, Vertex<Airport>* target, vector<vector<Airport>>& smallestTrips, vector<Airport> currentTrip, int& minTrip);
     vector<pair<Airport,int>> topTrafficCapacityAirports();
