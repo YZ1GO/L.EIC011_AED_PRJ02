@@ -1,7 +1,6 @@
 #include <iostream>
 //#include "OutputData.h"
 #include "Consult.h"
-#include "OConsult.h"
 
 int main() {
     // File paths for CSV files
@@ -44,13 +43,13 @@ int main() {
     cout << consult.searchNumberOfReachableCitiesInXStopsFromAirport(BSK, 0) << endl;
     cout << consult.searchNumberOfReachableCitiesInXStopsFromAirport(BSK, 1) << endl;
     cout << consult.searchNumberOfReachableCitiesInXStopsFromAirport(BSK, 2) << endl;
+
     /*
     Airport source, target;
     source.setCode("NAS");
     target.setCode("AXP");
-    OConsult oConsult(parseData.getDataGraph());
 
-    for (auto trips : oConsult.searchTripGreatestNumberOfStopsBetweenThem(source, target)) {  //expect NAX->CRI->AXP (3)
+    for (auto trips : consult.searchTripGreatestNumberOfStopsBetweenThem(source, target)) {  //expect NAX->CRI->AXP (3)
         cout << "[" << trips.size() << "] ";
         auto it = trips.begin();
         while (it != trips.end()) {
@@ -62,7 +61,7 @@ int main() {
         }
         cout << endl;
     }
-    for (auto trips : oConsult.searchTripSmallestNumberOfStopsBetweenThem(source, target)) {    //expect NAX->AXP (2) [direct flight]
+    for (auto trips : consult.searchTripSmallestNumberOfStopsBetweenThem(source, target)) {    //expect NAX->AXP (2) [direct flight]
         cout << "[" << trips.size() << "] ";
         auto it = trips.begin();
         while (it != trips.end()) {
@@ -73,27 +72,19 @@ int main() {
             ++it;
         }
         cout << endl;
-    }*/
+    }
 
-    /*
+
     int i = 1;
-    for (const auto& airport : oConsult.searchEssentialAirports()) {
+    for (const auto& airport : consult.searchEssentialAirports()) {
         cout << i++ << ". " << airport << endl;
     }
 
 
-    int i = 1;
-    for (const auto& traffic : oConsult.searchTopKairportGreatestAirTrafficCapacity(192)) {
-        cout << i++ << ". [" << traffic.second << "] " << traffic.first.getCode() << endl;
-    }
-
-    /*
-    Airport airport;
-    airport.setCode("AOK");
-    OConsult oConsult(parseData.getDataGraph());
-    cout << oConsult.searchNumberOfFlightsOutOfAirport(airport) << endl;
-    cout << oConsult.searchNumberOfFlightsToAirport(airport) << endl;
-    */
+    int j = 1;
+    for (const auto& traffic : consult.searchTopKairportGreatestAirTrafficCapacity(192)) {
+        cout << j++ << ". [" << traffic.second << "] " << traffic.first.getCode() << endl;
+    }*/
 
     return 0;
 }
