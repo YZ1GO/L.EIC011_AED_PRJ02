@@ -73,12 +73,25 @@ vector <pair<Airport,int>> OConsult::topTrafficCapacityAirports() {
 
 vector<pair<Airport,int>> OConsult::searchTopKairportGreatestAirTrafficCapacity(const int& k) {
     vector<pair<Airport,int>> res;
-    for (int i = 0; i < topTrafficCapacityAirports().size(); i++) {
-        if (i < k) {
-            res.push_back(topTrafficCapacityAirports()[i]);
-        }
+    vector<Vertex<Airport>*> airports;
+    for (const auto& airport : consultGraph.getVertexSet()) {
+        airports.push_back(airport);
     }
 
+    sort(airports.begin(), airports.end(), [&](const Vertex<Airport>* a1, const Vertex<Airport>* a2) {
+        return a1->getFlightsTo() + a1->getFlightsFrom() > a2->getFlightsTo() + a2->getFlightsFrom();
+    });
+
+    for (int i = 0; i < airports.size(); i++) {
+        int last_totalFlights;
+        int totalFlights = airports[i]->getFlightsFrom() + airports[i]->getFlightsTo();
+        if (i < k) {
+            last_totalFlights = totalFlights;
+            res.emplace_back(airports[i]->getInfo(), totalFlights);
+        } else if (last_totalFlights == totalFlights) {
+            res.emplace_back(airports[i]->getInfo(), totalFlights);
+        }
+    }
     return res;
 }
 
