@@ -20,6 +20,9 @@ int main() {
     location.latitude = 34.793289;
     location.longitude = 5.738231;
     Airport BSK = Airport("BSK","Biskra","Biskra","Algeria", location);
+    location.latitude = 34.6545;
+    location.longitude = -112.42;
+    Airport PRC = Airport("PRC", "Ernest A Love Fld", "Prescott", "United States", location);
     /*
     cout << consult.searchNumberOfAirports() << endl;                                         //expect 3019
     cout << consult.searchNumberOfAvailableFlightRoutes() << endl;                            //expect 35480
@@ -35,6 +38,8 @@ int main() {
     cout << consult.searchNumberOfCountriesFlownToFromAirport(BSK) << endl;                   //expect 2
     cout << consult.searchNumberOfCountriesFlownToFromCity("London", "Canada") << endl;       //expect 2
     cout << consult.searchNumberOfAirportsAvailableForAirport(BSK) << endl;                   //expect 3
+    cout << consult.searchNumberOfReachableAirportsInXStopsFromAirport(PRC, 1) << endl;       //expect 150
+    cout << consult.searchNumberOfReachableAirportsInXStopsFromAirport(BSK, 2) << endl;       //expect 8839
     */
 
     /*

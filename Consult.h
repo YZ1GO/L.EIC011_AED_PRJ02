@@ -26,9 +26,11 @@ public:
     int searchNumberOfCountriesFlownToFromCity(const string& city, const string& country);
     void dfsVisitCityAirports(const string& city, const string& country, Vertex<Airport> *v, vector<Vertex<Airport>*>& res);
 
-    int searchNumberOfAirportsAvailableForAirport(const Airport& airport);
-    int searchNumberOfCitiesAvailableForAirport(const Airport& airport);
-    int searchNumberOfCountriesAvailableForAirport(const Airport& airport);
+    //int searchNumberOfAirportsAvailableForAirport(const Airport& airport);
+    //int searchNumberOfCitiesAvailableForAirport(const Airport& airport);
+    //int searchNumberOfCountriesAvailableForAirport(const Airport& airport);
+
+    int searchNumberOfReachableAirportsInXStopsFromAirport(const Airport& airport, int layOvers);
 };
 
 
