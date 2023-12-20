@@ -159,23 +159,35 @@ void Consult::dfsVisitCityAirports(const string &city, const string& country, Ve
     }
 }
 
-int Consult::searchNumberOfAirportsAvailableForAirport(const Airport &airport) {
-    int numberOfAirports = 0;
-    auto a = consultGraph.findVertex(airport);
-    if (a != nullptr)
-        numberOfAirports = static_cast<int>(a->getAdj().size());
-    return numberOfAirports;
-}
-
-int Consult::searchNumberOfCitiesAvailableForAirport(const Airport &airport) {
-    set<string> cities;
+int Consult::searchNumberOfReachableAirportsInXStopsFromAirport(const Airport& airport, int layOvers) {
+    int count = 0;
+    queue<pair<Vertex<Airport>*, int>> reachableAirports;
     auto a = consultGraph.findVertex(airport);
     if (a != nullptr) {
-        for (auto flight : a->getAdj()) {
-            cities.insert(flight.getDest()->getInfo().getCity());
+        for (auto v : consultGraph.getVertexSet()) {
+            v->setVisited(false);
+        }
+        reachableAirports.emplace(a, 0);
+        a->setVisited(true);
+
+        while(!reachableAirports.empty()) {
+            auto pair = reachableAirports.front();
+            reachableAirports.pop();
+
+            Vertex<Airport>* ap = pair.first;
+            int stop = pair.second;
+            if (stop <= layOvers)
+                count += static_cast<int>(ap->getAdj().size());
+            for (const auto& flight : ap->getAdj()) {
+                auto d = flight.getDest();
+                if (!d->isVisited()) {
+                    reachableAirports.emplace(d, stop + 1);
+                    d->setVisited(true);
+                }
+            }
         }
     }
-    return static_cast<int>(cities.size());
+    return count;
 }
 
 
