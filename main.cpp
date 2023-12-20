@@ -16,15 +16,32 @@ int main() {
     //convertDataGraphToTextFile(parseData.getDataGraph(), "text/Global_Data.txt");
 
     Consult consult(parseData.getDataGraph());
-    cout << consult.searchNumberOfAirports() << endl;                                           //expect 3019
-    cout << consult.searchNumberOfAvailableFlightRoutes() << endl;                              //expect 35480
-    cout << consult.searchNumberOfFlightsOutOfAirport("BSK") << endl;                           //expect 4
-    cout << consult.searchNumberOfFlightsOutOfAirportFromDifferentAirlines("BSK") << endl;      //expect 2
+    Coordinates location = *new Coordinates();
+    location.latitude = 34.793289;
+    location.longitude = 5.738231;
+    Airport BSK = Airport("BSK","Biskra","Biskra","Algeria", location);
+    /*
+    cout << consult.searchNumberOfAirports() << endl;                                         //expect 3019
+    cout << consult.searchNumberOfAvailableFlightRoutes() << endl;                            //expect 35480
+    cout << consult.searchNumberOfFlightsOutOfAirport(BSK) << endl;                           //expect 4
+    cout << consult.searchNumberOfFlightsToAirport(BSK) << endl;                              //expect 3
+    cout << consult.searchNumberOfFlightsOutOfAirportFromDifferentAirlines(BSK) << endl;      //expect 2
+    for (const auto& pair : consult.searchNumberOfFlightsPerCity()) {
+        cout << pair.first << ": " << pair.second << endl;
+    }
+     for (const auto& pair : consult.searchNumberOfFlightsPerAirline()) {
+        cout << pair.first << ": " << pair.second << endl;
+    }
+    cout << consult.searchNumberOfCountriesFlownToFromAirport(BSK) << endl;                   //expect 2
+    cout << consult.searchNumberOfCountriesFlownToFromCity("London", "Canada") << endl;       //expect 2
+    */
 
+    /*
     OConsult oConsult(parseData.getDataGraph());
     int i = 1;
     for (const auto& airport : oConsult.searchEssentialAirports()) {
         cout << i++ << ". " << airport << endl;
     }
+    */
     return 0;
 }

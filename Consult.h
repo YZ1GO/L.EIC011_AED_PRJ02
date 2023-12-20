@@ -2,6 +2,7 @@
 #define AED_AIRPORTS_CONSULT_H
 
 #include "ParseData.h"
+#include <map>
 
 class Consult {
 private:
@@ -12,12 +13,18 @@ public:
     int searchNumberOfAirports();
     int searchNumberOfAvailableFlightRoutes();
 
-    int searchNumberOfFlightsOutOfAirport(const string& airportCode);
-    int searchNumberOfFlightsOutOfAirportFromDifferentAirlines(const string& airportCode);
+    int searchNumberOfFlightsOutOfAirport(const Airport& airport);
+    int searchNumberOfFlightsToAirport(const Airport& airport);
+    int searchNumberOfFlightsOutOfAirportFromDifferentAirlines(const Airport& airport);
 
-    set<string, int> searchNumberOfFlightsPerCity();
-    set<string, int> searchNumberOfFlightsPerAirline();
-    void dfsVisit(Vertex<Airport> *v, set<string, int> &res) const;
+    map<string, int> searchNumberOfFlightsPerCity();
+    void dfsVisitFlightsPerCity(Vertex<Airport> *v, map<string, int> &res);
+    map<string, int> searchNumberOfFlightsPerAirline();
+    void dfsVisitFlightsPerAirline(Vertex<Airport> *v, map<string, int> &res);
+
+    int searchNumberOfCountriesFlownToFromAirport(const Airport& airport);
+    int searchNumberOfCountriesFlownToFromCity(const string& city, const string& country);
+    void dfsVisitCityAirports(const string& city, const string& country, Vertex<Airport> *v, vector<Vertex<Airport>*>& res);
 };
 
 
