@@ -136,6 +136,10 @@ void ParseData::parseFlights() {
                 }
             }
         }
+
+        sourceAirport->setFlightsFrom(sourceAirport->getFlightsFrom() + 1);
+        targetAirport->setFlightsTo(targetAirport->getFlightsTo() + 1);
+
     }
     file.close();
 }

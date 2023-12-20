@@ -29,6 +29,8 @@ class Vertex {
     int outdegree;
     int num;
     int low;
+    int flightsTo = 0;
+    int flightsFrom = 0;
 
     void addEdge(Vertex<T> *dest, double distance);
     bool removeEdgeTo(Vertex<T> *d);
@@ -60,6 +62,12 @@ public:
 
     int getLow() const;
     void setLow(int low);
+
+    int getFlightsTo() const;
+    void setFlightsTo(int n);
+
+    int getFlightsFrom() const;
+    void setFlightsFrom(int n);
 
     friend class Graph<T>;
 };
@@ -167,6 +175,18 @@ int Vertex<T>::getLow() const { return low; }
 
 template<class T>
 void Vertex<T>::setLow(int low) { Vertex::low = low; }
+
+template<class T>
+int Vertex<T>::getFlightsTo() const { return flightsTo; }
+
+template<class T>
+void Vertex<T>::setFlightsTo(int n) { flightsTo = n; }
+
+template<class T>
+int Vertex<T>::getFlightsFrom() const { return flightsFrom; }
+
+template<class T>
+void Vertex<T>::setFlightsFrom(int n) { flightsFrom = n; }
 
 /**************************************************/
 
