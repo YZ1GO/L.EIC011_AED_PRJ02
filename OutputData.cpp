@@ -22,7 +22,7 @@ void convertDataGraphToTextFile(const Graph<Airport>& airportGraph, const std::s
             outFile << "        by Airlines: " << std::endl;
             int i = 1;
             for (const auto& airline : e.getAirlines()) {
-                outFile << "            " << i++ << ".[" << airline.getCode() << "] " << airline.getCallsign() << std::endl;
+                outFile << "            " << i++ << ".(" << airline.getCode() << ") " << airline.getCallsign() << std::endl;
             }
             outFile << std::endl;
         }

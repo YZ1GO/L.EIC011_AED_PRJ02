@@ -1,6 +1,7 @@
 #include <iostream>
 //#include "OutputData.h"
 #include "Consult.h"
+#include "OConsult.h"
 
 int main() {
     // File paths for CSV files
@@ -10,6 +11,7 @@ int main() {
 
     // Creating ParseData object and calling the constructor
     ParseData parseData(airportsCSV, airlinesCSV, flightsCSV);
+    parseData.setupIndegreeOutDegree();
 
     //convertDataGraphToTextFile(parseData.getDataGraph(), "text/Global_Data.txt");
 
@@ -18,5 +20,11 @@ int main() {
     cout << consult.searchNumberOfAvailableFlightRoutes() << endl;                              //expect 35480
     cout << consult.searchNumberOfFlightsOutOfAirport("BSK") << endl;                           //expect 4
     cout << consult.searchNumberOfFlightsOutOfAirportFromDifferentAirlines("BSK") << endl;      //expect 2
+
+    OConsult oConsult(parseData.getDataGraph());
+    int i = 1;
+    for (const auto& airport : oConsult.searchEssentialAirports()) {
+        cout << i++ << ". " << airport << endl;
+    }
     return 0;
 }
