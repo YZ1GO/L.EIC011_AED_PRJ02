@@ -20,7 +20,7 @@ public:
     unordered_set<string> searchEssentialAirports();
     vector<pair<Airport,int>> searchTopKairportGreatestAirTrafficCapacity(const int& k);
     vector<vector<Airport>> searchTripGreatestNumberOfStopsBetweenThem(const Airport& source, const Airport& target);
-    void dfs_greatestTrip(Vertex<Airport>* source, Vertex<Airport>* target, vector<vector<Airport>>& greatestTrips, vector<Airport>& currentTrip, int& maxTrip);
+    void dfs_greatestTrip(Vertex<Airport>* source, Vertex<Airport>* target, vector<vector<Airport>>& greatestTrips, vector<Airport> currentTrip, int& maxTrip);
 
     int searchNumberOfFlightsOutOfAirport(const Airport& airport);
     int searchNumberOfFlightsToAirport(const Airport& airport);
