@@ -3,10 +3,18 @@
 
 #include "ParseData.h"
 #include <map>
+#include <unordered_set>
+#include <limits>
 
 class Consult {
 private:
     const Graph<Airport>& consultGraph;
+
+    void dfs_art(Vertex<Airport> *v, stack<string> &s, unordered_set<string> &l, int &i);
+    void dfs_greatestTrip(Vertex<Airport>* source, Vertex<Airport>* target, vector<vector<Airport>>& greatestTrips, vector<Airport> currentTrip, int& maxTrip);
+    void dfs_smallestTrip(Vertex<Airport>* source, Vertex<Airport>* target, vector<vector<Airport>>& smallestTrips, vector<Airport> currentTrip, int& minTrip);
+    vector<pair<Airport,int>> topTrafficCapacityAirports();
+
 public:
     Consult(const Graph<Airport>& dataGraph);
 
@@ -33,6 +41,11 @@ public:
     int searchNumberOfReachableAirportsInXStopsFromAirport(const Airport& airport, int layOvers);
     int searchNumberOfReachableCitiesInXStopsFromAirport(const Airport& airport, int layOvers);
     int searchNumberOfReachableCountriesInXStopsFromAirport(const Airport& airport, int layOvers);
+
+    unordered_set<string> searchEssentialAirports();
+    vector<pair<Airport,int>> searchTopKairportGreatestAirTrafficCapacity(const int& k);
+    vector<vector<Airport>> searchTripGreatestNumberOfStopsBetweenThem(const Airport& source, const Airport& target);
+    vector<vector<Airport>> searchTripSmallestNumberOfStopsBetweenThem(const Airport& source, const Airport& target);
 };
 
 
