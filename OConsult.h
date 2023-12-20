@@ -11,7 +11,6 @@ private:
 
     void dfs_art(Vertex<Airport> *v, stack<string> &s, unordered_set<string> &l, int &i);
     vector<Airport> topTrafficCapacityAirports();
-    int search
 public:
     OConsult(const Graph<Airport>& dataGraph);
 

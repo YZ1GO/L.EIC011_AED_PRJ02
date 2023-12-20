@@ -63,9 +63,10 @@ vector <Airport> OConsult::topTrafficCapacityAirports() {
     vector<Airport> res;
 
     for (const auto v : consultGraph.getVertexSet()) {
-        res.push_back(v);
+        res.push_back(v->getInfo());
     }
 
+    /*
     sort(res.begin(), res.end(), [&](const Airport& a1, const Airport& a2) {
         auto airport1 = consultGraph.findVertex(a1);
         auto airport2 = consultGraph.findVertex(a2);
@@ -75,8 +76,9 @@ vector <Airport> OConsult::topTrafficCapacityAirports() {
         int traffic2 =
 
         return traffic1 > traffic2;
-    });
+    });*/
 
+    return res;
 }
 
 vector<Airport> OConsult::searchTopKairportGreatestAirTrafficCapacity(const int& k) {
