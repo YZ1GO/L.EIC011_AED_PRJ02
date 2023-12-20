@@ -14,7 +14,7 @@ int main() {
 
     //convertDataGraphToTextFile(parseData.getDataGraph(), "text/Global_Data.txt");
 
-    Consult consult(parseData.getDataGraph());
+    /*Consult consult(parseData.getDataGraph());
     Coordinates location = *new Coordinates();
     location.latitude = 34.793289;
     location.longitude = 5.738231;
@@ -22,7 +22,7 @@ int main() {
     location.latitude = 34.6545;
     location.longitude = -112.42;
     Airport PRC = Airport("PRC", "Ernest A Love Fld", "Prescott", "United States", location);
-    /*
+
     cout << consult.searchNumberOfAirports() << endl;                                         //expect 3019
     cout << consult.searchNumberOfAvailableFlightRoutes() << endl;                            //expect 35480
     cout << consult.searchNumberOfFlightsOutOfAirport(BSK) << endl;                           //expect 4
@@ -45,9 +45,7 @@ int main() {
     cout << consult.searchNumberOfReachableCountriesInXStopsFromAirport(BSK, 0) << endl;      //expect 2
     cout << consult.searchNumberOfReachableCountriesInXStopsFromAirport(BSK, 1) << endl;      //expect 50
     cout << consult.searchNumberOfReachableCountriesInXStopsFromAirport(BSK, 2) << endl;      //expect 192
-    */
 
-    /*
     Airport source, target;
     source.setCode("NAS");
     target.setCode("AXP");
