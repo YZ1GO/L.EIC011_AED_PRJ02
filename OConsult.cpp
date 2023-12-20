@@ -123,3 +123,47 @@ int OConsult::searchNumberOfFlightsToAirport(const Airport& targetAirport) {
     }
     return numberOfFlights;
 }
+
+vector<vector<Airport>> OConsult::searchTripGreatestNumberOfStopsBetweenThem(const Airport& source, const Airport& target) {
+    vector<vector<Airport>> greatestTrips;
+    vector<Airport> currentTrip;
+    int maxTrip = 0;
+
+    auto sourceAirport = consultGraph.findVertex(source);
+    auto targetAirport = consultGraph.findVertex(target);
+
+    if (sourceAirport == nullptr || targetAirport == nullptr) {
+        return greatestTrips;
+    }
+
+    for (auto v : consultGraph.getVertexSet()) {
+        v->setVisited(false);
+    }
+
+    dfs_greatestTrip(sourceAirport, targetAirport, greatestTrips, currentTrip, maxTrip);
+
+    return greatestTrips;
+}
+
+void OConsult::dfs_greatestTrip(Vertex<Airport>* source, Vertex<Airport>* target, vector<vector<Airport>>& greatestTrips, vector<Airport>& currentTrip, int& maxTrip) {
+    currentTrip.push_back(source->getInfo());
+
+    if (source->getInfo() == target->getInfo()) {
+        if (maxTrip < currentTrip.size()) {
+            maxTrip = currentTrip.size();
+            greatestTrips.clear();
+        }
+        if (maxTrip == currentTrip.size()) {
+            greatestTrips.push_back(currentTrip);
+        }
+        return;
+    }
+    source->setVisited(true);
+
+    for (auto &e : source->getAdj()) {
+        auto w = e.getDest();
+        if (!w->isVisited()) {
+            dfs_greatestTrip(w, target, greatestTrips, currentTrip, maxTrip);
+        }
+    }
+}
