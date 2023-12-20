@@ -1,6 +1,7 @@
 #include <iostream>
 #include "OutputData.h"
 #include "Consult.h"
+#include "OConsult.h"
 
 int main() {
     // File paths for CSV files
@@ -18,5 +19,10 @@ int main() {
     cout << consult.searchNumberOfAirports() << endl;
     cout << consult.searchNumberOfAvailableFlightRoutes() << endl;
 
+    OConsult oConsult(parseData.getDataGraph());
+    int i = 1;
+    for (const auto& airport : oConsult.searchEssentialAirports()) {
+        cout << i++ << ". " << airport << endl;
+    }
     return 0;
 }
