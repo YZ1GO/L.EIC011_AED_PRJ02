@@ -67,8 +67,8 @@ public:
 template <class T>
 class Edge {
     Vertex<T>* dest;
-    std::set<Airline> airlines;
     double distance;
+    std::set<Airline> airlines;
 
 public:
     Edge(Vertex<T> *d, double distance);
