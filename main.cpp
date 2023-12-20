@@ -50,6 +50,7 @@ int main() {
         cout << i++ << ". [" << traffic.second << "] " << traffic.first.getCode() << endl;
     }*/
 
+    /*
     Airport airport;
     airport.setCode("AOK");
     OConsult oConsult(parseData.getDataGraph());
