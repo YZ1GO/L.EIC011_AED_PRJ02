@@ -10,10 +10,12 @@ private:
     const Graph<Airport>& consultGraph;
 
     void dfs_art(Vertex<Airport> *v, stack<string> &s, unordered_set<string> &l, int &i);
+    vector<Airport> topTrafficCapacityAirports();
 public:
     OConsult(const Graph<Airport>& dataGraph);
-    std::unordered_set<std::string> searchEssentialAirports();
 
+    unordered_set<string> searchEssentialAirports();
+    vector<Airport> searchTopKairportGreatestAirTrafficCapacity(const int& k);
 };
 
 
