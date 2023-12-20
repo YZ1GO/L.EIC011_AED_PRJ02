@@ -13,7 +13,11 @@ public:
     int searchNumberOfAvailableFlightRoutes();
 
     int searchNumberOfFlightsOutOfAirport(const string& airportCode);
+    int searchNumberOfFlightsOutOfAirportFromDifferentAirlines(const string& airportCode);
 
+    set<string, int> searchNumberOfFlightsPerCity();
+    set<string, int> searchNumberOfFlightsPerAirline();
+    void dfsVisit(Vertex<Airport> *v, set<string, int> &res) const;
 };
 
 
