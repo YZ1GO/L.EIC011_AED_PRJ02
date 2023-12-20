@@ -19,8 +19,8 @@ int Consult::searchNumberOfFlightsOutOfAirport(const Airport& airport) {
 
     auto a = consultGraph.findVertex(airport);
     if (a != nullptr) {
-        for (const auto& flights : a->getAdj()) {
-            numberOfFlights += static_cast<int>(flights.getAirlines().size());
+        for (const auto& flight : a->getAdj()) {
+            numberOfFlights += static_cast<int>(flight.getAirlines().size());
         }
     }
     return numberOfFlights;
@@ -34,7 +34,7 @@ int Consult::searchNumberOfFlightsToAirport(const Airport &airport) {
         for (const auto& v : consultGraph.getVertexSet()) {
             for (const auto& flight : v->getAdj()) {
                 if (flight.getDest()->getInfo() == airport)
-                    numberOfFlights++;
+                    numberOfFlights += static_cast<int>(flight.getAirlines().size());
             }
         }
     }
@@ -176,6 +176,7 @@ int Consult::searchNumberOfReachableAirportsInXStopsFromAirport(const Airport& a
 
             Vertex<Airport>* ap = pair.first;
             int stop = pair.second;
+
             if (stop <= layOvers)
                 count += static_cast<int>(ap->getAdj().size());
             for (const auto& flight : ap->getAdj()) {
@@ -189,6 +190,41 @@ int Consult::searchNumberOfReachableAirportsInXStopsFromAirport(const Airport& a
     }
     return count;
 }
+
+int Consult::searchNumberOfReachableCitiesInXStopsFromAirport(const Airport &airport, int layOvers) {
+    queue<pair<Vertex<Airport>*, int>> reachableAirports;
+    set<string> reachableCities;
+
+    auto a = consultGraph.findVertex(airport);
+    if (a != nullptr) {
+        for (auto v : consultGraph.getVertexSet()) {
+            v->setVisited(false);
+        }
+        reachableAirports.emplace(a, 0);
+        a->setVisited(true);
+
+        while(!reachableAirports.empty()) {
+            auto pair = reachableAirports.front();
+            reachableAirports.pop();
+
+            Vertex<Airport>* ap = pair.first;
+            int stop = pair.second;
+
+            if (stop <= layOvers)
+                reachableCities.insert(ap->getInfo().getCity());
+
+            for (const auto& flight : ap->getAdj()) {
+                auto d = flight.getDest();
+                if (!d->isVisited()) {
+                    reachableAirports.emplace(d, stop + 1);
+                    d->setVisited(true);
+                }
+            }
+        }
+    }
+    return static_cast<int>(reachableCities.size());
+}
+
 
 
 

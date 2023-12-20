@@ -31,6 +31,8 @@ public:
     //int searchNumberOfCountriesAvailableForAirport(const Airport& airport);
 
     int searchNumberOfReachableAirportsInXStopsFromAirport(const Airport& airport, int layOvers);
+    int searchNumberOfReachableCitiesInXStopsFromAirport(const Airport& airport, int layOvers);
+    int searchNumberOfReachableCountriesInXStopsFromAirport(const Airport& airport, int layOvers);
 };
 
 
