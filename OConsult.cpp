@@ -31,22 +31,18 @@ void OConsult::dfs_art(Vertex<Airport> *v, stack<string> &s, unordered_set<strin
     s.push(v->getInfo().getCode());
 
     int children = 0;
-
     for (auto e : v->getAdj()) {
         auto w = e.getDest();
 
         if (w->getNum() == -1) {
             children++;
-
             dfs_art(w, s, l, i);
             v->setLow(min(v->getLow(), w->getLow()));
 
             if (w->getLow() >= v->getNum() && v->getNum() != 0) {
                 l.insert(v->getInfo().getCode());
             }
-        }
-
-        else if (w->isProcessing()) {
+        } else if (w->isProcessing()) {
             v->setLow(min(v->getLow(), w->getNum()));
         }
     }
