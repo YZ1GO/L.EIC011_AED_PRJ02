@@ -20,7 +20,6 @@ private:
 public:
     ParseData(const std::string& airportsCSV, const std::string& airlinesCSV, const std::string& flightsCSV);
     const Graph<Airport>& getDataGraph() const { return dataGraph; }
-    Airport findAirport(const std::string& airportCode);
     Airline getAirline(const std::string& airlineCode);
     void setupIndegreeOutDegree(); //this function should be in Graph class
 };

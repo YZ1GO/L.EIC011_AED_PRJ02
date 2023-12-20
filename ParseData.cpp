@@ -90,6 +90,7 @@ void ParseData::parseFlights() {
 
     string line;
     getline(file, line);
+    Airport temp1, temp2 = *new Airport();
 
     while(getline(file, line)) {
         stringstream ss(line);
@@ -105,8 +106,11 @@ void ParseData::parseFlights() {
         getline(ss, airlineCode, ',');
         airlineCode = TrimString(airlineCode);
 
-        Vertex<Airport>* sourceAirport = dataGraph.findVertex(findAirport(source));
-        Vertex<Airport>* targetAirport = dataGraph.findVertex(findAirport(target));
+        temp1.setCode(source);
+        temp2.setCode(target);
+
+        Vertex<Airport>* sourceAirport = dataGraph.findVertex(temp1);
+        Vertex<Airport>* targetAirport = dataGraph.findVertex(temp2);
 
         Edge<Airport>* foundEdge = nullptr;
         for (auto& e : sourceAirport->getAdj()) {
@@ -126,7 +130,7 @@ void ParseData::parseFlights() {
             for (auto& e : sourceAirport->getAdj()) {
                 auto t = e.getDest();
                 if (t->getInfo() == targetAirport->getInfo()) {
-                    Edge<Airport>& nonConstEdge = const_cast<Edge<Airport>&>(e);
+                    auto& nonConstEdge = const_cast<Edge<Airport>&>(e);
                     nonConstEdge.addAirline(getAirline(airlineCode));
                     break;
                 }
@@ -134,16 +138,6 @@ void ParseData::parseFlights() {
         }
     }
     file.close();
-}
-
-Airport ParseData::findAirport(const string& airportCode) {
-    for (auto& v : dataGraph.getVertexSet()) {
-        auto airport = v->getInfo();
-        if (airport.getCode() == airportCode) {
-            return airport;
-        }
-    }
-    return {};
 }
 
 Airline ParseData::getAirline(const std::string& airlineCode) {
