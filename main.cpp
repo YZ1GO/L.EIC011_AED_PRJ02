@@ -49,10 +49,11 @@ int main() {
         cout << i++ << ". " << airport << endl;
     }
 
-    int i = 1;
-    for (const auto& traffic : oConsult.searchTopKairportGreatestAirTrafficCapacity(2)) {
+    */
+    /*int i = 1;
+    for (const auto& traffic : oConsult.searchTopKairportGreatestAirTrafficCapacity(192)) {
         cout << i++ << ". [" << traffic.second << "] " << traffic.first.getCode() << endl;
-    }
+    }*/
 
     Airport airport;
     airport.setCode("AOK");
