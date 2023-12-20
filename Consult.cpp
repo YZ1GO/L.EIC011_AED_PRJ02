@@ -344,7 +344,7 @@ vector<vector<Airport>> Consult::searchTripGreatestNumberOfStopsBetweenThem(cons
 vector<vector<Airport>> Consult::searchTripSmallestNumberOfStopsBetweenThem(const Airport& source, const Airport& target) {
     vector<vector<Airport>> smallestTrips;
     vector<Airport> currentTrip;
-    int minTrip = numeric_limits<int>::max(); // Set to maximum possible initially
+    int minTrip = numeric_limits<int>::max();
 
     auto sourceAirport = consultGraph.findVertex(source);
     auto targetAirport = consultGraph.findVertex(target);
