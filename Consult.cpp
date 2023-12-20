@@ -241,14 +241,14 @@ unordered_set<string> Consult::searchEssentialAirports() {
 
     for (auto v : consultGraph.getVertexSet()) {
         if (v->getNum() == -1) {
-            dfs_art(v, s, res, i);
+            dfs_articulations(v, s, res, i);
         }
     }
 
     return res;
 }
 
-void Consult::dfs_art(Vertex<Airport> *v, stack<string> &s, unordered_set<string> &l, int &i) {
+void Consult::dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_set<string> &l, int &i) {
     v->setProcessing(true);
     v->setNum(i);
     v->setLow(i);
@@ -261,7 +261,7 @@ void Consult::dfs_art(Vertex<Airport> *v, stack<string> &s, unordered_set<string
 
         if (w->getNum() == -1) {
             children++;
-            dfs_art(w, s, l, i);
+            dfs_articulations(w, s, l, i);
             v->setLow(min(v->getLow(), w->getLow()));
 
             if (w->getLow() >= v->getNum() && v->getNum() != 0) {
