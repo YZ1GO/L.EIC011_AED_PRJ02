@@ -58,3 +58,31 @@ void OConsult::dfs_art(Vertex<Airport> *v, stack<string> &s, unordered_set<strin
         l.insert(v->getInfo().getCode());
     }
 }
+
+vector <Airport> OConsult::topTrafficCapacityAirports() {
+    vector<Airport> res;
+
+    for (const auto v : consultGraph.getVertexSet()) {
+        res.push_back(v);
+    }
+
+    sort(res.begin(), res.end(), [&](const Airport& a1, const Airport& a2) {
+        auto airport1 = consultGraph.findVertex(a1);
+        auto airport2 = consultGraph.findVertex(a2);
+
+
+        int traffic1_out = 0;
+        for (const auto e : airport1->getAdj()) {
+            traffic1_out += e.getAirlines().size();
+        }
+
+
+
+        return traffic1 > traffic2; // Sorting in descending order
+    });
+
+}
+
+vector<Airport> OConsult::searchTopKairportGreatestAirTrafficCapacity(const int& k) {
+
+}
