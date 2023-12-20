@@ -43,9 +43,14 @@ int main() {
     OConsult oConsult(parseData.getDataGraph());
 
     for (auto trips : oConsult.searchTripGreatestNumberOfStopsBetweenThem(source, target)) {
-        cout << trips.size() << " ";
-        for (auto airport : trips) {
-            cout << airport.getCode() << "->";
+        cout << "[" << trips.size() << "] ";
+        auto it = trips.begin();
+        while (it != trips.end()) {
+            cout << it->getCode();
+            if (next(it) != trips.end()) {
+                cout << "->";
+            }
+            ++it;
         }
         cout << endl;
     }

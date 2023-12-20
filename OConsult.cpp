@@ -145,7 +145,7 @@ vector<vector<Airport>> OConsult::searchTripGreatestNumberOfStopsBetweenThem(con
     return greatestTrips;
 }
 
-void OConsult::dfs_greatestTrip(Vertex<Airport>* source, Vertex<Airport>* target, vector<vector<Airport>>& greatestTrips, vector<Airport>& currentTrip, int& maxTrip) {
+void OConsult::dfs_greatestTrip(Vertex<Airport>* source, Vertex<Airport>* target, vector<vector<Airport>>& greatestTrips, vector<Airport> currentTrip, int& maxTrip) {
     currentTrip.push_back(source->getInfo());
 
     if (source->getInfo() == target->getInfo()) {
