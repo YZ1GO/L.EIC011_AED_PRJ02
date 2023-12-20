@@ -1,6 +1,6 @@
 #include <iostream>
-#include "ParseData.h"
 #include "OutputData.h"
+#include "Consult.h"
 
 int main() {
     // File paths for CSV files
@@ -11,9 +11,11 @@ int main() {
     // Creating ParseData object and calling the constructor
     ParseData parseData(airportsCSV, airlinesCSV, flightsCSV);
 
-    //convertAirportsToTextFile(parseData.getAirportsGraph(), "text/airports.txt");
-    //convertAirlinesToTextFile(parseData.getAirlinesGraph(), "text/airlines.txt");
-    convertDataGraphToTextFile(parseData.getDataGraph(), "text/Global_Data.txt");
+    //convertDataGraphToTextFile(parseData.getDataGraph(), "text/Global_Data.txt");
+
+    Consult consult(parseData.getDataGraph());
+    cout << consult.searchNumberOfAirports() << endl;
+    cout << consult.searchNumberOfAvailableFlightRoutes() << endl;
 
     return 0;
 }

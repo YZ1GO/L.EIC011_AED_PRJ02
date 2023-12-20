@@ -25,8 +25,8 @@ class Vertex {
     vector<Edge<T>> adj;
     bool visited;
     bool processing;
-    int indegree;
-    int outdegree;
+    int indegree = 0;
+    int outdegree = 0;
     int num;
     int low;
 
