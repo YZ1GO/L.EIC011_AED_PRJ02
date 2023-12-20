@@ -22,6 +22,7 @@ public:
     const Graph<Airport>& getDataGraph() const { return dataGraph; }
     Airport findAirport(const std::string& airportCode);
     Airline getAirline(const std::string& airlineCode);
+    void setupIndegreeOutDegree(); //this function should be in Graph class
 };
 
 

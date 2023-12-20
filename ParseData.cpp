@@ -122,7 +122,6 @@ void ParseData::parseFlights() {
         } else {
             double distance = sourceAirport->getInfo().getDistance(targetAirport->getInfo().getLocation());
             dataGraph.addEdge(sourceAirport->getInfo(), targetAirport->getInfo(), distance);
-            targetAirport->setIndegree(targetAirport->getIndegree() + 1);
 
             for (auto& e : sourceAirport->getAdj()) {
                 auto t = e.getDest();
@@ -133,9 +132,6 @@ void ParseData::parseFlights() {
                 }
             }
         }
-    }
-    for (auto v : dataGraph.getVertexSet()) {
-        v->setOutdegree(v->getAdj().size());
     }
     file.close();
 }
@@ -155,4 +151,18 @@ Airline ParseData::getAirline(const std::string& airlineCode) {
         if (it.getCode() == airlineCode) return it;
     }
     return {};
+}
+
+void ParseData::setupIndegreeOutDegree() {
+    for (auto& v : dataGraph.getVertexSet()) {
+        v->setIndegree(0);
+        v->setOutdegree(v->getAdj().size());
+    }
+
+    for (auto& v : dataGraph.getVertexSet()) {
+        for (auto& e : v->getAdj()) {
+            auto w = e.getDest();
+            w->setIndegree(w->getIndegree() + 1);
+        }
+    }
 }
