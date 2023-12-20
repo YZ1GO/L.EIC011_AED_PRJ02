@@ -36,12 +36,25 @@ int main() {
     cout << consult.searchNumberOfCountriesFlownToFromCity("London", "Canada") << endl;       //expect 2
     */
 
-    /*
+
     OConsult oConsult(parseData.getDataGraph());
+    /*
     int i = 1;
     for (const auto& airport : oConsult.searchEssentialAirports()) {
         cout << i++ << ". " << airport << endl;
     }
     */
+    int i = 1;
+    for (const auto& traffic : oConsult.searchTopKairportGreatestAirTrafficCapacity(2)) {
+        cout << i++ << ". [" << traffic.second << "] " << traffic.first.getCode() << endl;
+    }
+
+    /*
+    Airport airport;
+    airport.setCode("AOK");
+    OConsult oConsult(parseData.getDataGraph());
+    cout << oConsult.searchNumberOfFlightsOutOfAirport(airport) << endl;
+    cout << oConsult.searchNumberOfFlightsToAirport(airport) << endl;
+*/
     return 0;
 }

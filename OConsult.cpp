@@ -55,30 +55,24 @@ void OConsult::dfs_art(Vertex<Airport> *v, stack<string> &s, unordered_set<strin
     }
 }
 
-vector <Airport> OConsult::topTrafficCapacityAirports() {
-    vector<Airport> res;
+vector <pair<Airport,int>> OConsult::topTrafficCapacityAirports() {
+    vector<pair<Airport,int>> res;
 
     for (const auto v : consultGraph.getVertexSet()) {
-        res.push_back(v->getInfo());
+        auto airport = v->getInfo();
+        int numberFlights = searchNumberOfFlightsOutOfAirport(airport) + searchNumberOfFlightsToAirport(airport);
+        res.emplace_back(airport, numberFlights);
     }
 
-    /*
-    sort(res.begin(), res.end(), [&](const Airport& a1, const Airport& a2) {
-        auto airport1 = consultGraph.findVertex(a1);
-        auto airport2 = consultGraph.findVertex(a2);
-
-        //todo
-        int traffic1 =
-        int traffic2 =
-
-        return traffic1 > traffic2;
-    });*/
+    sort(res.begin(), res.end(), [&](const pair<Airport,int>& a1, const pair<Airport,int>& a2) {
+        return a1.second > a2.second;
+    });
 
     return res;
 }
 
-vector<Airport> OConsult::searchTopKairportGreatestAirTrafficCapacity(const int& k) {
-    vector<Airport> res;
+vector<pair<Airport,int>> OConsult::searchTopKairportGreatestAirTrafficCapacity(const int& k) {
+    vector<pair<Airport,int>> res;
     for (int i = 0; i < topTrafficCapacityAirports().size(); i++) {
         if (i < k) {
             res.push_back(topTrafficCapacityAirports()[i]);
@@ -86,4 +80,33 @@ vector<Airport> OConsult::searchTopKairportGreatestAirTrafficCapacity(const int&
     }
 
     return res;
+}
+
+int OConsult::searchNumberOfFlightsOutOfAirport(const Airport& airport) {
+    int numberOfFlights = 0;
+
+    auto a = consultGraph.findVertex(airport);
+    if (a != nullptr) {
+        for (const auto& flights : a->getAdj()) {
+            numberOfFlights += flights.getAirlines().size();
+        }
+    }
+    return numberOfFlights;
+}
+
+int OConsult::searchNumberOfFlightsToAirport(const Airport& targetAirport) {
+    int numberOfFlights = 0;
+
+    auto a = consultGraph.findVertex(targetAirport);
+    if (a != nullptr) {
+        for (const auto& airport : consultGraph.getVertexSet()) {
+            for (const auto& flight : airport->getAdj()) {
+                auto target = flight.getDest();
+                if (target->getInfo() == targetAirport) {
+                    numberOfFlights += flight.getAirlines().size();
+                }
+            }
+        }
+    }
+    return numberOfFlights;
 }
