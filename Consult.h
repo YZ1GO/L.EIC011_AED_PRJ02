@@ -22,6 +22,7 @@ public:
     Consult(const Graph<Airport>& dataGraph);
 
     int searchNumberOfAirports();
+    int searchNumberOfAvailableFlights();
     int searchNumberOfAvailableFlightRoutes();
 
     int searchNumberOfFlightsOutOfAirport(const Airport& airport);

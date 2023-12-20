@@ -6,39 +6,28 @@ int Consult::searchNumberOfAirports() {
     return static_cast<int>(consultGraph.getVertexSet().size());
 }
 
+int Consult::searchNumberOfAvailableFlights() {
+    int totalFlights = 0;
+    for (const auto& airport : consultGraph.getVertexSet())
+        totalFlights += airport->getFlightsTo();
+    return totalFlights;
+}
+
 int Consult::searchNumberOfAvailableFlightRoutes() {
     int totalFlightRoutes = 0;
-    for (const auto& airport : consultGraph.getVertexSet()) {
+    for (const auto& airport : consultGraph.getVertexSet())
         totalFlightRoutes += airport->getOutdegree();
-    }
     return totalFlightRoutes;
 }
 
 int Consult::searchNumberOfFlightsOutOfAirport(const Airport& airport) {
-    int numberOfFlights = 0;
-
-    auto a = consultGraph.findVertex(airport);
-    if (a != nullptr) {
-        for (const auto& flight : a->getAdj()) {
-            numberOfFlights += static_cast<int>(flight.getAirlines().size());
-        }
-    }
-    return numberOfFlights;
+    Vertex<Airport>* vertex = consultGraph.findVertex(airport);
+    return (vertex != nullptr) ? vertex->getFlightsFrom() : 0;
 }
 
 int Consult::searchNumberOfFlightsToAirport(const Airport &airport) {
-    int numberOfFlights = 0;
-
-    auto a = consultGraph.findVertex(airport);
-    if (a != nullptr) {
-        for (const auto& v : consultGraph.getVertexSet()) {
-            for (const auto& flight : v->getAdj()) {
-                if (flight.getDest()->getInfo() == airport)
-                    numberOfFlights += static_cast<int>(flight.getAirlines().size());
-            }
-        }
-    }
-    return numberOfFlights;
+    Vertex<Airport>* vertex = consultGraph.findVertex(airport);
+    return (vertex != nullptr) ? vertex->getFlightsTo() : 0;
 }
 
 int Consult::searchNumberOfFlightsOutOfAirportFromDifferentAirlines(const Airport& airport) {
@@ -58,14 +47,13 @@ int Consult::searchNumberOfFlightsOutOfAirportFromDifferentAirlines(const Airpor
 map<string, int> Consult::searchNumberOfFlightsPerCity() {
     map<string, int> flightsPerCity;
 
-    for (auto v : consultGraph.getVertexSet()) {
+    for (auto v : consultGraph.getVertexSet())
         v->setVisited(false);
-    }
 
-    for (auto v : consultGraph.getVertexSet()) {
+    for (auto v : consultGraph.getVertexSet())
         if (!v->isVisited())
             dfsVisitFlightsPerCity(v, flightsPerCity);
-    }
+
     return flightsPerCity;
 }
 
@@ -91,14 +79,13 @@ void Consult::dfsVisitFlightsPerCity(Vertex<Airport> *v, map<string, int> &res) 
 map<string, int> Consult::searchNumberOfFlightsPerAirline() {
     map<string, int> flightsPerAirline;
 
-    for (auto v : consultGraph.getVertexSet()) {
+    for (auto v : consultGraph.getVertexSet())
         v->setVisited(false);
-    }
 
-    for (auto v : consultGraph.getVertexSet()) {
+    for (auto v : consultGraph.getVertexSet())
         if (!v->isVisited())
             dfsVisitFlightsPerAirline(v, flightsPerAirline);
-    }
+
     return flightsPerAirline;
 }
 
@@ -131,14 +118,13 @@ int Consult::searchNumberOfCountriesFlownToFromAirport(const Airport& airport) {
 int Consult::searchNumberOfCountriesFlownToFromCity(const string &city, const string& country) {
     set<string> countries;
     vector<Vertex<Airport>*> cityAirports;
-    for (auto v : consultGraph.getVertexSet()) {
-        v->setVisited(false);
-    }
 
-    for (auto v : consultGraph.getVertexSet()) {
+    for (auto v : consultGraph.getVertexSet())
+        v->setVisited(false);
+
+    for (auto v : consultGraph.getVertexSet())
         if (!v->isVisited())
             dfsVisitCityAirports(city, country, v, cityAirports);
-    }
 
     for (const auto& v : cityAirports) {
         for (const auto& flight : v->getAdj()) {

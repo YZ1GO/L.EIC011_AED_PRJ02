@@ -14,7 +14,7 @@ int main() {
 
     //convertDataGraphToTextFile(parseData.getDataGraph(), "text/Global_Data.txt");
 
-    /*Consult consult(parseData.getDataGraph());
+    Consult consult(parseData.getDataGraph());
     Coordinates location = *new Coordinates();
     location.latitude = 34.793289;
     location.longitude = 5.738231;
@@ -22,11 +22,12 @@ int main() {
     location.latitude = 34.6545;
     location.longitude = -112.42;
     Airport PRC = Airport("PRC", "Ernest A Love Fld", "Prescott", "United States", location);
-
+/*
     cout << consult.searchNumberOfAirports() << endl;                                         //expect 3019
+    cout << consult.searchNumberOfAvailableFlights() << endl;                                 //expect 63832
     cout << consult.searchNumberOfAvailableFlightRoutes() << endl;                            //expect 35480
     cout << consult.searchNumberOfFlightsOutOfAirport(BSK) << endl;                           //expect 4
-    cout << consult.searchNumberOfFlightsToAirport(BSK) << endl;                              //expect 3
+    cout << consult.searchNumberOfFlightsToAirport(BSK) << endl;                              //expect 4
     cout << consult.searchNumberOfFlightsOutOfAirportFromDifferentAirlines(BSK) << endl;      //expect 2
     for (const auto& pair : consult.searchNumberOfFlightsPerCity()) {
         cout << pair.first << ": " << pair.second << endl;
