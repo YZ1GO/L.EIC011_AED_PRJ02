@@ -40,10 +40,15 @@ int main() {
     cout << consult.searchNumberOfAirportsAvailableForAirport(BSK) << endl;                   //expect 3
     cout << consult.searchNumberOfReachableAirportsInXStopsFromAirport(PRC, 1) << endl;       //expect 150
     cout << consult.searchNumberOfReachableAirportsInXStopsFromAirport(BSK, 2) << endl;       //expect 8839
+    cout << consult.searchNumberOfReachableCitiesInXStopsFromAirport(BSK, 0) << endl;         //expect 3
+    cout << consult.searchNumberOfReachableCitiesInXStopsFromAirport(BSK, 1) << endl;         //expect 159
+    cout << consult.searchNumberOfReachableCitiesInXStopsFromAirport(BSK, 2) << endl;         //expect 1065
+    cout << consult.searchNumberOfReachableCountriesInXStopsFromAirport(BSK, 0) << endl;      //expect 2
+    cout << consult.searchNumberOfReachableCountriesInXStopsFromAirport(BSK, 1) << endl;      //expect 50
+    cout << consult.searchNumberOfReachableCountriesInXStopsFromAirport(BSK, 2) << endl;      //expect 192
     */
-    cout << consult.searchNumberOfReachableCitiesInXStopsFromAirport(BSK, 0) << endl;
-    cout << consult.searchNumberOfReachableCitiesInXStopsFromAirport(BSK, 1) << endl;
-    cout << consult.searchNumberOfReachableCitiesInXStopsFromAirport(BSK, 2) << endl;
+
+
     /*
     OConsult oConsult(parseData.getDataGraph());
     int i = 1;
