@@ -367,3 +367,57 @@ void Consult::dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_
         l.insert(v->getInfo().getCode());
     }
 }
+
+void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
+    int diameter = 0;
+    vector<pair<Airport, Airport>> airportPairs;
+
+    for (const auto& airport : consultGraph.getVertexSet()) {
+        unordered_map<Vertex<Airport>*, int> distanceToOtherAirports;
+        for (const auto& v : consultGraph.getVertexSet())
+            v->setVisited(false);
+
+        distanceToOtherAirports[airport] = 0;
+
+        queue<Vertex<Airport>*> q;
+        q.push(airport);
+        airport->setVisited(true);
+
+        while (!q.empty()) {
+            auto a = q.front();
+            q.pop();
+
+            for (const auto& flight : a->getAdj()) {
+                auto d = flight.getDest();
+                if (!d->isVisited()) {
+                    distanceToOtherAirports[d] = distanceToOtherAirports[a] + 1;
+                    q.push(d);
+                    d->setVisited(true);
+                }
+            }
+        }
+
+        int maxDistance = max_element(distanceToOtherAirports.begin(), distanceToOtherAirports.end(),
+                                      [](const auto& p1, const auto& p2) {
+                                          return p1.second < p2.second;
+        }) -> second;
+
+        if (maxDistance > diameter) {
+            diameter = maxDistance;
+            airportPairs.clear();
+        }
+
+        if (maxDistance == diameter) {
+            for (const auto& pair : distanceToOtherAirports) {
+                if (pair.second == maxDistance) {
+                    airportPairs.emplace_back(airport->getInfo(), pair.first->getInfo());
+                }
+            }
+        }
+    }
+    cout << "Maximum trip: " << diameter << endl;
+    cout << "Pairs of source-destination airports: " << endl;
+    for (const auto& pair : airportPairs) {
+        cout << "( " << pair.first.getCode() << " -> " << pair.second.getCode() << " )" << endl;
+    }
+}
