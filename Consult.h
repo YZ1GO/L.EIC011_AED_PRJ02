@@ -51,6 +51,8 @@ public:
     vector<pair<Airport,int>> searchTopKAirportGreatestAirTrafficCapacity(const int& k);
 
     unordered_set<string> searchEssentialAirports();
+
+    void searchMaxTripAndCorrespondingPairsOfAirports();
 };
 
 

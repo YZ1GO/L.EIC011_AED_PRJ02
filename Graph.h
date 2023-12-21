@@ -104,6 +104,8 @@ class Graph {
     void dfsVisit(Vertex<T> *v, vector<T> &res) const;
 
 public:
+    void setAllVertexUnivisited();
+
     Vertex<T> *findVertex(const T &in) const;
     int getNumVertex() const;
     vector<Vertex<T> * > getVertexSet() const;
