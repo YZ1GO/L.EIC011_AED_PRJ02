@@ -15,8 +15,6 @@ private:
     void dfsVisitFlightsPerAirline(Vertex<Airport> *v, map<string, int> &res);
     void dfsVisitCityAirports(const string& city, const string& country, Vertex<Airport> *v, vector<Vertex<Airport>*>& res);
     int searchNumberOfReachableDestinationsInXStopsFromAirport(const Airport& airport, int layOvers, const function<string(const Airport&)>& attributeExtractor);
-    void dfs_greatestTrip(Vertex<Airport>* source, Vertex<Airport>* target, vector<vector<Airport>>& greatestTrips, vector<Airport> currentTrip, int& maxTrip);
-    void dfs_smallestTrip(Vertex<Airport>* source, Vertex<Airport>* target, vector<vector<Airport>>& smallestTrips, vector<Airport> currentTrip, int& minTrip);
     vector<pair<Airport,int>> topTrafficCapacityAirports();
     void dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_set<string> &l, int &i);
 
@@ -45,14 +43,12 @@ public:
     int searchNumberOfReachableCitiesInXStopsFromAirport(const Airport& airport, int layOvers);
     int searchNumberOfReachableCountriesInXStopsFromAirport(const Airport& airport, int layOvers);
 
-    vector<vector<Airport>> searchTripGreatestNumberOfStopsBetweenThem(const Airport& source, const Airport& target);
-    vector<vector<Airport>> searchTripSmallestNumberOfStopsBetweenThem(const Airport& source, const Airport& target);
-
     vector<pair<Airport,int>> searchTopKAirportGreatestAirTrafficCapacity(const int& k);
 
     unordered_set<string> searchEssentialAirports();
 
     void searchMaxTripAndCorrespondingPairsOfAirports();
+    vector<vector<Airport>> searchSmallestPathBetweenAirports(const Airport& source, const Airport& target);
 };
 
 

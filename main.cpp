@@ -24,6 +24,36 @@ int main() {
     Airport PRC = Airport("PRC", "Ernest A Love Fld", "Prescott", "United States", location);
     consult.searchMaxTripAndCorrespondingPairsOfAirports();
 /*
+    Airport source, target;
+    source.setCode("STZ");
+    target.setCode("YHO");
+    for (auto trips : consult.searchSmallestPathBetweenAirports(source, target)) {  //expect [12] STZ->SXO->GRP->MQH->BSB->CDG->YUL->YHZ->YYR->YRG->YMN->YSO->YHO
+        cout << "[" << trips.size() - 1<< "] ";
+        auto it = trips.begin();
+        while (it != trips.end()) {
+            cout << it->getCode();
+            if (next(it) != trips.end()) {
+                cout << "->";
+            }
+            ++it;
+        }
+        cout << endl;
+    }
+    source.setCode("STZ");
+    target.setCode("SRV");
+    for (auto trips : consult.searchSmallestPathBetweenAirports(source, target)) {  //expect [12] STZ->SXO->GRP->MQH->BSB->CDG->LAX->ANC->ANI->CHU->CKD->SLQ->SRV
+        cout << "[" << trips.size() - 1<< "] ";
+        auto it = trips.begin();
+        while (it != trips.end()) {
+            cout << it->getCode();
+            if (next(it) != trips.end()) {
+                cout << "->";
+            }
+            ++it;
+        }
+        cout << endl;
+    }*/
+/*
     cout << consult.searchNumberOfAirports() << endl;                                         //expect 3019
     cout << consult.searchNumberOfAvailableFlights() << endl;                                 //expect 63832
     cout << consult.searchNumberOfAvailableFlightRoutes() << endl;                            //expect 35480
@@ -55,7 +85,7 @@ s.setCode("MUW");
     source.setCode("NAS");
     target.setCode("AXP");
 
-    for (auto trips : consult.searchTripGreatestNumberOfStopsBetweenThem(source, target)) {  //expect NAX->CRI->AXP (3)
+    for (auto trips : consult.searchSmallestPathBetweenAirports(source, target)) {  //expect NAX->CRI->AXP (3)
         cout << "[" << trips.size() << "] ";
         auto it = trips.begin();
         while (it != trips.end()) {
@@ -67,7 +97,7 @@ s.setCode("MUW");
         }
         cout << endl;
     }
-    for (auto trips : consult.searchTripSmallestNumberOfStopsBetweenThem(source, target)) {    //expect NAX->AXP (2) [direct flight]
+    for (auto trips : consult.searchSmallestPathBetweenAirports(source, target)) {    //expect NAX->AXP (2) [direct flight]
         cout << "[" << trips.size() << "] ";
         auto it = trips.begin();
         while (it != trips.end()) {

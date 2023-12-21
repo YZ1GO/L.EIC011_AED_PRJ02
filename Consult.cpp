@@ -189,92 +189,51 @@ int Consult::searchNumberOfReachableCountriesInXStopsFromAirport(const Airport& 
     return searchNumberOfReachableDestinationsInXStopsFromAirport(airport, layOvers, extractCountry);
 }
 
-vector<vector<Airport>> Consult::searchTripGreatestNumberOfStopsBetweenThem(const Airport& source, const Airport& target) {
-    vector<vector<Airport>> greatestTrips;
-    vector<Airport> currentTrip;
-    int maxTrip = 0;
+vector<vector<Airport>> Consult::searchSmallestPathBetweenAirports(const Airport& source, const Airport& target) {
+    auto sourceVertex = consultGraph.findVertex(source);
+    auto targetVertex = consultGraph.findVertex(target);
 
-    auto sourceAirport = consultGraph.findVertex(source);
-    auto targetAirport = consultGraph.findVertex(target);
-
-    if (sourceAirport == nullptr || targetAirport == nullptr) {
-        return greatestTrips;
+    vector<vector<Airport>> smallestPaths;
+    if (sourceVertex == nullptr || targetVertex == nullptr) {
+        return smallestPaths;
     }
 
-    for (auto v : consultGraph.getVertexSet()) {
+    for (const auto& v : consultGraph.getVertexSet())
         v->setVisited(false);
-    }
 
-    dfs_greatestTrip(sourceAirport, targetAirport, greatestTrips, currentTrip, maxTrip);
+    queue<pair<vector<Airport>, Vertex<Airport>*>> q;
+    q.push({{source}, sourceVertex});
+    sourceVertex->setVisited(true);
 
-    return greatestTrips;
-}
+    int smallestSize = numeric_limits<int>::max();
 
-void Consult::dfs_greatestTrip(Vertex<Airport>* source, Vertex<Airport>* target, vector<vector<Airport>>& greatestTrips, vector<Airport> currentTrip, int& maxTrip) {
-    currentTrip.push_back(source->getInfo());
+    while (!q.empty()) {
+        auto current = q.front();
+        q.pop();
 
-    if (source->getInfo() == target->getInfo()) {
-        if (maxTrip < currentTrip.size()) {
-            maxTrip = currentTrip.size();
-            greatestTrips.clear();
-        }
-        if (maxTrip == currentTrip.size()) {
-            greatestTrips.push_back(currentTrip);
-        }
-        return;
-    }
-    source->setVisited(true);
+        for (const auto& flight : current.second->getAdj()) {
+            auto neighbor = flight.getDest();
+            if (neighbor == targetVertex) {
+                current.first.emplace_back(neighbor->getInfo());
 
-    for (auto &e : source->getAdj()) {
-        auto w = e.getDest();
-        if (!w->isVisited()) {
-            dfs_greatestTrip(w, target, greatestTrips, currentTrip, maxTrip);
-        }
-    }
-}
-
-vector<vector<Airport>> Consult::searchTripSmallestNumberOfStopsBetweenThem(const Airport& source, const Airport& target) {
-    vector<vector<Airport>> smallestTrips;
-    vector<Airport> currentTrip;
-    int minTrip = numeric_limits<int>::max();
-
-    auto sourceAirport = consultGraph.findVertex(source);
-    auto targetAirport = consultGraph.findVertex(target);
-
-    if (sourceAirport == nullptr || targetAirport == nullptr) {
-        return smallestTrips;
-    }
-
-    for (auto v : consultGraph.getVertexSet()) {
-        v->setVisited(false);
-    }
-
-    dfs_smallestTrip(sourceAirport, targetAirport, smallestTrips, currentTrip, minTrip);
-
-    return smallestTrips;
-}
-
-void Consult::dfs_smallestTrip(Vertex<Airport>* source, Vertex<Airport>* target, vector<vector<Airport>>& smallestTrips, vector<Airport> currentTrip, int& minTrip) {
-    currentTrip.push_back(source->getInfo());
-
-    if (source->getInfo() == target->getInfo()) {
-        if (minTrip > currentTrip.size()) {
-            minTrip = currentTrip.size();
-            smallestTrips.clear();
-        }
-        if (minTrip == currentTrip.size()) {
-            smallestTrips.push_back(currentTrip);
-        }
-        return;
-    }
-    source->setVisited(true);
-
-    for (auto &e : source->getAdj()) {
-        auto w = e.getDest();
-        if (!w->isVisited()) {
-            dfs_smallestTrip(w, target, smallestTrips, currentTrip, minTrip);
+                if (current.first.size() < smallestSize) {
+                    smallestPaths.clear();
+                    smallestPaths.push_back(current.first);
+                    smallestSize = current.first.size();
+                } else if (current.first.size() == smallestSize) {
+                    smallestPaths.push_back(current.first);
+                }
+            } else {
+                if (!neighbor->isVisited()) {
+                    neighbor->setVisited(true);
+                    vector<Airport> newPath = current.first;
+                    newPath.emplace_back(neighbor->getInfo());
+                    q.push({newPath, neighbor});
+                }
+            }
         }
     }
+    return smallestPaths;
 }
 
 vector<pair<Airport,int>> Consult::searchTopKAirportGreatestAirTrafficCapacity(const int& k) {
