@@ -289,7 +289,7 @@ vector<pair<Airport,int>> Consult::searchTopKAirportGreatestAirTrafficCapacity(c
     });
 
     for (int i = 0; i < airports.size(); i++) {
-        int last_totalFlights;
+        int last_totalFlights = 0;
         int totalFlights = airports[i]->getFlightsFrom() + airports[i]->getFlightsTo();
         if (i < k) {
             last_totalFlights = totalFlights;
