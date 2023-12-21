@@ -151,7 +151,7 @@ Airline ParseData::getAirline(const std::string& airlineCode) {
     return {};
 }
 
-void ParseData::setupIndegreeOutDegree() {
+void ParseData::setupIndegreeOutdegree() {
     for (auto& v : dataGraph.getVertexSet()) {
         v->setIndegree(0);
         v->setOutdegree(v->getAdj().size());
