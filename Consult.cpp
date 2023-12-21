@@ -372,12 +372,67 @@ void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
     int diameter = 0;
     vector<pair<Airport, Airport>> airportPairs;
 
+    for (const auto &airport: consultGraph.getVertexSet()) {
+        unordered_map<Vertex<Airport> *, int> distanceToOtherAirports;
+        for (const auto &v: consultGraph.getVertexSet())
+            v->setVisited(false);
+
+        distanceToOtherAirports[airport] = 0;
+
+        queue<Vertex<Airport> *> q;
+        q.push(airport);
+        airport->setVisited(true);
+
+        while (!q.empty()) {
+            auto a = q.front();
+            q.pop();
+
+            for (const auto &flight: a->getAdj()) {
+                auto d = flight.getDest();
+                if (!d->isVisited()) {
+                    distanceToOtherAirports[d] = distanceToOtherAirports[a] + 1;
+                    q.push(d);
+                    d->setVisited(true);
+                }
+            }
+        }
+
+        auto distanceASC = [](const auto &p1, const auto &p2) { return p1.second < p2.second; };
+        int maxDistance = max_element(distanceToOtherAirports.begin(), distanceToOtherAirports.end(), distanceASC)->second;
+
+        if (maxDistance > diameter) {
+            diameter = maxDistance;
+            airportPairs.clear();
+        }
+
+        if (maxDistance == diameter) {
+            for (const auto &pair: distanceToOtherAirports) {
+                if (pair.second == maxDistance) {
+                    airportPairs.emplace_back(airport->getInfo(), pair.first->getInfo());
+                }
+            }
+        }
+    }
+    cout << "Maximum trip: " << diameter << endl;
+    cout << "Pairs of source-destination airports: " << endl;
+    for (const auto &pair: airportPairs) {
+        cout << "( " << pair.first.getCode() << " -> " << pair.second.getCode() << " )" << endl;
+    }
+}
+
+//Version with paths
+/*void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
+    int diameter = 0;
+    vector<vector<Airport>> airportPaths;
+
     for (const auto& airport : consultGraph.getVertexSet()) {
         unordered_map<Vertex<Airport>*, int> distanceToOtherAirports;
+        unordered_map<Vertex<Airport>*, vector<Airport>> pathToOtherAirports;
         for (const auto& v : consultGraph.getVertexSet())
             v->setVisited(false);
 
         distanceToOtherAirports[airport] = 0;
+        pathToOtherAirports[airport] = {airport->getInfo()};
 
         queue<Vertex<Airport>*> q;
         q.push(airport);
@@ -391,33 +446,37 @@ void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
                 auto d = flight.getDest();
                 if (!d->isVisited()) {
                     distanceToOtherAirports[d] = distanceToOtherAirports[a] + 1;
+                    pathToOtherAirports[d] = pathToOtherAirports[a];
+                    pathToOtherAirports[d].emplace_back(d->getInfo());
                     q.push(d);
                     d->setVisited(true);
                 }
             }
         }
 
-        int maxDistance = max_element(distanceToOtherAirports.begin(), distanceToOtherAirports.end(),
-                                      [](const auto& p1, const auto& p2) {
-                                          return p1.second < p2.second;
-        }) -> second;
+        auto distanceASC = [](const auto &p1, const auto &p2) { return p1.second < p2.second; };
+        int maxDistance = max_element(distanceToOtherAirports.begin(), distanceToOtherAirports.end(), distanceASC)->second;
 
         if (maxDistance > diameter) {
             diameter = maxDistance;
-            airportPairs.clear();
+            airportPaths.clear();
         }
 
         if (maxDistance == diameter) {
             for (const auto& pair : distanceToOtherAirports) {
                 if (pair.second == maxDistance) {
-                    airportPairs.emplace_back(airport->getInfo(), pair.first->getInfo());
+                    airportPaths.emplace_back(pathToOtherAirports[pair.first]);
                 }
             }
         }
     }
     cout << "Maximum trip: " << diameter << endl;
     cout << "Pairs of source-destination airports: " << endl;
-    for (const auto& pair : airportPairs) {
-        cout << "( " << pair.first.getCode() << " -> " << pair.second.getCode() << " )" << endl;
+    for (const auto& path : airportPaths) {
+        cout << "Path: ";
+        for (const auto& airport : path) {
+            cout << airport.getCode() << " -> ";
+        }
+        cout << "(end)" << endl;
     }
-}
+}*/
