@@ -336,7 +336,6 @@ unordered_set<string> Consult::searchEssentialAirports() {
     int i = 0;
 
     for (auto v : consultGraph.getVertexSet()) {
-        v->setProcessing(false);
         v->setNum(-1);
     }
 
@@ -350,7 +349,6 @@ unordered_set<string> Consult::searchEssentialAirports() {
 }
 
 void Consult::dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_set<string> &l, int &i) {
-    v->setProcessing(true);
     v->setNum(i);
     v->setLow(i);
     i++;
@@ -372,8 +370,6 @@ void Consult::dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_
             v->setLow(min(v->getLow(), w->getNum()));
         }
     }
-
-    v->setProcessing(false);
     s.pop();
 
     if (v->getNum() == 0 && children > 1) {
