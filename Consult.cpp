@@ -357,7 +357,7 @@ void Consult::dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_
     s.push(v->getInfo().getCode());
 
     int children = 0;
-    for (auto e : v->getAdj()) {
+    for (const auto& e : v->getAdj()) {
         auto w = e.getDest();
 
         if (w->getNum() == -1) {
@@ -365,7 +365,7 @@ void Consult::dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_
             dfs_articulations(w, s, l, i);
             v->setLow(min(v->getLow(), w->getLow()));
 
-            if (w->getLow() >= v->getNum() && v->getNum() != 0) {
+            if (v->getNum() != 0 && w->getLow() >= v->getNum()) {
                 l.insert(v->getInfo().getCode());
             }
         } else if (w->isProcessing()) {

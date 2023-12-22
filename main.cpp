@@ -22,56 +22,58 @@ int main() {
     location.latitude = 34.6545;
     location.longitude = -112.42;
     Airport PRC = Airport("PRC", "Ernest A Love Fld", "Prescott", "United States", location);
-    cout << consult.searchNumberOfAirportsAvailableForAirport(BSK) << endl;
-    cout << consult.searchNumberOfCitiesAvailableForAirport(BSK) << endl;
-    cout << consult.searchNumberOfCountriesAvailableForAirport(BSK) << endl;
-/*
-    Airport source, target;
-    source.setCode("STZ");
-    target.setCode("YHO");
-    for (auto trips : consult.searchSmallestPathBetweenAirports(source, target)) {  //expect [12] STZ->SXO->GRP->MQH->BSB->CDG->YUL->YHZ->YYR->YRG->YMN->YSO->YHO
-        cout << "[" << trips.size() - 1<< "] ";
-        auto it = trips.begin();
-        while (it != trips.end()) {
-            cout << it->getCode();
-            if (next(it) != trips.end()) {
-                cout << "->";
-            }
-            ++it;
-        }
-        cout << endl;
-    }
-    source.setCode("STZ");
-    target.setCode("SRV");
-    for (auto trips : consult.searchSmallestPathBetweenAirports(source, target)) {  //expect [12] STZ->SXO->GRP->MQH->BSB->CDG->LAX->ANC->ANI->CHU->CKD->SLQ->SRV
-        cout << "[" << trips.size() - 1<< "] ";
-        auto it = trips.begin();
-        while (it != trips.end()) {
-            cout << it->getCode();
-            if (next(it) != trips.end()) {
-                cout << "->";
-            }
-            ++it;
-        }
-        cout << endl;
-    }*/
-/*
+    Airport JFK;
+    JFK.setCode("JFK");
+    /*//i correct
     cout << consult.searchNumberOfAirports() << endl;                                         //expect 3019
     cout << consult.searchNumberOfAvailableFlights() << endl;                                 //expect 63832
     cout << consult.searchNumberOfAvailableFlightRoutes() << endl;                            //expect 35480
-    cout << consult.searchNumberOfFlightsOutOfAirport(BSK) << endl;                           //expect 4
-    cout << consult.searchNumberOfFlightsToAirport(BSK) << endl;                              //expect 4
-    cout << consult.searchNumberOfFlightsOutOfAirportFromDifferentAirlines(BSK) << endl;      //expect 2
+
+    //ii correct
+    cout << consult.searchNumberOfFlightsOutOfAirport(JFK) << endl;
+    cout << consult.searchNumberOfFlightsOutOfAirportFromDifferentAirlines(JFK) << endl;
+
+    //iii correct
     for (const auto& pair : consult.searchNumberOfFlightsPerCity()) {
         cout << pair.first << ": " << pair.second << endl;
     }
-     for (const auto& pair : consult.searchNumberOfFlightsPerAirline()) {
+    for (const auto& pair : consult.searchNumberOfFlightsPerAirline()) {
         cout << pair.first << ": " << pair.second << endl;
     }
-    cout << consult.searchNumberOfCountriesFlownToFromAirport(BSK) << endl;                   //expect 2
-    cout << consult.searchNumberOfCountriesFlownToFromCity("London", "Canada") << endl;       //expect 2
-    cout << consult.searchNumberOfAirportsAvailableForAirport(BSK) << endl;                   //expect 3
+
+    //iv correct
+    cout << consult.searchNumberOfCountriesFlownToFromAirport(JFK) << endl;
+    cout << consult.searchNumberOfCountriesFlownToFromCity("London", "United Kingdom") << endl;
+
+    //v correct
+    cout << consult.searchNumberOfAirportsAvailableForAirport(JFK) << endl;
+    cout << consult.searchNumberOfCitiesAvailableForAirport(JFK) << endl;
+    cout << consult.searchNumberOfCountriesAvailableForAirport(JFK) << endl;
+
+    //vi correct
+    cout << consult.searchNumberOfReachableAirportsInXStopsFromAirport(JFK, 1) << endl;
+    cout << consult.searchNumberOfReachableCitiesInXStopsFromAirport(JFK, 1) << endl;
+    cout << consult.searchNumberOfReachableCountriesInXStopsFromAirport(JFK, 1) << endl;
+
+    //vii
     consult.searchMaxTripAndCorrespondingPairsOfAirports();
+
+    //viii correct
+    int j = 1;
+    for (const auto& traffic : consult.searchTopKAirportGreatestAirTrafficCapacity(20)) {
+        cout << j++ << ". [" << traffic.second << "] " << traffic.first.getCode() << endl;
+    }
+
+    //ix
+    int i = 1;
+    for (const auto& airport : consult.searchEssentialAirports()) {
+        cout << i++ << ". " << airport << endl;
+    }*/
+
+    /*cout << consult.searchNumberOfFlightsOutOfAirport(BSK) << endl;                           //expect 4
+    cout << consult.searchNumberOfFlightsToAirport(BSK) << endl;                              //expect 4
+    cout << consult.searchNumberOfFlightsOutOfAirportFromDifferentAirlines(BSK) << endl;      //expect 2
+    cout << consult.searchNumberOfAirportsAvailableForAirport(BSK) << endl;                   //expect 3
 
 Airport s;
 s.setCode("MUW");
@@ -124,6 +126,35 @@ s.setCode("MUW");
     for (const auto& traffic : consult.searchTopKAirportGreatestAirTrafficCapacity(192)) {
         cout << j++ << ". [" << traffic.second << "] " << traffic.first.getCode() << endl;
     }*/
-
+/*
+    Airport source, target;
+    source.setCode("STZ");
+    target.setCode("YHO");
+    for (auto trips : consult.searchSmallestPathBetweenAirports(source, target)) {  //expect [12] STZ->SXO->GRP->MQH->BSB->CDG->YUL->YHZ->YYR->YRG->YMN->YSO->YHO
+        cout << "[" << trips.size() - 1<< "] ";
+        auto it = trips.begin();
+        while (it != trips.end()) {
+            cout << it->getCode();
+            if (next(it) != trips.end()) {
+                cout << "->";
+            }
+            ++it;
+        }
+        cout << endl;
+    }
+    source.setCode("STZ");
+    target.setCode("SRV");
+    for (auto trips : consult.searchSmallestPathBetweenAirports(source, target)) {  //expect [12] STZ->SXO->GRP->MQH->BSB->CDG->LAX->ANC->ANI->CHU->CKD->SLQ->SRV
+        cout << "[" << trips.size() - 1<< "] ";
+        auto it = trips.begin();
+        while (it != trips.end()) {
+            cout << it->getCode();
+            if (next(it) != trips.end()) {
+                cout << "->";
+            }
+            ++it;
+        }
+        cout << endl;
+    }*/
     return 0;
 }
