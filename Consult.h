@@ -14,6 +14,7 @@ private:
     void dfsVisitFlightsPerCity(Vertex<Airport> *v, map<string, int> &res);
     void dfsVisitFlightsPerAirline(Vertex<Airport> *v, map<string, int> &res);
     void dfsVisitCityAirports(const string& city, const string& country, Vertex<Airport> *v, vector<Vertex<Airport>*>& res);
+    void dfsAvailableDestinations(Vertex<Airport>* v, std::function<void(Vertex<Airport>*)> processDestination);
     int searchNumberOfReachableDestinationsInXStopsFromAirport(const Airport& airport, int layOvers, const function<string(const Airport&)>& attributeExtractor);
     vector<pair<Airport,int>> topTrafficCapacityAirports();
     void dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_set<string> &l, int &i);
@@ -36,11 +37,8 @@ public:
     int searchNumberOfCountriesFlownToFromCity(const string& city, const string& country);
 
     int searchNumberOfAirportsAvailableForAirport(const Airport& airport);
-    void dfsAvailableAirports(Vertex<Airport> *v, int& count);
     int searchNumberOfCitiesAvailableForAirport(const Airport& airport);
-    void dfsAvailableCities(Vertex<Airport>*v, set<pair<string, string>>& cities);
     int searchNumberOfCountriesAvailableForAirport(const Airport& airport);
-    void dfsAvailableCountries(Vertex<Airport>*v, set<string>& countries);
 
     int searchNumberOfReachableAirportsInXStopsFromAirport(const Airport& airport, int layOvers);
     int searchNumberOfReachableCitiesInXStopsFromAirport(const Airport& airport, int layOvers);
