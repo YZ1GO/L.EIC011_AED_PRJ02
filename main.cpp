@@ -22,7 +22,9 @@ int main() {
     location.latitude = 34.6545;
     location.longitude = -112.42;
     Airport PRC = Airport("PRC", "Ernest A Love Fld", "Prescott", "United States", location);
-    consult.searchMaxTripAndCorrespondingPairsOfAirports();
+    cout << consult.searchNumberOfAirportsAvailableForAirport(BSK) << endl;
+    cout << consult.searchNumberOfCitiesAvailableForAirport(BSK) << endl;
+    cout << consult.searchNumberOfCountriesAvailableForAirport(BSK) << endl;
 /*
     Airport source, target;
     source.setCode("STZ");
@@ -69,6 +71,7 @@ int main() {
     cout << consult.searchNumberOfCountriesFlownToFromAirport(BSK) << endl;                   //expect 2
     cout << consult.searchNumberOfCountriesFlownToFromCity("London", "Canada") << endl;       //expect 2
     cout << consult.searchNumberOfAirportsAvailableForAirport(BSK) << endl;                   //expect 3
+    consult.searchMaxTripAndCorrespondingPairsOfAirports();
 
 Airport s;
 s.setCode("MUW");

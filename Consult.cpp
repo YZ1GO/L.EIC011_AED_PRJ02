@@ -62,7 +62,7 @@ void Consult::dfsVisitFlightsPerCity(Vertex<Airport> *v, map<string, int> &res) 
 
     res[v->getInfo().getCity()] += v->getFlightsFrom();
 
-    for (const auto &flight : v->getAdj()) {
+    for (auto &flight : v->getAdj()) {
         auto d = flight.getDest();
         if (!d->isVisited())
             dfsVisitFlightsPerCity(d, res);
@@ -90,7 +90,7 @@ void Consult::dfsVisitFlightsPerAirline(Vertex<Airport> *v, map<string, int> &re
         }
     }
 
-    for (const auto &flight : v->getAdj()) {
+    for (auto &flight : v->getAdj()) {
         auto d = flight.getDest();
         if (!d->isVisited())
             dfsVisitFlightsPerAirline(d, res);
@@ -131,10 +131,79 @@ void Consult::dfsVisitCityAirports(const string &city, const string& country, Ve
     v->setVisited(true);
     if (v->getInfo().getCity() == city && v->getInfo().getCountry() == country)
         res.push_back(v);
-    for (const auto &flight : v->getAdj()) {
+    for (auto &flight : v->getAdj()) {
         auto d = flight.getDest();
         if (!d->isVisited())
             dfsVisitCityAirports(city, country, d, res);
+    }
+}
+
+int Consult::searchNumberOfAirportsAvailableForAirport(const Airport &airport) {
+    int numberOfAirports = 0;
+    auto a = consultGraph.findVertex(airport);
+    if (a != nullptr) {
+        for (auto v : consultGraph.getVertexSet())
+            v->setVisited(false);
+
+        dfsAvailableAirports(a, numberOfAirports);
+    }
+    return numberOfAirports;
+}
+
+void Consult::dfsAvailableAirports(Vertex<Airport> *v, int& count) {
+    for (auto& flight : v->getAdj()) {
+        auto d = flight.getDest();
+        if (!d->isVisited()) {
+            d->setVisited(true);
+            count++;
+            dfsAvailableAirports(d, count);
+        }
+    }
+}
+
+int Consult::searchNumberOfCitiesAvailableForAirport(const Airport& airport) {
+    set<pair<string, string>> cityAndRespectiveCountry;
+    auto a = consultGraph.findVertex(airport);
+    if (a != nullptr) {
+        for (auto v : consultGraph.getVertexSet())
+            v->setVisited(false);
+
+        dfsAvailableCities(a, cityAndRespectiveCountry);
+    }
+    return static_cast<int>(cityAndRespectiveCountry.size());
+}
+
+void Consult::dfsAvailableCities(Vertex<Airport>*v, set<pair<string, string>>& cities) {
+    for (auto& flight : v->getAdj()) {
+        auto d = flight.getDest();
+        if (!d->isVisited()) {
+            d->setVisited(true);
+            cities.insert({d->getInfo().getCity(), d->getInfo().getCountry()});
+            dfsAvailableCities(d, cities);
+        }
+    }
+}
+
+int Consult::searchNumberOfCountriesAvailableForAirport(const Airport& airport) {
+    set<string> countries;
+    auto a = consultGraph.findVertex(airport);
+    if (a != nullptr) {
+        for (auto v : consultGraph.getVertexSet())
+            v->setVisited(false);
+
+        dfsAvailableCountries(a, countries);
+    }
+    return static_cast<int>(countries.size());
+}
+
+void Consult::dfsAvailableCountries(Vertex<Airport> *v, set<std::string> &countries) {
+    for (auto& flight : v->getAdj()) {
+        auto d = flight.getDest();
+        if (!d->isVisited()) {
+            d->setVisited(true);
+            countries.insert(d->getInfo().getCountry());
+            dfsAvailableCountries(d, countries);
+        }
     }
 }
 
@@ -162,7 +231,7 @@ int Consult::searchNumberOfReachableDestinationsInXStopsFromAirport(const Airpor
                 }
             }
 
-            for (const auto& flight : ap->getAdj()) {
+            for (auto& flight : ap->getAdj()) {
                 auto d = flight.getDest();
                 if (!d->isVisited()) {
                     reachableAirports.emplace(d, stop + 1);
@@ -198,7 +267,7 @@ vector<vector<Airport>> Consult::searchSmallestPathBetweenAirports(const Airport
         return smallestPaths;
     }
 
-    for (const auto& v : consultGraph.getVertexSet())
+    for (auto& v : consultGraph.getVertexSet())
         v->setVisited(false);
 
     queue<pair<vector<Airport>, Vertex<Airport>*>> q;
@@ -211,7 +280,7 @@ vector<vector<Airport>> Consult::searchSmallestPathBetweenAirports(const Airport
         auto current = q.front();
         q.pop();
 
-        for (const auto& flight : current.second->getAdj()) {
+        for (auto& flight : current.second->getAdj()) {
             auto neighbor = flight.getDest();
             if (neighbor == targetVertex) {
                 current.first.emplace_back(neighbor->getInfo());
@@ -346,7 +415,7 @@ void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
             auto a = q.front();
             q.pop();
 
-            for (const auto &flight: a->getAdj()) {
+            for (auto &flight: a->getAdj()) {
                 auto d = flight.getDest();
                 if (!d->isVisited()) {
                     distanceToOtherAirports[d] = distanceToOtherAirports[a] + 1;
