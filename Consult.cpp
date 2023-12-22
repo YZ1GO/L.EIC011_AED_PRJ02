@@ -368,7 +368,7 @@ void Consult::dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_
             if (v->getNum() != 0 && w->getLow() >= v->getNum()) {
                 l.insert(v->getInfo().getCode());
             }
-        } else if (w->isProcessing()) {
+        } else if (w->getNum() > -1) {
             v->setLow(min(v->getLow(), w->getNum()));
         }
     }

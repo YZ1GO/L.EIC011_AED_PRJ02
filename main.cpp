@@ -24,6 +24,10 @@ int main() {
     Airport PRC = Airport("PRC", "Ernest A Love Fld", "Prescott", "United States", location);
     Airport JFK;
     JFK.setCode("JFK");
+    int i = 1;
+    for (const auto& airport : consult.searchEssentialAirports()) {
+        cout << i++ << ". " << airport << endl;
+    }
     /*//i correct
     cout << consult.searchNumberOfAirports() << endl;                                         //expect 3019
     cout << consult.searchNumberOfAvailableFlights() << endl;                                 //expect 63832
