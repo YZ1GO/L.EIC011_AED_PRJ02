@@ -293,14 +293,14 @@ unordered_set<string> Consult::searchEssentialAirports() {
 
     for (auto v : consultGraph.getVertexSet()) {
         if (!v->isVisited()) {
-            dfs_articulations(v, s, essentialAirports, index);
+            dfsEssentialAirports(v, s, essentialAirports, index);
         }
     }
 
     return essentialAirports;
 }
 
-void Consult::dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_set<string> &res, int &i) {
+void Consult::dfsEssentialAirports(Vertex<Airport> *v, stack<string> &s, unordered_set<string> &res, int &i) {
     v->setVisited(true);
     v->setProcessing(true);
     v->setNum(i);
@@ -313,7 +313,7 @@ void Consult::dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_
         auto d = flight.getDest();
         if (!d->isVisited()) {
             children++;
-            dfs_articulations(d, s, res, i);
+            dfsEssentialAirports(d, s, res, i);
             v->setLow(min(v->getLow(), d->getLow()));
 
             if ((v->getNum() != 0 && d->getLow() >= v->getNum()) || (v->getNum() == 0 && children > 1)) {
@@ -327,7 +327,7 @@ void Consult::dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_
     s.pop();
 }
 
-void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
+/*void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
     int diameter = 0;
     vector<pair<Airport, Airport>> airportPairs;
 
@@ -377,10 +377,10 @@ void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
     for (const auto &pair: airportPairs) {
         cout << "( " << pair.first.getCode() << " -> " << pair.second.getCode() << " )" << endl;
     }
-}
+}*/
 
 //Version with paths
-/*void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
+void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
     int diameter = 0;
     vector<vector<Airport>> airportPaths;
 
@@ -438,7 +438,7 @@ void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
         }
         cout << "(end)" << endl;
     }
-}*/
+}
 
 vector<vector<Airport>> Consult::searchSmallestPathBetweenAirports(const Airport& source, const Airport& target) {
     auto sourceVertex = consultGraph.findVertex(source);
