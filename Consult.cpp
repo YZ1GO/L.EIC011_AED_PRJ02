@@ -286,7 +286,7 @@ vector <pair<Airport,int>> Consult::topTrafficCapacityAirports() {
 unordered_set<string> Consult::searchEssentialAirports() {
     unordered_set<string> essentialAirports;
     stack<string> s;
-    int index = 1;
+    int index = 0;
     for (auto v : consultGraph.getVertexSet()) {
         v->setVisited(false);
     }
@@ -316,7 +316,7 @@ void Consult::dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_
             dfs_articulations(d, s, res, i);
             v->setLow(min(v->getLow(), d->getLow()));
 
-            if ((v->getNum() != 1 && d->getLow() >= v->getNum()) || (v->getNum() == 1 && children > 1)) {
+            if ((v->getNum() != 0 && d->getLow() >= v->getNum()) || (v->getNum() == 0 && children > 1)) {
                 res.insert(v->getInfo().getCode());
             }
         } else if (d->isProcessing()) {
@@ -326,53 +326,6 @@ void Consult::dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_
     v->setProcessing(false);
     s.pop();
 }
-
-/*unordered_set<string> Consult::searchEssentialAirports() {
-    unordered_set<string> res;
-    stack<string> s;
-    int i = 0;
-
-    for (auto v : consultGraph.getVertexSet()) {
-        v->setNum(-1);
-    }
-
-    for (auto v : consultGraph.getVertexSet()) {
-        if (v->getNum() == -1) {
-            dfs_articulations(v, s, res, i);
-        }
-    }
-
-    return res;
-}
-
-void Consult::dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_set<string> &l, int &i) {
-    v->setNum(i);
-    v->setLow(i);
-    i++;
-    s.push(v->getInfo().getCode());
-
-    int children = 0;
-    for (const auto& e : v->getAdj()) {
-        auto w = e.getDest();
-
-        if (w->getNum() == -1) {
-            children++;
-            dfs_articulations(w, s, l, i);
-            v->setLow(min(v->getLow(), w->getLow()));
-
-            if (v->getNum() != 0 && w->getLow() >= v->getNum()) {
-                l.insert(v->getInfo().getCode());
-            }
-        } else if (w->getNum() > -1) {
-            v->setLow(min(v->getLow(), w->getNum()));
-        }
-    }
-    s.pop();
-
-    if (v->getNum() == 0 && children > 1) {
-        l.insert(v->getInfo().getCode());
-    }
-}*/
 
 void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
     int diameter = 0;
