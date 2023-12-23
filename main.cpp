@@ -21,7 +21,7 @@ int main() {
     Coordinates l = *new Coordinates();
     l.latitude = 35.8592948;
     l.longitude = 104.1361118;
-    airports = listAirports.findAirportsByName("charles de");
+    airports = listAirports.findAirportsByAirportName("charles de");
 
     cout << "Count: " << airports.size() << endl;
     int i = 1;
