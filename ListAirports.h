@@ -6,11 +6,13 @@
 class ListAirports {
 private:
     const Graph<Airport>& searchGraph;
+    template <typename T>
+    vector<Vertex<Airport>*> findAirportsByAttribute(const string& searchName, T (Airport::*getAttr)() const);
 public:
     ListAirports(const Graph<Airport>& dataGraph);
 
     Vertex<Airport>* findAirportByCode(const string& airportCode);
-    vector<Vertex<Airport>*> findAirportsByName(const string& searchName);
+    vector<Vertex<Airport>*> findAirportsByAirportName(const string& searchName);
     vector<Vertex<Airport>*> findAirportsByCityName(const string& searchName);
     vector<Vertex<Airport>*> findAirportsByCountryName(const string& searchName);
 
