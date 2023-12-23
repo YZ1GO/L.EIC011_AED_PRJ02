@@ -17,7 +17,7 @@ private:
     void dfsAvailableDestinations(Vertex<Airport>* v, std::function<void(Vertex<Airport>*)> processDestination);
     int searchNumberOfReachableDestinationsInXStopsFromAirport(const Airport& airport, int layOvers, const function<string(const Airport&)>& attributeExtractor);
     vector<pair<Airport,int>> topTrafficCapacityAirports();
-    void dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_set<string> &l, int &i);
+    void dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_set<string> &res, int &i);
 
 public:
     Consult(const Graph<Airport>& dataGraph);
@@ -49,6 +49,7 @@ public:
     unordered_set<string> searchEssentialAirports();
 
     void searchMaxTripAndCorrespondingPairsOfAirports();
+
     vector<vector<Airport>> searchSmallestPathBetweenAirports(const Airport& source, const Airport& target);
 };
 
