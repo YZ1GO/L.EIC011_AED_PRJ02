@@ -243,53 +243,6 @@ int Consult::searchNumberOfReachableCountriesInXStopsFromAirport(const Airport& 
     return searchNumberOfReachableDestinationsInXStopsFromAirport(airport, layOvers, extractCountry);
 }
 
-vector<vector<Airport>> Consult::searchSmallestPathBetweenAirports(const Airport& source, const Airport& target) {
-    auto sourceVertex = consultGraph.findVertex(source);
-    auto targetVertex = consultGraph.findVertex(target);
-
-    vector<vector<Airport>> smallestPaths;
-    if (sourceVertex == nullptr || targetVertex == nullptr) {
-        return smallestPaths;
-    }
-
-    for (auto& v : consultGraph.getVertexSet())
-        v->setVisited(false);
-
-    queue<pair<vector<Airport>, Vertex<Airport>*>> q;
-    q.push({{source}, sourceVertex});
-    sourceVertex->setVisited(true);
-
-    int smallestSize = numeric_limits<int>::max();
-
-    while (!q.empty()) {
-        auto current = q.front();
-        q.pop();
-
-        for (auto& flight : current.second->getAdj()) {
-            auto neighbor = flight.getDest();
-            if (neighbor == targetVertex) {
-                current.first.emplace_back(neighbor->getInfo());
-
-                if (current.first.size() < smallestSize) {
-                    smallestPaths.clear();
-                    smallestPaths.push_back(current.first);
-                    smallestSize = current.first.size();
-                } else if (current.first.size() == smallestSize) {
-                    smallestPaths.push_back(current.first);
-                }
-            } else {
-                if (!neighbor->isVisited()) {
-                    neighbor->setVisited(true);
-                    vector<Airport> newPath = current.first;
-                    newPath.emplace_back(neighbor->getInfo());
-                    q.push({newPath, neighbor});
-                }
-            }
-        }
-    }
-    return smallestPaths;
-}
-
 vector<pair<Airport,int>> Consult::searchTopKAirportGreatestAirTrafficCapacity(const int& k) {
     vector<pair<Airport,int>> res;
     vector<Vertex<Airport>*> airports;
@@ -331,6 +284,49 @@ vector <pair<Airport,int>> Consult::topTrafficCapacityAirports() {
 }
 
 unordered_set<string> Consult::searchEssentialAirports() {
+    unordered_set<string> essentialAirports;
+    stack<string> s;
+    int index = 1;
+    for (auto v : consultGraph.getVertexSet()) {
+        v->setNum(0);
+        v->setVisited(false);
+    }
+
+    for (auto v : consultGraph.getVertexSet()) {
+        if (!v->isVisited()) {
+            dfs_articulations(v, s, essentialAirports, index);
+        }
+    }
+
+    return essentialAirports;
+}
+
+void Consult::dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_set<string> &res, int &i) {
+    v->setVisited(true);
+    v->setNum(i);
+    v->setLow(i);
+    i++;
+    s.push(v->getInfo().getCode());
+    int children = 0;
+
+    for (auto& flight : v->getAdj()) {
+        auto d = flight.getDest();
+        if (!d->isVisited()) {
+            children++;
+            dfs_articulations(d, s, res, i);
+            v->setLow(min(v->getLow(), d->getLow()));
+
+            if ((v->getNum() > 1 && d->getLow() >= v->getNum()) ||(v->getNum() == 1 && children > 1)) {
+                res.insert(s.top());
+            }
+        } else if (d->getNum() > 0) {
+            v->setLow(min(v->getLow(), d->getNum()));
+        }
+    }
+    s.pop();
+}
+
+/*unordered_set<string> Consult::searchEssentialAirports() {
     unordered_set<string> res;
     stack<string> s;
     int i = 0;
@@ -375,7 +371,7 @@ void Consult::dfs_articulations(Vertex<Airport> *v, stack<string> &s, unordered_
     if (v->getNum() == 0 && children > 1) {
         l.insert(v->getInfo().getCode());
     }
-}
+}*/
 
 void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
     int diameter = 0;
@@ -489,3 +485,50 @@ void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
         cout << "(end)" << endl;
     }
 }*/
+
+vector<vector<Airport>> Consult::searchSmallestPathBetweenAirports(const Airport& source, const Airport& target) {
+    auto sourceVertex = consultGraph.findVertex(source);
+    auto targetVertex = consultGraph.findVertex(target);
+
+    vector<vector<Airport>> smallestPaths;
+    if (sourceVertex == nullptr || targetVertex == nullptr) {
+        return smallestPaths;
+    }
+
+    for (auto& v : consultGraph.getVertexSet())
+        v->setVisited(false);
+
+    queue<pair<vector<Airport>, Vertex<Airport>*>> q;
+    q.push({{source}, sourceVertex});
+    sourceVertex->setVisited(true);
+
+    int smallestSize = numeric_limits<int>::max();
+
+    while (!q.empty()) {
+        auto current = q.front();
+        q.pop();
+
+        for (auto& flight : current.second->getAdj()) {
+            auto neighbor = flight.getDest();
+            if (neighbor == targetVertex) {
+                current.first.emplace_back(neighbor->getInfo());
+
+                if (current.first.size() < smallestSize) {
+                    smallestPaths.clear();
+                    smallestPaths.push_back(current.first);
+                    smallestSize = current.first.size();
+                } else if (current.first.size() == smallestSize) {
+                    smallestPaths.push_back(current.first);
+                }
+            } else {
+                if (!neighbor->isVisited()) {
+                    neighbor->setVisited(true);
+                    vector<Airport> newPath = current.first;
+                    newPath.emplace_back(neighbor->getInfo());
+                    q.push({newPath, neighbor});
+                }
+            }
+        }
+    }
+    return smallestPaths;
+}
