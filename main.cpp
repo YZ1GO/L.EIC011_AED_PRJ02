@@ -21,9 +21,9 @@ int main() {
     Coordinates l = *new Coordinates();
     l.latitude = 35.8592948;
     l.longitude = 104.1361118;
-    airports = listAirports.findClosestAirports(l);
+    airports = listAirports.findAirportsByCityName("Paris");
 
-    /*cout << "Count: " << airports.size() << endl;
+    cout << "Count: " << airports.size() << endl;
     int i = 1;
     for (auto a : airports) {
         auto ap = a->getInfo();
@@ -31,7 +31,7 @@ int main() {
         << ap.getCity() << ", " << ap.getCountry() << ", "
         << "( " << ap.getLocation().latitude << ", " << ap.getLocation().longitude << " )"
         << endl;
-    }*/
+    }
 
 
 
