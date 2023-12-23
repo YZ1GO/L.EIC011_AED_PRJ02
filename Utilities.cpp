@@ -33,3 +33,20 @@ double HarversineDistance(double lat1, double lon1, double lat2, double lon2) {
     return kEarthRadiusKm * c;
 }
 
+string ToLower(const string& input) {
+    string lowercase;
+    for (char c : input) {
+        lowercase += tolower(c);
+    }
+    return lowercase;
+}
+
+string RemoveSpaces(const string& str) {
+    string result;
+    for (char ch : str) {
+        if (!isspace(ch)) {
+            result += ch;
+        }
+    }
+    return result;
+}

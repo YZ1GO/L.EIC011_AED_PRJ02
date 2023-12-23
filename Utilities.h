@@ -11,4 +11,8 @@ double ToRadians(double degrees);
 
 double HarversineDistance(double lat1, double lon1, double lat2, double lon2);
 
+std::string ToLower(const std::string& input);
+
+std::string RemoveSpaces(const std::string& str);
+
 #endif //AED_AEROPORTO_UTILITIES_H

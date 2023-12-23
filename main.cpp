@@ -1,6 +1,7 @@
 #include <iostream>
 //#include "OutputData.h"
 #include "Consult.h"
+#include "ListAirports.h"
 
 int main() {
     // File paths for CSV files
@@ -14,6 +15,27 @@ int main() {
 
     //convertDataGraphToTextFile(parseData.getDataGraph(), "text/Global_Data.txt");
 
+    ListAirports listAirports(parseData.getDataGraph());
+    vector<Vertex<Airport>*> airports;
+    cout << "Starting..." << endl;
+    Coordinates l = *new Coordinates();
+    l.latitude = 35.8592948;
+    l.longitude = 104.1361118;
+    airports = listAirports.findClosestAirports(l);
+
+    /*cout << "Count: " << airports.size() << endl;
+    int i = 1;
+    for (auto a : airports) {
+        auto ap = a->getInfo();
+        cout << i++ << ". " << ap.getCode() << ", " << ap.getName() << ", "
+        << ap.getCity() << ", " << ap.getCountry() << ", "
+        << "( " << ap.getLocation().latitude << ", " << ap.getLocation().longitude << " )"
+        << endl;
+    }*/
+
+
+
+
     Consult consult(parseData.getDataGraph());
     Coordinates location = *new Coordinates();
     location.latitude = 34.793289;
@@ -24,10 +46,6 @@ int main() {
     Airport PRC = Airport("PRC", "Ernest A Love Fld", "Prescott", "United States", location);
     Airport JFK;
     JFK.setCode("JFK");
-    int i = 1;
-    for (const auto& airport : consult.searchEssentialAirports()) {
-        cout << i++ << ". " << airport << endl;
-    }
     /*//i correct
     cout << consult.searchNumberOfAirports() << endl;                                         //expect 3019
     cout << consult.searchNumberOfAvailableFlights() << endl;                                 //expect 63832
