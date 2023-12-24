@@ -2,7 +2,7 @@
 CXX=g++
 
 # C++ source files to consider in compilation for all programs
-COMMON_CPP_FILES= Data.cpp ParseData.cpp Utilities.cpp OutputData.cpp Consult.cpp ListAirports.cpp
+COMMON_CPP_FILES= Data.cpp ParseData.cpp Utilities.cpp OutputData.cpp Consult.cpp ListAirports.cpp Script.cpp
 
 # Your target program
 PROGRAMS=run

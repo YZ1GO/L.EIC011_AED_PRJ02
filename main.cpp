@@ -2,6 +2,7 @@
 //#include "OutputData.h"
 #include "Consult.h"
 #include "ListAirports.h"
+#include "Script.h"
 
 int main() {
     // File paths for CSV files
@@ -13,9 +14,13 @@ int main() {
     ParseData parseData(airportsCSV, airlinesCSV, flightsCSV);
     parseData.setupIndegreeOutdegree();
 
-    //convertDataGraphToTextFile(parseData.getDataGraph(), "text/Global_Data.txt");
+    const Graph<Airport>& dataGraph = parseData.getDataGraph();
 
-    ListAirports listAirports(parseData.getDataGraph());
+    Script script(dataGraph);
+
+    script.run();
+
+    /*ListAirports listAirports(parseData.getDataGraph());
     vector<Vertex<Airport>*> airports;
     cout << "Starting..." << endl;
     Coordinates l = *new Coordinates();
@@ -46,7 +51,7 @@ int main() {
     Airport PRC = Airport("PRC", "Ernest A Love Fld", "Prescott", "United States", location);
     Airport JFK;
     JFK.setCode("JFK");
-    /*//i correct
+    //i correct
     cout << consult.searchNumberOfAirports() << endl;                                         //expect 3019
     cout << consult.searchNumberOfAvailableFlights() << endl;                                 //expect 63832
     cout << consult.searchNumberOfAvailableFlightRoutes() << endl;                            //expect 35480
