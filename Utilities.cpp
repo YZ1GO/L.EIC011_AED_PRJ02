@@ -50,3 +50,4 @@ string RemoveSpaces(const string& str) {
     }
     return result;
 }
+

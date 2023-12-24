@@ -3,7 +3,6 @@
 
 #include "Utilities.h"
 #include <iostream>
-#include <string>
 #include <vector>
 
 struct Coordinates {

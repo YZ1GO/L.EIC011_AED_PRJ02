@@ -32,7 +32,6 @@ private:
     void numberOfFlightRoutes();
 
     void flightsOut();
-    void flightsOutOfAirport(Vertex<Airport>* airport);
 
     void flightsPerCity();
     void flightsPerAirline();
@@ -40,8 +39,8 @@ private:
     void countriesFlownToFromAirport();
     void countriesFlownToFromCity();
 
-    void destinationsAvailableForAirport();
-    void destinationsAvailableWithLayOvers();
+    void destinationsAvailableWithLayOvers(Vertex<Airport>* airport);
+    void givenAirportStatistics(Vertex<Airport>* airport);
 
     void maximumTrip();
     void topKAirportAirTraffic();
@@ -50,6 +49,7 @@ private:
     void airportStatistics();
     void airportStatisticsByCode();
     void listAirportsByName();
+    void listClosestAirports();
 
 };
 
