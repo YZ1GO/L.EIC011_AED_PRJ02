@@ -2,43 +2,6 @@
 
 Script::Script(const Graph<Airport>& dataGraph) : consult(dataGraph), listAirports(dataGraph) {}
 
-void Script::run() {
-    clearScreen();
-
-    while (true) {
-        vector<MenuItem> mainMenu = {
-                {"\033[1mStatistics\033[0m", nullptr},
-                {"\033[1mChange\033[0m", nullptr},
-                {"[Exit]", nullptr}
-        };
-
-        int mainChoice = showMenu("Main Menu", mainMenu);
-        if (mainChoice == 3) {
-            break;
-        }
-
-        if (mainChoice == 1) {
-            while (true) {
-                vector<MenuItem> networkStatistics = {
-                        {"\033[1mAirport Statistics\033[0m", &Script::searchAirportByCode},
-                        {"\033[1mGlobal Statistics\033[0m", &Script::globalNumber},
-                        {"[Back]", nullptr}
-                };
-
-                int searchChoice = showMenu("Network Statistics", networkStatistics);
-                if (searchChoice == 3) {
-                    break;  // Go back to the main menu
-                }
-                if (searchChoice >=1 && searchChoice < 3 && networkStatistics[searchChoice - 1].action != nullptr) {
-                    (this->*networkStatistics[searchChoice - 1].action)();
-                }
-            }
-        }
-    }
-    clearScreen();
-    cout << "Goodbye!" << endl;
-}
-
 void Script::drawBox(const string &text) {
     int width = text.length() + 4;
     string horizontalLine(width, '-');
@@ -83,14 +46,98 @@ void Script::backToMenu() {
     cin.get();
 }
 
-void Script::printAirportInfo(Vertex<Airport>& airport) {
-    auto info = airport.getInfo();
+void Script::printAirportInfo(Vertex<Airport>* airport) {
+    auto info = airport->getInfo();
     cout << "     Code: " << info.getCode() << endl;
     cout << "     Name: " << info.getName() << endl;
     cout << "     City: " << info.getCity() << endl;
     cout << "  Country: " << info.getCountry() << endl;
     cout << " Location: (" << info.getLocation().latitude << ", " << info.getLocation().longitude << ")" << endl;
     cout << "\n";
+}
+
+void Script::run() {
+    clearScreen();
+
+    while (true) {
+        vector<MenuItem> mainMenu = {
+                {"\033[1mStatistics\033[0m", nullptr},
+                {"\033[1mChange\033[0m", nullptr},
+                {"[Exit]", nullptr}
+        };
+
+        int mainChoice = showMenu("Main Menu", mainMenu);
+        if (mainChoice == 3) {
+            break;
+        }
+
+        if (mainChoice == 1) {
+            while (true) {
+                vector<MenuItem> networkStatistics = {
+                        {"\033[1mAirport Statistics\033[0m", &Script::airportStatistics},
+                        {"\033[1mGlobal Statistics\033[0m", &Script::globalNumber},
+                        {"[Back]", nullptr}
+                };
+
+                int searchChoice = showMenu("Network Statistics", networkStatistics);
+                if (searchChoice == 3) {
+                    break;  // Go back to the main menu
+                }
+                if (searchChoice >=1 && searchChoice < 3 && networkStatistics[searchChoice - 1].action != nullptr) {
+                    (this->*networkStatistics[searchChoice - 1].action)();
+                }
+            }
+        }
+    }
+    clearScreen();
+    cout << "Goodbye!" << endl;
+}
+
+void Script::airportStatistics() {
+    vector<MenuItem> statisticsMenu = {
+            {"\033[1mFind Airport By Code\033[0m", &Script::airportStatisticsByCode},
+            //{"\033[1mSearch Airport By Airport Name\033[0m", &Script::numberOfFlights},
+            //{"\033[1mSearch Airport By City Name\033[0m", &Script::numberOfFlightRoutes},
+            //{"\033[1mSearch Airport By Country Name\033[0m", &Script::numberOfFlightRoutes},
+            {"[Back]", &Script::actionGoBack}
+    };
+
+    bool exitSubMenu = false;
+
+    while (!exitSubMenu) {
+        clearScreen();
+        drawBox("Statistics Menu");
+        for (int i = 0; i < statisticsMenu.size(); i++) {
+            cout << i + 1 << ". " << statisticsMenu[i].label << endl;
+        }
+        int choice;
+        cout << "Enter your choice: ";
+        if (!(cin >> choice)) {
+            // Invalid input (not an integer)
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+        clearScreen();
+        if (choice == 5) {
+            exitSubMenu = true;
+        } else if (choice >= 1 && choice <= statisticsMenu.size()) {
+            (this->*statisticsMenu[choice - 1].action)();
+        }
+    }
+}
+
+void Script::airportStatisticsByCode() {
+    cout << "Enter airport code: ";
+    string airportCode;
+    cin >> airportCode;
+    auto a = listAirports.findAirportByCode(airportCode);
+    if (a != nullptr) {
+        printAirportInfo(a);
+
+        cout << "Flight out of this airport: " << consult.searchNumberOfFlightsOutOfAirport(a)
+    }
+    else { cout << "Airport with code: " << airportCode << " not found!" << endl; }
 }
 
 void Script::globalNumber() {
