@@ -24,7 +24,7 @@ private:
     void actionGoBack();
     void backToMenu();
 
-    void printAirportInfo(Vertex<Airport>& airport);
+    void printAirportInfo(Vertex<Airport>* airport);
 
     void globalNumber();
     void numberOfAirports();
@@ -47,7 +47,8 @@ private:
     void topKAirportAirTraffic();
     void essentialAirports();
 
-    void searchAirportByCode();
+    void airportStatistics();
+    void airportStatisticsByCode();
     void listAirportsByName();
 
 };
