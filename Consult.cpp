@@ -479,7 +479,7 @@ vector<vector<Airport>> Consult::searchSmallestPathBetweenAirports(const Airport
                     neighbor->setVisited(true);
                     vector<Airport> newPath = current.first;
                     newPath.emplace_back(neighbor->getInfo());
-                    q.push({newPath, neighbor});
+                    q.emplace(newPath, neighbor);
                 }
             }
         }
