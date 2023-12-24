@@ -4,7 +4,7 @@ ListAirports::ListAirports(const Graph<Airport> &dataGraph) : searchGraph(dataGr
 
 Vertex<Airport>* ListAirports::findAirportByCode(const string& airportCode) {
     for (auto airport : searchGraph.getVertexSet()) {
-        if (airport->getInfo().getCode() == airportCode) {
+        if (ToLower(airport->getInfo().getCode()) == ToLower(airportCode)) {
             return airport;
         }
     }

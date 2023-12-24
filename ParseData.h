@@ -4,8 +4,6 @@
 #include "Data.h"
 #include "Graph.h"
 #include <fstream>
-#include <sstream>
-#include <algorithm>
 #include <set>
 
 class ParseData {

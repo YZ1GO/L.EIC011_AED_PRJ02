@@ -15,7 +15,7 @@ private:
     void dfsVisitFlightsPerAirline(Vertex<Airport> *v, map<string, int> &res);
     void dfsVisitCityAirports(const string& city, const string& country, Vertex<Airport> *v, vector<Vertex<Airport>*>& res);
     void dfsAvailableDestinations(Vertex<Airport>* v, std::function<void(Vertex<Airport>*)> processDestination);
-    int searchNumberOfReachableDestinationsInXStopsFromAirport(const Airport& airport, int layOvers, const function<string(const Airport&)>& attributeExtractor);
+    int searchNumberOfReachableDestinationsInXStopsFromAirport(Vertex<Airport>* airport, int layOvers, const function<string(Vertex<Airport>*)>& attributeExtractor);
     vector<pair<Airport,int>> topTrafficCapacityAirports();
     void dfsEssentialAirports(Vertex<Airport> *v, stack<string> &s, unordered_set<string> &res, int &i);
 
@@ -26,23 +26,23 @@ public:
     int searchNumberOfAvailableFlights();
     int searchNumberOfAvailableFlightRoutes();
 
-    int searchNumberOfFlightsOutOfAirport(const Airport& airport);
-    int searchNumberOfFlightsToAirport(const Airport& airport);
-    int searchNumberOfFlightsOutOfAirportFromDifferentAirlines(const Airport& airport);
+    int searchNumberOfFlightsOutOfAirport(Vertex<Airport>* airport);
+    int searchNumberOfFlightsToAirport(Vertex<Airport>* airport);
+    int searchNumberOfFlightsOutOfAirportFromDifferentAirlines(Vertex<Airport>* airport);
 
     map<string, int> searchNumberOfFlightsPerCity();
     map<string, int> searchNumberOfFlightsPerAirline();
 
-    int searchNumberOfCountriesFlownToFromAirport(const Airport& airport);
+    int searchNumberOfCountriesFlownToFromAirport(Vertex<Airport>* airport);
     int searchNumberOfCountriesFlownToFromCity(const string& city, const string& country);
 
-    int searchNumberOfAirportsAvailableForAirport(const Airport& airport);
-    int searchNumberOfCitiesAvailableForAirport(const Airport& airport);
-    int searchNumberOfCountriesAvailableForAirport(const Airport& airport);
+    int searchNumberOfAirportsAvailableForAirport(Vertex<Airport>* airport);
+    int searchNumberOfCitiesAvailableForAirport(Vertex<Airport>* airport);
+    int searchNumberOfCountriesAvailableForAirport(Vertex<Airport>* airport);
 
-    int searchNumberOfReachableAirportsInXStopsFromAirport(const Airport& airport, int layOvers);
-    int searchNumberOfReachableCitiesInXStopsFromAirport(const Airport& airport, int layOvers);
-    int searchNumberOfReachableCountriesInXStopsFromAirport(const Airport& airport, int layOvers);
+    int searchNumberOfReachableAirportsInXStopsFromAirport(Vertex<Airport>* airport, int layOvers);
+    int searchNumberOfReachableCitiesInXStopsFromAirport(Vertex<Airport>* airport, int layOvers);
+    int searchNumberOfReachableCountriesInXStopsFromAirport(Vertex<Airport>* airport, int layOvers);
 
     vector<pair<Airport,int>> searchTopKAirportGreatestAirTrafficCapacity(const int& k);
 
