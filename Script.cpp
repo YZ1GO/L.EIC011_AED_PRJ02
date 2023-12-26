@@ -69,11 +69,12 @@ void Script::run() {
     while (true) {
         vector<MenuItem> mainMenu = {
                 {makeBold("Statistics"), nullptr},
+                {makeBold("Travel"), nullptr},
                 {"[Exit]", nullptr}
         };
 
         int mainChoice = showMenu("MAIN MENU", mainMenu);
-        if (mainChoice == 2) {
+        if (mainChoice == 3) {
             break;
         }
 
@@ -91,6 +92,21 @@ void Script::run() {
                 }
                 if (searchChoice >=1 && searchChoice < 3 && networkStatistics[searchChoice - 1].action != nullptr) {
                     (this->*networkStatistics[searchChoice - 1].action)();
+                }
+            }
+        } else if (mainChoice == 2) {
+            while (true) {
+                vector<MenuItem> travelMenu = {
+                        {makeBold("Travel by given airline(s)")},
+                        {"[Back]", nullptr}
+                };
+
+                int searchChoice = showMenu("TRAVEL MENU", travelMenu);
+                if (searchChoice == 2) {
+                    break;  // Go back to the main menu
+                }
+                if (searchChoice >=1 && searchChoice < 3 && travelMenu[searchChoice - 1].action != nullptr) {
+                    (this->*travelMenu[searchChoice - 1].action)();
                 }
             }
         }
@@ -191,7 +207,6 @@ void Script::airportStatistics(Vertex<Airport> *airport) {
         cout << "1. See reachable destinations in a maximum of X stops" << endl;
         cout << "2. See other statistics" << endl;
         cout << "3. [Back]" << endl;
-        cout << "\n";
 
         int choice;
         cout << "\nEnter your choice: ";
@@ -310,7 +325,8 @@ void Script::destinationsAvailableWithLayOvers(Vertex<Airport>* airport) {
 
 void Script::givenAirportStatistics(Vertex<Airport> *airport) {
     clearScreen();
-    drawBox("Other Statistics");
+    string str = airport->getInfo().getCode() + " Statistics";
+    drawBox(str);
 
     cout << "- Flight routes out of this airport: " << makeBold(airport->getAdj().size()) << endl;
     cout << "- Flights out of this airport: " << makeBold(consult.searchNumberOfFlightsOutOfAirport(airport)) << endl;

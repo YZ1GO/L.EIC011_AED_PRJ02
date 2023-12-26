@@ -44,7 +44,6 @@ private:
     void topKAirportAirTraffic();
     void essentialAirports();
 
-
     void airportStatistics(Vertex<Airport>* airport);
     void listAndChooseAirport(vector<Vertex<Airport> *> airports, const string& name, const string& typeName);
     void searchAirportsMenu();
@@ -53,6 +52,7 @@ private:
     void searchAirportByCityName();
     void searchAirportByCountryName();
     void searchClosestAirport();
+    void travelByGivenAirlines();
 
 };
 
