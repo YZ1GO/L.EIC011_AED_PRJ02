@@ -18,7 +18,7 @@ int Script::showMenu(const string& menuName, const vector<MenuItem>& menuItems) 
     }
 
     int choice;
-    cout << "Enter your choice: ";
+    cout << "\nEnter your choice: ";
     if (!(cin >> choice)) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -49,6 +49,7 @@ void Script::backToMenu() {
 
 void Script::printAirportInfo(Vertex<Airport>* airport) {
     auto info = airport->getInfo();
+    drawBox("AIRPORT INFORMATION");
     cout << "     Code: " << info.getCode() << endl;
     cout << "     Name: " << info.getName() << endl;
     cout << "     City: " << info.getCity() << endl;
@@ -66,7 +67,7 @@ void Script::run() {
                 {"[Exit]", nullptr}
         };
 
-        int mainChoice = showMenu("Main Menu", mainMenu);
+        int mainChoice = showMenu("MAIN MENU", mainMenu);
         if (mainChoice == 2) {
             break;
         }
@@ -79,7 +80,7 @@ void Script::run() {
                         {"[Back]", nullptr}
                 };
 
-                int searchChoice = showMenu("Network Statistics", networkStatistics);
+                int searchChoice = showMenu("NETWORK STATISTICS", networkStatistics);
                 if (searchChoice == 3) {
                     break;  // Go back to the main menu
                 }
@@ -105,12 +106,12 @@ void Script::airportStatistics() {
 
     while (!exitSubMenu) {
         clearScreen();
-        drawBox("Statistics Menu");
+        drawBox("STATISTICS MENU");
         for (int i = 0; i < statisticsMenu.size(); i++) {
             cout << i + 1 << ". " << statisticsMenu[i].label << endl;
         }
         int choice;
-        cout << "Enter your choice: ";
+        cout << "\nEnter your choice: ";
         if (!(cin >> choice)) {
             // Invalid input (not an integer)
             cin.clear();
@@ -143,7 +144,7 @@ void Script::airportStatisticsByCode() {
             cout << "\n";
 
             int choice;
-            cout << "Enter your choice: ";
+            cout << "\nEnter your choice: ";
             if (!(cin >> choice)) {
                 // Invalid input (not an integer)
                 cin.clear();
@@ -172,8 +173,7 @@ void Script::listAirportsByName() {
     cout << "2. By city name" << endl;
     cout << "3. By country name" << endl;
     cout << "4. [Back]" << endl;
-    cout << "\n";
-    cout << "Enter your choice: ";
+    cout << "\nEnter your choice: ";
     int choice;
     cin >> choice;
     if (choice == 1) {
@@ -185,7 +185,7 @@ void Script::listAirportsByName() {
         cout << "Found " << makeBold(airports.size()) << " airport(s) containing " << "\'" << makeBold(name) << "\' in name" << endl;
         for (auto a : airports) {
             auto info = a->getInfo();
-            cout << choice++ << ". " << info.getCode() << ", " << info.getName() << ", " << info.getCity() << ", " << info.getCountry() << endl;
+            cout << choice++ << ". [" << info.getCode() << "] " << info.getName() << ", " << info.getCity() << ", " << info.getCountry() << endl;
         }
     } else if (choice == 2) {
         clearScreen();
@@ -196,7 +196,7 @@ void Script::listAirportsByName() {
         cout << "Found " << makeBold(airports.size()) << " airport(s) in " << "\'" << makeBold(name) << "\'" << endl;
         for (auto a : airports) {
             auto info = a->getInfo();
-            cout << choice++ << ". " << info.getCode() << ", " << info.getName() << ", " << info.getCity() << ", " << info.getCountry() << endl;
+            cout << choice++ << ". [" << info.getCode() << "] " << info.getName() << ", " << info.getCity() << ", " << info.getCountry() << endl;
         }
     } else if (choice == 3) {
         clearScreen();
@@ -208,7 +208,7 @@ void Script::listAirportsByName() {
         cout << "\n";
         for (auto a : airports) {
             auto info = a->getInfo();
-            cout << choice++ << ". " << info.getCode() << ", " << info.getName() << ", " << info.getCity() << ", " << info.getCountry() << endl;
+            cout << choice++ << ". [" << info.getCode() << "] " << info.getName() << ", " << info.getCity() << ", " << info.getCountry() << endl;
         }
     } else if (choice == 4) {
         return;
@@ -234,7 +234,7 @@ void Script::listClosestAirports() {
     int i = 1;
     for (auto a : airports) {
         auto info = a->getInfo();
-        cout << i++ << ". " << info.getCode() << ", " << info.getName() << ", " << info.getCity() << ", " << info.getCountry()
+        cout << i++ << ". [" << info.getCode() << "] " << info.getName() << ", " << info.getCity() << ", " << info.getCountry()
         << ", (" << info.getLocation().latitude << "," << info.getLocation().longitude << ")" << endl;
     }
     backToMenu();
@@ -280,12 +280,12 @@ void Script::globalNumber() {
 
     while (!exitSubMenu) {
         clearScreen();
-        drawBox("Global Number");
+        drawBox("GLOBAL NUMBERS");
         for (int i = 0; i < globalMenu.size(); i++) {
             cout << i + 1 << ". " << globalMenu[i].label << endl;
         }
         int choice;
-        cout << "Enter your choice: ";
+        cout << "\nEnter your choice: ";
         if (!(cin >> choice)) {
             // Invalid input (not an integer)
             cin.clear();
