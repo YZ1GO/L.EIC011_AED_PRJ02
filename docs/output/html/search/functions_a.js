@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['operator_3c_141',['operator&lt;',['../classAirline.html#ad316e77d2a6222ce649a000325713cef',1,'Airline']]],
-  ['operator_3d_3d_142',['operator==',['../classAirport.html#a2d93e2cadbdb3ed9114aff48aa0bac5c',1,'Airport::operator==()'],['../classAirline.html#aab550db1265c3df4f66b90c2dea5f6cc',1,'Airline::operator==()']]]
+  ['makebold_162',['makeBold',['../Utilities_8h.html#a3bd6ee67b0398de7c3501b9278cd89b9',1,'Utilities.h']]]
 ];

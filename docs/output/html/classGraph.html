@@ -110,6 +110,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af1d4affd1f886bf598d0f4cf4a0cb7cb"><td class="memItemLeft" align="right" valign="top">vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#af1d4affd1f886bf598d0f4cf4a0cb7cb">topsort</a> () const</td></tr>
 <tr class="memdesc:af1d4affd1f886bf598d0f4cf4a0cb7cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs topological sorting of the graph using depth-first search (DFS).  <a href="classGraph.html#af1d4affd1f886bf598d0f4cf4a0cb7cb">More...</a><br /></td></tr>
 <tr class="separator:af1d4affd1f886bf598d0f4cf4a0cb7cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac76ac8c9999e9696ffb836801603e0c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#ac76ac8c9999e9696ffb836801603e0c2">setupInDegreeAndOutDegree</a> ()</td></tr>
+<tr class="memdesc:ac76ac8c9999e9696ffb836801603e0c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up the inDegree and outDegree of vertices in the graph.  <a href="classGraph.html#ac76ac8c9999e9696ffb836801603e0c2">More...</a><br /></td></tr>
+<tr class="separator:ac76ac8c9999e9696ffb836801603e0c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class T&gt;<br />
@@ -409,6 +412,25 @@ template&lt;class T &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the vertex was removed successfully, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ac76ac8c9999e9696ffb836801603e0c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac76ac8c9999e9696ffb836801603e0c2">&#9670;&nbsp;</a></span>setupInDegreeAndOutDegree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classGraph.html">Graph</a>&lt; T &gt;::setupInDegreeAndOutDegree</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets up the inDegree and outDegree of vertices in the graph. </p>
+<p>Calculates and assigns the inDegree and outDegree for each vertex in the graph. The inDegree of a vertex is the count of incoming edges, while the outDegree is the count of outgoing edges. This function iterates through all edges in the graph to update the inDegree and outDegree of each vertex. Note: This function assumes that the graph has been appropriately constructed with vertices and edges. </p>
 
 </div>
 </div>

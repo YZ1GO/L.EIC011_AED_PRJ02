@@ -1,9 +1,9 @@
 <map id="Data.h" name="Data.h">
 <area shape="rect" id="node1" title="Header file containing structures and classes related to airport and airline data representation." alt="" coords="134,5,199,32"/>
 <area shape="rect" id="node2" href="$Graph_8h.html" title="Header file containing structures and classes related to graph representation." alt="" coords="93,80,166,107"/>
-<area shape="rect" id="node3" href="$ParseData_8h_source.html" title=" " alt="" coords="117,155,217,181"/>
+<area shape="rect" id="node3" href="$ParseData_8h.html" title="Header file containing functionalities to parse data related to the Air Travel Flights." alt="" coords="117,155,217,181"/>
 <area shape="rect" id="node4" href="$Consult_8h.html" title="Header file providing functionalities for analyzing air travel flight data." alt="" coords="5,229,88,256"/>
-<area shape="rect" id="node6" href="$ListAirports_8h_source.html" title=" " alt="" coords="113,229,221,256"/>
-<area shape="rect" id="node7" href="$OutputData_8h_source.html" title=" " alt="" coords="245,229,355,256"/>
+<area shape="rect" id="node6" href="$ListAirports_8h.html" title="Header file containing functionalities to search airports within a graph." alt="" coords="113,229,221,256"/>
+<area shape="rect" id="node7" href="$OutputData_8h.html" title="Header file containing functions to output airport data to a text file." alt="" coords="245,229,355,256"/>
 <area shape="rect" id="node5" href="$Script_8h_source.html" title=" " alt="" coords="71,304,142,331"/>
 </map>
