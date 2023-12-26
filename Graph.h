@@ -273,29 +273,104 @@ public:
     friend class Vertex<T>;
 };
 
+/**
+ * @class Graph
+ * @brief Class representing a directed graph.
+ *
+ * The Graph class defines a directed graph structure using vertices and edges.
+ * It supports various graph operations like adding/removing vertices, edges,
+ * performing depth-first search (DFS), breadth-first search (BFS), topological sorting, etc.
+ * @tparam T The data type of the graph vertices.
+ */
 template <class T>
 class Graph {
-    vector<Vertex<T>*> vertexSet;
-    int _index_;
-    stack<Vertex<T>> _stack_;
-    list<list<T>> _list_sccs_;
+    vector<Vertex<T>*> vertexSet;   ///< The collection of vertices in the graph.
+    int _index_;                    ///< The used internally.
+    stack<Vertex<T>> _stack_;       ///< The stack used internally.
+    list<list<T>> _list_sccs_;      ///< The list of strongly connected components.
 
+    /**
+     * @brief Performs a depth-first search visit starting from a given vertex.
+     * @param v Pointer to the starting vertex.
+     * @param res Vector containing the visited vertices.
+     */
     void dfsVisit(Vertex<T> *v, vector<T> &res) const;
 
 public:
+    /**
+     * @brief Finds a vertex in the graph based on the given information.
+     * @param in The information to search for.
+     * @return Pointer to the vertex if found, nullptr otherwise.
+     */
     Vertex<T> *findVertex(const T &in) const;
-    int getNumVertex() const;
-    vector<Vertex<T> * > getVertexSet() const;
 
+    /**
+     * @brief Retrieves the number of vertices in the graph.
+     * @return The number of vertices in the graph.
+     */
+    int getNumVertex() const;
+
+    /**
+     * @brief Retrieves the set of vertices in the graph.
+     * @return Vector containing pointers to all vertices in the graph.
+     */
+    vector<Vertex<T>*> getVertexSet() const;
+
+    /**
+     * @brief Adds a vertex to the graph with the given information.
+     * @param in The information for the new vertex.
+     * @return True if the vertex was added successfully, false otherwise.
+     */
     bool addVertex(const T &in);
+
+    /**
+     * @brief Removes a vertex from the graph based on the given information.
+     * @param in The information to identify the vertex to be removed.
+     * @return True if the vertex was removed successfully, false otherwise.
+     */
     bool removeVertex(const T &in);
 
+    /**
+     * @brief Adds a directed edge between two vertices in the graph.
+     * @param source Information of the source vertex.
+     * @param dest Information of the destination vertex.
+     * @param distance The distance between the source and destination vertices.
+     * @return True if the edge was added successfully, false otherwise.
+     */
     bool addEdge(const T &source, const T &dest, double distance);
+
+    /**
+     * @brief Removes a directed edge between two vertices in the graph.
+     * @param source Information of the source vertex.
+     * @param dest Information of the destination vertex.
+     * @return True if the edge was removed successfully, false otherwise.
+     */
     bool removeEdge(const T &source, const T &dest);
 
+    /**
+     * @brief Performs a depth-first search (DFS) on the entire graph.
+     * @return Vector containing the vertices visited during the DFS.
+     */
     vector<T> dfs() const;
+
+    /**
+     * @brief Performs a depth-first search (DFS) starting from a specific vertex in the graph.
+     * @param source Information of the starting vertex.
+     * @return Vector containing the vertices visited during the DFS.
+     */
     vector<T> dfs(const T & source) const;
+
+    /**
+     * @brief Performs a breadth-first search (BFS) starting from a specific vertex in the graph.
+     * @param source Information of the starting vertex.
+     * @return Vector containing the vertices visited during the BFS.
+     */
     vector<T> bfs(const T &source) const;
+
+    /**
+     * @brief Performs topological sorting of the graph using depth-first search (DFS).
+     * @return Vector containing the topologically sorted vertices.
+     */
     vector<T> topsort() const;
 };
 
