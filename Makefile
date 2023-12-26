@@ -2,7 +2,7 @@
 CXX=g++
 
 # C++ source files to consider in compilation for all programs
-COMMON_CPP_FILES= ParseData.cpp Utilities.cpp OutputData.cpp Consult.cpp ListAirports.cpp Script.cpp
+COMMON_CPP_FILES= code/ParseData.cpp code/Utilities.cpp code/OutputData.cpp code/Consult.cpp code/ListAirports.cpp code/Script.cpp
 
 # Your target program
 PROGRAMS=run
@@ -18,8 +18,8 @@ DOXYGEN_TARGET = $(DOXYGEN_OUTPUT_DIR)/html/index.html
 
 all: $(PROGRAMS)
 
-run: $(COMMON_CPP_FILES) runscript.cpp
-	$(CXX) -o run runscript.cpp $(COMMON_CPP_FILES)
+run: $(COMMON_CPP_FILES) main.cpp
+	$(CXX) -o run main.cpp $(COMMON_CPP_FILES)
 
 clean:
 	rm -fr *.dSYM $(PROGRAMS)
