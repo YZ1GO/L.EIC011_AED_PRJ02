@@ -18,7 +18,7 @@ int Script::showMenu(const string& menuName, const vector<MenuItem>& menuItems) 
     }
 
     int choice;
-    cout << "Enter your choice: ";
+    cout << "\nEnter your choice: ";
     if (!(cin >> choice)) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -49,6 +49,7 @@ void Script::backToMenu() {
 
 void Script::printAirportInfo(Vertex<Airport>* airport) {
     auto info = airport->getInfo();
+    drawBox("AIRPORT INFORMATION");
     cout << "     Code: " << info.getCode() << endl;
     cout << "     Name: " << info.getName() << endl;
     cout << "     City: " << info.getCity() << endl;
@@ -71,7 +72,7 @@ void Script::run() {
                 {"[Exit]", nullptr}
         };
 
-        int mainChoice = showMenu("Main Menu", mainMenu);
+        int mainChoice = showMenu("MAIN MENU", mainMenu);
         if (mainChoice == 2) {
             break;
         }
@@ -84,7 +85,7 @@ void Script::run() {
                         {"[Back]", nullptr}
                 };
 
-                int searchChoice = showMenu("Network Statistics", networkStatistics);
+                int searchChoice = showMenu("NETWORK STATISTICS", networkStatistics);
                 if (searchChoice == 3) {
                     break;  // Go back to the main menu
                 }
@@ -100,9 +101,11 @@ void Script::run() {
 
 void Script::airportStatistics() {
     vector<MenuItem> airportStatistics = {
-            {makeBold("Find airport by code"), &Script::airportStatisticsByCode},
-            {makeBold("Search airport by name"), &Script::listAirportsByName},
-            {makeBold("Search closest airport"), &Script::listClosestAirports},
+            {makeBold("Search Airport by Code"), &Script::airportStatisticsByCode},
+            {makeBold("Search Airport by Name"), &Script::listAirportsByAirportName},
+            {makeBold("Search Airport by City's name"), &Script::listAirportsByCityName},
+            {makeBold("Search Airport by Country's name"), &Script::listAirportsByCountryName},
+            {makeBold("Search Closest Airport"), &Script::listClosestAirports},
             {"[Back]", &Script::actionGoBack}
     };
 
@@ -110,12 +113,12 @@ void Script::airportStatistics() {
 
     while (!exitSubMenu) {
         clearScreen();
-        drawBox("Airport Statistics");
+        drawBox("AIRPORT STATISTICS");
         for (int i = 0; i < airportStatistics.size(); i++) {
             cout << i + 1 << ". " << airportStatistics[i].label << endl;
         }
         int choice;
-        cout << "Enter your choice: ";
+        cout << "\nEnter your choice: ";
         if (!(cin >> choice)) {
             // Invalid input (not an integer)
             cin.clear();
@@ -123,7 +126,7 @@ void Script::airportStatistics() {
             continue;
         }
         clearScreen();
-        if (choice == 4) {
+        if (choice == 6) {
             exitSubMenu = true;
         } else if (choice >= 1 && choice <= airportStatistics.size()) {
             (this->*airportStatistics[choice - 1].action)();
@@ -133,6 +136,7 @@ void Script::airportStatistics() {
 
 void Script::airportStatisticsByCode() {
     clearScreen();
+    drawBox("Search Airport by Airport's code");
     cout << "Enter airport code: ";
     string airportCode;
     cin >> airportCode;
@@ -148,7 +152,7 @@ void Script::airportStatisticsByCode() {
             cout << "\n";
 
             int choice;
-            cout << "Enter your choice: ";
+            cout << "\nEnter your choice: ";
             if (!(cin >> choice)) {
                 // Invalid input (not an integer)
                 cin.clear();
@@ -171,65 +175,61 @@ void Script::airportStatisticsByCode() {
     backToMenu();
 }
 
-void Script::listAirportsByName() {
-    clearScreen();
-    drawBox("Search airports");
-    cout << "1. By airport name" << endl;
-    cout << "2. By city name" << endl;
-    cout << "3. By country name" << endl;
-    cout << "4. [Back]" << endl;
+void Script::listAirportsByAirportName() {
+
+    drawBox("Search Airport by Airport's name");
+    cout << "Enter airport name: ";
+    string name;
+    cin >> name;
+    auto airports = listAirports.findAirportsByAirportName(name);
+    cout << "Found " << makeBold(airports.size()) << " airport(s) containing " << "\'" << makeBold(name) << "\' in name" << endl;
     cout << "\n";
-    cout << "Enter your choice: ";
-    int choice;
-    int index = 1;
-    cin >> choice;
-    if (choice == 1) {
-        clearScreen();
-        cout << "Enter airport name: ";
-        string name;
-        cin >> name;
-        auto airports = listAirports.findAirportsByAirportName(name);
-        cout << "Found " << makeBold(airports.size()) << " airport(s) containing " << "\'" << makeBold(name) << "\' in name: " << endl;
-        cout << "\n";
-        for (auto a : airports) {
-            auto info = a->getInfo();
-            cout << index++ << ". ";
-            printAirportInfoOneline(info);
-        }
-    } else if (choice == 2) {
-        clearScreen();
-        cout << "Enter city name: ";
-        string name;
-        cin >> name;
-        auto airports = listAirports.findAirportsByCityName(name);
-        cout << "Found " << makeBold(airports.size()) << " airport(s) in " << "\'" << makeBold(name) << "\': " << endl;
-        cout << "\n";
-        for (auto a : airports) {
-            auto info = a->getInfo();
-            cout << index++ << ". ";
-            printAirportInfoOneline(info);
-        }
-    } else if (choice == 3) {
-        clearScreen();
-        cout << "Enter country name: ";
-        string name;
-        cin >> name;
-        auto airports = listAirports.findAirportsByCountryName(name);
-        cout << "Found " << makeBold(airports.size()) << " airport(s) in " << "\'" << makeBold(name) << "\': " << endl;
-        cout << "\n";
-        for (auto a : airports) {
-            auto info = a->getInfo();
-            cout << index++ << ". ";
-            printAirportInfoOneline(info);
-        }
-    } else if (choice == 4) {
-        return;
+    int i = 1;
+    for (auto a : airports) {
+        auto info = a->getInfo();
+        cout << i++ << ". [" << info.getCode() << "] " << info.getName() << ", " << info.getCity() << ", "
+             << info.getCountry() << endl;
+    }
+    backToMenu();
+}
+
+void Script::listAirportsByCityName() {
+    drawBox("Search Airport by City's name");
+    cout << "Enter city name: ";
+    string name;
+    cin >> name;
+    auto airports = listAirports.findAirportsByCityName(name);
+    cout << "Found " << makeBold(airports.size()) << " airport(s) in " << "\'" << makeBold(name) << "\'" << endl;
+    cout << "\n";
+    int i = 1;
+    for (auto a : airports) {
+        auto info = a->getInfo();
+        cout << i++ << ". [" << info.getCode() << "] " << info.getName() << ", " << info.getCity() << ", "
+             << info.getCountry() << endl;
+    }
+    backToMenu();
+}
+
+void Script::listAirportsByCountryName() {
+    drawBox("Search Airport by Country's name");
+    cout << "Enter country name: ";
+    string name;
+    cin >> name;
+    auto airports = listAirports.findAirportsByCountryName(name);
+    cout << "Found " << makeBold(airports.size()) << " airport(s) in " << "\'" << makeBold(name) << "\'" << endl;
+    cout << "\n";
+    int i = 1;
+    for (auto a : airports) {
+        auto info = a->getInfo();
+        cout << i++ << ". [" << info.getCode() << "] " << info.getName() << ", " << info.getCity() << ", "
+             << info.getCountry() << endl;
     }
     backToMenu();
 }
 
 void Script::listClosestAirports() {
     clearScreen();
+    drawBox("Search closest Airport");
     double lat, lon;
     cout << "Enter latitude: ";
     cin >> lat;
@@ -274,6 +274,8 @@ void Script::destinationsAvailableWithLayOvers(Vertex<Airport>* airport) {
 
 void Script::givenAirportStatistics(Vertex<Airport> *airport) {
     clearScreen();
+    drawBox("Other Statistics");
+
     cout << "- Flight routes out of this airport: " << makeBold(airport->getAdj().size()) << endl;
     cout << "- Flights out of this airport: " << makeBold(consult.searchNumberOfFlightsOutOfAirport(airport)) << endl;
     cout << "- Flights out of this airport (from different airlines): " << makeBold(consult.searchNumberOfFlightsOutOfAirportFromDifferentAirlines(airport)) << endl;
@@ -303,12 +305,12 @@ void Script::globalNumber() {
 
     while (!exitSubMenu) {
         clearScreen();
-        drawBox("Global Statistics");
+        drawBox("GLOBAL STATISTICS");
         for (int i = 0; i < globalStatistics.size(); i++) {
             cout << i + 1 << ". " << globalStatistics[i].label << endl;
         }
         int choice;
-        cout << "Enter your choice: ";
+        cout << "\nEnter your choice: ";
         if (!(cin >> choice)) {
             // Invalid input (not an integer)
             cin.clear();
@@ -325,17 +327,17 @@ void Script::globalNumber() {
 }
 
 void Script::numberOfAirports() {
-    cout << "Global number of airports: " << makeBold(consult.searchNumberOfAirports()) << endl;
+    cout << "Global Number of Airports: " << consult.searchNumberOfAirports() << endl;
     backToMenu();
 }
 
 void Script::numberOfFlights() {
-    cout << "Global number of available flights: " << makeBold(consult.searchNumberOfAvailableFlights()) << endl;
+    cout << "Global Number of Available Flights: " << consult.searchNumberOfAvailableFlights() << endl;
     backToMenu();
 }
 
 void Script::numberOfFlightRoutes() {
-    cout << "Global number of available flight routes: " << makeBold(consult.searchNumberOfAvailableFlightRoutes()) << endl;
+    cout << "Global Number of Available Flight Routes: " << consult.searchNumberOfAvailableFlightRoutes() << endl;
     backToMenu();
 }
 
