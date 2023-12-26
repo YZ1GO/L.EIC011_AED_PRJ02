@@ -189,28 +189,87 @@ public:
      */
     void setFlightsFrom(int n);
 
+    /**
+    * @brief Grants the Graph class access to private members of Vertex.
+    *
+    * Allows the Graph class to access private and protected members of the Vertex class,
+    * fostering a close relationship between the two classes for efficient graph operations.
+    */
     friend class Graph<T>;
 };
 
+/**
+ * @class Edge
+ * @brief Class representing an edge in a graph connecting two vertices.
+ *
+ * An Edge object defines a connection between two vertices in a graph.
+ * It holds information about the destination vertex, distance, and associated airlines.
+ * @tparam T The data type of the vertex.
+ */
 template <class T>
 class Edge {
-    Vertex<T>* dest;
-    double distance;
-    std::set<Airline> airlines;
+    Vertex<T>* dest;            ///< Pointer to the destination vertex.
+    double distance;            ///< The distance between source and destination vertices in kilometers.
+    std::set<Airline> airlines; ///< The set of airlines associated with this edge.
 
 public:
+    /**
+     * @brief Constructor for the Edge class.
+     * @param d Pointer to the destination vertex.
+     * @param distance The distance to the destination vertex.
+     */
     Edge(Vertex<T> *d, double distance);
 
+    /**
+     * @brief Retrieves the destination vertex of this edge.
+     * @return Pointer to the destination vertex.
+     */
     Vertex<T> *getDest() const;
+
+    /**
+     * @brief Sets the destination vertex of this edge.
+     * @param dest Pointer to the destination vertex.
+     */
     void setDest(Vertex<T> *dest);
 
+    /**
+     * @brief Retrieves the set of airlines associated with this edge.
+     * @return Constant reference to the set of airlines.
+     */
     const std::set<Airline>& getAirlines() const;
+
+    /**
+     * @brief Adds an airline to the set associated with this edge.
+     * @param airline The airline to add.
+     */
     void addAirline(const Airline& airline);
 
+    /**
+     * @brief Retrieves the distance of this edge.
+     * @return The distance between vertices.
+     */
     double getDistance() const;
+
+    /**
+     * @brief Sets the distance of this edge.
+     * @param distance The distance between vertices.
+     */
     void setDistance(double distance);
 
+    /**
+     * @brief Grants the Graph class access to private members of Edge.
+     *
+     * This friendship declaration allows the Graph class to access private and protected members of the Edge class,
+     * enabling efficient graph operations and maintaining a close relationship between the classes.
+     */
     friend class Graph<T>;
+
+    /**
+     * @brief Grants the Vertex class access to private members of Edge.
+     *
+     * This friendship declaration allows the Vertex class to access private and protected members of the Edge class,
+     * facilitating interactions necessary for graph manipulation and traversal.
+     */
     friend class Vertex<T>;
 };
 
