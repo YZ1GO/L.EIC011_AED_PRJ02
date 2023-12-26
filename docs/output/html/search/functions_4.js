@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['findvertex_86',['findVertex',['../classGraph.html#a8b7b7465fbfd562e2a469f90a437ab75',1,'Graph']]]
+  ['edge_106',['Edge',['../classEdge.html#ab98cc24bd7355eb1c39ffca6fac0c408',1,'Edge']]]
 ];

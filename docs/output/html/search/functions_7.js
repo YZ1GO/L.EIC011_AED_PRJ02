@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['operator_3c_108',['operator&lt;',['../classAirline.html#ad316e77d2a6222ce649a000325713cef',1,'Airline']]],
-  ['operator_3d_3d_109',['operator==',['../classAirport.html#a2d93e2cadbdb3ed9114aff48aa0bac5c',1,'Airport::operator==()'],['../classAirline.html#aab550db1265c3df4f66b90c2dea5f6cc',1,'Airline::operator==()']]]
+  ['isprocessing_127',['isProcessing',['../classVertex.html#aaa41dfa4ce1a19b4e529cc6cdc23b764',1,'Vertex']]],
+  ['isvisited_128',['isVisited',['../classVertex.html#aa2bb17f6ebd98a67f8da1f689b22fadc',1,'Vertex']]]
 ];

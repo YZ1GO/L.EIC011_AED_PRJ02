@@ -1,3 +1,14 @@
+/**
+ * @file Consult.h
+ * @brief Header file providing functionalities for analyzing air travel flight data.
+ *
+ * This file defines the Consult class, which offers various methods to perform analyses and queries
+ * on airport-related data using a provided graph structure. It includes functionalities such as
+ * counting flights per city, per airline, available destinations, traffic statistics, finding paths
+ * between airports, and more. Additionally, it aids in deriving insightful information and metrics
+ * from airport-related datasets.
+ */
+
 #ifndef AED_AIRPORTS_CONSULT_H
 #define AED_AIRPORTS_CONSULT_H
 
@@ -10,10 +21,6 @@
 /**
  * @class Consult
  * @brief Provides functionalities to perform various queries and analyses on Air Travel Flight data.
- *
- * The Consult class offers methods to conduct analyses and queries on airport-related data.
- * It uses the provided graph structure to perform operations like searching for flights per city,
- * per airline, available destinations, traffic statistics, finding paths between airports, etc.
  */
 class Consult {
 private:
