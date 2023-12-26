@@ -464,5 +464,34 @@ void Script::essentialAirports() {
 }
 
 void Script::bestFlightOption() {
+    vector<MenuItem> bestFlight = {
+            {makeBold("Airport"), &Script::searchAirportsMenu},
+            {makeBold("City"), &Script::numberOfFlights},
+            {makeBold("Coordinates"), &Script::numberOfFlights},
+            {"[Back]", &Script::actionGoBack}
+    };
 
+    bool exitSubMenu = false;
+
+    while (!exitSubMenu) {
+        clearScreen();
+        drawBox("SOURCE");
+        for (int i = 0; i < bestFlight.size(); i++) {
+            cout << i + 1 << ". " << bestFlight[i].label << endl;
+        }
+        int choice;
+        cout << "\nChoose your source: ";
+        if (!(cin >> choice)) {
+            // Invalid input (not an integer)
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+        clearScreen();
+        if (choice == 4) {
+            exitSubMenu = true;
+        } else if (choice >= 1 && choice <= bestFlight.size()) {
+            (this->*bestFlight[choice - 1].action)();
+        }
+    }
 }

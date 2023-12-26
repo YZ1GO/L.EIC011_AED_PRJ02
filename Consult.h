@@ -50,7 +50,7 @@ public:
 
     void searchMaxTripAndCorrespondingPairsOfAirports();
 
-    vector<vector<Airport>> searchSmallestPathBetweenAirports(const Airport& source, const Airport& target);
+    vector<vector<Airport>> searchSmallestPathBetweenAirports(Vertex<Airport>* source, Vertex<Airport>* target);
 };
 
 
