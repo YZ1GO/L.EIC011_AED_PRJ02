@@ -429,7 +429,22 @@ void Script::countriesFlownToFromCity() {
 void Script::maximumTrip() {
     cout << "Processing..." << endl;
     cout << "Please wait a few seconds..." << endl;
-    consult.searchMaxTripAndCorrespondingPairsOfAirports();
+
+    int diameter;
+    auto airportPaths = consult.searchMaxTripAndCorrespondingPairsOfAirports(diameter);
+    drawBox("Maximum Trip");
+    cout << "Maximum trip: " << makeBold(diameter) << endl;
+    cout << "Paths of the trip(s): " << endl;
+    for (const auto& path : airportPaths) {
+        for (size_t i = 0; i < path.size(); ++i) {
+            cout << path[i]->getInfo().getCode();
+            if (i < path.size() - 1) {
+                cout << " -> ";
+            }
+        }
+        cout << endl;
+    }
+
     backToMenu();
 }
 
