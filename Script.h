@@ -46,7 +46,9 @@ private:
 
     void airportStatistics();
     void airportStatisticsByCode();
-    void listAirportsByName();
+    void listAirportsByAirportName();
+    void listAirportsByCityName();
+    void listAirportsByCountryName();
     void listClosestAirports();
 };
 
