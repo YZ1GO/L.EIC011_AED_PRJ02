@@ -7,6 +7,15 @@ COMMON_CPP_FILES= ParseData.cpp Utilities.cpp OutputData.cpp Consult.cpp ListAir
 # Your target program
 PROGRAMS=run
 
+# Doxygen configuration file
+DOXYGEN_CONFIG = docs/Doxyfile
+
+# Target directory for Doxygen documentation
+DOXYGEN_OUTPUT_DIR = docs/output
+
+# Target for Doxygen documentation
+DOXYGEN_TARGET = $(DOXYGEN_OUTPUT_DIR)/html/index.html
+
 all: $(PROGRAMS)
 
 run: $(COMMON_CPP_FILES) main.cpp
