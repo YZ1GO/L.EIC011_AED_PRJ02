@@ -26,7 +26,7 @@ struct Coordinates {
 
 /**
  * @class Airport
- * @brief Class to represent a airport.
+ * @brief Class representing a airport.
  */
 class Airport {
 private:
@@ -54,60 +54,60 @@ public:
             : code(c), name(n), city(ci), country(co), location(l) {}
 
     /**
-     * @brief Getter method to retrieve the airport code.
+     * @brief Retrieves the airport code.
      * @return The airport code.
      */
     std::string getCode() const { return code; }
 
     /**
-     * @brief Setter method to set the airport code.
+     * @brief Sets the airport code.
      * @param c The airport code.
      */
     void setCode(const std::string& c) { code = c; }
 
     /**
-     * @brief Getter method to retrieve the airport name.
+     * @brief Retrieves the airport name.
      * @return The airport name.
      */
     std::string getName() const { return name; }
 
     /**
-     * @brief Setter method to set the airport name.
+     * @brief Sets the airport name.
      * @param n The airport name.
      */
     void setName(const std::string& n) { name = n; }
 
     /**
-     * @brief Getter method to retrieve the city where the airport is located.
+     * @brief Retrieves the city where the airport is located.
      * @return The city where the airport is located.
      */
     std::string getCity() const { return city; }
 
     /**
-     * @brief Setter method to set the city where the airport is located.
+     * @brief Sets the city where the airport is located.
      * @param ci The city where the airport is located.
      */
     void setCity(const std::string& ci) { city = ci; }
 
     /**
-     * @brief Getter method to retrieve the country where the airport is located.
+     * @brief Retrieves the country where the airport is located.
      * @return The country where the airport is located.
      */
     std::string getCountry() const { return country; }
     /**
-     * @brief Setter method to set the country where the airport is located.
+     * @brief Sets the country where the airport is located.
      * @param co The country where the airport is located.
      */
     void setCountry(const std::string& co) { country = co; }
 
     /**
-     * @brief Getter method to retrieve the geographic coordinates of the airport.
+     * @brief Retrieves the geographic coordinates of the airport.
      * @return The geographic coordinates of the airport.
      */
     Coordinates getLocation() const { return location; }
 
     /**
-     * Setter method to set the geographic coordinates of the airport.
+     * Sets the geographic coordinates of the airport.
      * @param latitude The latitude value.
      * @param longitude The longitude value.
      */
@@ -133,7 +133,7 @@ public:
 
 /**
  * @class Airline
- * @brief Class to represent a airline.
+ * @brief Class representing a airline.
  */
 class Airline {
 private:
@@ -159,49 +159,49 @@ public:
             : code(c), name(n), callsign(cs), country(co) {}
 
     /**
-     * @brief Getter method to retrieve the airline code.
+     * @brief Retrieves the airline code.
      * @return The airline code.
      */
     std::string getCode() const { return code; }
 
     /**
-     * @brief Setter method to set the airline code.
+     * @brief Sets the airline code.
      * @param c The airline code.
      */
     void setCode(const std::string& c) { code = c; }
 
     /**
-     * @brief Getter method to retrieve the airline official name.
+     * @brief Retrieves the airline official name.
      * @return The airline name.
      */
     std::string getName() const { return name; }
 
     /**
-     * @brief Setter method to set the airline name.
+     * @brief Sets the airline name.
      * @param n The airline name.
      */
     void setName(const std::string& n) { name = n; }
 
     /**
-     * @brief Getter method to retrieve the airline callsign.
+     * @brief Retrieves the airline callsign.
      * @return The airline callsign.
      */
     std::string getCallsign() const { return callsign; }
 
     /**
-     * @brief Setter method to set the airline callsign.
+     * @brief Sets the airline callsign.
      * @param cs The airline callsign.
      */
     void setCallsign(const std::string& cs) { callsign = cs; }
 
     /**
-     * @brief Getter method to retrieve the airline registry country.
+     * @brief Retrieves the airline registry country.
      * @return The airline registry country.
      */
     std::string getCountry() const { return country; }
 
     /**
-     * @brief Setter method to set the airline registry country.
+     * @brief Sets the airline registry country.
      * @param co The airline registry country.
      */
     void setCountry(const std::string& co) { country = co; }
