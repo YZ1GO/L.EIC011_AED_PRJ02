@@ -252,7 +252,7 @@ vector<pair<Airport,int>> Consult::searchTopKAirportGreatestAirTrafficCapacity(c
     return res;
 }
 
-vector <pair<Airport,int>> Consult::topTrafficCapacityAirports() {
+vector<pair<Airport,int>> Consult::topTrafficCapacityAirports() {
     vector<pair<Airport,int>> res;
 
     for (const auto airport : consultGraph.getVertexSet()) {
@@ -312,16 +312,16 @@ void Consult::dfsEssentialAirports(Vertex<Airport> *v, stack<string> &s, unorder
 
 void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
     int diameter = 0;
-    vector<vector<Airport>> airportPaths;
+    vector<vector<Vertex<Airport>*>> airportPaths;
 
     for (const auto& airport : consultGraph.getVertexSet()) {
         unordered_map<Vertex<Airport>*, int> distanceToOtherAirports;
-        unordered_map<Vertex<Airport>*, vector<Airport>> pathToOtherAirports;
+        unordered_map<Vertex<Airport>*, vector<Vertex<Airport>*>> pathToOtherAirports;
         for (const auto& v : consultGraph.getVertexSet())
             v->setVisited(false);
 
         distanceToOtherAirports[airport] = 0;
-        pathToOtherAirports[airport] = {airport->getInfo()};
+        pathToOtherAirports[airport] = {airport};
 
         queue<Vertex<Airport>*> q;
         q.push(airport);
@@ -336,7 +336,7 @@ void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
                 if (!d->isVisited()) {
                     distanceToOtherAirports[d] = distanceToOtherAirports[a] + 1;
                     pathToOtherAirports[d] = pathToOtherAirports[a];
-                    pathToOtherAirports[d].emplace_back(d->getInfo());
+                    pathToOtherAirports[d].emplace_back(d);
                     q.push(d);
                     d->setVisited(true);
                 }
@@ -363,7 +363,7 @@ void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
     cout << "Paths of the trip(s): " << endl;
     for (const auto& path : airportPaths) {
         for (size_t i = 0; i < path.size(); ++i) {
-            cout << path[i].getCode();
+            cout << path[i]->getInfo().getCode();
             if (i < path.size() - 1) {
                 cout << " -> ";
             }
