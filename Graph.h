@@ -372,6 +372,8 @@ public:
      * @return Vector containing the topologically sorted vertices.
      */
     vector<T> topsort() const;
+
+    void setupInDegreeAndOutDegree();
 };
 
 /****************** Constructors and functions ********************/
@@ -535,6 +537,21 @@ bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
     return false;
 }
 
+template <class T>
+void Graph<T>::setupInDegreeAndOutDegree() {
+    for (auto& v : vertexSet) {
+        v->inDegree = 0;
+        v->outDegree = v->adj.size();
+    }
+
+    for (auto& v : vertexSet) {
+        for (auto& e : v->adj) {
+            auto w = e.dest;
+            w->inDegree = w->inDegree + 1;
+        }
+    }
+}
+
 /****************** DFS ********************/
 
 template <class T>
@@ -609,24 +626,24 @@ vector<T> Graph<T>::topsort() const {
     queue<Vertex<T>> q;
 
     for (auto v : vertexSet)
-        v->indegree = 0;
+        v->inDegree = 0;
     for (auto v : vertexSet) {
         for (auto &e : v->getAdj()) {
             auto d = e.dest;
-            d->indegree++;
+            d->inDegree++;
         }
     }
 
     for (auto v : vertexSet) {
-        if (v->indegree == 0)
+        if (v->inDegree == 0)
             q.push(*v);
     }
 
     while (!q.empty()) {
         auto vertex = q.front();
         for (auto &e : vertex.getAdj()) {
-            e.dest->indegree--;
-            if (e.dest->indegree == 0)
+            e.dest->inDegree--;
+            if (e.dest->inDegree == 0)
                 q.push(*e.dest);
         }
         q.pop();

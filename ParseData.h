@@ -4,7 +4,6 @@
 #include "Data.h"
 #include "Graph.h"
 #include <fstream>
-#include <set>
 
 class ParseData {
 private:
@@ -19,7 +18,6 @@ public:
     ParseData(const std::string& airportsCSV, const std::string& airlinesCSV, const std::string& flightsCSV);
     const Graph<Airport>& getDataGraph() const { return dataGraph; }
     Airline getAirline(const std::string& airlineCode);
-    void setupIndegreeOutdegree(); //this function should be in Graph class
 };
 
 
