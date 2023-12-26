@@ -1,29 +1,148 @@
 \hypertarget{classListAirports}{}\doxysection{List\+Airports Class Reference}
 \label{classListAirports}\index{ListAirports@{ListAirports}}
+
+
+Provides methods to search for airports within a graph.  
+
+
+
+
+{\ttfamily \#include $<$List\+Airports.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classListAirports_ae2db4e1f8dc83dacb6d2078b409a0b09}{List\+Airports}} (const \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \&data\+Graph)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classListAirports}{List\+Airports}} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ \mbox{\hyperlink{classListAirports_a26fe8d26492d13ec4101d3f4a731e84c}{find\+Airport\+By\+Code}} (const string \&airport\+Code)
+\begin{DoxyCompactList}\small\item\em Finds an airport vertex based on the airport code. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ \mbox{\hyperlink{classListAirports_a3fb8d7820df7765df22d42b523f95cd2}{find\+Airports\+By\+Airport\+Name}} (const string \&search\+Name)
+\begin{DoxyCompactList}\small\item\em Finds airports based on the airport name. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ \mbox{\hyperlink{classListAirports_a2e4808a365e96d9b3ef62c5f49efd2e7}{find\+Airports\+By\+City\+Name}} (const string \&search\+Name)
+\begin{DoxyCompactList}\small\item\em Finds airports based on the city name. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ \mbox{\hyperlink{classListAirports_a46f0711e6fd133a1f296ef15ed336519}{find\+Airports\+By\+Country\+Name}} (const string \&search\+Name)
+\begin{DoxyCompactList}\small\item\em Finds airports based on the country name. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ \mbox{\hyperlink{classListAirports_af098cfa1ad84782b5c017fcbae1d0187}{find\+Closest\+Airports}} (const \mbox{\hyperlink{structCoordinates}{Coordinates}} \&coordinates)
+\begin{DoxyCompactList}\small\item\em Finds the closest airports to given geographical coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides methods to search for airports within a graph. 
+
+The \mbox{\hyperlink{classListAirports}{List\+Airports}} class offers functionalities to find airports based on various attributes, such as airport code, name, city, country, and geographical coordinates. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classListAirports_ae2db4e1f8dc83dacb6d2078b409a0b09}\label{classListAirports_ae2db4e1f8dc83dacb6d2078b409a0b09}} 
-{\bfseries List\+Airports} (const \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \&data\+Graph)
-\item 
+\index{ListAirports@{ListAirports}!ListAirports@{ListAirports}}
+\index{ListAirports@{ListAirports}!ListAirports@{ListAirports}}
+\doxysubsubsection{\texorpdfstring{ListAirports()}{ListAirports()}}
+{\footnotesize\ttfamily List\+Airports\+::\+List\+Airports (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \&}]{data\+Graph }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{classListAirports}{List\+Airports}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Graph} & Reference to the graph containing airport data. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classListAirports_a26fe8d26492d13ec4101d3f4a731e84c}\label{classListAirports_a26fe8d26492d13ec4101d3f4a731e84c}} 
-\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ {\bfseries find\+Airport\+By\+Code} (const string \&airport\+Code)
-\item 
+\index{ListAirports@{ListAirports}!findAirportByCode@{findAirportByCode}}
+\index{findAirportByCode@{findAirportByCode}!ListAirports@{ListAirports}}
+\doxysubsubsection{\texorpdfstring{findAirportByCode()}{findAirportByCode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ List\+Airports\+::find\+Airport\+By\+Code (\begin{DoxyParamCaption}\item[{const string \&}]{airport\+Code }\end{DoxyParamCaption})}
+
+
+
+Finds an airport vertex based on the airport code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em airport\+Code} & The code of the airport to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the airport vertex if found, nullptr otherwise. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classListAirports_a3fb8d7820df7765df22d42b523f95cd2}\label{classListAirports_a3fb8d7820df7765df22d42b523f95cd2}} 
-vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ {\bfseries find\+Airports\+By\+Airport\+Name} (const string \&search\+Name)
-\item 
+\index{ListAirports@{ListAirports}!findAirportsByAirportName@{findAirportsByAirportName}}
+\index{findAirportsByAirportName@{findAirportsByAirportName}!ListAirports@{ListAirports}}
+\doxysubsubsection{\texorpdfstring{findAirportsByAirportName()}{findAirportsByAirportName()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ List\+Airports\+::find\+Airports\+By\+Airport\+Name (\begin{DoxyParamCaption}\item[{const string \&}]{search\+Name }\end{DoxyParamCaption})}
+
+
+
+Finds airports based on the airport name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em search\+Name} & The name of the airport(s) to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of airport vertices matching the airport name. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classListAirports_a2e4808a365e96d9b3ef62c5f49efd2e7}\label{classListAirports_a2e4808a365e96d9b3ef62c5f49efd2e7}} 
-vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ {\bfseries find\+Airports\+By\+City\+Name} (const string \&search\+Name)
-\item 
+\index{ListAirports@{ListAirports}!findAirportsByCityName@{findAirportsByCityName}}
+\index{findAirportsByCityName@{findAirportsByCityName}!ListAirports@{ListAirports}}
+\doxysubsubsection{\texorpdfstring{findAirportsByCityName()}{findAirportsByCityName()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ List\+Airports\+::find\+Airports\+By\+City\+Name (\begin{DoxyParamCaption}\item[{const string \&}]{search\+Name }\end{DoxyParamCaption})}
+
+
+
+Finds airports based on the city name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em search\+Name} & The name of the city associated with the airport(s) to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of airport vertices in the specified city. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classListAirports_a46f0711e6fd133a1f296ef15ed336519}\label{classListAirports_a46f0711e6fd133a1f296ef15ed336519}} 
-vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ {\bfseries find\+Airports\+By\+Country\+Name} (const string \&search\+Name)
-\item 
+\index{ListAirports@{ListAirports}!findAirportsByCountryName@{findAirportsByCountryName}}
+\index{findAirportsByCountryName@{findAirportsByCountryName}!ListAirports@{ListAirports}}
+\doxysubsubsection{\texorpdfstring{findAirportsByCountryName()}{findAirportsByCountryName()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ List\+Airports\+::find\+Airports\+By\+Country\+Name (\begin{DoxyParamCaption}\item[{const string \&}]{search\+Name }\end{DoxyParamCaption})}
+
+
+
+Finds airports based on the country name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em search\+Name} & The name of the country associated with the airport(s) to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of airport vertices in the specified country. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classListAirports_af098cfa1ad84782b5c017fcbae1d0187}\label{classListAirports_af098cfa1ad84782b5c017fcbae1d0187}} 
-vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ {\bfseries find\+Closest\+Airports} (const \mbox{\hyperlink{structCoordinates}{Coordinates}} \&coordinates)
-\end{DoxyCompactItemize}
+\index{ListAirports@{ListAirports}!findClosestAirports@{findClosestAirports}}
+\index{findClosestAirports@{findClosestAirports}!ListAirports@{ListAirports}}
+\doxysubsubsection{\texorpdfstring{findClosestAirports()}{findClosestAirports()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ List\+Airports\+::find\+Closest\+Airports (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structCoordinates}{Coordinates}} \&}]{coordinates }\end{DoxyParamCaption})}
+
+
+
+Finds the closest airports to given geographical coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coordinates} & The coordinates (latitude and longitude) for which the closest airports are searched. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of airport vertices closest to the specified coordinates. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-List\+Airports.\+h\item 
+\mbox{\hyperlink{ListAirports_8h}{List\+Airports.\+h}}\item 
 List\+Airports.\+cpp\end{DoxyCompactItemize}

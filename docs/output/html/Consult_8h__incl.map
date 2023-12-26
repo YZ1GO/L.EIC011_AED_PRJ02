@@ -1,14 +1,13 @@
 <map id="Consult.h" name="Consult.h">
-<area shape="rect" id="node1" title="Header file providing functionalities for analyzing air travel flight data." alt="" coords="785,5,868,32"/>
-<area shape="rect" id="node2" href="$ParseData_8h_source.html" title=" " alt="" coords="570,80,670,107"/>
-<area shape="rect" id="node19" title=" " alt="" coords="695,80,745,107"/>
-<area shape="rect" id="node20" title=" " alt="" coords="769,80,884,107"/>
-<area shape="rect" id="node21" title=" " alt="" coords="908,80,967,107"/>
-<area shape="rect" id="node22" title=" " alt="" coords="991,80,1078,107"/>
+<area shape="rect" id="node1" title="Header file providing functionalities for analyzing air travel flight data." alt="" coords="703,5,785,32"/>
+<area shape="rect" id="node2" href="$ParseData_8h.html" title="Header file containing functionalities to parse data related to the Air Travel Flights." alt="" coords="487,80,587,107"/>
+<area shape="rect" id="node19" title=" " alt="" coords="612,80,663,107"/>
+<area shape="rect" id="node20" title=" " alt="" coords="687,80,801,107"/>
+<area shape="rect" id="node21" title=" " alt="" coords="825,80,884,107"/>
+<area shape="rect" id="node22" title=" " alt="" coords="909,80,995,107"/>
 <area shape="rect" id="node3" href="$Data_8h.html" title="Header file containing structures and classes related to airport and airline data representation." alt="" coords="265,229,330,256"/>
-<area shape="rect" id="node11" href="$Graph_8h.html" title="Header file containing structures and classes related to graph representation." alt="" coords="546,155,619,181"/>
-<area shape="rect" id="node16" title=" " alt="" coords="936,229,979,256"/>
-<area shape="rect" id="node18" title=" " alt="" coords="695,155,769,181"/>
+<area shape="rect" id="node11" href="$Graph_8h.html" title="Header file containing structures and classes related to graph representation." alt="" coords="501,155,574,181"/>
+<area shape="rect" id="node18" title=" " alt="" coords="598,155,671,181"/>
 <area shape="rect" id="node4" href="$Utilities_8h.html" title="Contains utility functions for string manipulation and geographical calculations." alt="" coords="104,304,189,331"/>
 <area shape="rect" id="node9" title=" " alt="" coords="213,304,293,331"/>
 <area shape="rect" id="node10" title=" " alt="" coords="318,304,381,331"/>
@@ -20,5 +19,6 @@
 <area shape="rect" id="node13" title=" " alt="" coords="551,229,614,256"/>
 <area shape="rect" id="node14" title=" " alt="" coords="638,229,695,256"/>
 <area shape="rect" id="node15" title=" " alt="" coords="720,229,763,256"/>
-<area shape="rect" id="node17" title=" " alt="" coords="787,229,911,256"/>
+<area shape="rect" id="node16" title=" " alt="" coords="787,229,829,256"/>
+<area shape="rect" id="node17" title=" " alt="" coords="854,229,978,256"/>
 </map>

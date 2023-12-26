@@ -33,7 +33,9 @@ vector$<$ T $>$ \mbox{\hyperlink{classGraph_a510522c8221b321a82e687fe2f2cb484}{d
 vector$<$ T $>$ \mbox{\hyperlink{classGraph_aa47a4130165550e208e7a063fce6983a}{bfs}} (const T \&source) const
 \begin{DoxyCompactList}\small\item\em Performs a breadth-\/first search (BFS) starting from a specific vertex in the graph. \end{DoxyCompactList}\item 
 vector$<$ T $>$ \mbox{\hyperlink{classGraph_af1d4affd1f886bf598d0f4cf4a0cb7cb}{topsort}} () const
-\begin{DoxyCompactList}\small\item\em Performs topological sorting of the graph using depth-\/first search (DFS). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Performs topological sorting of the graph using depth-\/first search (DFS). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_ac76ac8c9999e9696ffb836801603e0c2}{setup\+In\+Degree\+And\+Out\+Degree}} ()
+\begin{DoxyCompactList}\small\item\em Sets up the in\+Degree and out\+Degree of vertices in the graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -231,7 +233,18 @@ Removes a vertex from the graph based on the given information.
 \begin{DoxyReturn}{Returns}
 True if the vertex was removed successfully, false otherwise. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classGraph_af1d4affd1f886bf598d0f4cf4a0cb7cb}\label{classGraph_af1d4affd1f886bf598d0f4cf4a0cb7cb}} 
+\mbox{\Hypertarget{classGraph_ac76ac8c9999e9696ffb836801603e0c2}\label{classGraph_ac76ac8c9999e9696ffb836801603e0c2}} 
+\index{Graph$<$ T $>$@{Graph$<$ T $>$}!setupInDegreeAndOutDegree@{setupInDegreeAndOutDegree}}
+\index{setupInDegreeAndOutDegree@{setupInDegreeAndOutDegree}!Graph$<$ T $>$@{Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setupInDegreeAndOutDegree()}{setupInDegreeAndOutDegree()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classGraph}{Graph}}$<$ T $>$\+::setup\+In\+Degree\+And\+Out\+Degree}
+
+
+
+Sets up the in\+Degree and out\+Degree of vertices in the graph. 
+
+Calculates and assigns the in\+Degree and out\+Degree for each vertex in the graph. The in\+Degree of a vertex is the count of incoming edges, while the out\+Degree is the count of outgoing edges. This function iterates through all edges in the graph to update the in\+Degree and out\+Degree of each vertex. Note\+: This function assumes that the graph has been appropriately constructed with vertices and edges. \mbox{\Hypertarget{classGraph_af1d4affd1f886bf598d0f4cf4a0cb7cb}\label{classGraph_af1d4affd1f886bf598d0f4cf4a0cb7cb}} 
 \index{Graph$<$ T $>$@{Graph$<$ T $>$}!topsort@{topsort}}
 \index{topsort@{topsort}!Graph$<$ T $>$@{Graph$<$ T $>$}}
 \doxysubsubsection{\texorpdfstring{topsort()}{topsort()}}

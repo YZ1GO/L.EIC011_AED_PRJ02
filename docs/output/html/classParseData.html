@@ -69,22 +69,97 @@ $(function() {
 <div class="title">ParseData Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class responsible for parsing data from CSV files.  
+ <a href="classParseData.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="ParseData_8h_source.html">ParseData.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a432d4eecf2c8e08bad4dd6e30e908ee3"><td class="memItemLeft" align="right" valign="top"><a id="a432d4eecf2c8e08bad4dd6e30e908ee3"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ParseData</b> (const std::string &amp;airportsCSV, const std::string &amp;airlinesCSV, const std::string &amp;flightsCSV)</td></tr>
+<tr class="memitem:a432d4eecf2c8e08bad4dd6e30e908ee3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParseData.html#a432d4eecf2c8e08bad4dd6e30e908ee3">ParseData</a> (const std::string &amp;airportsCSV, const std::string &amp;airlinesCSV, const std::string &amp;flightsCSV)</td></tr>
+<tr class="memdesc:a432d4eecf2c8e08bad4dd6e30e908ee3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="classParseData.html" title="Class responsible for parsing data from CSV files.">ParseData</a> class.  <a href="classParseData.html#a432d4eecf2c8e08bad4dd6e30e908ee3">More...</a><br /></td></tr>
 <tr class="separator:a432d4eecf2c8e08bad4dd6e30e908ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1763dce3cb6b121cdbd16f44c89b8f4"><td class="memItemLeft" align="right" valign="top"><a id="aa1763dce3cb6b121cdbd16f44c89b8f4"></a>
-const <a class="el" href="classGraph.html">Graph</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getDataGraph</b> () const</td></tr>
+<tr class="memitem:aa1763dce3cb6b121cdbd16f44c89b8f4"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classGraph.html">Graph</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParseData.html#aa1763dce3cb6b121cdbd16f44c89b8f4">getDataGraph</a> () const</td></tr>
+<tr class="memdesc:aa1763dce3cb6b121cdbd16f44c89b8f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the constructed airport graph.  <a href="classParseData.html#aa1763dce3cb6b121cdbd16f44c89b8f4">More...</a><br /></td></tr>
 <tr class="separator:aa1763dce3cb6b121cdbd16f44c89b8f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0869cb782dcda4060f9939a159b1a345"><td class="memItemLeft" align="right" valign="top"><a id="a0869cb782dcda4060f9939a159b1a345"></a>
-<a class="el" href="classAirline.html">Airline</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getAirline</b> (const std::string &amp;airlineCode)</td></tr>
-<tr class="separator:a0869cb782dcda4060f9939a159b1a345"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f2c7eb210620ebd95df6fe41388b298"><td class="memItemLeft" align="right" valign="top"><a id="a5f2c7eb210620ebd95df6fe41388b298"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setupIndegreeOutdegree</b> ()</td></tr>
-<tr class="separator:a5f2c7eb210620ebd95df6fe41388b298"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class responsible for parsing data from CSV files. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a432d4eecf2c8e08bad4dd6e30e908ee3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a432d4eecf2c8e08bad4dd6e30e908ee3">&#9670;&nbsp;</a></span>ParseData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ParseData::ParseData </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>airportsCSV</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>airlinesCSV</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>flightsCSV</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor for <a class="el" href="classParseData.html" title="Class responsible for parsing data from CSV files.">ParseData</a> class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">airportsCSV</td><td>Path to the airports CSV file. </td></tr>
+    <tr><td class="paramname">airlinesCSV</td><td>Path to the airlines CSV file. </td></tr>
+    <tr><td class="paramname">flightsCSV</td><td>Path to the flights CSV file. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa1763dce3cb6b121cdbd16f44c89b8f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1763dce3cb6b121cdbd16f44c89b8f4">&#9670;&nbsp;</a></span>getDataGraph()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classGraph.html">Graph</a>&lt;<a class="el" href="classAirport.html">Airport</a>&gt;&amp; ParseData::getDataGraph </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the constructed airport graph. </p>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference to the constructed airport graph. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="ParseData_8h_source.html">ParseData.h</a></li>
 <li>ParseData.cpp</li>
