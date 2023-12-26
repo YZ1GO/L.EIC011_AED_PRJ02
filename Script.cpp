@@ -97,7 +97,7 @@ void Script::run() {
         } else if (mainChoice == 2) {
             while (true) {
                 vector<MenuItem> travelMenu = {
-                        {makeBold("Travel by given airline(s)")},
+                        {makeBold("Best flight option"), &Script::bestFlightOption},
                         {"[Back]", nullptr}
                 };
 
@@ -165,6 +165,7 @@ void Script::listAndChooseAirport(vector<Vertex<Airport> *> airports, const stri
             cout << "Found " << makeBold(airports.size()) << " airport(s) in " << "\'" << makeBold(name) << "\'" << endl;
         }
 
+        cout << "\n";
         int i = 1;
         for (auto a : airports) {
             auto info = a->getInfo();
@@ -460,4 +461,8 @@ void Script::essentialAirports() {
         cout << index++ << ". " << airport << endl;
     }
     backToMenu();
+}
+
+void Script::bestFlightOption() {
+
 }

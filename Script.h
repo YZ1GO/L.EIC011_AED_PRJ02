@@ -52,7 +52,8 @@ private:
     void searchAirportByCityName();
     void searchAirportByCountryName();
     void searchClosestAirport();
-    void travelByGivenAirlines();
+
+    void bestFlightOption();
 
 };
 
