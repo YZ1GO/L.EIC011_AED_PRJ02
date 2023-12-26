@@ -176,11 +176,11 @@ void Script::airportStatisticsByCode() {
 }
 
 void Script::listAirportsByAirportName() {
-
     drawBox("Search Airport by Airport's name");
     cout << "Enter airport name: ";
     string name;
     cin >> name;
+    cout << "\n";
     auto airports = listAirports.findAirportsByAirportName(name);
     cout << "Found " << makeBold(airports.size()) << " airport(s) containing " << "\'" << makeBold(name) << "\' in name" << endl;
     cout << "\n";
@@ -198,6 +198,7 @@ void Script::listAirportsByCityName() {
     cout << "Enter city name: ";
     string name;
     cin >> name;
+    cout << "\n";
     auto airports = listAirports.findAirportsByCityName(name);
     cout << "Found " << makeBold(airports.size()) << " airport(s) in " << "\'" << makeBold(name) << "\'" << endl;
     cout << "\n";
@@ -215,6 +216,7 @@ void Script::listAirportsByCountryName() {
     cout << "Enter country name: ";
     string name;
     cin >> name;
+    cout << "\n";
     auto airports = listAirports.findAirportsByCountryName(name);
     cout << "Found " << makeBold(airports.size()) << " airport(s) in " << "\'" << makeBold(name) << "\'" << endl;
     cout << "\n";
