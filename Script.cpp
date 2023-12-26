@@ -96,9 +96,11 @@ void Script::run() {
 
 void Script::airportStatistics() {
     vector<MenuItem> statisticsMenu = {
-            {makeBold("Find airport by code"), &Script::airportStatisticsByCode},
-            {makeBold("Search airport by name"), &Script::listAirportsByName},
-            {makeBold("Search closest airport"), &Script::listClosestAirports},
+            {makeBold("Search Airport by Code"), &Script::airportStatisticsByCode},
+            {makeBold("Search Airport by Name"), &Script::listAirportsByAirportName},
+            {makeBold("Search Airport by City's name"), &Script::listAirportsByCityName},
+            {makeBold("Search Airport by Country's name"), &Script::listAirportsByCountryName},
+            {makeBold("Search Closest Airport"), &Script::listClosestAirports},
             {"[Back]", &Script::actionGoBack}
     };
 
@@ -106,7 +108,7 @@ void Script::airportStatistics() {
 
     while (!exitSubMenu) {
         clearScreen();
-        drawBox("STATISTICS MENU");
+        drawBox("AIRPORT STATISTICS");
         for (int i = 0; i < statisticsMenu.size(); i++) {
             cout << i + 1 << ". " << statisticsMenu[i].label << endl;
         }
@@ -119,7 +121,7 @@ void Script::airportStatistics() {
             continue;
         }
         clearScreen();
-        if (choice == 4) {
+        if (choice == 6) {
             exitSubMenu = true;
         } else if (choice >= 1 && choice <= statisticsMenu.size()) {
             (this->*statisticsMenu[choice - 1].action)();
@@ -129,6 +131,7 @@ void Script::airportStatistics() {
 
 void Script::airportStatisticsByCode() {
     clearScreen();
+    drawBox("Search Airport by Airport's code");
     cout << "Enter airport code: ";
     string airportCode;
     cin >> airportCode;
@@ -167,57 +170,61 @@ void Script::airportStatisticsByCode() {
     backToMenu();
 }
 
-void Script::listAirportsByName() {
-    clearScreen();
-    cout << "1. By airport name" << endl;
-    cout << "2. By city name" << endl;
-    cout << "3. By country name" << endl;
-    cout << "4. [Back]" << endl;
-    cout << "\nEnter your choice: ";
-    int choice;
-    cin >> choice;
-    if (choice == 1) {
-        clearScreen();
-        cout << "Enter airport name: ";
-        string name;
-        cin >> name;
-        auto airports = listAirports.findAirportsByAirportName(name);
-        cout << "Found " << makeBold(airports.size()) << " airport(s) containing " << "\'" << makeBold(name) << "\' in name" << endl;
-        for (auto a : airports) {
-            auto info = a->getInfo();
-            cout << choice++ << ". [" << info.getCode() << "] " << info.getName() << ", " << info.getCity() << ", " << info.getCountry() << endl;
-        }
-    } else if (choice == 2) {
-        clearScreen();
-        cout << "Enter city name: ";
-        string name;
-        cin >> name;
-        auto airports = listAirports.findAirportsByCityName(name);
-        cout << "Found " << makeBold(airports.size()) << " airport(s) in " << "\'" << makeBold(name) << "\'" << endl;
-        for (auto a : airports) {
-            auto info = a->getInfo();
-            cout << choice++ << ". [" << info.getCode() << "] " << info.getName() << ", " << info.getCity() << ", " << info.getCountry() << endl;
-        }
-    } else if (choice == 3) {
-        clearScreen();
-        cout << "Enter country name: ";
-        string name;
-        cin >> name;
-        auto airports = listAirports.findAirportsByCountryName(name);
-        cout << "Found " << makeBold(airports.size()) << " airport(s) in " << "\'" << makeBold(name) << "\'" << endl;
-        cout << "\n";
-        for (auto a : airports) {
-            auto info = a->getInfo();
-            cout << choice++ << ". [" << info.getCode() << "] " << info.getName() << ", " << info.getCity() << ", " << info.getCountry() << endl;
-        }
-    } else if (choice == 4) {
-        return;
+void Script::listAirportsByAirportName() {
+
+    drawBox("Search Airport by Airport's name");
+    cout << "Enter airport name: ";
+    string name;
+    cin >> name;
+    auto airports = listAirports.findAirportsByAirportName(name);
+    cout << "Found " << makeBold(airports.size()) << " airport(s) containing " << "\'" << makeBold(name) << "\' in name" << endl;
+
+    int i = 1;
+    for (auto a : airports) {
+        auto info = a->getInfo();
+        cout << i++ << ". [" << info.getCode() << "] " << info.getName() << ", " << info.getCity() << ", "
+             << info.getCountry() << endl;
+    }
+    backToMenu();
+}
+
+void Script::listAirportsByCityName() {
+    drawBox("Search Airport by City's name");
+    cout << "Enter city name: ";
+    string name;
+    cin >> name;
+    auto airports = listAirports.findAirportsByCityName(name);
+    cout << "Found " << makeBold(airports.size()) << " airport(s) in " << "\'" << makeBold(name) << "\'" << endl;
+
+    int i = 1;
+    for (auto a : airports) {
+        auto info = a->getInfo();
+        cout << i++ << ". [" << info.getCode() << "] " << info.getName() << ", " << info.getCity() << ", "
+             << info.getCountry() << endl;
+    }
+    backToMenu();
+}
+
+void Script::listAirportsByCountryName() {
+    drawBox("Search Airport by Country's name");
+    cout << "Enter country name: ";
+    string name;
+    cin >> name;
+    auto airports = listAirports.findAirportsByCountryName(name);
+    cout << "Found " << makeBold(airports.size()) << " airport(s) in " << "\'" << makeBold(name) << "\'" << endl;
+
+    int i = 1;
+    for (auto a : airports) {
+        auto info = a->getInfo();
+        cout << i++ << ". [" << info.getCode() << "] " << info.getName() << ", " << info.getCity() << ", "
+             << info.getCountry() << endl;
     }
     backToMenu();
 }
 
 void Script::listClosestAirports() {
     clearScreen();
+    drawBox("Search closest Airport");
     double lat, lon;
     cout << "Enter latitude: ";
     cin >> lat;
@@ -258,6 +265,7 @@ void Script::destinationsAvailableWithLayOvers(Vertex<Airport>* airport) {
 
 void Script::givenAirportStatistics(Vertex<Airport> *airport) {
     clearScreen();
+    drawBox("Other Statistics");
     cout << "- Flights out of this airport: " << makeBold(consult.searchNumberOfFlightsOutOfAirport(airport)) << endl;
     cout << "- Flights out of this airport (from different airlines): " << makeBold(consult.searchNumberOfFlightsOutOfAirportFromDifferentAirlines(airport)) << endl;
     cout << "- Number of different countries flown to: " << makeBold(consult.searchNumberOfCountriesFlownToFromAirport(airport)) << endl;
@@ -270,9 +278,9 @@ void Script::givenAirportStatistics(Vertex<Airport> *airport) {
 
 void Script::globalNumber() {
     vector<MenuItem> globalMenu = {
-            {makeBold("Airports"), &Script::numberOfAirports},
-            {makeBold("Flights"), &Script::numberOfFlights},
-            {makeBold("Flight routes"), &Script::numberOfFlightRoutes},
+            {makeBold("Number of Airports"), &Script::numberOfAirports},
+            {makeBold("Number of Flights"), &Script::numberOfFlights},
+            {makeBold("Number of Flight Routes"), &Script::numberOfFlightRoutes},
             {"[Back]", &Script::actionGoBack}
     };
 
@@ -280,7 +288,7 @@ void Script::globalNumber() {
 
     while (!exitSubMenu) {
         clearScreen();
-        drawBox("GLOBAL NUMBERS");
+        drawBox("GLOBAL STATISTICS");
         for (int i = 0; i < globalMenu.size(); i++) {
             cout << i + 1 << ". " << globalMenu[i].label << endl;
         }
@@ -302,16 +310,16 @@ void Script::globalNumber() {
 }
 
 void Script::numberOfAirports() {
-    cout << "Global number of airports: " << consult.searchNumberOfAirports() << endl;
+    cout << "Global Number of Airports: " << consult.searchNumberOfAirports() << endl;
     backToMenu();
 }
 
 void Script::numberOfFlights() {
-    cout << "Global number of available flights: " << consult.searchNumberOfAvailableFlights() << endl;
+    cout << "Global Number of Available Flights: " << consult.searchNumberOfAvailableFlights() << endl;
     backToMenu();
 }
 
 void Script::numberOfFlightRoutes() {
-    cout << "Global number of available flight routes: " << consult.searchNumberOfAvailableFlightRoutes() << endl;
+    cout << "Global Number of Available Flight Routes: " << consult.searchNumberOfAvailableFlightRoutes() << endl;
     backToMenu();
 }
