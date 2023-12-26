@@ -50,6 +50,8 @@ private:
     void listAirportsByCityName();
     void listAirportsByCountryName();
     void listClosestAirports();
+
+    void travelByGivenAirlines();
 };
 
 
