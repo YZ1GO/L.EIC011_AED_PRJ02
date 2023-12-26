@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['removeedge_131',['removeEdge',['../classGraph.html#a8949d071d45bf93e171e275462e1007a',1,'Graph']]],
-  ['removevertex_132',['removeVertex',['../classGraph.html#af9c903104ad69a7782979fa9caedf163',1,'Graph']]]
+  ['makebold_140',['makeBold',['../Utilities_8h.html#a3bd6ee67b0398de7c3501b9278cd89b9',1,'Utilities.h']]]
 ];

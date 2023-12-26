@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['isprocessing_127',['isProcessing',['../classVertex.html#aaa41dfa4ce1a19b4e529cc6cdc23b764',1,'Vertex']]],
-  ['isvisited_128',['isVisited',['../classVertex.html#aa2bb17f6ebd98a67f8da1f689b22fadc',1,'Vertex']]]
+  ['harversinedistance_137',['HarversineDistance',['../Utilities_8h.html#a112f41f3f93f8dfa612625726be063e5',1,'Utilities.cpp']]]
 ];

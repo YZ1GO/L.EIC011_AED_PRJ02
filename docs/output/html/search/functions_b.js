@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['topsort_171',['topsort',['../classGraph.html#af1d4affd1f886bf598d0f4cf4a0cb7cb',1,'Graph']]]
+  ['removeedge_143',['removeEdge',['../classGraph.html#a8949d071d45bf93e171e275462e1007a',1,'Graph']]],
+  ['removespaces_144',['RemoveSpaces',['../Utilities_8h.html#aa6d4cd5e047190f0fa8bf759ed16dc20',1,'Utilities.h']]],
+  ['removevertex_145',['removeVertex',['../classGraph.html#af9c903104ad69a7782979fa9caedf163',1,'Graph']]]
 ];

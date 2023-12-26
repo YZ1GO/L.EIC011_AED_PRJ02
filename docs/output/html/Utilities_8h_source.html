@@ -66,32 +66,39 @@ $(function() {
 <div class="title">Utilities.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef AED_AEROPORTO_UTILITIES_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define AED_AEROPORTO_UTILITIES_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;std::string TrimString(<span class="keyword">const</span> std::string&amp; toTrim);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">double</span> ToRadians(<span class="keywordtype">double</span> degrees);</div>
+<a href="Utilities_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef AED_AEROPORTO_UTILITIES_H</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define AED_AEROPORTO_UTILITIES_H</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">double</span> HarversineDistance(<span class="keywordtype">double</span> lat1, <span class="keywordtype">double</span> lon1, <span class="keywordtype">double</span> lat2, <span class="keywordtype">double</span> lon2);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;std::string ToLower(<span class="keyword">const</span> std::string&amp; input);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;std::string RemoveSpaces(<span class="keyword">const</span> std::string&amp; str);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;std::string makeBold(<span class="keyword">const</span> T&amp; value) {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    std::ostringstream oss;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    oss &lt;&lt; <span class="stringliteral">&quot;\033[1m&quot;</span> &lt;&lt; value &lt;&lt; <span class="stringliteral">&quot;\033[0m&quot;</span>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">return</span> oss.str();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//AED_AEROPORTO_UTILITIES_H</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="Utilities_8h.html#a61146d2609ffbef3c80509b4335728e2">   23</a></span>&#160;std::string <a class="code" href="Utilities_8h.html#a61146d2609ffbef3c80509b4335728e2">TrimString</a>(<span class="keyword">const</span> std::string&amp; toTrim);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">double</span> <a class="code" href="Utilities_8h.html#ab71afa9ae22b10ecf4b79f34cf208cc5">ToRadians</a>(<span class="keywordtype">double</span> degrees);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">double</span> <a class="code" href="Utilities_8h.html#a112f41f3f93f8dfa612625726be063e5">HarversineDistance</a>(<span class="keywordtype">double</span> lat1, <span class="keywordtype">double</span> lon1, <span class="keywordtype">double</span> lat2, <span class="keywordtype">double</span> lon2);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="Utilities_8h.html#a679cd14f6ab505065b571d2cba4370e8">   47</a></span>&#160;std::string <a class="code" href="Utilities_8h.html#a679cd14f6ab505065b571d2cba4370e8">ToLower</a>(<span class="keyword">const</span> std::string&amp; input);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="Utilities_8h.html#aa6d4cd5e047190f0fa8bf759ed16dc20">   54</a></span>&#160;std::string <a class="code" href="Utilities_8h.html#aa6d4cd5e047190f0fa8bf759ed16dc20">RemoveSpaces</a>(<span class="keyword">const</span> std::string&amp; str);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="Utilities_8h.html#a3bd6ee67b0398de7c3501b9278cd89b9">   62</a></span>&#160;std::string <a class="code" href="Utilities_8h.html#a3bd6ee67b0398de7c3501b9278cd89b9">makeBold</a>(<span class="keyword">const</span> T&amp; value) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    std::ostringstream oss;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    oss &lt;&lt; <span class="stringliteral">&quot;\033[1m&quot;</span> &lt;&lt; value &lt;&lt; <span class="stringliteral">&quot;\033[0m&quot;</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> oss.str();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//AED_AEROPORTO_UTILITIES_H</span></div>
+<div class="ttc" id="aUtilities_8h_html_a112f41f3f93f8dfa612625726be063e5"><div class="ttname"><a href="Utilities_8h.html#a112f41f3f93f8dfa612625726be063e5">HarversineDistance</a></div><div class="ttdeci">double HarversineDistance(double lat1, double lon1, double lat2, double lon2)</div><div class="ttdoc">Calculates the Haversine distance between two coordinates.</div><div class="ttdef"><b>Definition:</b> Utilities.cpp:18</div></div>
+<div class="ttc" id="aUtilities_8h_html_a3bd6ee67b0398de7c3501b9278cd89b9"><div class="ttname"><a href="Utilities_8h.html#a3bd6ee67b0398de7c3501b9278cd89b9">makeBold</a></div><div class="ttdeci">std::string makeBold(const T &amp;value)</div><div class="ttdoc">Formats a value in bold for terminal output.</div><div class="ttdef"><b>Definition:</b> Utilities.h:62</div></div>
+<div class="ttc" id="aUtilities_8h_html_a61146d2609ffbef3c80509b4335728e2"><div class="ttname"><a href="Utilities_8h.html#a61146d2609ffbef3c80509b4335728e2">TrimString</a></div><div class="ttdeci">std::string TrimString(const std::string &amp;toTrim)</div><div class="ttdoc">Trim whitespace from the beginning and end of a string.</div></div>
+<div class="ttc" id="aUtilities_8h_html_a679cd14f6ab505065b571d2cba4370e8"><div class="ttname"><a href="Utilities_8h.html#a679cd14f6ab505065b571d2cba4370e8">ToLower</a></div><div class="ttdeci">std::string ToLower(const std::string &amp;input)</div><div class="ttdoc">Converts a string to lowercase.</div></div>
+<div class="ttc" id="aUtilities_8h_html_aa6d4cd5e047190f0fa8bf759ed16dc20"><div class="ttname"><a href="Utilities_8h.html#aa6d4cd5e047190f0fa8bf759ed16dc20">RemoveSpaces</a></div><div class="ttdeci">std::string RemoveSpaces(const std::string &amp;str)</div><div class="ttdoc">Removes spaces from a string.</div></div>
+<div class="ttc" id="aUtilities_8h_html_ab71afa9ae22b10ecf4b79f34cf208cc5"><div class="ttname"><a href="Utilities_8h.html#ab71afa9ae22b10ecf4b79f34cf208cc5">ToRadians</a></div><div class="ttdeci">double ToRadians(double degrees)</div><div class="ttdoc">Converts degrees to radians.</div><div class="ttdef"><b>Definition:</b> Utilities.cpp:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

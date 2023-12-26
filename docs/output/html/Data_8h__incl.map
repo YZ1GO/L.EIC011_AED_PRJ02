@@ -1,6 +1,6 @@
 <map id="Data.h" name="Data.h">
 <area shape="rect" id="node1" title="Header file containing structures and classes related to airport and airline data representation." alt="" coords="254,5,319,32"/>
-<area shape="rect" id="node2" href="$Utilities_8h_source.html" title=" " alt="" coords="137,80,223,107"/>
+<area shape="rect" id="node2" href="$Utilities_8h.html" title="Contains utility functions for string manipulation and geographical calculations." alt="" coords="137,80,223,107"/>
 <area shape="rect" id="node7" title=" " alt="" coords="247,80,327,107"/>
 <area shape="rect" id="node8" title=" " alt="" coords="351,80,414,107"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,155,64,181"/>
