@@ -116,7 +116,7 @@ void Script::run() {
 }
 
 void Script::searchAirportsMenu() {
-    vector<MenuItem> airportStatistics = {
+    vector<MenuItem> searchAirport = {
             {makeBold("Search Airport by Code"), &Script::searchAirportByAirportCode},
             {makeBold("Search Airport by Name"), &Script::searchAirportByAirportName},
             {makeBold("Search Airport by City's name"), &Script::searchAirportByCityName},
@@ -129,9 +129,9 @@ void Script::searchAirportsMenu() {
 
     while (!exitSubMenu) {
         clearScreen();
-        drawBox("AIRPORT STATISTICS");
-        for (int i = 0; i < airportStatistics.size(); i++) {
-            cout << i + 1 << ". " << airportStatistics[i].label << endl;
+        drawBox("SEARCH");
+        for (int i = 0; i < searchAirport.size(); i++) {
+            cout << i + 1 << ". " << searchAirport[i].label << endl;
         }
         int choice;
         cout << "\nEnter your choice: ";
@@ -144,8 +144,8 @@ void Script::searchAirportsMenu() {
         clearScreen();
         if (choice == 6) {
             exitSubMenu = true;
-        } else if (choice >= 1 && choice <= airportStatistics.size()) {
-            (this->*airportStatistics[choice - 1].action)();
+        } else if (choice >= 1 && choice <= searchAirport.size()) {
+            (this->*searchAirport[choice - 1].action)();
         }
     }
 }
@@ -205,8 +205,8 @@ void Script::airportStatistics(Vertex<Airport> *airport) {
         clearScreen();
         printAirportInfo(airport);
 
-        cout << "1. See reachable destinations in a maximum of X stops" << endl;
-        cout << "2. See other statistics" << endl;
+        cout << "1. See airport statistics" << endl;
+        cout << "2. See reachable destinations in a maximum of X stops" << endl;
         cout << "3. [Back]" << endl;
 
         int choice;
@@ -219,9 +219,9 @@ void Script::airportStatistics(Vertex<Airport> *airport) {
         }
         clearScreen();
         if (choice == 1) {
-            destinationsAvailableWithLayOvers(airport);
-        } else if (choice == 2) {
             givenAirportStatistics(airport);
+        } else if (choice == 2) {
+            destinationsAvailableWithLayOvers(airport);
         } else if (choice == 3) {
             return;
         }
