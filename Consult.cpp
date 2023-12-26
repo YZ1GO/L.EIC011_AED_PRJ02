@@ -16,7 +16,7 @@ int Consult::searchNumberOfAvailableFlights() {
 int Consult::searchNumberOfAvailableFlightRoutes() {
     int totalFlightRoutes = 0;
     for (const auto& airport : consultGraph.getVertexSet())
-        totalFlightRoutes += airport->getOutdegree();
+        totalFlightRoutes += airport->getOutDegree();
     return totalFlightRoutes;
 }
 
