@@ -25,18 +25,16 @@ private:
     void backToMenu();
 
     void printAirportInfo(Vertex<Airport>* airport);
+    void printAirportInfoOneline(const Airport& airport);
 
     void globalNumber();
     void numberOfAirports();
     void numberOfFlights();
     void numberOfFlightRoutes();
 
-    void flightsOut();
-
     void flightsPerCity();
     void flightsPerAirline();
 
-    void countriesFlownToFromAirport();
     void countriesFlownToFromCity();
 
     void destinationsAvailableWithLayOvers(Vertex<Airport>* airport);
@@ -46,6 +44,7 @@ private:
     void topKAirportAirTraffic();
     void essentialAirports();
 
+
     void airportStatistics(Vertex<Airport>* airport);
     void listAndChooseAirport(vector<Vertex<Airport> *> airports, const string& name, const string& typeName);
     void searchAirportsMenu();
@@ -54,7 +53,6 @@ private:
     void searchAirportByCityName();
     void searchAirportByCountryName();
     void searchClosestAirport();
-
 
 };
 
