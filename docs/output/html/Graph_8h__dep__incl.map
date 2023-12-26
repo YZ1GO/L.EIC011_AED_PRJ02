@@ -1,7 +1,7 @@
 <map id="Graph.h" name="Graph.h">
 <area shape="rect" id="node1" title="Header file containing structures and classes related to graph representation." alt="" coords="130,5,203,32"/>
 <area shape="rect" id="node2" href="$ParseData_8h_source.html" title=" " alt="" coords="117,80,217,107"/>
-<area shape="rect" id="node3" href="$Consult_8h_source.html" title=" " alt="" coords="5,155,88,181"/>
+<area shape="rect" id="node3" href="$Consult_8h.html" title="Header file providing functionalities for analyzing air travel flight data." alt="" coords="5,155,88,181"/>
 <area shape="rect" id="node5" href="$ListAirports_8h_source.html" title=" " alt="" coords="113,155,221,181"/>
 <area shape="rect" id="node6" href="$OutputData_8h_source.html" title=" " alt="" coords="245,155,355,181"/>
 <area shape="rect" id="node4" href="$Script_8h_source.html" title=" " alt="" coords="71,229,142,256"/>
