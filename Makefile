@@ -18,8 +18,8 @@ DOXYGEN_TARGET = $(DOXYGEN_OUTPUT_DIR)/html/index.html
 
 all: $(PROGRAMS)
 
-run: $(COMMON_CPP_FILES) main.cpp
-	$(CXX) -o run main.cpp $(COMMON_CPP_FILES)
+run: $(COMMON_CPP_FILES) runscript.cpp
+	$(CXX) -o run runscript.cpp $(COMMON_CPP_FILES)
 
 clean:
 	rm -fr *.dSYM $(PROGRAMS)
