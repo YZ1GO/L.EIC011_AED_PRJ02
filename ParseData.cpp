@@ -7,6 +7,7 @@ ParseData::ParseData(const std::string& airportsCSV, const std::string& airlines
     parseAirlines();
     parseAirports();
     parseFlights();
+    dataGraph.setupInDegreeAndOutDegree();
 }
 
 void ParseData::parseAirlines() {
@@ -149,18 +150,4 @@ Airline ParseData::getAirline(const std::string& airlineCode) {
         if (it.getCode() == airlineCode) return it;
     }
     return {};
-}
-
-void ParseData::setupIndegreeOutdegree() {
-    for (auto& v : dataGraph.getVertexSet()) {
-        v->setIndegree(0);
-        v->setOutdegree(v->getAdj().size());
-    }
-
-    for (auto& v : dataGraph.getVertexSet()) {
-        for (auto& e : v->getAdj()) {
-            auto w = e.getDest();
-            w->setIndegree(w->getIndegree() + 1);
-        }
-    }
 }
