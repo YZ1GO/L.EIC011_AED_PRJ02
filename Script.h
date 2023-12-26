@@ -46,12 +46,15 @@ private:
     void topKAirportAirTraffic();
     void essentialAirports();
 
-    void airportStatistics();
-    void airportStatisticsByCode();
-    void listAirportsByAirportName();
-    void listAirportsByCityName();
-    void listAirportsByCountryName();
-    void listClosestAirports();
+    void airportStatistics(Vertex<Airport>* airport);
+    void listAndChooseAirport(vector<Vertex<Airport> *> airports, const string& name, const string& typeName);
+    void searchAirportsMenu();
+    void searchAirportByAirportCode();
+    void searchAirportByAirportName();
+    void searchAirportByCityName();
+    void searchAirportByCountryName();
+    void searchClosestAirport();
+
 
 };
 
