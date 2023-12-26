@@ -12,7 +12,7 @@ private:
     const Graph<Airport>& consultGraph;
 
     void dfsVisitFlightsPerCity(Vertex<Airport> *v, map<string, int> &res);
-    void dfsVisitFlightsPerAirline(Vertex<Airport> *v, map<string, int> &res);
+    void dfsVisitFlightsPerAirline(Vertex<Airport> *v, map<Airline, int> &res);
     void dfsVisitCityAirports(const string& city, const string& country, Vertex<Airport> *v, vector<Vertex<Airport>*>& res);
     void dfsAvailableDestinations(Vertex<Airport>* v, std::function<void(Vertex<Airport>*)> processDestination);
     int searchNumberOfReachableDestinationsInXStopsFromAirport(Vertex<Airport>* airport, int layOvers, const function<string(Vertex<Airport>*)>& attributeExtractor);
@@ -31,7 +31,7 @@ public:
     int searchNumberOfFlightsOutOfAirportFromDifferentAirlines(Vertex<Airport>* airport);
 
     map<string, int> searchNumberOfFlightsPerCity();
-    map<string, int> searchNumberOfFlightsPerAirline();
+    map<Airline, int> searchNumberOfFlightsPerAirline();
 
     int searchNumberOfCountriesFlownToFromAirport(Vertex<Airport>* airport);
     int searchNumberOfCountriesFlownToFromCity(const string& city, const string& country);

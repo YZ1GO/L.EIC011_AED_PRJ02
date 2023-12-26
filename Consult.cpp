@@ -64,8 +64,8 @@ void Consult::dfsVisitFlightsPerCity(Vertex<Airport> *v, map<string, int> &res) 
     }
 }
 
-map<string, int> Consult::searchNumberOfFlightsPerAirline() {
-    map<string, int> flightsPerAirline;
+map<Airline, int> Consult::searchNumberOfFlightsPerAirline() {
+    map<Airline, int> flightsPerAirline;
 
     for (auto v : consultGraph.getVertexSet())
         v->setVisited(false);
@@ -77,11 +77,11 @@ map<string, int> Consult::searchNumberOfFlightsPerAirline() {
     return flightsPerAirline;
 }
 
-void Consult::dfsVisitFlightsPerAirline(Vertex<Airport> *v, map<string, int> &res) {
+void Consult::dfsVisitFlightsPerAirline(Vertex<Airport> *v, map<Airline, int> &res) {
     v->setVisited(true);
     for (const auto& flight : v->getAdj()) {
         for (const auto& airline : flight.getAirlines()) {
-            res[airline.getName()]++;
+            res[airline]++;
         }
     }
 
@@ -122,7 +122,7 @@ int Consult::searchNumberOfCountriesFlownToFromCity(const string &city, const st
 
 void Consult::dfsVisitCityAirports(const string &city, const string& country, Vertex<Airport> *v, vector<Vertex<Airport>*> &res) {
     v->setVisited(true);
-    if (v->getInfo().getCity() == city && v->getInfo().getCountry() == country)
+    if (ToLower(v->getInfo().getCity()) == ToLower(city) && ToLower(v->getInfo().getCountry()) == ToLower(country))
         res.push_back(v);
     for (auto &flight : v->getAdj()) {
         auto d = flight.getDest();
@@ -310,59 +310,6 @@ void Consult::dfsEssentialAirports(Vertex<Airport> *v, stack<string> &s, unorder
     s.pop();
 }
 
-/*void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
-    int diameter = 0;
-    vector<pair<Airport, Airport>> airportPairs;
-
-    for (const auto &airport: consultGraph.getVertexSet()) {
-        unordered_map<Vertex<Airport> *, int> distanceToOtherAirports;
-        for (const auto &v: consultGraph.getVertexSet())
-            v->setVisited(false);
-
-        distanceToOtherAirports[airport] = 0;
-
-        queue<Vertex<Airport> *> q;
-        q.push(airport);
-        airport->setVisited(true);
-
-        while (!q.empty()) {
-            auto a = q.front();
-            q.pop();
-
-            for (auto &flight: a->getAdj()) {
-                auto d = flight.getDest();
-                if (!d->isVisited()) {
-                    distanceToOtherAirports[d] = distanceToOtherAirports[a] + 1;
-                    q.push(d);
-                    d->setVisited(true);
-                }
-            }
-        }
-
-        auto distanceASC = [](const auto &p1, const auto &p2) { return p1.second < p2.second; };
-        int maxDistance = max_element(distanceToOtherAirports.begin(), distanceToOtherAirports.end(), distanceASC)->second;
-
-        if (maxDistance > diameter) {
-            diameter = maxDistance;
-            airportPairs.clear();
-        }
-
-        if (maxDistance == diameter) {
-            for (const auto &pair: distanceToOtherAirports) {
-                if (pair.second == maxDistance) {
-                    airportPairs.emplace_back(airport->getInfo(), pair.first->getInfo());
-                }
-            }
-        }
-    }
-    cout << "Maximum trip: " << diameter << endl;
-    cout << "Pairs of source-destination airports: " << endl;
-    for (const auto &pair: airportPairs) {
-        cout << "( " << pair.first.getCode() << " -> " << pair.second.getCode() << " )" << endl;
-    }
-}*/
-
-//Version with paths
 void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
     int diameter = 0;
     vector<vector<Airport>> airportPaths;
@@ -412,14 +359,16 @@ void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
             }
         }
     }
-    cout << "Maximum trip: " << diameter << endl;
-    cout << "Pairs of source-destination airports: " << endl;
+    cout << "Maximum trip: " << makeBold(diameter) << endl;
+    cout << "Paths of the trip(s): " << endl;
     for (const auto& path : airportPaths) {
-        cout << "Path: ";
-        for (const auto& airport : path) {
-            cout << airport.getCode() << " -> ";
+        for (size_t i = 0; i < path.size(); ++i) {
+            cout << path[i].getCode();
+            if (i < path.size() - 1) {
+                cout << " -> ";
+            }
         }
-        cout << "(end)" << endl;
+        cout << endl;
     }
 }
 
