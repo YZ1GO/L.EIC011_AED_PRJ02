@@ -15,7 +15,6 @@ int main() {
 
     // Creating ParseData object and calling the constructor
     ParseData parseData(airportsCSV, airlinesCSV, flightsCSV);
-    parseData.setupIndegreeOutdegree();
 
     const Graph<Airport>& dataGraph = parseData.getDataGraph();
 
