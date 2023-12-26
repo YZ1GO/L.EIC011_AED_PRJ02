@@ -373,6 +373,13 @@ public:
      */
     vector<T> topsort() const;
 
+    /**
+     * @brief Sets up the inDegree and outDegree of vertices in the graph.
+     * @details Calculates and assigns the inDegree and outDegree for each vertex in the graph.
+     * The inDegree of a vertex is the count of incoming edges, while the outDegree is the count of outgoing edges.
+     * This function iterates through all edges in the graph to update the inDegree and outDegree of each vertex.
+     * Note: This function assumes that the graph has been appropriately constructed with vertices and edges.
+     */
     void setupInDegreeAndOutDegree();
 };
 
