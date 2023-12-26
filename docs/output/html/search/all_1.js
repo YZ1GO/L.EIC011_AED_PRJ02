@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['consult_2',['Consult',['../classConsult.html',1,'']]],
-  ['coordinates_3',['Coordinates',['../structCoordinates.html',1,'']]]
+  ['bfs_5',['bfs',['../classGraph.html#aa47a4130165550e208e7a063fce6983a',1,'Graph']]]
 ];

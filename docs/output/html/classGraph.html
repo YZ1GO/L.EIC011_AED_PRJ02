@@ -23,6 +23,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Air Travel Flight Management System
    </div>
+   <div id="projectbrief">AED - project 02, Group G110</div>
   </td>
  </tr>
  </tbody>
@@ -68,43 +69,368 @@ $(function() {
 <div class="title">Graph&lt; T &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class representing a directed graph.  
+ <a href="classGraph.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Graph_8h_source.html">Graph.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8b7b7465fbfd562e2a469f90a437ab75"><td class="memItemLeft" align="right" valign="top"><a id="a8b7b7465fbfd562e2a469f90a437ab75"></a>
-<a class="el" href="classVertex.html">Vertex</a>&lt; T &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>findVertex</b> (const T &amp;in) const</td></tr>
+<tr class="memitem:a8b7b7465fbfd562e2a469f90a437ab75"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classVertex.html">Vertex</a>&lt; T &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a8b7b7465fbfd562e2a469f90a437ab75">findVertex</a> (const T &amp;in) const</td></tr>
+<tr class="memdesc:a8b7b7465fbfd562e2a469f90a437ab75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds a vertex in the graph based on the given information.  <a href="classGraph.html#a8b7b7465fbfd562e2a469f90a437ab75">More...</a><br /></td></tr>
 <tr class="separator:a8b7b7465fbfd562e2a469f90a437ab75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0853eac15cdf0f06d63f4b8a7820ec71"><td class="memItemLeft" align="right" valign="top"><a id="a0853eac15cdf0f06d63f4b8a7820ec71"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getNumVertex</b> () const</td></tr>
+<tr class="memitem:a0853eac15cdf0f06d63f4b8a7820ec71"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a0853eac15cdf0f06d63f4b8a7820ec71">getNumVertex</a> () const</td></tr>
+<tr class="memdesc:a0853eac15cdf0f06d63f4b8a7820ec71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the number of vertices in the graph.  <a href="classGraph.html#a0853eac15cdf0f06d63f4b8a7820ec71">More...</a><br /></td></tr>
 <tr class="separator:a0853eac15cdf0f06d63f4b8a7820ec71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a923b43995f81ad9319bbc81a1e433e64"><td class="memItemLeft" align="right" valign="top"><a id="a923b43995f81ad9319bbc81a1e433e64"></a>
-vector&lt; <a class="el" href="classVertex.html">Vertex</a>&lt; T &gt; * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getVertexSet</b> () const</td></tr>
+<tr class="memitem:a923b43995f81ad9319bbc81a1e433e64"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="classVertex.html">Vertex</a>&lt; T &gt; * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a923b43995f81ad9319bbc81a1e433e64">getVertexSet</a> () const</td></tr>
+<tr class="memdesc:a923b43995f81ad9319bbc81a1e433e64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the set of vertices in the graph.  <a href="classGraph.html#a923b43995f81ad9319bbc81a1e433e64">More...</a><br /></td></tr>
 <tr class="separator:a923b43995f81ad9319bbc81a1e433e64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00be284ea2be3b3d0f0d2e493b70245b"><td class="memItemLeft" align="right" valign="top"><a id="a00be284ea2be3b3d0f0d2e493b70245b"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>addVertex</b> (const T &amp;in)</td></tr>
+<tr class="memitem:a00be284ea2be3b3d0f0d2e493b70245b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a00be284ea2be3b3d0f0d2e493b70245b">addVertex</a> (const T &amp;in)</td></tr>
+<tr class="memdesc:a00be284ea2be3b3d0f0d2e493b70245b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a vertex to the graph with the given information.  <a href="classGraph.html#a00be284ea2be3b3d0f0d2e493b70245b">More...</a><br /></td></tr>
 <tr class="separator:a00be284ea2be3b3d0f0d2e493b70245b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9c903104ad69a7782979fa9caedf163"><td class="memItemLeft" align="right" valign="top"><a id="af9c903104ad69a7782979fa9caedf163"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>removeVertex</b> (const T &amp;in)</td></tr>
+<tr class="memitem:af9c903104ad69a7782979fa9caedf163"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#af9c903104ad69a7782979fa9caedf163">removeVertex</a> (const T &amp;in)</td></tr>
+<tr class="memdesc:af9c903104ad69a7782979fa9caedf163"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a vertex from the graph based on the given information.  <a href="classGraph.html#af9c903104ad69a7782979fa9caedf163">More...</a><br /></td></tr>
 <tr class="separator:af9c903104ad69a7782979fa9caedf163"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a4a98dece3354414b767a3c23cf62e3"><td class="memItemLeft" align="right" valign="top"><a id="a0a4a98dece3354414b767a3c23cf62e3"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>addEdge</b> (const T &amp;source, const T &amp;dest, double distance)</td></tr>
+<tr class="memitem:a0a4a98dece3354414b767a3c23cf62e3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a0a4a98dece3354414b767a3c23cf62e3">addEdge</a> (const T &amp;source, const T &amp;dest, double distance)</td></tr>
+<tr class="memdesc:a0a4a98dece3354414b767a3c23cf62e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a directed edge between two vertices in the graph.  <a href="classGraph.html#a0a4a98dece3354414b767a3c23cf62e3">More...</a><br /></td></tr>
 <tr class="separator:a0a4a98dece3354414b767a3c23cf62e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8949d071d45bf93e171e275462e1007a"><td class="memItemLeft" align="right" valign="top"><a id="a8949d071d45bf93e171e275462e1007a"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>removeEdge</b> (const T &amp;source, const T &amp;dest)</td></tr>
+<tr class="memitem:a8949d071d45bf93e171e275462e1007a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a8949d071d45bf93e171e275462e1007a">removeEdge</a> (const T &amp;source, const T &amp;dest)</td></tr>
+<tr class="memdesc:a8949d071d45bf93e171e275462e1007a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a directed edge between two vertices in the graph.  <a href="classGraph.html#a8949d071d45bf93e171e275462e1007a">More...</a><br /></td></tr>
 <tr class="separator:a8949d071d45bf93e171e275462e1007a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a911798b1a89f8c4ae90ba3eee849cff8"><td class="memItemLeft" align="right" valign="top"><a id="a911798b1a89f8c4ae90ba3eee849cff8"></a>
-vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>dfs</b> () const</td></tr>
+<tr class="memitem:a911798b1a89f8c4ae90ba3eee849cff8"><td class="memItemLeft" align="right" valign="top">vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a911798b1a89f8c4ae90ba3eee849cff8">dfs</a> () const</td></tr>
+<tr class="memdesc:a911798b1a89f8c4ae90ba3eee849cff8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a depth-first search (DFS) on the entire graph.  <a href="classGraph.html#a911798b1a89f8c4ae90ba3eee849cff8">More...</a><br /></td></tr>
 <tr class="separator:a911798b1a89f8c4ae90ba3eee849cff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a510522c8221b321a82e687fe2f2cb484"><td class="memItemLeft" align="right" valign="top"><a id="a510522c8221b321a82e687fe2f2cb484"></a>
-vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>dfs</b> (const T &amp;source) const</td></tr>
+<tr class="memitem:a510522c8221b321a82e687fe2f2cb484"><td class="memItemLeft" align="right" valign="top">vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a510522c8221b321a82e687fe2f2cb484">dfs</a> (const T &amp;source) const</td></tr>
+<tr class="memdesc:a510522c8221b321a82e687fe2f2cb484"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a depth-first search (DFS) starting from a specific vertex in the graph.  <a href="classGraph.html#a510522c8221b321a82e687fe2f2cb484">More...</a><br /></td></tr>
 <tr class="separator:a510522c8221b321a82e687fe2f2cb484"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa47a4130165550e208e7a063fce6983a"><td class="memItemLeft" align="right" valign="top"><a id="aa47a4130165550e208e7a063fce6983a"></a>
-vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bfs</b> (const T &amp;source) const</td></tr>
+<tr class="memitem:aa47a4130165550e208e7a063fce6983a"><td class="memItemLeft" align="right" valign="top">vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#aa47a4130165550e208e7a063fce6983a">bfs</a> (const T &amp;source) const</td></tr>
+<tr class="memdesc:aa47a4130165550e208e7a063fce6983a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a breadth-first search (BFS) starting from a specific vertex in the graph.  <a href="classGraph.html#aa47a4130165550e208e7a063fce6983a">More...</a><br /></td></tr>
 <tr class="separator:aa47a4130165550e208e7a063fce6983a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1d4affd1f886bf598d0f4cf4a0cb7cb"><td class="memItemLeft" align="right" valign="top"><a id="af1d4affd1f886bf598d0f4cf4a0cb7cb"></a>
-vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>topsort</b> () const</td></tr>
+<tr class="memitem:af1d4affd1f886bf598d0f4cf4a0cb7cb"><td class="memItemLeft" align="right" valign="top">vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#af1d4affd1f886bf598d0f4cf4a0cb7cb">topsort</a> () const</td></tr>
+<tr class="memdesc:af1d4affd1f886bf598d0f4cf4a0cb7cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs topological sorting of the graph using depth-first search (DFS).  <a href="classGraph.html#af1d4affd1f886bf598d0f4cf4a0cb7cb">More...</a><br /></td></tr>
 <tr class="separator:af1d4affd1f886bf598d0f4cf4a0cb7cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;class T&gt;<br />
+class Graph&lt; T &gt;</h3>
+
+<p>Class representing a directed graph. </p>
+<p>The <a class="el" href="classGraph.html" title="Class representing a directed graph.">Graph</a> class defines a directed graph structure using vertices and edges. It supports various graph operations like adding/removing vertices, edges, performing depth-first search (DFS), breadth-first search (BFS), topological sorting, etc. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The data type of the graph vertices. </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0a4a98dece3354414b767a3c23cf62e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a4a98dece3354414b767a3c23cf62e3">&#9670;&nbsp;</a></span>addEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classGraph.html">Graph</a>&lt; T &gt;::addEdge </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a directed edge between two vertices in the graph. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>Information of the source vertex. </td></tr>
+    <tr><td class="paramname">dest</td><td>Information of the destination vertex. </td></tr>
+    <tr><td class="paramname">distance</td><td>The distance between the source and destination vertices. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the edge was added successfully, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a00be284ea2be3b3d0f0d2e493b70245b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00be284ea2be3b3d0f0d2e493b70245b">&#9670;&nbsp;</a></span>addVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classGraph.html">Graph</a>&lt; T &gt;::addVertex </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a vertex to the graph with the given information. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">in</td><td>The information for the new vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the vertex was added successfully, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="aa47a4130165550e208e7a063fce6983a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa47a4130165550e208e7a063fce6983a">&#9670;&nbsp;</a></span>bfs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; T &gt; <a class="el" href="classGraph.html">Graph</a>&lt; T &gt;::bfs </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>source</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Performs a breadth-first search (BFS) starting from a specific vertex in the graph. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>Information of the starting vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector containing the vertices visited during the BFS. </dd></dl>
+
+</div>
+</div>
+<a id="a911798b1a89f8c4ae90ba3eee849cff8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a911798b1a89f8c4ae90ba3eee849cff8">&#9670;&nbsp;</a></span>dfs() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; T &gt; <a class="el" href="classGraph.html">Graph</a>&lt; T &gt;::dfs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Performs a depth-first search (DFS) on the entire graph. </p>
+<dl class="section return"><dt>Returns</dt><dd>Vector containing the vertices visited during the DFS. </dd></dl>
+
+</div>
+</div>
+<a id="a510522c8221b321a82e687fe2f2cb484"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a510522c8221b321a82e687fe2f2cb484">&#9670;&nbsp;</a></span>dfs() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; T &gt; <a class="el" href="classGraph.html">Graph</a>&lt; T &gt;::dfs </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>source</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Performs a depth-first search (DFS) starting from a specific vertex in the graph. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>Information of the starting vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector containing the vertices visited during the DFS. </dd></dl>
+
+</div>
+</div>
+<a id="a8b7b7465fbfd562e2a469f90a437ab75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b7b7465fbfd562e2a469f90a437ab75">&#9670;&nbsp;</a></span>findVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classVertex.html">Vertex</a>&lt; T &gt; * <a class="el" href="classGraph.html">Graph</a>&lt; T &gt;::findVertex </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds a vertex in the graph based on the given information. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">in</td><td>The information to search for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the vertex if found, nullptr otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a0853eac15cdf0f06d63f4b8a7820ec71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0853eac15cdf0f06d63f4b8a7820ec71">&#9670;&nbsp;</a></span>getNumVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classGraph.html">Graph</a>&lt; T &gt;::getNumVertex</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves the number of vertices in the graph. </p>
+<dl class="section return"><dt>Returns</dt><dd>The number of vertices in the graph. </dd></dl>
+
+</div>
+</div>
+<a id="a923b43995f81ad9319bbc81a1e433e64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a923b43995f81ad9319bbc81a1e433e64">&#9670;&nbsp;</a></span>getVertexSet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; <a class="el" href="classVertex.html">Vertex</a>&lt; T &gt; * &gt; <a class="el" href="classGraph.html">Graph</a>&lt; T &gt;::getVertexSet</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves the set of vertices in the graph. </p>
+<dl class="section return"><dt>Returns</dt><dd>Vector containing pointers to all vertices in the graph. </dd></dl>
+
+</div>
+</div>
+<a id="a8949d071d45bf93e171e275462e1007a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8949d071d45bf93e171e275462e1007a">&#9670;&nbsp;</a></span>removeEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classGraph.html">Graph</a>&lt; T &gt;::removeEdge </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes a directed edge between two vertices in the graph. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>Information of the source vertex. </td></tr>
+    <tr><td class="paramname">dest</td><td>Information of the destination vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the edge was removed successfully, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="af9c903104ad69a7782979fa9caedf163"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9c903104ad69a7782979fa9caedf163">&#9670;&nbsp;</a></span>removeVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classGraph.html">Graph</a>&lt; T &gt;::removeVertex </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes a vertex from the graph based on the given information. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">in</td><td>The information to identify the vertex to be removed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the vertex was removed successfully, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="af1d4affd1f886bf598d0f4cf4a0cb7cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1d4affd1f886bf598d0f4cf4a0cb7cb">&#9670;&nbsp;</a></span>topsort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; T &gt; <a class="el" href="classGraph.html">Graph</a>&lt; T &gt;::topsort</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Performs topological sorting of the graph using depth-first search (DFS). </p>
+<dl class="section return"><dt>Returns</dt><dd>Vector containing the topologically sorted vertices. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="Graph_8h_source.html">Graph.h</a></li>
 </ul>
