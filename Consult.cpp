@@ -239,14 +239,14 @@ vector<pair<Airport,int>> Consult::searchTopKAirportGreatestAirTrafficCapacity(c
         return a1->getFlightsTo() + a1->getFlightsFrom() > a2->getFlightsTo() + a2->getFlightsFrom();
     });
 
+    int last_totalFlights = 0;
     for (int i = 0; i < airports.size(); i++) {
-        int last_totalFlights = 0;
         int totalFlights = airports[i]->getFlightsFrom() + airports[i]->getFlightsTo();
-        if (i < k) {
+        if (i < k || totalFlights == last_totalFlights) {
+            res.emplace_back(airports[i]->getInfo(), totalFlights);
             last_totalFlights = totalFlights;
-            res.emplace_back(airports[i]->getInfo(), totalFlights);
-        } else if (last_totalFlights == totalFlights) {
-            res.emplace_back(airports[i]->getInfo(), totalFlights);
+        } else {
+            break;
         }
     }
     return res;
@@ -310,7 +310,7 @@ void Consult::dfsEssentialAirports(Vertex<Airport> *v, stack<string> &s, unorder
     s.pop();
 }
 
-void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
+vector<vector<Airport>> Consult::searchMaxTripAndCorrespondingPairsOfAirports(int& diameterResult) {
     int diameter = 0;
     vector<vector<Airport>> airportPaths;
 
@@ -359,17 +359,8 @@ void Consult::searchMaxTripAndCorrespondingPairsOfAirports() {
             }
         }
     }
-    cout << "Maximum trip: " << makeBold(diameter) << endl;
-    cout << "Paths of the trip(s): " << endl;
-    for (const auto& path : airportPaths) {
-        for (size_t i = 0; i < path.size(); ++i) {
-            cout << path[i].getCode();
-            if (i < path.size() - 1) {
-                cout << " -> ";
-            }
-        }
-        cout << endl;
-    }
+    diameterResult = diameter;
+    return airportPaths;
 }
 
 vector<vector<Airport>> Consult::searchSmallestPathBetweenAirports(const Airport& source, const Airport& target) {
