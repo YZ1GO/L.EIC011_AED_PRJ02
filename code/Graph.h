@@ -77,7 +77,7 @@ public:
 
     /**
      * @brief Sets the information for the vertex.
-     * @param c The information to be stored in the vertex.
+     * @param in The information to be stored in the vertex.
      */
     void setInfo(T in);
 
