@@ -7,6 +7,9 @@ class Script {
 public:
     Script(const Graph<Airport>& dataGraph);
     void run();
+    bool travelChosen{};
+    bool sourceChosen{};
+    map<string, vector<Vertex<Airport>*>> travelMap;
 
 private:
     struct MenuItem {
@@ -22,7 +25,7 @@ private:
     void actionGoBack();
     void backToMenu();
 
-    void printAirportInfo(Vertex<Airport>* airport);
+    void printAirportInfo(const Vertex<Airport>* airport);
     void printAirportInfoOneline(const Airport& airport);
 
     void globalNumber();
@@ -51,8 +54,10 @@ private:
     void searchAirportByCountryName();
     void searchClosestAirport();
 
-    void bestFlightOption();
-
+    void selectSource();
+    void selectDestiny();
+    void searchAirportByCityAndCountryName();
+    void showBestFlight();
 };
 
 

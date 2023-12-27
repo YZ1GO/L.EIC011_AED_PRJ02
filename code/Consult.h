@@ -273,6 +273,8 @@ public:
      * @return Vector of airport vertices closest to the specified coordinates.
      */
     vector<Vertex<Airport>*> findClosestAirports(const Coordinates& coordinates);
+
+    vector<Vertex<Airport>*> getAirportsInACityAndCountry(const string& city, const string& country);
 };
 
 
