@@ -282,8 +282,20 @@ public:
      */
     vector<Vertex<Airport>*> getAirportsInACityAndCountry(const string& city, const string& country);
 
+    /**
+     * @brief Retrieves the set of airlines that operate between two airports.
+     * @param source Pointer to the source airport.
+     * @param target Pointer to the target airport.
+     * @return Set of airlines that operate between the specified airports.
+     */
     std::set<Airline> airlinesThatOperateBetweenAirports(Vertex<Airport>* source, Vertex<Airport>* target);
 
+    /**
+     * @brief Retrieves the distance between two airports.
+     * @param source Pointer to the source airport.
+     * @param target Pointer to the target airport.
+     * @return The distance between the specified airports in kilometers.
+     */
     double getDistanceBetweenAirports(Vertex<Airport>* source, Vertex<Airport>* target);
 };
 
