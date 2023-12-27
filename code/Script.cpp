@@ -153,7 +153,6 @@ void Script::searchAirportsMenu() {
 
 void Script::listAndChooseAirport(vector<Vertex<Airport> *> airports, const string& name, const string& typeName) {
     while (true) {
-        travelMap.clear();
         clearScreen();
         string title = "Search Airport by " + typeName + "'s name";
         drawBox(title);
@@ -671,7 +670,8 @@ void Script::searchAirportByCityAndCountryName() {
 void Script::showBestFlight() {
     clearScreen();
     if (travelMap["source"].empty() || travelMap["destination"].empty()) {
-        cerr << "ERROR: Failure in finding flight" << endl;
+        cerr << "\nERROR: Failure in finding flight" << endl;
+        backToMenu();
     } else {
         while (true) {
             clearScreen();
