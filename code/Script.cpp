@@ -165,8 +165,8 @@ void Script::listAndChooseAirport(vector<Vertex<Airport> *> airports, const stri
         if (typeName == "country") {
             cout << "Found " << makeBold(airports.size()) << " airport(s) in " << "\'" << makeBold(name) << "\'" << endl;
         }
-
         cout << "\n";
+
         int i = 1;
         for (auto a : airports) {
             auto info = a->getInfo();
@@ -179,23 +179,19 @@ void Script::listAndChooseAirport(vector<Vertex<Airport> *> airports, const stri
             int choice;
             cout << "\nEnter your choice: ";
             if (!(cin >> choice)) {
-                // Invalid input (not an integer)
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 continue;
             }
             clearScreen();
-
             if (choice == airports.size() + 1) {
                 break;
             }
             else if (choice <= airports.size() && choice > 0) {
                 airportStatistics(airports[choice - 1]);
             }
-        }
-        else {
+        } else {
             backToMenu();
-            cout << "returned"<< endl;
             return;
         }
     }
@@ -206,41 +202,43 @@ void Script::airportStatistics(Vertex<Airport> *airport) {
         clearScreen();
         printAirportInfo(airport);
 
+        if (travelChosen) {
+            if (!sourceChosen) {
+                cout << "0. Set airport as source" << endl;
+            } else {
+                cout << "0. Set airport as destination" << endl;
+            }
+        }
         cout << "1. See airport statistics" << endl;
         cout << "2. See reachable destinations in a maximum of X stops" << endl;
-        if (travelChosen) {
-            if (!sourceChosen)  cout << "3. Set airport as source" << endl;
-            else                cout << "3. Set airport as destination" << endl;
-            cout << "4. [Back]" << endl;
-        } else cout << "3. [Back]" << endl;
+        cout << "3. [Back]" << endl;
 
         int choice;
         cout << "\nEnter your choice: ";
         if (!(cin >> choice)) {
-            // Invalid input (not an integer)
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue;
         }
         clearScreen();
-        if (choice == 1) {
+        if (choice == 3) {
+            if (sourceChosen) travelMap.clear();
+            return;
+        } else if (choice == 0 && travelChosen) {
+            if (!sourceChosen) {
+                cityChosenSource = false;
+                travelMap["source"].push_back(airport);
+                selectDestiny();
+            }
+            else {
+                cityChosenDestiny = false;
+                travelMap["destination"].push_back(airport);
+                showBestFlight();
+            }
+        } else if (choice == 1) {
             givenAirportStatistics(airport);
         } else if (choice == 2) {
             destinationsAvailableWithLayOvers(airport);
-        } else if (choice == 3) {
-            if (travelChosen) {
-                if (!sourceChosen) {
-                    travelMap["source"].push_back(airport);
-                    selectDestiny();
-                }
-                else {
-                    travelMap["destination"].push_back(airport);
-                    showBestFlight();
-                }
-            } else return;
-        } else if (choice == 4 && travelChosen) {
-            if (sourceChosen) travelMap.clear();
-            return;
         }
     }
 }
@@ -248,15 +246,17 @@ void Script::airportStatistics(Vertex<Airport> *airport) {
 void Script::searchAirportByAirportCode() {
     clearScreen();
     drawBox("Find airport by airport's code");
+
     cout << "Enter airport code: ";
     string airportCode;
     cin >> airportCode;
+
     auto airport = consult.findAirportByCode(airportCode);
+
     clearScreen();
     if (airport != nullptr) {
         airportStatistics(airport);
-    }
-    else {
+    } else {
         cerr << "ERROR: Airport with code: " << makeBold(airportCode) << " not found!" << endl;
         backToMenu();
     }
@@ -265,11 +265,12 @@ void Script::searchAirportByAirportCode() {
 void Script::searchAirportByAirportName() {
     clearScreen();
     drawBox("Search airport by airport's name");
+
     cout << "Enter airport name: ";
     string name;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     getline(cin, name);
-    cout << "\n";
+
     auto airports = consult.findAirportsByAirportName(name);
     listAndChooseAirport(airports, name, "airport");
 }
@@ -277,11 +278,12 @@ void Script::searchAirportByAirportName() {
 void Script::searchAirportByCityName() {
     clearScreen();
     drawBox("Search airport by city's name");
+
     cout << "Enter city name: ";
     string name;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     getline(cin, name);
-    cout << "\n";
+
     auto airports = consult.findAirportsByCityName(name);
     listAndChooseAirport(airports, name, "city");
 }
@@ -289,11 +291,13 @@ void Script::searchAirportByCityName() {
 void Script::searchAirportByCountryName() {
     clearScreen();
     drawBox("Search airport by country's name");
+
     cout << "Enter country name: ";
     string name;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     getline(cin, name);
     cout << "\n";
+
     auto airports = consult.findAirportsByCountryName(name);
     listAndChooseAirport(airports, name, "country");
 }
@@ -302,6 +306,7 @@ void Script::searchClosestAirport() {
     while (true) {
         clearScreen();
         drawBox("Search closest Airport");
+
         double lat, lon;
         cout << "Enter latitude: ";
         cin >> lat;
@@ -311,42 +316,29 @@ void Script::searchClosestAirport() {
 
         if (lat < -90.0 || lat > 90.0 || lon < -180.0 || lon > 180.0) {
             cerr << "ERROR: Invalid coordinates, please enter valid values (latitude: -90.0 ~ 90.0, longitude: -180.0 ~ 180.0)" << endl;
+            backToMenu();
         } else {
             Coordinates location;
             location.latitude = lat;
             location.longitude = lon;
+
             auto airports = consult.findClosestAirports(location);
-            cout << "Found " << makeBold(airports.size()) << " airport(s) closest to (" << lat << ", " << lon << ")" << endl;
-            cout << "\n";
-            if (travelChosen) {
-                cout << "\n";
-                if (!sourceChosen) cout << "0. Set coordinates as source" << endl;
-                else cout << "0. Set coordinates as destiny" << endl;
-            }
+            cout << "Found " << makeBold(airports.size()) << " airport(s) closest to (" << lat << ", " << lon << ")\n" << endl;
+
             int index = 1;
             for (auto a : airports) {
                 auto info = a->getInfo();
                 cout << index++ << ". ";
                 printAirportInfoOneline(info);
             }
+            cout << index << ". [Back]\n" << endl;
 
-            cout << index << ". [Back]" << endl;
-            cout << "\n";
             int choice;
-            cout << "Enter your choice: " << endl;
+            cout << "Enter your choice: ";
             cin >> choice;
-            if (choice == 0) {
-                if (!sourceChosen) {
-                    travelMap["source"] = airports;
-                    selectDestiny();
-                }
-                else {
-                    travelMap["destination"] = airports;
-                    showBestFlight();
-                }
-            } else if (choice == airports.size() + 1) {
+            if (choice == airports.size() + 1) {
                 if (sourceChosen) travelMap.clear();
-                break;
+                return;
             } else if (choice <= airports.size() && choice > 0) {
                 airportStatistics(airports[choice - 1]);
             }
@@ -582,13 +574,17 @@ void Script::selectDestiny() {
 
         auto it = travelMap.find("source");
         cout << makeBold("Source: ");
-        for (auto a : it->second) {
-            printAirportInfoOneline(a->getInfo());
+        if (cityChosenSource) {
+            cout << it->second[0]->getInfo().getCity() << ", " << it->second[0]->getInfo().getCountry() << endl;
+        } else {
+            printAirportInfoOneline(it->second[0]->getInfo());
         }
+        cout << "\n";
 
         for (int i = 0; i < destiny.size(); i++) {
             cout << i + 1 << ". " << destiny[i].label << endl;
         }
+
         int choice;
         cout << "\nEnter your choice: ";
         if (!(cin >> choice)) {
@@ -608,24 +604,30 @@ void Script::selectDestiny() {
 }
 
 void Script::searchAirportByCityAndCountryName() {
-    string city, country;
     drawBox("Search by city");
+
+    string city, country;
     cout << "Enter city name: ";
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     getline(cin, city);
     cout << "Enter country name: ";
     getline(cin, country);
-    cout << "\n";
+
     auto airports = consult.getAirportsInACityAndCountry(city, country);
+
     if (airports.empty()) {
-        cerr << "ERROR: Invalid city/country name" << endl;
+        cerr << "\nERROR: Invalid city/country name" << endl;
         backToMenu();
     } else {
         while (true) {
-            cout << "Found " << makeBold(airports.size()) << " airport(s) in " << city << ", " << country << endl;
-            cout << "\n";
-            if (!sourceChosen) cout << "0. Set this city and country as source" << endl;
-            else cout << "0. Set this city and country as destination" << endl;
+            cout << "\nFound " << makeBold(airports.size()) << " airport(s) in " << city << ", " << country << "\n" << endl;
+
+            if (!sourceChosen) {
+                cout << "0. Set this city and country as source" << endl;
+            } else {
+                cout << "0. Set this city and country as destination" << endl;
+            }
+
             int index = 1;
             for (auto& airport : airports) {
                 auto info = airport->getInfo();
@@ -633,21 +635,25 @@ void Script::searchAirportByCityAndCountryName() {
                      << info.getCountry() << endl;
             }
             cout << index << ". [Back]" << endl;
+
             int choice;
             cout << "\nEnter your choice: ";
             if (!(cin >> choice)) {
-                // Invalid input (not an integer)
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 continue;
             }
             clearScreen();
+            cityChosenSource = false;
+            cityChosenDestiny = false;
             if (choice == 0) {
                 if (!sourceChosen) {
+                    cityChosenSource = true;
                     travelMap["source"] = airports;
                     selectDestiny();
                 }
                 else {
+                    cityChosenDestiny = true;
                     travelMap["destination"] = airports;
                     showBestFlight();
                 }
@@ -663,15 +669,42 @@ void Script::searchAirportByCityAndCountryName() {
 
 void Script::showBestFlight() {
     clearScreen();
+    drawBox("Best Flights");
     if (travelMap["source"].empty() || travelMap["destination"].empty()) {
         cerr << "ERROR: Failure in finding flight" << endl;
     } else {
-        //take out [0] from variables after changing function to accept vectors
-        auto bestFlights = consult.searchSmallestPathBetweenAirports(travelMap["source"][0], travelMap["destination"][0]);
+        auto source = travelMap.find("source");
+        auto destination = travelMap.find("destination");
+
+        cout << makeBold("Source: ");
+        if (cityChosenSource) {
+            cout << source->second[0]->getInfo().getCity() << ", " << source->second[0]->getInfo().getCountry() << endl;
+        } else {
+            printAirportInfoOneline(source->second[0]->getInfo());
+        }
+
+        cout << makeBold("Destination: ");
+        if (cityChosenDestiny) {
+            cout << destination->second[0]->getInfo().getCity() << ", " << destination->second[0]->getInfo().getCountry() << endl;
+        } else {
+            printAirportInfoOneline(destination->second[0]->getInfo());
+        }
+
+        vector<vector<Vertex<Airport>*>> totalPaths;
+
+        for (auto sourceAirport : source->second) {
+            for (auto destinationAirport : destination->second) {
+                vector<vector<Vertex<Airport>*>> paths = consult.searchSmallestPathBetweenAirports(sourceAirport, destinationAirport);
+                for (auto v : paths) {
+                    totalPaths.push_back(v);
+                }
+            }
+        }
+
         while (true) {
-            cout << "Best flight is with " << makeBold(bestFlights[0].size() - 2) << " lay-over(s)" << endl;
+            cout << "\nBest flight is with " << makeBold(totalPaths[0].size() - 2) << " lay-over(s)" << endl;
             int index = 1;
-            for (const auto& trips : bestFlights) {
+            for (const auto& trips : totalPaths) {
                 auto it = trips.begin();
                 cout << index++ << ". ";
                 while (it != trips.end()) {
@@ -691,7 +724,7 @@ void Script::showBestFlight() {
                 sourceChosen = false;
                 break; // need to make it return to travel menu
             } else if (choice <= index && choice > 0) {
-                printBestFlightDetail(bestFlights[choice - 1]);
+                printBestFlightDetail(totalPaths[choice - 1]);
             }
         }
     }
