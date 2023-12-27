@@ -403,3 +403,67 @@ vector<vector<Airport>> Consult::searchSmallestPathBetweenAirports(Vertex<Airpor
     }
     return smallestPaths;
 }
+
+Vertex<Airport>* Consult::findAirportByCode(const string& airportCode) {
+    for (auto airport : consultGraph.getVertexSet()) {
+        if (ToLower(airport->getInfo().getCode()) == ToLower(airportCode)) {
+            return airport;
+        }
+    }
+    return nullptr;
+}
+
+template <typename T>
+vector<Vertex<Airport>*> Consult::findAirportsByAttribute(const string& searchName, T (Airport::*getAttr)() const) {
+    vector<Vertex<Airport>*> matchingAirports;
+    string searchNameLowered = RemoveSpaces(ToLower(searchName));
+
+    for (auto airport : consultGraph.getVertexSet()) {
+        auto attributeLowered = RemoveSpaces(ToLower((airport->getInfo().*getAttr)()));
+        if (attributeLowered.find(searchNameLowered) != string::npos) {
+            matchingAirports.push_back(airport);
+        }
+    }
+
+    sort(matchingAirports.begin(), matchingAirports.end(), [](Vertex<Airport>* a, Vertex<Airport>* b) {
+        return ToLower(a->getInfo().getName()) < ToLower(b->getInfo().getName());
+    });
+
+    return matchingAirports;
+}
+
+vector<Vertex<Airport>*> Consult::findAirportsByAirportName(const string& searchName) {
+    return findAirportsByAttribute(searchName, &Airport::getName);
+}
+
+vector<Vertex<Airport>*> Consult::findAirportsByCityName(const string& searchName) {
+    return findAirportsByAttribute(searchName, &Airport::getCity);
+}
+
+vector<Vertex<Airport>*> Consult::findAirportsByCountryName(const string& searchName) {
+    return findAirportsByAttribute(searchName, &Airport::getCountry);
+}
+
+vector<Vertex<Airport>*> Consult::findClosestAirports(const Coordinates& coordinates) {
+    vector<Vertex<Airport>*> closestAirports;
+    double minDistance = numeric_limits<double>::max();
+
+    for (auto airport : consultGraph.getVertexSet()) {
+        auto airportCoordinates = airport->getInfo().getLocation();
+        double distance = HarversineDistance(coordinates.latitude, coordinates.longitude, airportCoordinates.latitude, airportCoordinates.longitude);
+
+        if (distance < minDistance) {
+            minDistance = distance;
+            closestAirports.clear();
+            closestAirports.push_back(airport);
+        } else if (distance == minDistance) {
+            closestAirports.push_back(airport);
+        }
+    }
+
+    sort(closestAirports.begin(), closestAirports.end(), [](Vertex<Airport>* a, Vertex<Airport>* b) {
+        return ToLower(a->getInfo().getName()) < ToLower(b->getInfo().getName());
+    });
+
+    return closestAirports;
+}
