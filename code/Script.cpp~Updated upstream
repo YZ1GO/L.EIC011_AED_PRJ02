@@ -1,6 +1,6 @@
 #include "Script.h"
 
-Script::Script(const Graph<Airport>& dataGraph) : consult(dataGraph) {}
+Script::Script(const Graph<Airport>& dataGraph) : consult(dataGraph), listAirports(dataGraph) {}
 
 void Script::drawBox(const string &text) {
     int width = text.length() + 4;
@@ -234,7 +234,7 @@ void Script::searchAirportByAirportCode() {
     cout << "Enter airport code: ";
     string airportCode;
     cin >> airportCode;
-    auto airport = consult.findAirportByCode(airportCode);
+    auto airport = listAirports.findAirportByCode(airportCode);
     clearScreen();
     if (airport != nullptr) {
         airportStatistics(airport);
@@ -252,7 +252,7 @@ void Script::searchAirportByAirportName() {
     string name;
     cin >> name;
     cout << "\n";
-    auto airports = consult.findAirportsByAirportName(name);
+    auto airports = listAirports.findAirportsByAirportName(name);
     listAndChooseAirport(airports, name, "airport");
 }
 
@@ -263,7 +263,7 @@ void Script::searchAirportByCityName() {
     string name;
     cin >> name;
     cout << "\n";
-    auto airports = consult.findAirportsByCityName(name);
+    auto airports = listAirports.findAirportsByCityName(name);
     listAndChooseAirport(airports, name, "city");
 }
 
@@ -274,7 +274,7 @@ void Script::searchAirportByCountryName() {
     string name;
     cin >> name;
     cout << "\n";
-    auto airports = consult.findAirportsByCountryName(name);
+    auto airports = listAirports.findAirportsByCountryName(name);
     listAndChooseAirport(airports, name, "country");
 }
 
@@ -294,7 +294,7 @@ void Script::searchClosestAirport() {
         Coordinates location;
         location.latitude = lat;
         location.longitude = lon;
-        auto airports = consult.findClosestAirports(location);
+        auto airports = listAirports.findClosestAirports(location);
         cout << "Found " << makeBold(airports.size()) << " airport(s) closest to (" << lat << ", " << lon << ")" << endl;
         cout << "\n";
         int i = 1;
@@ -452,7 +452,7 @@ void Script::topKAirportAirTraffic() {
     cout << "Enter the desired number of airports to display: ";
     int k;
     cin >> k;
-    if (k < 1 || k > 3019) {
+    if (k < 1 || k > consult.searchNumberOfAirports()) {
         cerr << "ERROR: Invalid number" << endl;
     } else {
         int index = 1;

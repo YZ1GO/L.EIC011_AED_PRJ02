@@ -2,7 +2,6 @@
 #define AED_AIRPORTS_SCRIPT_H
 
 #include "Consult.h"
-#include "ListAirports.h"
 
 class Script {
 public:
@@ -16,7 +15,6 @@ private:
     };
 
     Consult consult;
-    ListAirports listAirports;
 
     void drawBox(const string& text);
     int showMenu(const string& menuName, const vector<MenuItem>& menuItems);
