@@ -246,7 +246,7 @@ void Script::airportStatistics(Vertex<Airport> *airport) {
 
 void Script::searchAirportByAirportCode() {
     clearScreen();
-    drawBox("Search Airport by airport's code");
+    drawBox("Find airport by airport's code");
     cout << "Enter airport code: ";
     string airportCode;
     cin >> airportCode;
@@ -263,7 +263,7 @@ void Script::searchAirportByAirportCode() {
 
 void Script::searchAirportByAirportName() {
     clearScreen();
-    drawBox("Search Airport by airport's name");
+    drawBox("Search airport by airport's name");
     cout << "Enter airport name: ";
     string name;
     cin >> name;
@@ -274,7 +274,7 @@ void Script::searchAirportByAirportName() {
 
 void Script::searchAirportByCityName() {
     clearScreen();
-    drawBox("Search Airport by city's name");
+    drawBox("Search airport by city's name");
     cout << "Enter city name: ";
     string name;
     cin >> name;
@@ -285,7 +285,7 @@ void Script::searchAirportByCityName() {
 
 void Script::searchAirportByCountryName() {
     clearScreen();
-    drawBox("Search Airport by country's name");
+    drawBox("Search airport by country's name");
     cout << "Enter country name: ";
     string name;
     cin >> name;
