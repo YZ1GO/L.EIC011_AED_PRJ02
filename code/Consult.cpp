@@ -467,3 +467,16 @@ vector<Vertex<Airport>*> Consult::findClosestAirports(const Coordinates& coordin
 
     return closestAirports;
 }
+
+vector<Vertex<Airport>*> Consult::getAirportsInACityAndCountry(const string& city, const string& country) {
+    vector<Vertex<Airport>*> cityAirports;
+
+    for (auto v : consultGraph.getVertexSet())
+        v->setVisited(false);
+
+    for (auto v : consultGraph.getVertexSet())
+        if (!v->isVisited())
+            dfsVisitCityAirports(city, country, v, cityAirports);
+
+    return cityAirports;
+}
