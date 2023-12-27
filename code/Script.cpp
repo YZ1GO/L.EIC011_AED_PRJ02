@@ -452,7 +452,7 @@ void Script::topKAirportAirTraffic() {
     cout << "Enter the desired number of airports to display: ";
     int k;
     cin >> k;
-    if (k < 1 || k > 3019) {
+    if (k < 1 || k > consult.searchNumberOfAirports()) {
         cerr << "ERROR: Invalid number" << endl;
     } else {
         int index = 1;
