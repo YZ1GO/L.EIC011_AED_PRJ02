@@ -27,11 +27,11 @@ private:
     const Graph<Airport>& consultGraph;     ///< Reference to the airport graph used for consultation.
 
     /**
-     * @brief Performs a depth-first search to count flights per city from a given vertex.
+     * @brief Performs a depth-first search to count flights per city of a country from a given vertex.
      * @param v Pointer to the vertex initiating the search.
-     * @param res Map containing the count of flights per city.
+     * @param res Map containing the count of flights per city of a country.
      */
-    void dfsVisitFlightsPerCity(Vertex<Airport> *v, map<string, int> &res);
+    void dfsVisitFlightsPerCity(Vertex<Airport> *v, map<pair<string,string>, int> &res);
 
     /**
      * @brief Performs a depth-first search to count flights per airline from a given vertex.
@@ -137,10 +137,10 @@ public:
     int searchNumberOfFlightsOutOfAirportFromDifferentAirlines(Vertex<Airport>* airport);
 
     /**
-     * @brief Searches the number of flights per city.
-     * @return Map containing the count of flights per city.
+     * @brief Searches the number of flights per city of a country.
+     * @return Map containing the count of flights per city of a country.
      */
-    map<string, int> searchNumberOfFlightsPerCity();
+    map<pair<string,string>, int> searchNumberOfFlightsPerCity();
 
     /**
      * @brief Searches the number of flights per airline.
