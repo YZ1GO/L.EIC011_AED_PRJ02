@@ -122,7 +122,8 @@ int Consult::searchNumberOfCountriesFlownToFromCity(const string &city, const st
 
 void Consult::dfsVisitCityAirports(const string &city, const string& country, Vertex<Airport> *v, vector<Vertex<Airport>*> &res) {
     v->setVisited(true);
-    if (ToLower(v->getInfo().getCity()) == ToLower(city) && ToLower(v->getInfo().getCountry()) == ToLower(country))
+    if (RemoveSpaces(ToLower(v->getInfo().getCity())) == RemoveSpaces(ToLower(city)) &&
+            RemoveSpaces(ToLower(v->getInfo().getCountry())) == RemoveSpaces(ToLower(v->getInfo().getCountry())))
         res.push_back(v);
     for (auto &flight : v->getAdj()) {
         auto d = flight.getDest();
