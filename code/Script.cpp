@@ -153,6 +153,7 @@ void Script::searchAirportsMenu() {
 
 void Script::listAndChooseAirport(vector<Vertex<Airport> *> airports, const string& name, const string& typeName) {
     while (true) {
+        travelMap.clear();
         clearScreen();
         string title = "Search Airport by " + typeName + "'s name";
         drawBox(title);
@@ -185,7 +186,7 @@ void Script::listAndChooseAirport(vector<Vertex<Airport> *> airports, const stri
             }
             clearScreen();
             if (choice == airports.size() + 1) {
-                break;
+                return;
             }
             else if (choice <= airports.size() && choice > 0) {
                 airportStatistics(airports[choice - 1]);
@@ -692,7 +693,7 @@ void Script::showBestFlight() {
                 printAirportInfoOneline(destination->second[0]->getInfo());
             }
 
-            vector<vector<Vertex<Airport>*>> totalPaths;
+            vector<pair<vector<Vertex<Airport>*>, double>> totalPaths; // Pair of path and distance
             int minLayOvers = numeric_limits<int>::max();
 
             for (auto sourceAirport : source->second) {
@@ -707,22 +708,35 @@ void Script::showBestFlight() {
                             totalPaths.clear();
                         }
                         if (currentLayOvers == minLayOvers) {
-                            totalPaths.push_back(v);
+                            double distance = 0.0;
+                            auto it = v.begin();
+                            while (it != v.end() - 1) {
+                                distance += consult.getDistanceBetweenAirports(*it, *(it + 1));
+                                ++it;
+                            }
+                            totalPaths.push_back({ v, distance });
                         }
                     }
                 }
             }
-            cout << "\nBest flight is with " << makeBold(totalPaths[0].size() - 2) << " lay-over(s)" << endl;
+
+            sort(totalPaths.begin(), totalPaths.end(), [](const pair<vector<Vertex<Airport>*>, double>& a, const pair<vector<Vertex<Airport>*>, double>& b) {
+                return a.second < b.second;
+            });
+
+            cout << "\nBest flight is with " << makeBold(totalPaths[0].first.size() - 2) << " lay-over(s)" << endl;
             int index = 1;
-            for (const auto& trips : totalPaths) {
-                auto it = trips.begin();
+            for (const auto& trip : totalPaths) {
                 cout << index++ << ". ";
-                while (it != trips.end()) {
+
+                double distance = trip.second;
+                for (auto it = trip.first.begin(); it != trip.first.end(); ++it) {
                     cout << (*it)->getInfo().getCode();
-                    if (next(it) != trips.end()) cout << " \u25B6 ";
-                    ++it;
+                    if (next(it) != trip.first.end()) {
+                        cout << " \u25B6 ";
+                    }
                 }
-                cout << endl;
+                cout << "   (" << distance << " km)" << endl;
             }
             cout << index << ". [Back]" << endl;
             int choice;
@@ -732,7 +746,6 @@ void Script::showBestFlight() {
             if (choice == index) {
                 travelMap.clear();
                 sourceChosen = false;
-                cout << "flag"<< endl;
                 return; // need to make it return to travel menu
             } else if (choice <= index && choice > 0) {
                 printBestFlightDetail(totalPaths[choice - 1]);
@@ -741,18 +754,21 @@ void Script::showBestFlight() {
     }
 }
 
-void Script::printBestFlightDetail(vector<Vertex<Airport> *> trip) {
+void Script::printBestFlightDetail(pair<vector<Vertex<Airport>*>,double> trip) {
     clearScreen();
     drawBox("Details about the trip");
-    auto it = trip.begin();
+    cout << makeBold("Total distance: ") << trip.second << " km\n"<< endl;
+
+    auto it = trip.first.begin();
     int index = 1;
-    while (it != trip.end()) {
+    while (it != trip.first.end()) {
         cout << index++ << ". ";
         printAirportInfoOneline((*it)->getInfo());
 
-        if (it + 1 != trip.end()) {
+        if (it + 1 != trip.first.end()) {
             cout << "   [Available Airlines]: ";
             auto airlines = consult.airlinesThatOperateBetweenAirports(*it, *(it + 1));
+
             for (auto it = airlines.begin(); it != airlines.end(); ++it) {
                 cout << it->getCode();
                 if (next(it) != airlines.end()) {
@@ -762,8 +778,9 @@ void Script::printBestFlightDetail(vector<Vertex<Airport> *> trip) {
                 }
             }
         }
-
-        if (next(it) != trip.end()) cout << "          \u25BC" << endl;
+        if (next(it) != trip.first.end()) {
+            cout << "             \u25BC" << endl;
+        }
         it++;
     }
     cout << endl;

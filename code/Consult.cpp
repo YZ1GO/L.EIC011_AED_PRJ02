@@ -493,3 +493,14 @@ set<Airline> Consult::airlinesThatOperateBetweenAirports(Vertex<Airport>* source
     }
     return airlines;
 }
+
+double Consult::getDistanceBetweenAirports(Vertex<Airport>* source, Vertex<Airport>* target) {
+    double distance = 0;
+    for (auto v : source->getAdj()) {
+        if (v.getDest()->getInfo() == target->getInfo()) {
+            distance = v.getDistance();
+            break;
+        }
+    }
+    return distance;
+}
