@@ -237,7 +237,7 @@ public:
      * @param target The destination airport.
      * @return A vector of vectors containing sequences of airports representing the smallest path(s) between the source and target airports.
      */
-    vector<vector<Airport>> searchSmallestPathBetweenAirports(Vertex<Airport>* source, Vertex<Airport>* target);
+    vector<vector<Vertex<Airport>*>> searchSmallestPathBetweenAirports(Vertex<Airport>* source, Vertex<Airport>* target);
 
     /**
      * @brief Finds an airport vertex based on the airport code.

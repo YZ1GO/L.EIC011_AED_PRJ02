@@ -103,6 +103,7 @@ void Script::run() {
 
                 int searchChoice = showMenu("TRAVEL MENU", travelMenu);
                 if (searchChoice == 2) {
+                    travelChosen = false;
                     break;  // Go back to the main menu
                 }
                 if (searchChoice >=1 && searchChoice < 3 && travelMenu[searchChoice - 1].action != nullptr) {
@@ -324,7 +325,9 @@ void Script::searchClosestAirport() {
             if (!sourceChosen) cout << "1. Set coordinates as source" << endl;
             else cout << "1. Set coordinates as destiny" << endl;
             cout << "2. [Back]" << endl;
+            cout << "\n";
             int choice;
+            cout << "Enter your choice: " << endl;
             cin >> choice;
             if (choice == 1) {
                 if (!sourceChosen) {
@@ -432,6 +435,7 @@ void Script::numberOfFlightRoutes() {
 }
 
 void Script::flightsPerCity() {
+    drawBox("Flights per city");
     int index = 1;
     for (const auto& pair : consult.searchNumberOfFlightsPerCity()) {
         cout << index++ << ". [" << pair.second << "] " << pair.first << endl;
@@ -440,6 +444,7 @@ void Script::flightsPerCity() {
 }
 
 void Script::flightsPerAirline() {
+    drawBox("Flights per airline");
     int index = 1;
     for (const auto& pair : consult.searchNumberOfFlightsPerAirline()) {
         auto airline = pair.first;
@@ -543,7 +548,6 @@ void Script::selectSource() {
         }
         clearScreen();
         if (choice == 5) {
-            travelChosen = false;
             exitSubMenu = true;
         } else if (choice >= 1 && choice <= selectSource.size()) {
             (this->*selectSource[choice - 1].action)();
@@ -625,11 +629,25 @@ void Script::searchAirportByCityAndCountryName() {
 }
 
 void Script::showBestFlight() {
+    clearScreen();
     if (travelMap["source"].empty() || travelMap["destination"].empty()) {
         cerr << "ERROR: Failure in finding flight" << endl;
     } else {
-        auto airports = consult.searchSmallestPathBetweenAirports(travelMap["source"][0], travelMap["destination"][0]);
-
+        auto bestFlights = consult.searchSmallestPathBetweenAirports(travelMap["source"][0], travelMap["destination"][0]);
+        cout << "Best flight is with " << makeBold(bestFlights[0].size() - 2) << " lay-over(s)" << endl;
+        for (const auto& trips : bestFlights) {
+            cout << "\n";
+            auto it = trips.begin();
+            while (it != trips.end()) {
+                cout << (*it)->getInfo().getCode();
+                if (next(it) != trips.end()) cout << "->";
+                ++it;
+            }
+            cout << endl;
+        }
     }
+    travelMap.clear();
+    sourceChosen = false;
+    backToMenu(); // need to make it return to travel menu
 }
 
