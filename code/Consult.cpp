@@ -363,14 +363,14 @@ vector<vector<Vertex<Airport>*>> Consult::searchMaxTripAndCorrespondingPairsOfAi
     return airportPaths;
 }
 
-vector<vector<Airport>> Consult::searchSmallestPathBetweenAirports(Vertex<Airport>* source, Vertex<Airport>* target) {
-    vector<vector<Airport>> smallestPaths;
+vector<vector<Vertex<Airport>*>> Consult::searchSmallestPathBetweenAirports(Vertex<Airport>* source, Vertex<Airport>* target) {
+    vector<vector<Vertex<Airport>*>> smallestPaths;
 
     for (auto& v : consultGraph.getVertexSet())
         v->setVisited(false);
 
-    queue<pair<vector<Airport>, Vertex<Airport>*>> q;
-    q.push({{source->getInfo()}, source});
+    queue<pair<vector<Vertex<Airport>*>, Vertex<Airport>*>> q;
+    q.push({{source}, source});
     source->setVisited(true);
 
     int smallestSize = numeric_limits<int>::max();
@@ -382,7 +382,7 @@ vector<vector<Airport>> Consult::searchSmallestPathBetweenAirports(Vertex<Airpor
         for (auto& flight : current.second->getAdj()) {
             auto neighbor = flight.getDest();
             if (neighbor == target) {
-                current.first.emplace_back(neighbor->getInfo());
+                current.first.emplace_back(neighbor);
 
                 if (current.first.size() < smallestSize) {
                     smallestPaths.clear();
@@ -394,8 +394,8 @@ vector<vector<Airport>> Consult::searchSmallestPathBetweenAirports(Vertex<Airpor
             } else {
                 if (!neighbor->isVisited()) {
                     neighbor->setVisited(true);
-                    vector<Airport> newPath = current.first;
-                    newPath.emplace_back(neighbor->getInfo());
+                    vector<Vertex<Airport>*> newPath = current.first;
+                    newPath.emplace_back(neighbor);
                     q.emplace(newPath, neighbor);
                 }
             }
