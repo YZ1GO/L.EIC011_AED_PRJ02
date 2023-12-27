@@ -106,6 +106,7 @@ private:
     void selectDestiny();
     void searchAirportByCityAndCountryName();
     void showBestFlight();
+    void printBestFlightDetail(vector<Vertex<Airport>*> trip);
 };
 
 

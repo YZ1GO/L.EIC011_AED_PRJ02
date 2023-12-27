@@ -189,7 +189,7 @@ void Script::listAndChooseAirport(vector<Vertex<Airport> *> airports, const stri
             if (choice == airports.size() + 1) {
                 break;
             }
-            else if (choice <= airports.size()) {
+            else if (choice <= airports.size() && choice > 0) {
                 airportStatistics(airports[choice - 1]);
             }
         }
@@ -347,7 +347,7 @@ void Script::searchClosestAirport() {
             } else if (choice == airports.size() + 1) {
                 if (sourceChosen) travelMap.clear();
                 break;
-            } else if (choice <= airports.size()) {
+            } else if (choice <= airports.size() && choice > 0) {
                 airportStatistics(airports[choice - 1]);
             }
         }
@@ -489,7 +489,7 @@ void Script::maximumTrip() {
         for (size_t i = 0; i < path.size(); ++i) {
             cout << path[i]->getInfo().getCode();
             if (i < path.size() - 1) {
-                cout << " -> ";
+                cout << " \u25B6 ";
             }
         }
         cout << endl;
@@ -645,7 +645,7 @@ void Script::searchAirportByCityAndCountryName() {
             } else if (choice == airports.size() + 1) {
                 if (sourceChosen) travelMap.clear();
                 break;
-            } else if (choice <= airports.size()) {
+            } else if (choice <= airports.size() && choice > 0) {
                 airportStatistics(airports[choice - 1]);
             }
         }
@@ -657,21 +657,47 @@ void Script::showBestFlight() {
     if (travelMap["source"].empty() || travelMap["destination"].empty()) {
         cerr << "ERROR: Failure in finding flight" << endl;
     } else {
+        //take out [0] from variables after changing function to accept vectors
         auto bestFlights = consult.searchSmallestPathBetweenAirports(travelMap["source"][0], travelMap["destination"][0]);
-        cout << "Best flight is with " << makeBold(bestFlights[0].size() - 2) << " lay-over(s)" << endl;
-        for (const auto& trips : bestFlights) {
-            cout << "\n";
-            auto it = trips.begin();
-            while (it != trips.end()) {
-                cout << (*it)->getInfo().getCode();
-                if (next(it) != trips.end()) cout << "->";
-                ++it;
+        while (true) {
+            cout << "Best flight is with " << makeBold(bestFlights[0].size() - 2) << " lay-over(s)" << endl;
+            int index = 1;
+            for (const auto& trips : bestFlights) {
+                cout << "\n";
+                auto it = trips.begin();
+                cout << index++ << ". ";
+                while (it != trips.end()) {
+                    cout << (*it)->getInfo().getCode();
+                    if (next(it) != trips.end()) cout << "\u25B6";
+                    ++it;
+                }
+                cout << endl;
             }
-            cout << endl;
+            cout << index << ". [Back]" << endl;
+            int choice;
+            cout << "\nEnter your choice: ";
+            cin >> choice;
+            cout << "\n";
+            if (choice == index) {
+                travelMap.clear();
+                sourceChosen = false;
+                break; // need to make it return to travel menu
+            } else if (choice <= index && choice > 0) {
+                printBestFlightDetail(bestFlights[choice - 1]);
+            }
         }
     }
-    travelMap.clear();
-    sourceChosen = false;
-    backToMenu(); // need to make it return to travel menu
+}
+
+void Script::printBestFlightDetail(vector<Vertex<Airport> *> trip) {
+    clearScreen();
+    auto it = trip.begin();
+    while (it != trip.end()) {
+        printAirportInfoOneline((*it)->getInfo());
+        if (next(it) != trip.end()) cout << "\u25BC" << endl;
+        it++;
+    }
+    cout << endl;
+    backToMenu();
 }
 
