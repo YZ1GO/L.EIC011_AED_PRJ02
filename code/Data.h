@@ -20,8 +20,8 @@
  * @brief Structure to represent geographic coordinates.
  */
 struct Coordinates {
-    double latitude;
-    double longitude;
+    double latitude;    ///< Latitude value of the coordinates.
+    double longitude;   ///< Longitude value of the coordinates.
 };
 
 /**

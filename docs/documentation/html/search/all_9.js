@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['makebold_47',['makeBold',['../Utilities_8h.html#a3bd6ee67b0398de7c3501b9278cd89b9',1,'Utilities.h']]]
+  ['latitude_47',['latitude',['../structCoordinates.html#a20ea6542be083155699517939b03f259',1,'Coordinates']]],
+  ['longitude_48',['longitude',['../structCoordinates.html#a474951b7ec4e5f12e788abbf852cd88b',1,'Coordinates']]]
 ];
