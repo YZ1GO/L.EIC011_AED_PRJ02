@@ -609,6 +609,7 @@ void Script::selectDestiny() {
 
 void Script::searchAirportByCityAndCountryName() {
     string city, country;
+    drawBox("Search by city");
     cout << "Enter city name: ";
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     getline(cin, city);
@@ -618,7 +619,6 @@ void Script::searchAirportByCityAndCountryName() {
     auto airports = consult.getAirportsInACityAndCountry(city, country);
     if (airports.empty()) {
         cerr << "ERROR: Invalid city/country name" << endl;
-        cout << "delay"<< endl;
         backToMenu();
     } else {
         while (true) {
