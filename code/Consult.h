@@ -281,6 +281,8 @@ public:
      * @return Vector of airport vertices in the specified city and country.
      */
     vector<Vertex<Airport>*> getAirportsInACityAndCountry(const string& city, const string& country);
+
+    std::set<Airline> airlinesThatOperateBetweenAirports(Vertex<Airport>* source, Vertex<Airport>* target);
 };
 
 

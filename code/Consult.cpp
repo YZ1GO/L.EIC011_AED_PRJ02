@@ -482,3 +482,14 @@ vector<Vertex<Airport>*> Consult::getAirportsInACityAndCountry(const string& cit
 
     return cityAirports;
 }
+
+set<Airline> Consult::airlinesThatOperateBetweenAirports(Vertex<Airport>* source, Vertex<Airport>* target) {
+    set<Airline> airlines;
+    for (auto v : source->getAdj()) {
+        if (v.getDest()->getInfo() == target->getInfo()) {
+            airlines = v.getAirlines();
+            break;
+        }
+    }
+    return airlines;
+}
