@@ -274,6 +274,12 @@ public:
      */
     vector<Vertex<Airport>*> findClosestAirports(const Coordinates& coordinates);
 
+    /**
+     * @brief Finds airports based on the city and country names.
+     * @param city The name of the city associated with the airport(s) to search for.
+     * @param country The name of the country associated with the airport(s) to search for.
+     * @return Vector of airport vertices in the specified city and country.
+     */
     vector<Vertex<Airport>*> getAirportsInACityAndCountry(const string& city, const string& country);
 };
 
