@@ -299,40 +299,43 @@ void Script::searchAirportByCountryName() {
 }
 
 void Script::searchClosestAirport() {
-    clearScreen();
-    drawBox("Search closest Airport");
-    double lat, lon;
-    cout << "Enter latitude: ";
-    cin >> lat;
-    cout << "Enter longitude: ";
-    cin >> lon;
-    cout << "\n";
-
-    if (lat < -90.0 || lat > 90.0 || lon < -180.0 || lon > 180.0) {
-        cerr << "ERROR: Invalid coordinates, please enter valid values (latitude: -90.0 ~ 90.0, longitude: -180.0 ~ 180.0)" << endl;
-    } else {
-        Coordinates location;
-        location.latitude = lat;
-        location.longitude = lon;
-        auto airports = consult.findClosestAirports(location);
-        cout << "Found " << makeBold(airports.size()) << " airport(s) closest to (" << lat << ", " << lon << ")" << endl;
+    while (true) {
+        clearScreen();
+        drawBox("Search closest Airport");
+        double lat, lon;
+        cout << "Enter latitude: ";
+        cin >> lat;
+        cout << "Enter longitude: ";
+        cin >> lon;
         cout << "\n";
-        int i = 1;
-        for (auto a : airports) {
-            auto info = a->getInfo();
-            cout << i++ << ". ";
-            printAirportInfoOneline(info);
-        }
-        if (travelChosen) {
+
+        if (lat < -90.0 || lat > 90.0 || lon < -180.0 || lon > 180.0) {
+            cerr << "ERROR: Invalid coordinates, please enter valid values (latitude: -90.0 ~ 90.0, longitude: -180.0 ~ 180.0)" << endl;
+        } else {
+            Coordinates location;
+            location.latitude = lat;
+            location.longitude = lon;
+            auto airports = consult.findClosestAirports(location);
+            cout << "Found " << makeBold(airports.size()) << " airport(s) closest to (" << lat << ", " << lon << ")" << endl;
             cout << "\n";
-            if (!sourceChosen) cout << "1. Set coordinates as source" << endl;
-            else cout << "1. Set coordinates as destiny" << endl;
-            cout << "2. [Back]" << endl;
+            if (travelChosen) {
+                cout << "\n";
+                if (!sourceChosen) cout << "0. Set coordinates as source" << endl;
+                else cout << "0. Set coordinates as destiny" << endl;
+            }
+            int index = 1;
+            for (auto a : airports) {
+                auto info = a->getInfo();
+                cout << index++ << ". ";
+                printAirportInfoOneline(info);
+            }
+
+            cout << index << ". [Back]" << endl;
             cout << "\n";
             int choice;
             cout << "Enter your choice: " << endl;
             cin >> choice;
-            if (choice == 1) {
+            if (choice == 0) {
                 if (!sourceChosen) {
                     travelMap["source"] = airports;
                     selectDestiny();
@@ -341,13 +344,14 @@ void Script::searchClosestAirport() {
                     travelMap["destination"] = airports;
                     showBestFlight();
                 }
-            } else if (choice == 2) {
+            } else if (choice == airports.size() + 1) {
                 if (sourceChosen) travelMap.clear();
-                return;
+                break;
+            } else if (choice <= airports.size()) {
+                airportStatistics(airports[choice - 1]);
             }
         }
     }
-    backToMenu();
 }
 
 void Script::destinationsAvailableWithLayOvers(Vertex<Airport>* airport) {
@@ -606,31 +610,46 @@ void Script::searchAirportByCityAndCountryName() {
     auto airports = consult.getAirportsInACityAndCountry(city, country);
     if (airports.empty()) {
         cerr << "ERROR: Invalid city/country name" << endl;
+        backToMenu();
     } else {
-        cout << "Found " << makeBold(airports.size()) << " airports in " << city << ", " << country << endl;
-        cout << "\n";
-        if (!sourceChosen) cout << "1. Set this city and country as source" << endl;
-        else cout << "1. Set this city and country as destination" << endl;
-        cout << "2. [Back]" << endl;
-        cout << "\n";
-        int choice;
-        cout << "Enter your choice: ";
-        cin >> choice;
-        if (choice == 1) {
-            if (!sourceChosen) {
-                travelMap["source"] = airports;
-                selectDestiny();
+        while (true) {
+            cout << "Found " << makeBold(airports.size()) << " airports in " << city << ", " << country << endl;
+            cout << "\n";
+            if (!sourceChosen) cout << "0. Set this city and country as source" << endl;
+            else cout << "0. Set this city and country as destination" << endl;
+            int index = 1;
+            for (auto& airport : airports) {
+                auto info = airport->getInfo();
+                cout << index++ << ". [" << info.getCode() << "] " << info.getName() << ", " << info.getCity() << ", "
+                     << info.getCountry() << endl;
             }
-            else {
-                travelMap["destination"] = airports;
-                showBestFlight();
+            cout << index << ". [Back]" << endl;
+            int choice;
+            cout << "\nEnter your choice: ";
+            if (!(cin >> choice)) {
+                // Invalid input (not an integer)
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                continue;
             }
-        } else if (choice == 2) {
-            if (sourceChosen) travelMap.clear();
-            return;
+            clearScreen();
+            if (choice == 0) {
+                if (!sourceChosen) {
+                    travelMap["source"] = airports;
+                    selectDestiny();
+                }
+                else {
+                    travelMap["destination"] = airports;
+                    showBestFlight();
+                }
+            } else if (choice == airports.size() + 1) {
+                if (sourceChosen) travelMap.clear();
+                break;
+            } else if (choice <= airports.size()) {
+                airportStatistics(airports[choice - 1]);
+            }
         }
     }
-    backToMenu();
 }
 
 void Script::showBestFlight() {
