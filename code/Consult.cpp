@@ -39,8 +39,8 @@ int Consult::searchNumberOfFlightsOutOfAirportFromDifferentAirlines(Vertex<Airpo
     return static_cast<int>(airlines.size());
 }
 
-map<string, int> Consult::searchNumberOfFlightsPerCity() {
-    map<string, int> flightsPerCity;
+map<pair<string,string>, int> Consult::searchNumberOfFlightsPerCity() {
+    map<pair<string,string>, int> flightsPerCity;
 
     for (auto v : consultGraph.getVertexSet())
         v->setVisited(false);
@@ -52,10 +52,11 @@ map<string, int> Consult::searchNumberOfFlightsPerCity() {
     return flightsPerCity;
 }
 
-void Consult::dfsVisitFlightsPerCity(Vertex<Airport> *v, map<string, int> &res) {
+void Consult::dfsVisitFlightsPerCity(Vertex<Airport> *v, map<pair<string,string>, int> &res) {
     v->setVisited(true);
 
-    res[v->getInfo().getCity()] += v->getFlightsFrom();
+    pair<string, string> cityAndCountry = make_pair(v->getInfo().getCity(), v->getInfo().getCountry());
+    res[cityAndCountry] += v->getFlightsFrom();
 
     for (auto &flight : v->getAdj()) {
         auto d = flight.getDest();
