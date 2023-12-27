@@ -26,6 +26,8 @@ public:
     void run();
     bool travelChosen{};
     bool sourceChosen{};
+    bool cityChosenSource{};
+    bool cityChosenDestiny{};
     map<string, vector<Vertex<Airport>*>> travelMap;
 
 private:
