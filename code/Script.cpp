@@ -267,7 +267,8 @@ void Script::searchAirportByAirportName() {
     drawBox("Search airport by airport's name");
     cout << "Enter airport name: ";
     string name;
-    cin >> name;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, name);
     cout << "\n";
     auto airports = consult.findAirportsByAirportName(name);
     listAndChooseAirport(airports, name, "airport");
@@ -278,7 +279,8 @@ void Script::searchAirportByCityName() {
     drawBox("Search airport by city's name");
     cout << "Enter city name: ";
     string name;
-    cin >> name;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, name);
     cout << "\n";
     auto airports = consult.findAirportsByCityName(name);
     listAndChooseAirport(airports, name, "city");
@@ -289,7 +291,8 @@ void Script::searchAirportByCountryName() {
     drawBox("Search airport by country's name");
     cout << "Enter country name: ";
     string name;
-    cin >> name;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, name);
     cout << "\n";
     auto airports = consult.findAirportsByCountryName(name);
     listAndChooseAirport(airports, name, "country");
@@ -457,9 +460,10 @@ void Script::flightsPerAirline() {
 void Script::countriesFlownToFromCity() {
     string city, country;
     cout << "Enter the city name: ";
-    cin >> city;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, city);
     cout << "Enter the country name: ";
-    cin >> country;
+    getline(cin, country);
     cout << "\n";
     int x = consult.searchNumberOfCountriesFlownToFromCity(city, country);
     if (x == 0) {
@@ -594,9 +598,10 @@ void Script::selectDestiny() {
 void Script::searchAirportByCityAndCountryName() {
     string city, country;
     cout << "Enter city name: ";
-    cin >> city;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, city);
     cout << "Enter country name: ";
-    cin >> country;
+    getline(cin, country);
     cout << "\n";
     auto airports = consult.getAirportsInACityAndCountry(city, country);
     if (airports.empty()) {
