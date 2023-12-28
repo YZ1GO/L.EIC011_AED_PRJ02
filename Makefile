@@ -24,6 +24,3 @@ run: $(COMMON_CPP_FILES) main.cpp
 
 doc: $(DOXYGEN_CONFIG)
 	doxygen $(DOXYGEN_CONFIG)
-
-clean:
-	rm -fr *.dSYM $(PROGRAMS) $(DOXYGEN_OUTPUT_DIR)
