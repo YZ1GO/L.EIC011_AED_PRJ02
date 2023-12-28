@@ -26,8 +26,8 @@ int \mbox{\hyperlink{classConsult_a3df29da3e1e2784a6dc49297774a7dfb}{search\+Num
 \begin{DoxyCompactList}\small\item\em Counts the number of flights arriving at a specific airport. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classConsult_a8457a09678045010ebe3a10ff3d4731b}{search\+Number\+Of\+Flights\+Out\+Of\+Airport\+From\+Different\+Airlines}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$airport)
 \begin{DoxyCompactList}\small\item\em Counts the number of flights departing from a specific airport via different airlines. \end{DoxyCompactList}\item 
-map$<$ string, int $>$ \mbox{\hyperlink{classConsult_a848c3fe94b90bec12c8e0c800f8fc63e}{search\+Number\+Of\+Flights\+Per\+City}} ()
-\begin{DoxyCompactList}\small\item\em Searches the number of flights per city. \end{DoxyCompactList}\item 
+map$<$ pair$<$ string, string $>$, int $>$ \mbox{\hyperlink{classConsult_a66ab9da5a81f18ae858ae8fd542ff07f}{search\+Number\+Of\+Flights\+Per\+City}} ()
+\begin{DoxyCompactList}\small\item\em Searches the number of flights per city of a country. \end{DoxyCompactList}\item 
 map$<$ \mbox{\hyperlink{classAirline}{Airline}}, int $>$ \mbox{\hyperlink{classConsult_abb5f1aca5872f49d5266bd477d2d6c82}{search\+Number\+Of\+Flights\+Per\+Airline}} ()
 \begin{DoxyCompactList}\small\item\em Searches the number of flights per airline. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classConsult_a6982bb9452a6cde3df1f507e80b715a4}{search\+Number\+Of\+Countries\+Flown\+To\+From\+Airport}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$airport)
@@ -52,7 +52,7 @@ unordered\+\_\+set$<$ string $>$ \mbox{\hyperlink{classConsult_a49a27b3ad9a3fd3d
 \begin{DoxyCompactList}\small\item\em Searches for essential airports using Tarjan\textquotesingle{}s algorithm for finding strongly connected components. \end{DoxyCompactList}\item 
 vector$<$ vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ $>$ \mbox{\hyperlink{classConsult_ae4874d3a9e34ae7e830e9d4abffc9aa6}{search\+Max\+Trip\+And\+Corresponding\+Pairs\+Of\+Airports}} (int \&diameter)
 \begin{DoxyCompactList}\small\item\em Searches for the maximum trip and corresponding pairs of airports. \end{DoxyCompactList}\item 
-vector$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classConsult_a1ec1c6ef8fd1e0fea92665615dbfe3c4}{search\+Smallest\+Path\+Between\+Airports}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$source, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$target)
+vector$<$ vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ $>$ \mbox{\hyperlink{classConsult_a91d0d2dcd9a897b3e753568988c96c23}{search\+Smallest\+Path\+Between\+Airports}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$source, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$target)
 \begin{DoxyCompactList}\small\item\em Searches for the smallest path between two airports. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ \mbox{\hyperlink{classConsult_a982212ec03b14c2e803a77671fd25e13}{find\+Airport\+By\+Code}} (const string \&airport\+Code)
 \begin{DoxyCompactList}\small\item\em Finds an airport vertex based on the airport code. \end{DoxyCompactList}\item 
@@ -64,9 +64,12 @@ vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirpor
 \begin{DoxyCompactList}\small\item\em Finds airports based on the country name. \end{DoxyCompactList}\item 
 vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ \mbox{\hyperlink{classConsult_aa8a785034d57a22aa09b79ed2be3e33c}{find\+Closest\+Airports}} (const \mbox{\hyperlink{structCoordinates}{Coordinates}} \&coordinates)
 \begin{DoxyCompactList}\small\item\em Finds the closest airports to given geographical coordinates. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classConsult_a7b6afc4a336f5b90fd525dde483e0688}\label{classConsult_a7b6afc4a336f5b90fd525dde483e0688}} 
-vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ {\bfseries get\+Airports\+In\+ACity\+And\+Country} (const string \&city, const string \&country)
-\end{DoxyCompactItemize}
+vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ \mbox{\hyperlink{classConsult_a7b6afc4a336f5b90fd525dde483e0688}{get\+Airports\+In\+ACity\+And\+Country}} (const string \&city, const string \&country)
+\begin{DoxyCompactList}\small\item\em Finds airports based on the city and country names. \end{DoxyCompactList}\item 
+std\+::set$<$ \mbox{\hyperlink{classAirline}{Airline}} $>$ \mbox{\hyperlink{classConsult_a8dea5769691f3ced45fb875f61aa5bb0}{airlines\+That\+Operate\+Between\+Airports}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$source, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$target)
+\begin{DoxyCompactList}\small\item\em Retrieves the set of airlines that operate between two airports. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classConsult_a64ba24f84ec42b4a7dc25f45467180df}{get\+Distance\+Between\+Airports}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$source, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$target)
+\begin{DoxyCompactList}\small\item\em Retrieves the distance between two airports. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -91,6 +94,26 @@ Constructor for \mbox{\hyperlink{classConsult}{Consult}} class.
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classConsult_a8dea5769691f3ced45fb875f61aa5bb0}\label{classConsult_a8dea5769691f3ced45fb875f61aa5bb0}} 
+\index{Consult@{Consult}!airlinesThatOperateBetweenAirports@{airlinesThatOperateBetweenAirports}}
+\index{airlinesThatOperateBetweenAirports@{airlinesThatOperateBetweenAirports}!Consult@{Consult}}
+\doxysubsubsection{\texorpdfstring{airlinesThatOperateBetweenAirports()}{airlinesThatOperateBetweenAirports()}}
+{\footnotesize\ttfamily set$<$ \mbox{\hyperlink{classAirline}{Airline}} $>$ Consult\+::airlines\+That\+Operate\+Between\+Airports (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$}]{source,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$}]{target }\end{DoxyParamCaption})}
+
+
+
+Retrieves the set of airlines that operate between two airports. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & Pointer to the source airport. \\
+\hline
+{\em target} & Pointer to the target airport. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Set of airlines that operate between the specified airports. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classConsult_a982212ec03b14c2e803a77671fd25e13}\label{classConsult_a982212ec03b14c2e803a77671fd25e13}} 
 \index{Consult@{Consult}!findAirportByCode@{findAirportByCode}}
 \index{findAirportByCode@{findAirportByCode}!Consult@{Consult}}
@@ -180,6 +203,46 @@ Finds the closest airports to given geographical coordinates.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Vector of airport vertices closest to the specified coordinates. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classConsult_a7b6afc4a336f5b90fd525dde483e0688}\label{classConsult_a7b6afc4a336f5b90fd525dde483e0688}} 
+\index{Consult@{Consult}!getAirportsInACityAndCountry@{getAirportsInACityAndCountry}}
+\index{getAirportsInACityAndCountry@{getAirportsInACityAndCountry}!Consult@{Consult}}
+\doxysubsubsection{\texorpdfstring{getAirportsInACityAndCountry()}{getAirportsInACityAndCountry()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ Consult\+::get\+Airports\+In\+ACity\+And\+Country (\begin{DoxyParamCaption}\item[{const string \&}]{city,  }\item[{const string \&}]{country }\end{DoxyParamCaption})}
+
+
+
+Finds airports based on the city and country names. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em city} & The name of the city associated with the airport(s) to search for. \\
+\hline
+{\em country} & The name of the country associated with the airport(s) to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of airport vertices in the specified city and country. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classConsult_a64ba24f84ec42b4a7dc25f45467180df}\label{classConsult_a64ba24f84ec42b4a7dc25f45467180df}} 
+\index{Consult@{Consult}!getDistanceBetweenAirports@{getDistanceBetweenAirports}}
+\index{getDistanceBetweenAirports@{getDistanceBetweenAirports}!Consult@{Consult}}
+\doxysubsubsection{\texorpdfstring{getDistanceBetweenAirports()}{getDistanceBetweenAirports()}}
+{\footnotesize\ttfamily double Consult\+::get\+Distance\+Between\+Airports (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$}]{source,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$}]{target }\end{DoxyParamCaption})}
+
+
+
+Retrieves the distance between two airports. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & Pointer to the source airport. \\
+\hline
+{\em target} & Pointer to the target airport. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the specified airports in kilometers. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classConsult_a49a27b3ad9a3fd3d0389b72fa2bce16c}\label{classConsult_a49a27b3ad9a3fd3d0389b72fa2bce16c}} 
 \index{Consult@{Consult}!searchEssentialAirports@{searchEssentialAirports}}
@@ -387,18 +450,18 @@ Searches the number of flights per airline.
 \begin{DoxyReturn}{Returns}
 Map containing the count of flights per airline. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_a848c3fe94b90bec12c8e0c800f8fc63e}\label{classConsult_a848c3fe94b90bec12c8e0c800f8fc63e}} 
+\mbox{\Hypertarget{classConsult_a66ab9da5a81f18ae858ae8fd542ff07f}\label{classConsult_a66ab9da5a81f18ae858ae8fd542ff07f}} 
 \index{Consult@{Consult}!searchNumberOfFlightsPerCity@{searchNumberOfFlightsPerCity}}
 \index{searchNumberOfFlightsPerCity@{searchNumberOfFlightsPerCity}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchNumberOfFlightsPerCity()}{searchNumberOfFlightsPerCity()}}
-{\footnotesize\ttfamily map$<$ string, int $>$ Consult\+::search\+Number\+Of\+Flights\+Per\+City (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily map$<$ pair$<$ string, string $>$, int $>$ Consult\+::search\+Number\+Of\+Flights\+Per\+City (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-Searches the number of flights per city. 
+Searches the number of flights per city of a country. 
 
 \begin{DoxyReturn}{Returns}
-Map containing the count of flights per city. 
+Map containing the count of flights per city of a country. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classConsult_a3df29da3e1e2784a6dc49297774a7dfb}\label{classConsult_a3df29da3e1e2784a6dc49297774a7dfb}} 
 \index{Consult@{Consult}!searchNumberOfFlightsToAirport@{searchNumberOfFlightsToAirport}}
@@ -478,11 +541,11 @@ Count the number of reachable countries in a certain number of stops (layovers) 
 \begin{DoxyReturn}{Returns}
 The number of reachable countries within the specified layovers. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_a1ec1c6ef8fd1e0fea92665615dbfe3c4}\label{classConsult_a1ec1c6ef8fd1e0fea92665615dbfe3c4}} 
+\mbox{\Hypertarget{classConsult_a91d0d2dcd9a897b3e753568988c96c23}\label{classConsult_a91d0d2dcd9a897b3e753568988c96c23}} 
 \index{Consult@{Consult}!searchSmallestPathBetweenAirports@{searchSmallestPathBetweenAirports}}
 \index{searchSmallestPathBetweenAirports@{searchSmallestPathBetweenAirports}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchSmallestPathBetweenAirports()}{searchSmallestPathBetweenAirports()}}
-{\footnotesize\ttfamily vector$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Consult\+::search\+Smallest\+Path\+Between\+Airports (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$}]{source,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$}]{target }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily vector$<$ vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ $>$ Consult\+::search\+Smallest\+Path\+Between\+Airports (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$}]{source,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$}]{target }\end{DoxyParamCaption})}
 
 
 
