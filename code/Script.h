@@ -235,12 +235,10 @@ private:
      */
     void showBestFlight();
 
-    void showListOfBestFlights(vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> totalPaths, bool sameAirline);
+    void showListOfBestFlights(vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> totalPaths);
     vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> getBestPathsSameAirlines (vector<Vertex<Airport>*> source, vector<Vertex<Airport>*> destination);
     vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> getBestPathsAllAirlines(vector<Vertex<Airport>*> source, vector<Vertex<Airport>*> destination);
-    void printBestFlightDetail(pair<vector<Vertex<Airport>*>,double> trip);
-    void printBestFlightDetailSameAirlines(pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>> trip);
-    void printBestFlightDetailAllAirlines(pair<vector<Vertex<Airport>*>,double> trip);
+    void printBestFlightDetails(pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>> trip);
     void printSourceAndDestination();
 };
 
