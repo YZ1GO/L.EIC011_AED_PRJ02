@@ -674,8 +674,7 @@ void Script::searchAirportByCityAndCountryName() {
 
 void Script::showBestFlight() {
     clearScreen();
-    bool exit = false;
-    while (!exit) {
+    while (true) {
         clearScreen();
         drawBox("Best Flights");
 
@@ -697,25 +696,11 @@ void Script::showBestFlight() {
         }
         bool sameAirline = (choice_ == 1);
 
-        /*displays source & destination (airport/city)*/
-        auto source = travelMap.find("source");
-        auto destination = travelMap.find("destination");
-
-        cout << makeBold("Source: ");
-        if (cityChosenSource) {
-            cout << source->second[0]->getInfo().getCity() << ", " << source->second[0]->getInfo().getCountry() << endl;
-        } else {
-            printAirportInfoOneline(source->second[0]->getInfo());
-        }
-
-        cout << makeBold("Destination: ");
-        if (cityChosenDestiny) {
-            cout << destination->second[0]->getInfo().getCity() << ", " << destination->second[0]->getInfo().getCountry() << endl;
-        } else {
-            printAirportInfoOneline(destination->second[0]->getInfo());
-        }
+        printSourceAndDestination();        //print source & destination (airport/city)
 
         vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> totalPaths;  // Pair of path and distance
+        auto source = travelMap.find("source");
+        auto destination = travelMap.find("destination");
 
         if (sameAirline) {
             totalPaths = getBestPathsSameAirlines(source->second, destination->second);
@@ -733,14 +718,26 @@ void Script::showBestFlight() {
             return a.second.second < b.second.second;
         });
 
+        showListOfBestFlights(totalPaths, sameAirline);
+    }
+    //make it return to travel menu
+}
+
+void Script::showListOfBestFlights(vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> totalPaths, bool sameAirline) {
+    while (true) {
+        clearScreen();
+        printSourceAndDestination();
+
         cout << "\nBest flight is with " << makeBold(totalPaths[0].second.first.size() - 2) << " lay-over(s)" << endl;
+
         int index = 1;
         for (const auto& trip : totalPaths) {
             cout << index++ << ". ";
-
             double distance = trip.second.second;
+
             for (auto it = trip.second.first.begin(); it != trip.second.first.end(); ++it) {
                 cout << (*it)->getInfo().getCode();
+
                 if (next(it) != trip.second.first.end()) {
                     cout << " \u25B6 ";
                 }
@@ -748,15 +745,14 @@ void Script::showBestFlight() {
             cout << "   (" << distance << " km)" << endl;
         }
         cout << index << ". [Back]" << endl;
+
         int choice;
         cout << "\nEnter your choice: ";
         cin >> choice;
         cout << "\n";
+
         if (choice == totalPaths.size() + 1) {
-            //clear source if succeed in return to travel menu
-            //travelMap["source"] = {};
-            travelMap["destination"] = {};
-            exit = true;
+            return;
         } else if (choice <= totalPaths.size() && choice > 0) {
             if (sameAirline) {
                 printBestFlightDetailSameAirlines(totalPaths[choice - 1]);
@@ -765,7 +761,6 @@ void Script::showBestFlight() {
             }
         }
     }
-    //make it return to travel menu
 }
 
 vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> Script::getBestPathsSameAirlines(vector<Vertex<Airport>*> source, vector<Vertex<Airport>*> destination) {
@@ -848,7 +843,6 @@ vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> Script::getBe
             }
         }
     }
-
     return totalPaths;
 }
 
@@ -918,3 +912,21 @@ void Script::printBestFlightDetailAllAirlines(pair<vector<Vertex<Airport>*>,doub
     backToMenu();
 }
 
+void Script::printSourceAndDestination() {
+    auto source = travelMap.find("source");
+    auto destination = travelMap.find("destination");
+
+    cout << makeBold("Source: ");
+    if (cityChosenSource) {
+        cout << source->second[0]->getInfo().getCity() << ", " << source->second[0]->getInfo().getCountry() << endl;
+    } else {
+        printAirportInfoOneline(source->second[0]->getInfo());
+    }
+
+    cout << makeBold("Destination: ");
+    if (cityChosenDestiny) {
+        cout << destination->second[0]->getInfo().getCity() << ", " << destination->second[0]->getInfo().getCountry() << endl;
+    } else {
+        printAirportInfoOneline(destination->second[0]->getInfo());
+    }
+}
