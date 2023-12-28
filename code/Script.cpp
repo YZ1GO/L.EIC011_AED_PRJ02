@@ -714,7 +714,7 @@ void Script::showBestFlight() {
                                 distance += consult.getDistanceBetweenAirports(*it, *(it + 1));
                                 ++it;
                             }
-                            totalPaths.push_back({ v, distance });
+                            totalPaths.emplace_back( v, distance );
                         }
                     }
                 }
@@ -759,15 +759,15 @@ void Script::printBestFlightDetail(pair<vector<Vertex<Airport>*>,double> trip) {
     drawBox("Details about the trip");
     cout << makeBold("Total distance: ") << trip.second << " km\n"<< endl;
 
-    auto it = trip.first.begin();
+    auto itr = trip.first.begin();
     int index = 1;
-    while (it != trip.first.end()) {
+    while (itr != trip.first.end()) {
         cout << index++ << ". ";
-        printAirportInfoOneline((*it)->getInfo());
+        printAirportInfoOneline((*itr)->getInfo());
 
-        if (it + 1 != trip.first.end()) {
+        if (itr + 1 != trip.first.end()) {
             cout << "   [Available Airlines]: ";
-            auto airlines = consult.airlinesThatOperateBetweenAirports(*it, *(it + 1));
+            auto airlines = consult.airlinesThatOperateBetweenAirports(*itr, *(itr + 1));
 
             for (auto it = airlines.begin(); it != airlines.end(); ++it) {
                 cout << it->getCode();
@@ -778,10 +778,10 @@ void Script::printBestFlightDetail(pair<vector<Vertex<Airport>*>,double> trip) {
                 }
             }
         }
-        if (next(it) != trip.first.end()) {
+        if (next(itr) != trip.first.end()) {
             cout << "             \u25BC" << endl;
         }
-        it++;
+        itr++;
     }
     cout << endl;
     backToMenu();
