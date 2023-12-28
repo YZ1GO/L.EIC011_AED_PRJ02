@@ -723,6 +723,12 @@ void Script::showBestFlight() {
             totalPaths = getBestPathsAllAirlines(source->second, destination->second);
         }
 
+        if (totalPaths.empty()) {
+            cerr << "\nERROR: No flights found between the selected source and destination." << endl;
+            backToMenu();
+            continue;
+        }
+
         sort(totalPaths.begin(), totalPaths.end(), [](const pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>& a, const pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>& b) {
             return a.second.second < b.second.second;
         });
