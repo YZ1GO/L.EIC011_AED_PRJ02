@@ -28,6 +28,7 @@ public:
     bool sourceChosen{};
     bool cityChosenSource{};
     bool cityChosenDestiny{};
+    bool returnToTravelMenu{};
     map<string, vector<Vertex<Airport>*>> travelMap;
 
 private:

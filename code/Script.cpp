@@ -165,16 +165,19 @@ void Script::listAndChooseAirport(vector<Vertex<Airport> *> airports, const stri
         if (typeName == "country") {
             cout << "Found " << makeBold(airports.size()) << " airport(s) in " << "\'" << makeBold(name) << "\'" << endl;
         }
-        cout << "\n";
 
-        int i = 1;
-        for (auto a : airports) {
-            auto info = a->getInfo();
-            cout << i++ << ". [" << info.getCode() << "] " << info.getName() << ", " << info.getCity() << ", "
-                 << info.getCountry() << endl;
-        }
+        if (airports.empty()) {
+            backToMenu();
+            return;
+        } else {
+            cout << "\n";
+            int i = 1;
+            for (auto a : airports) {
+                auto info = a->getInfo();
+                cout << i++ << ". [" << info.getCode() << "] " << info.getName() << ", " << info.getCity() << ", "
+                     << info.getCountry() << endl;
+            }
 
-        if (!airports.empty()) {
             cout << i << ". [Back]" << endl;
             int choice;
             cout << "\nEnter your choice: ";
@@ -190,9 +193,6 @@ void Script::listAndChooseAirport(vector<Vertex<Airport> *> airports, const stri
             else if (choice <= airports.size() && choice > 0) {
                 airportStatistics(airports[choice - 1]);
             }
-        } else {
-            backToMenu();
-            return;
         }
     }
 }
@@ -746,6 +746,7 @@ void Script::showBestFlight() {
             if (choice == index) {
                 travelMap.clear();
                 sourceChosen = false;
+                backToMenu();
                 return; // need to make it return to travel menu
             } else if (choice <= index && choice > 0) {
                 printBestFlightDetail(totalPaths[choice - 1]);
