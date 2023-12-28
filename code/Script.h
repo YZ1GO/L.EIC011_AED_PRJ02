@@ -75,39 +75,166 @@ private:
      */
     void backToMenu();
 
+    /**
+     * @brief Prints detailed information about an airport.
+     * @param airport Pointer to the Vertex containing the Airport information.
+     */
     void printAirportInfo(const Vertex<Airport>* airport);
+
+    /**
+     * @brief Prints information about an airport in a single line.
+     * @param airport Pointer to the Vertex containing the Airport information.
+     */
     void printAirportInfoOneline(const Airport& airport);
 
+    /**
+     * @brief Displays a submenu for consulting some global statistics about the air travel network.
+     */
     void globalNumber();
+
+    /**
+     * @brief Displays the total number of airports in the air travel network.
+     */
     void numberOfAirports();
+
+    /**
+     * @brief Displays the total number of flights in the air travel network.
+     */
     void numberOfFlights();
+
+    /**
+     * @brief Displays the total number of flight routes in the air travel network.
+     */
     void numberOfFlightRoutes();
 
+    /**
+     * @brief Lists the total number of flights departing from each city within the air travel network.
+     */
     void flightsPerCity();
+
+    /**
+     * @brief Lists the total number of flights operated by each airline in the air travel network.
+     */
     void flightsPerAirline();
 
+    /**
+     * @brief Displays the number of different countries that a city can fly to.
+     *
+     * This function prompts the user to enter a city and the respective country, then calls a function to search and
+     * calculate the total number of different countries that can be reached by flights originating at the specified city.
+     */
     void countriesFlownToFromCity();
 
+    /**
+     * @brief Displays the number of airports, cities and countries reachable within X lay-overs when flying out from a specific airport.
+     *
+     * This function prompts the user to enter the number of desired lay-overs, then calls a function to search and
+     * calculate the number of airports, cities and countries reachable within the specified layover limit
+     * and finally it outputs those numbers.
+     *
+     * @param airport Pointer to the Vertex containing the Airport information.
+     */
     void destinationsAvailableWithLayOvers(Vertex<Airport>* airport);
+
+    /**
+     * @brief Displays 7 different statistics related to the specified airport.
+     *
+     * This function displays 7 different statistics about the specified airport:
+     * 1. Flight routes out of the airport
+     * 2. Flights out of the airport
+     * 3. Flights out of the airport (from different airlines)
+     * 4. Number of different countries flown to from the airport
+     * 5. Available airports when flying from the airport
+     * 6. Available cities when flying from the airport
+     * 7. Available countries when flying from the airport
+     *
+     * @param airport Pointer to the Vertex containing the Airport information.
+     */
     void givenAirportStatistics(Vertex<Airport>* airport);
 
+    /**
+     * @brief Displays the flight trip(s) with the greatest number of stops in between them and the paths of the airports from source to destination.
+     */
     void maximumTrip();
+
+    /**
+     * @brief Displays the top K airport with the greatest air traffic capacity (flights arriving and departing from the airport).
+     */
     void topKAirportAirTraffic();
+
+    /**
+     * @brief Displays all the airports that are essential to the network’s circulation capability, if removed, areas of the network start to be unreachable.
+     */
     void essentialAirports();
 
+    /**
+     * @brief Displays a submenu where user can select to see the specified airport statistics or to set as source/destination if chosen the option travel.
+     * @param airport Pointer to the Vertex containing the Airport information.
+     */
     void airportStatistics(Vertex<Airport>* airport);
+
+    /**
+     * @brief List airports based on a specified criterion (name, city, or country) and allow the user to choose one for further analysis.
+     * @param airports A vector of pointers to Vertex<Airport>, representing the airports to be listed.
+     * @param name The name to be searched for (e.g., airport name, city name, or country name).
+     * @param typeName The type of criterion for the search (e.g., "airport," "city," or "country").
+     */
     void listAndChooseAirport(vector<Vertex<Airport> *> airports, const string& name, const string& typeName);
+
+    /**
+     * @brief Displays a submenu where user can choose different ways to search for an airport.
+     */
     void searchAirportsMenu();
+
+    /**
+     * @brief Find and display information about a specific airport based on the user-provided airport code.
+     */
     void searchAirportByAirportCode();
+
+    /**
+     * @brief List airports that contain user-provided name in the airport name, considering case and space insensitivity.
+     */
     void searchAirportByAirportName();
+
+    /**
+     * @brief List all airports that are located in cities containing the user-provided city name, considering case and space insensitivity.
+     */
     void searchAirportByCityName();
+
+    /**
+     * @brief List all airports that are located in countries containing the user-provided country name, considering case and space insensitivity.
+     */
     void searchAirportByCountryName();
+
+    /**
+     * @brief List all airports closest to user-provided coordinates (latitude, longitude).
+     */
     void searchClosestAirport();
 
+    /**
+     * @brief Displays a submenu for user to search for a location to set as the flight source.
+     */
     void selectSource();
+
+    /**
+     * @brief Displays a submenu for user to search for a location to set as the flight destination.
+     */
     void selectDestiny();
+
+    /**
+     * @brief Search for airports based on the user-provided city and country names.
+     *
+     * This function prompts the user to enter a city and country name, performs a search for airports in the specified city and country,
+     * and provides options for further actions such as setting the city and country as the source or destination for travel or to choose an airport
+     * to set it as the source/destination for travel.
+     */
     void searchAirportByCityAndCountryName();
+
+    /**
+     * @brief Display simplified information about the best flight options between a selected source and destination.
+     */
     void showBestFlight();
+
     void showListOfBestFlights(vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> totalPaths, bool sameAirline);
     vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> getBestPathsSameAirlines (vector<Vertex<Airport>*> source, vector<Vertex<Airport>*> destination);
     vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> getBestPathsAllAirlines(vector<Vertex<Airport>*> source, vector<Vertex<Airport>*> destination);
