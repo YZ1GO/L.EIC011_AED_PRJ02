@@ -192,10 +192,10 @@ void Script::listAndChooseAirport(vector<Vertex<Airport> *> airports, const stri
                 airportStatistics(airports[choice - 1]);
             }
         } else {
+            backToMenu();
             exit = true;
         }
     }
-    backToMenu();
 }
 
 void Script::airportStatistics(Vertex<Airport> *airport) {
@@ -749,11 +749,12 @@ void Script::showBestFlight() {
             travelMap["source"] = {};
             travelMap["destination"] = {};
             sourceChosen = false;
-            exit = true; // need to make it return to travel menu
+            exit = true;
         } else if (choice <= totalPaths.size() && choice > 0) {
             printBestFlightDetail(totalPaths[choice - 1]);
         }
     }
+    //make it return to travel menu
 }
 
 void Script::printBestFlightDetail(pair<vector<Vertex<Airport>*>,double> trip) {
