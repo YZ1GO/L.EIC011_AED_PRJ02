@@ -96,6 +96,7 @@ void Script::run() {
             }
         } else if (mainChoice == 2) {
             while (true) {
+                travelChosen = true;
                 vector<MenuItem> travelMenu = {
                         {makeBold("Best flight option"), &Script::selectSource},
                         {"[Back]", nullptr}
@@ -224,7 +225,7 @@ void Script::airportStatistics(Vertex<Airport> *airport) {
         }
         clearScreen();
         if (choice == 3) {
-            if (sourceChosen) travelMap.clear();
+            if (sourceChosen) travelMap["source"] = {};
             exit = true;
         } else if (choice == 0 && travelChosen) {
             if (!sourceChosen) {
@@ -524,7 +525,6 @@ void Script::essentialAirports() {
 }
 
 void Script::selectSource() {
-    travelChosen = true;
     vector<MenuItem> selectSource = {
             {makeBold("Airport by Code"), &Script::searchAirportByAirportCode},
             {makeBold("Airport by Name"), &Script::searchAirportByAirportName},
@@ -746,9 +746,9 @@ void Script::showBestFlight() {
         cin >> choice;
         cout << "\n";
         if (choice == totalPaths.size() + 1) {
-            travelMap["source"] = {};
+            //clear source if succeed in return to travel menu
+            //travelMap["source"] = {};
             travelMap["destination"] = {};
-            sourceChosen = false;
             exit = true;
         } else if (choice <= totalPaths.size() && choice > 0) {
             printBestFlightDetail(totalPaths[choice - 1]);
