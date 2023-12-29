@@ -357,6 +357,7 @@ void Script::searchClosestAirport() {
                 exit = true;
             } else if (choice <= airports.size() && choice > 0) {
                 airportStatistics(airports[choice - 1]);
+                exit = true;
             }
         }
     }
