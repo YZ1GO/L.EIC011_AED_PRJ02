@@ -41,9 +41,13 @@ private:
     Consult consult;
 
     bool travelChosen{};                                ///< Indicates whether the menu for travel has been chosen.
+
     bool sourceChosen{};                                ///< Indicates that the "source" has been selected.
+
     bool cityChosenSource{};                            ///< Indicates that the "source" has been chosen as a city.
+
     bool cityChosenDestiny{};                           ///< Indicates that the "destination" has been chosen as a city.
+
     map<string, vector<Vertex<Airport>*>> travelMap;    ///< Stores the airport(s) of the source and the destination.
 
     /**

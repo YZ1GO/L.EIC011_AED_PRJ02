@@ -12,11 +12,11 @@ Class representing an edge in a graph connecting two vertices.
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classEdge_ab98cc24bd7355eb1c39ffca6fac0c408}{Edge}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$d, double distance)
+\mbox{\hyperlink{classEdge_ab98cc24bd7355eb1c39ffca6fac0c408}{Edge}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$d, double \mbox{\hyperlink{classEdge_a11d2f061c130cc03798924f2fac484be}{distance}})
 \begin{DoxyCompactList}\small\item\em Constructor for the \mbox{\hyperlink{classEdge}{Edge}} class. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$ \mbox{\hyperlink{classEdge_a9a2de066dff8513dd788d553fc1d0c81}{get\+Dest}} () const
 \begin{DoxyCompactList}\small\item\em Retrieves the destination vertex of this edge. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classEdge_a163ee9f75e35701e6a04ea1c987e4094}{set\+Dest}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$dest)
+void \mbox{\hyperlink{classEdge_a163ee9f75e35701e6a04ea1c987e4094}{set\+Dest}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$\mbox{\hyperlink{classEdge_ae4d65678b91bd9d814af4720ad87cd0c}{dest}})
 \begin{DoxyCompactList}\small\item\em Sets the destination vertex of this edge. \end{DoxyCompactList}\item 
 const std\+::set$<$ \mbox{\hyperlink{classAirline}{Airline}} $>$ \& \mbox{\hyperlink{classEdge_a880901d866d77a6b1411efdda354b71f}{get\+Airlines}} () const
 \begin{DoxyCompactList}\small\item\em Retrieves the set of airlines associated with this edge. \end{DoxyCompactList}\item 
@@ -24,8 +24,20 @@ void \mbox{\hyperlink{classEdge_a452a163cd1f76471e7e4e2de8cc09160}{add\+Airline}
 \begin{DoxyCompactList}\small\item\em Adds an airline to the set associated with this edge. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classEdge_ac39299d161c3c804b78bbf41ad8b19e0}{get\+Distance}} () const
 \begin{DoxyCompactList}\small\item\em Retrieves the distance of this edge. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classEdge_a887a1e87af50c7524f832add49b92942}{set\+Distance}} (double distance)
+void \mbox{\hyperlink{classEdge_a887a1e87af50c7524f832add49b92942}{set\+Distance}} (double \mbox{\hyperlink{classEdge_a11d2f061c130cc03798924f2fac484be}{distance}})
 \begin{DoxyCompactList}\small\item\em Sets the distance of this edge. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEdge_ae4d65678b91bd9d814af4720ad87cd0c}\label{classEdge_ae4d65678b91bd9d814af4720ad87cd0c}} 
+\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$ \mbox{\hyperlink{classEdge_ae4d65678b91bd9d814af4720ad87cd0c}{dest}}
+\begin{DoxyCompactList}\small\item\em Pointer to the destination vertex. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classEdge_a11d2f061c130cc03798924f2fac484be}\label{classEdge_a11d2f061c130cc03798924f2fac484be}} 
+double \mbox{\hyperlink{classEdge_a11d2f061c130cc03798924f2fac484be}{distance}}
+\begin{DoxyCompactList}\small\item\em The distance between source and destination vertices in kilometers. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classEdge_a4d3f3878ef64309aa30e0c1b5a631981}\label{classEdge_a4d3f3878ef64309aa30e0c1b5a631981}} 
+std\+::set$<$ \mbox{\hyperlink{classAirline}{Airline}} $>$ \mbox{\hyperlink{classEdge_a4d3f3878ef64309aa30e0c1b5a631981}{airlines}}
+\begin{DoxyCompactList}\small\item\em The set of airlines associated with this edge. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 

@@ -64,6 +64,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classConsult-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Consult Class Reference</div>  </div>
@@ -74,6 +76,15 @@ $(function() {
  <a href="classConsult.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Consult_8h_source.html">Consult.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for Consult:</div>
+<div class="dyncontent">
+<div class="center"><img src="classConsult__coll__graph.png" border="0" usemap="#aConsult_coll__map" alt="Collaboration graph"/></div>
+<map name="aConsult_coll__map" id="aConsult_coll__map">
+<area shape="rect" title="Provides functionalities to perform various queries and analyses on Air Travel Flight data." alt="" coords="37,95,108,121"/>
+<area shape="rect" href="classGraph.html" title=" " alt="" coords="5,5,140,32"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -164,6 +175,41 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a64ba24f84ec42b4a7dc25f45467180df"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsult.html#a64ba24f84ec42b4a7dc25f45467180df">getDistanceBetweenAirports</a> (<a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *source, <a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *target)</td></tr>
 <tr class="memdesc:a64ba24f84ec42b4a7dc25f45467180df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the distance between two airports.  <a href="classConsult.html#a64ba24f84ec42b4a7dc25f45467180df">More...</a><br /></td></tr>
 <tr class="separator:a64ba24f84ec42b4a7dc25f45467180df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ab45b0d80a16a70777ddc614a250ce961"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsult.html#ab45b0d80a16a70777ddc614a250ce961">dfsVisitFlightsPerCity</a> (<a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *v, map&lt; pair&lt; string, string &gt;, int &gt; &amp;res)</td></tr>
+<tr class="memdesc:ab45b0d80a16a70777ddc614a250ce961"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a depth-first search to count flights per city of a country from a given vertex.  <a href="classConsult.html#ab45b0d80a16a70777ddc614a250ce961">More...</a><br /></td></tr>
+<tr class="separator:ab45b0d80a16a70777ddc614a250ce961"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32f11ec81285c418eb038348318ba020"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsult.html#a32f11ec81285c418eb038348318ba020">dfsVisitFlightsPerAirline</a> (<a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *v, map&lt; <a class="el" href="classAirline.html">Airline</a>, int &gt; &amp;res)</td></tr>
+<tr class="memdesc:a32f11ec81285c418eb038348318ba020"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a depth-first search to count flights per airline from a given vertex.  <a href="classConsult.html#a32f11ec81285c418eb038348318ba020">More...</a><br /></td></tr>
+<tr class="separator:a32f11ec81285c418eb038348318ba020"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab963c0c370467cc3926a72e6651e6d1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsult.html#ab963c0c370467cc3926a72e6651e6d1f">dfsVisitCityAirports</a> (const string &amp;city, const string &amp;country, <a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *v, vector&lt; <a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; * &gt; &amp;res)</td></tr>
+<tr class="memdesc:ab963c0c370467cc3926a72e6651e6d1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates a depth-first search to find airports in a specific city and country.  <a href="classConsult.html#ab963c0c370467cc3926a72e6651e6d1f">More...</a><br /></td></tr>
+<tr class="separator:ab963c0c370467cc3926a72e6651e6d1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad19d0c42d836811405ac4f4c63134aea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsult.html#ad19d0c42d836811405ac4f4c63134aea">dfsAvailableDestinations</a> (<a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *v, std::function&lt; void(<a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *)&gt; processDestination)</td></tr>
+<tr class="memdesc:ad19d0c42d836811405ac4f4c63134aea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates a depth-first search to process available destinations from a vertex.  <a href="classConsult.html#ad19d0c42d836811405ac4f4c63134aea">More...</a><br /></td></tr>
+<tr class="separator:ad19d0c42d836811405ac4f4c63134aea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8d7bb709d41d99c7f3f8b5d775d6c65"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsult.html#aa8d7bb709d41d99c7f3f8b5d775d6c65">searchNumberOfReachableDestinationsInXStopsFromAirport</a> (<a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *airport, int layOvers, const function&lt; string(<a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *)&gt; &amp;attributeExtractor)</td></tr>
+<tr class="memdesc:aa8d7bb709d41d99c7f3f8b5d775d6c65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches for the number of reachable destinations from an airport in a specified number of stops.  <a href="classConsult.html#aa8d7bb709d41d99c7f3f8b5d775d6c65">More...</a><br /></td></tr>
+<tr class="separator:aa8d7bb709d41d99c7f3f8b5d775d6c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbade2c5a55077c48ecfeea29a2b0ee5"><td class="memItemLeft" align="right" valign="top">vector&lt; pair&lt; <a class="el" href="classAirport.html">Airport</a>, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsult.html#afbade2c5a55077c48ecfeea29a2b0ee5">topTrafficCapacityAirports</a> ()</td></tr>
+<tr class="memdesc:afbade2c5a55077c48ecfeea29a2b0ee5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the top airports with the highest air traffic capacity.  <a href="classConsult.html#afbade2c5a55077c48ecfeea29a2b0ee5">More...</a><br /></td></tr>
+<tr class="separator:afbade2c5a55077c48ecfeea29a2b0ee5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c66d2c42dae908b3e87a55d60214117"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsult.html#a9c66d2c42dae908b3e87a55d60214117">dfsEssentialAirports</a> (<a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *v, stack&lt; string &gt; &amp;s, unordered_set&lt; string &gt; &amp;res, int &amp;i)</td></tr>
+<tr class="memdesc:a9c66d2c42dae908b3e87a55d60214117"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates a depth-first search to identify essential airports.  <a href="classConsult.html#a9c66d2c42dae908b3e87a55d60214117">More...</a><br /></td></tr>
+<tr class="separator:a9c66d2c42dae908b3e87a55d60214117"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e903bcb715be05df97bc208247ff0bb"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a7e903bcb715be05df97bc208247ff0bb"><td class="memTemplItemLeft" align="right" valign="top">vector&lt; <a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classConsult.html#a7e903bcb715be05df97bc208247ff0bb">findAirportsByAttribute</a> (const string &amp;searchName, T(Airport::*getAttr)() const)</td></tr>
+<tr class="memdesc:a7e903bcb715be05df97bc208247ff0bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds airports based on a specified attribute.  <a href="classConsult.html#a7e903bcb715be05df97bc208247ff0bb">More...</a><br /></td></tr>
+<tr class="separator:a7e903bcb715be05df97bc208247ff0bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a54a1e34ba92a52f8239aa18dab1e64fe"><td class="memItemLeft" align="right" valign="top"><a id="a54a1e34ba92a52f8239aa18dab1e64fe"></a>
+const <a class="el" href="classGraph.html">Graph</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsult.html#a54a1e34ba92a52f8239aa18dab1e64fe">consultGraph</a></td></tr>
+<tr class="memdesc:a54a1e34ba92a52f8239aa18dab1e64fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the airport graph used for consultation. <br /></td></tr>
+<tr class="separator:a54a1e34ba92a52f8239aa18dab1e64fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Provides functionalities to perform various queries and analyses on Air Travel Flight data. </p>
@@ -234,6 +280,259 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ad19d0c42d836811405ac4f4c63134aea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad19d0c42d836811405ac4f4c63134aea">&#9670;&nbsp;</a></span>dfsAvailableDestinations()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Consult::dfsAvailableDestinations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void(<a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *)&gt;&#160;</td>
+          <td class="paramname"><em>processDestination</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initiates a depth-first search to process available destinations from a vertex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Pointer to the vertex initiating the search. </td></tr>
+    <tr><td class="paramname">processDestination</td><td>Function to process the available destinations. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9c66d2c42dae908b3e87a55d60214117"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c66d2c42dae908b3e87a55d60214117">&#9670;&nbsp;</a></span>dfsEssentialAirports()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Consult::dfsEssentialAirports </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">stack&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unordered_set&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>res</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initiates a depth-first search to identify essential airports. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Pointer to the vertex initiating the search. </td></tr>
+    <tr><td class="paramname">s</td><td>Stack used in the search process. </td></tr>
+    <tr><td class="paramname">res</td><td>Unordered set containing essential airports found. </td></tr>
+    <tr><td class="paramname">i</td><td>Counter used in the search process. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab963c0c370467cc3926a72e6651e6d1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab963c0c370467cc3926a72e6651e6d1f">&#9670;&nbsp;</a></span>dfsVisitCityAirports()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Consult::dfsVisitCityAirports </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>city</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>country</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>res</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initiates a depth-first search to find airports in a specific city and country. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">city</td><td>The city to search for. </td></tr>
+    <tr><td class="paramname">country</td><td>The country to search for. </td></tr>
+    <tr><td class="paramname">v</td><td>Pointer to the vertex initiating the search. </td></tr>
+    <tr><td class="paramname">res</td><td>Vector containing vertices representing airports in the given city and country. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a32f11ec81285c418eb038348318ba020"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32f11ec81285c418eb038348318ba020">&#9670;&nbsp;</a></span>dfsVisitFlightsPerAirline()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Consult::dfsVisitFlightsPerAirline </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">map&lt; <a class="el" href="classAirline.html">Airline</a>, int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>res</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Performs a depth-first search to count flights per airline from a given vertex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Pointer to the vertex initiating the search. </td></tr>
+    <tr><td class="paramname">res</td><td>Map containing the count of flights per airline. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab45b0d80a16a70777ddc614a250ce961"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab45b0d80a16a70777ddc614a250ce961">&#9670;&nbsp;</a></span>dfsVisitFlightsPerCity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Consult::dfsVisitFlightsPerCity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">map&lt; pair&lt; string, string &gt;, int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>res</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Performs a depth-first search to count flights per city of a country from a given vertex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Pointer to the vertex initiating the search. </td></tr>
+    <tr><td class="paramname">res</td><td>Map containing the count of flights per city of a country. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a982212ec03b14c2e803a77671fd25e13"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a982212ec03b14c2e803a77671fd25e13">&#9670;&nbsp;</a></span>findAirportByCode()</h2>
 
@@ -287,6 +586,60 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Vector of airport vertices matching the airport name.</dd></dl>
 <p>Time Complexity: O(V+(M*logM)) where V stands for vertices and M for matching airports, O(M*logM) for sorting the matching airports. Note: Considering the auxiliary function 'findAirportsByAttribute'. </p>
+
+</div>
+</div>
+<a id="a7e903bcb715be05df97bc208247ff0bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e903bcb715be05df97bc208247ff0bb">&#9670;&nbsp;</a></span>findAirportsByAttribute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; <a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; * &gt; Consult::findAirportsByAttribute </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>searchName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T(Airport::*)() const&#160;</td>
+          <td class="paramname"><em>getAttr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Finds airports based on a specified attribute. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type of attribute to search for (name, city, country). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">searchName</td><td>The value of the attribute to search for. </td></tr>
+    <tr><td class="paramname">getAttr</td><td>Pointer to the member function that retrieves the attribute from <a class="el" href="classAirport.html" title="Class representing a airport.">Airport</a> class. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of airport vertices matching the attribute. </dd></dl>
 
 </div>
 </div>
@@ -952,6 +1305,59 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aa8d7bb709d41d99c7f3f8b5d775d6c65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8d7bb709d41d99c7f3f8b5d775d6c65">&#9670;&nbsp;</a></span>searchNumberOfReachableDestinationsInXStopsFromAirport()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Consult::searchNumberOfReachableDestinationsInXStopsFromAirport </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *&#160;</td>
+          <td class="paramname"><em>airport</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>layOvers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const function&lt; string(<a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *)&gt; &amp;&#160;</td>
+          <td class="paramname"><em>attributeExtractor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Searches for the number of reachable destinations from an airport in a specified number of stops. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">airport</td><td>Pointer to the starting airport. </td></tr>
+    <tr><td class="paramname">layOvers</td><td>Number of layovers or stops to consider. </td></tr>
+    <tr><td class="paramname">attributeExtractor</td><td>Function to extract an attribute for each reachable destination. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The count of reachable destinations in 'X' stops (number of layovers). </dd></dl>
+
+</div>
+</div>
 <a id="a91d0d2dcd9a897b3e753568988c96c23"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a91d0d2dcd9a897b3e753568988c96c23">&#9670;&nbsp;</a></span>searchSmallestPathBetweenAirports()</h2>
 
@@ -1016,6 +1422,34 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A vector of pairs containing airports and their corresponding air traffic capacity.</dd></dl>
 <p>Time Complexity: O(V*logV) where V stands for the vertices, the sorting function is the most time-consuming part of the functions. Note: Considering the auxiliary function 'topTrafficCapacityAirports'. </p>
+
+</div>
+</div>
+<a id="afbade2c5a55077c48ecfeea29a2b0ee5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbade2c5a55077c48ecfeea29a2b0ee5">&#9670;&nbsp;</a></span>topTrafficCapacityAirports()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; pair&lt; <a class="el" href="classAirport.html">Airport</a>, int &gt; &gt; Consult::topTrafficCapacityAirports </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Finds the top airports with the highest air traffic capacity. </p>
+<dl class="section return"><dt>Returns</dt><dd>Decreasingly ordered vector of pairs containing airports and their traffic capacities. </dd></dl>
 
 </div>
 </div>

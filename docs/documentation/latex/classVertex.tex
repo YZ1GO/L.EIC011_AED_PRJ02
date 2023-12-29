@@ -28,23 +28,23 @@ void \mbox{\hyperlink{classVertex_ac7b2e53890abfbcd4d7ce3b7d34ee932}{set\+Proces
 \begin{DoxyCompactList}\small\item\em Sets the processing status of the vertex. \end{DoxyCompactList}\item 
 const vector$<$ \mbox{\hyperlink{classEdge}{Edge}}$<$ T $>$ $>$ \& \mbox{\hyperlink{classVertex_a0b0341340972782503ff5065f46673fe}{get\+Adj}} () const
 \begin{DoxyCompactList}\small\item\em Retrieves the list of adjacent edges. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classVertex_aa352bed0d1b1e0c6b2cf1457d54de7a9}{set\+Adj}} (const vector$<$ \mbox{\hyperlink{classEdge}{Edge}}$<$ T $>$$>$ \&adj)
+void \mbox{\hyperlink{classVertex_aa352bed0d1b1e0c6b2cf1457d54de7a9}{set\+Adj}} (const vector$<$ \mbox{\hyperlink{classEdge}{Edge}}$<$ T $>$$>$ \&\mbox{\hyperlink{classVertex_a5d9dfdd2caee11e300ff5142799345a1}{adj}})
 \begin{DoxyCompactList}\small\item\em Sets the list of adjacent edges for the vertex. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classVertex_afb702b279e2ff9fba2ce7495bf63e47d}{get\+In\+Degree}} () const
 \begin{DoxyCompactList}\small\item\em Retrieves the in\+Degree of the vertex. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classVertex_a32cb403d810c8ffa5329317c77db654a}{set\+In\+Degree}} (int in\+Degree)
+void \mbox{\hyperlink{classVertex_a32cb403d810c8ffa5329317c77db654a}{set\+In\+Degree}} (int \mbox{\hyperlink{classVertex_a5f26eb68e5d440c4d5f9cab46626deda}{in\+Degree}})
 \begin{DoxyCompactList}\small\item\em Sets the in\+Degree of the vertex. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classVertex_aa346f06214e209193b377ef44d4a311e}{get\+Out\+Degree}} () const
 \begin{DoxyCompactList}\small\item\em Retrieves the out\+Degree of the vertex. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classVertex_a4b0b40b08cf30cfaebe651650efccfff}{set\+Out\+Degree}} (int out\+Degree)
+void \mbox{\hyperlink{classVertex_a4b0b40b08cf30cfaebe651650efccfff}{set\+Out\+Degree}} (int \mbox{\hyperlink{classVertex_a101632e962d211b81d6ab5f59b5dcdec}{out\+Degree}})
 \begin{DoxyCompactList}\small\item\em Sets the out\+Degree of the vertex. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classVertex_ab2916c006fa35b918910a2232095e785}{get\+Num}} () const
 \begin{DoxyCompactList}\small\item\em Retrieves the numerical value used in graph algorithms. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classVertex_a7eecd09188d8f959b1c0ac9332c14218}{set\+Num}} (int num)
+void \mbox{\hyperlink{classVertex_a7eecd09188d8f959b1c0ac9332c14218}{set\+Num}} (int \mbox{\hyperlink{classVertex_aeb941bcd51ef71c6101e02eaed1cae12}{num}})
 \begin{DoxyCompactList}\small\item\em Sets the numerical value used in graph algorithms. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classVertex_a3b8e12b4d9805979321212dd6db05961}{get\+Low}} () const
 \begin{DoxyCompactList}\small\item\em Retrieves the low value used in graph algorithms. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classVertex_ada7d878fff0c3d585fce0a51cffa6435}{set\+Low}} (int low)
+void \mbox{\hyperlink{classVertex_ada7d878fff0c3d585fce0a51cffa6435}{set\+Low}} (int \mbox{\hyperlink{classVertex_a35d937c418952520cfa26b098e86b755}{low}})
 \begin{DoxyCompactList}\small\item\em Sets the low value used in graph algorithms. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classVertex_a964b588c5bb6d1a1f3e20f9ae53e7eda}{get\+Flights\+To}} () const
 \begin{DoxyCompactList}\small\item\em Retrieves the number of flights to this vertex. \end{DoxyCompactList}\item 
@@ -54,6 +54,46 @@ int \mbox{\hyperlink{classVertex_a43f8e080c9755603ce765fd983f9500b}{get\+Flights
 \begin{DoxyCompactList}\small\item\em Retrieves the number of flights from this vertex. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classVertex_ad66b37dcb94df6a7f15de116ad0f808e}{set\+Flights\+From}} (int n)
 \begin{DoxyCompactList}\small\item\em Sets the number of flights from this vertex. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classVertex_a2356dbc01288b129d3c4d123afd6ec07}{add\+Edge}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$dest, double distance)
+\begin{DoxyCompactList}\small\item\em Adds an edge to the vertex. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classVertex_ab2b5b43fb1709a901b78718436763a84}{remove\+Edge\+To}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$d)
+\begin{DoxyCompactList}\small\item\em Removes an edge from the vertex to the specified destination. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classVertex_a415d7811eef6cdd992f0dca1f35a49cd}\label{classVertex_a415d7811eef6cdd992f0dca1f35a49cd}} 
+T \mbox{\hyperlink{classVertex_a415d7811eef6cdd992f0dca1f35a49cd}{info}}
+\begin{DoxyCompactList}\small\item\em The information contained in the vertex. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVertex_a5d9dfdd2caee11e300ff5142799345a1}\label{classVertex_a5d9dfdd2caee11e300ff5142799345a1}} 
+vector$<$ \mbox{\hyperlink{classEdge}{Edge}}$<$ T $>$ $>$ \mbox{\hyperlink{classVertex_a5d9dfdd2caee11e300ff5142799345a1}{adj}}
+\begin{DoxyCompactList}\small\item\em The list of adjacent edges. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVertex_a187a2fe4ff50261cf3c15b8cda7dfc56}\label{classVertex_a187a2fe4ff50261cf3c15b8cda7dfc56}} 
+bool \mbox{\hyperlink{classVertex_a187a2fe4ff50261cf3c15b8cda7dfc56}{visited}}
+\begin{DoxyCompactList}\small\item\em Indicates if the vertex has been visited. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVertex_ae575d4b9a6b1ada3f9626c458c060f54}\label{classVertex_ae575d4b9a6b1ada3f9626c458c060f54}} 
+bool \mbox{\hyperlink{classVertex_ae575d4b9a6b1ada3f9626c458c060f54}{processing}}
+\begin{DoxyCompactList}\small\item\em Indicates if the vertex is being processed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVertex_a5f26eb68e5d440c4d5f9cab46626deda}\label{classVertex_a5f26eb68e5d440c4d5f9cab46626deda}} 
+int \mbox{\hyperlink{classVertex_a5f26eb68e5d440c4d5f9cab46626deda}{in\+Degree}}
+\begin{DoxyCompactList}\small\item\em The number of edges directed towards the vertex. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVertex_a101632e962d211b81d6ab5f59b5dcdec}\label{classVertex_a101632e962d211b81d6ab5f59b5dcdec}} 
+int \mbox{\hyperlink{classVertex_a101632e962d211b81d6ab5f59b5dcdec}{out\+Degree}}
+\begin{DoxyCompactList}\small\item\em The number of edges directed away from the vertex. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVertex_aeb941bcd51ef71c6101e02eaed1cae12}\label{classVertex_aeb941bcd51ef71c6101e02eaed1cae12}} 
+int \mbox{\hyperlink{classVertex_aeb941bcd51ef71c6101e02eaed1cae12}{num}}
+\begin{DoxyCompactList}\small\item\em The numerical value used in graph algorithms. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVertex_a35d937c418952520cfa26b098e86b755}\label{classVertex_a35d937c418952520cfa26b098e86b755}} 
+int \mbox{\hyperlink{classVertex_a35d937c418952520cfa26b098e86b755}{low}}
+\begin{DoxyCompactList}\small\item\em The low value used in graph algorithms. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVertex_a1713adae4939387e55e6b18c937f4d1f}\label{classVertex_a1713adae4939387e55e6b18c937f4d1f}} 
+int \mbox{\hyperlink{classVertex_a1713adae4939387e55e6b18c937f4d1f}{flights\+To}} = 0
+\begin{DoxyCompactList}\small\item\em The number of flights to this vertex. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVertex_a24522be62e0a45873f76ff24c2e57e6a}\label{classVertex_a24522be62e0a45873f76ff24c2e57e6a}} 
+int \mbox{\hyperlink{classVertex_a24522be62e0a45873f76ff24c2e57e6a}{flights\+From}} = 0
+\begin{DoxyCompactList}\small\item\em The number of flights from this vertex. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
@@ -94,6 +134,24 @@ Constructor for the \mbox{\hyperlink{classVertex}{Vertex}} class.
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classVertex_a2356dbc01288b129d3c4d123afd6ec07}\label{classVertex_a2356dbc01288b129d3c4d123afd6ec07}} 
+\index{Vertex$<$ T $>$@{Vertex$<$ T $>$}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Vertex$<$ T $>$@{Vertex$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$\+::add\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$}]{dest,  }\item[{double}]{distance }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Adds an edge to the vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & Pointer to the destination vertex. \\
+\hline
+{\em distance} & Distance between vertices in kilometers. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classVertex_a0b0341340972782503ff5065f46673fe}\label{classVertex_a0b0341340972782503ff5065f46673fe}} 
 \index{Vertex$<$ T $>$@{Vertex$<$ T $>$}!getAdj@{getAdj}}
 \index{getAdj@{getAdj}!Vertex$<$ T $>$@{Vertex$<$ T $>$}}
@@ -233,6 +291,25 @@ Checks if the vertex has been visited.
 
 \begin{DoxyReturn}{Returns}
 True if the vertex has been visited, otherwise false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_ab2b5b43fb1709a901b78718436763a84}\label{classVertex_ab2b5b43fb1709a901b78718436763a84}} 
+\index{Vertex$<$ T $>$@{Vertex$<$ T $>$}!removeEdgeTo@{removeEdgeTo}}
+\index{removeEdgeTo@{removeEdgeTo}!Vertex$<$ T $>$@{Vertex$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{removeEdgeTo()}{removeEdgeTo()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$\+::remove\+Edge\+To (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Removes an edge from the vertex to the specified destination. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & Pointer to the destination vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the edge is successfully removed, otherwise false. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classVertex_aa352bed0d1b1e0c6b2cf1457d54de7a9}\label{classVertex_aa352bed0d1b1e0c6b2cf1457d54de7a9}} 
 \index{Vertex$<$ T $>$@{Vertex$<$ T $>$}!setAdj@{setAdj}}
