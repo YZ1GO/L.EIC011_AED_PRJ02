@@ -13,6 +13,7 @@ a range of functionalities to explore, query, and manage air travel information 
 - **Route Mapping:** Discover and navigate paths between airports.
 - **Efficient Management:** Access flight data for specific departure and arrival airports or cities.
 - **Optimized Trips:** Find the best routes with various filters, ensuring tailored travel solutions.
+- **Customized Layovers:** Enable users to personalize layovers during their travel.
 - **User-Friendly Interface:** Enjoy a simple and intuitive menu-driven system for seamless navigation.
 
 ## Installing
