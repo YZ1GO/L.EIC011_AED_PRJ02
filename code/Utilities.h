@@ -10,10 +10,12 @@
 #ifndef AED_AEROPORTO_UTILITIES_H
 #define AED_AEROPORTO_UTILITIES_H
 
+#include <iostream>
 #include <string>
 #include <algorithm>
 #include <cmath>
 #include <sstream>
+#include <vector>
 
 /**
  * @brief Trim whitespace from the beginning and end of a string.
@@ -64,5 +66,23 @@ std::string makeBold(const T& value) {
     oss << "\033[1m" << value << "\033[0m";
     return oss.str();
 };
+
+template<typename T>
+std::vector<T> mergeVectors(const std::vector<T>& first, const std::vector<T>& second) {
+    if (first.empty() || second.empty()) {
+        std::cerr << "One or both vectors are empty.\n";
+        return {};
+    }
+
+    if (first.back() == second.front()) {
+        std::vector<T> merged(first.begin(), first.end());
+        merged.insert(merged.end(), second.begin() + 1, second.end());
+        return merged;
+    } else {
+        std::cerr << "The last element of the first vector is not equal to the first element of the second vector.\n";
+        return {};
+    }
+}
+
 
 #endif //AED_AEROPORTO_UTILITIES_H

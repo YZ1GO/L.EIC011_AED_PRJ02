@@ -1020,47 +1020,52 @@ vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> Script::getBe
 
     for (auto sourceAirport : source) {
         for (auto destinationAirport : destination) {
-            vector<vector<Vertex<Airport>*>> pathsFromSourceToLayover;
-            vector<vector<Vertex<Airport>*>> pathsFromLayoverToDestination;
+            vector<vector<Vertex<Airport>*>> paths;
+            vector<vector<Vertex<Airport>*>> temp = consult.searchSmallestPathBetweenAirports(sourceAirport, customLayovers[0]);
+            vector<vector<Vertex<Airport>*>> temp2;
 
-            for (auto layoverAirport : customLayovers) {
-                pathsFromSourceToLayover = consult.searchSmallestPathBetweenAirports(sourceAirport, layoverAirport);
-                if (pathsFromSourceToLayover.empty()) {
-                    continue;
+            for (size_t i = 0; i < customLayovers.size() - 1; ++i) {
+                vector<vector<Vertex<Airport>*>> pathsFromTo = consult.searchSmallestPathBetweenAirports(customLayovers[i], customLayovers[i + 1]);
+
+                for (auto a : temp) {
+                    for (auto b : pathsFromTo) {
+                        temp2.push_back(mergeVectors(a, b));
+                    }
+                }
+                temp = temp2;
+                temp2.clear();
+            }
+
+            temp2 = consult.searchSmallestPathBetweenAirports(customLayovers.back(), destinationAirport);
+            for (auto a : temp) {
+                for (auto b : temp2) {
+                    paths.push_back(mergeVectors(a, b));
+                }
+            }
+
+            for (auto v : paths) {
+                int currentLayOvers = v.size() - 2;
+
+                if (currentLayOvers < minLayOvers) {
+                    minLayOvers = currentLayOvers;
+                    totalPaths.clear();
                 }
 
-                for (auto path : pathsFromSourceToLayover) {
-                    pathsFromLayoverToDestination = consult.searchSmallestPathBetweenAirports(path.back(), destinationAirport);
-                    if (pathsFromLayoverToDestination.empty()) {
-                    continue;
+                if (currentLayOvers == minLayOvers) {
+                    double distance = 0.0;
+                    auto it = v.begin();
+                    while (it != v.end() - 1) {
+                        distance += consult.getDistanceBetweenAirports(*it, *(it + 1));
+                        ++it;
                     }
-
-                    for (auto layoverToDestPath : pathsFromLayoverToDestination) {
-                        vector<Vertex<Airport>*> totalPath;
-                        totalPath.reserve(path.size() + layoverToDestPath.size() - 1);
-                        totalPath.insert(totalPath.end(), path.begin(), path.end());
-                        totalPath.insert(totalPath.end(), layoverToDestPath.begin() + 1, layoverToDestPath.end());
-
-                        double distance = 0.0;
-                        for (size_t i = 0; i < totalPath.size() - 1; ++i) {
-                            distance += consult.getDistanceBetweenAirports(totalPath[i], totalPath[i + 1]);
-                        }
-
-                        int currentLayOvers = totalPath.size() - 2;
-                        if (currentLayOvers < minLayOvers) {
-                            minLayOvers = currentLayOvers;
-                            totalPaths.clear();
-                        }
-                        if (currentLayOvers == minLayOvers) {
-                            totalPaths.push_back({ set<Airline>(), { totalPath, distance } });
-                        }
-                    }
+                    totalPaths.push_back({ set<Airline>(), { v, distance } });
                 }
             }
         }
     }
     return totalPaths;
 }
+
 
 void Script::printBestFlightDetails(pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>> trip) {
     clearScreen();
