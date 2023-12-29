@@ -11,8 +11,7 @@ Class responsible for parsing data from CSV files.
 
 
 
-Collaboration diagram for Parse\+Data\+:
-\nopagebreak
+Collaboration diagram for Parse\+Data\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -22,7 +21,7 @@ Collaboration diagram for Parse\+Data\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classParseData_a432d4eecf2c8e08bad4dd6e30e908ee3}{Parse\+Data}} (const std\+::string \&airports\+CSV, const std\+::string \&airlines\+CSV, const std\+::string \&\mbox{\hyperlink{classParseData_a22daa118d03f71e0aeeeb49b15b7844f}{flights\+CSV}})
+\mbox{\hyperlink{classParseData_a432d4eecf2c8e08bad4dd6e30e908ee3}{Parse\+Data}} (const std\+::string \&\mbox{\hyperlink{classParseData_a1138078f45783b89d97958ac3c1c1a84}{airports\+CSV}}, const std\+::string \&\mbox{\hyperlink{classParseData_a763f17d3ef578bfe6c4be7ffd3cccd24}{airlines\+CSV}}, const std\+::string \&\mbox{\hyperlink{classParseData_a22daa118d03f71e0aeeeb49b15b7844f}{flights\+CSV}})
 \begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classParseData}{Parse\+Data}} class. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \& \mbox{\hyperlink{classParseData_aa1763dce3cb6b121cdbd16f44c89b8f4}{get\+Data\+Graph}} () const
 \begin{DoxyCompactList}\small\item\em Retrieves the constructed airport graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -50,14 +49,14 @@ void \mbox{\hyperlink{classParseData_ae2d9893320f903f3727d827797d3709c}{parse\+F
 std\+::set$<$ \mbox{\hyperlink{classAirline}{Airline}} $>$ \mbox{\hyperlink{classParseData_adac4e413e75fbe7a2634a1ffcd471ef7}{airlines\+Info}}
 \begin{DoxyCompactList}\small\item\em Set containing the airlines information. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classParseData_a1138078f45783b89d97958ac3c1c1a84}\label{classParseData_a1138078f45783b89d97958ac3c1c1a84}} 
-std\+::string {\bfseries airports\+CSV}
-\item 
+std\+::string \mbox{\hyperlink{classParseData_a1138078f45783b89d97958ac3c1c1a84}{airports\+CSV}}
+\begin{DoxyCompactList}\small\item\em The file path to the CSV containing airports data to be parse. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classParseData_a763f17d3ef578bfe6c4be7ffd3cccd24}\label{classParseData_a763f17d3ef578bfe6c4be7ffd3cccd24}} 
-std\+::string {\bfseries airlines\+CSV}
-\item 
+std\+::string \mbox{\hyperlink{classParseData_a763f17d3ef578bfe6c4be7ffd3cccd24}{airlines\+CSV}}
+\begin{DoxyCompactList}\small\item\em The file path to the CSV containing airlines data to be parse. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classParseData_a22daa118d03f71e0aeeeb49b15b7844f}\label{classParseData_a22daa118d03f71e0aeeeb49b15b7844f}} 
 std\+::string \mbox{\hyperlink{classParseData_a22daa118d03f71e0aeeeb49b15b7844f}{flights\+CSV}}
-\begin{DoxyCompactList}\small\item\em The file path to the CSV containing data to be parse. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The file path to the CSV containing flights data to be parse. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
