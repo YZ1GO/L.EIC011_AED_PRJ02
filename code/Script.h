@@ -42,6 +42,8 @@ private:
 
     bool travelChosen{};                                ///< Indicates whether the menu for travel has been chosen.
 
+    bool customLayoversChosen{};
+
     bool sourceChosen{};                                ///< Indicates that the "source" has been selected.
 
     bool cityChosenSource{};                            ///< Indicates that the "source" has been chosen as a city.
@@ -49,6 +51,8 @@ private:
     bool cityChosenDestiny{};                           ///< Indicates that the "destination" has been chosen as a city.
 
     map<string, vector<Vertex<Airport>*>> travelMap;    ///< Stores the airport(s) of the source and the destination.
+
+    vector<Vertex<Airport>*> customLayovers;
 
     /**
      * @brief Draws a box around the provided text on the screen.
@@ -226,6 +230,8 @@ private:
      */
     void selectDestiny();
 
+    void selectCustomLayovers();
+
     /**
      * @brief Search for airports based on the user-provided city and country names.
      *
@@ -234,6 +240,8 @@ private:
      * to set it as the source/destination for travel.
      */
     void searchAirportByCityAndCountryName();
+
+    void extraFiltersTravel();
 
     /**
      * @brief Display 2 best flight options: travel by same or any airline from source to destination.
