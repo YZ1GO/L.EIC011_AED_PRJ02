@@ -197,6 +197,7 @@ void Script::listAndChooseAirport(vector<Vertex<Airport> *> airports, const stri
             }
             else if (choice <= airports.size() && choice > 0) {
                 airportStatistics(airports[choice - 1]);
+                exit = true;
             }
         } else {
             backToMenu();
