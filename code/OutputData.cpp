@@ -29,5 +29,7 @@ void convertDataGraphToTextFile(const Graph<Airport>& airportGraph, const std::s
         outFile << std::endl;
     }
     outFile.close();
+
+    cout << "Data exported successfully to \"" << filename << "\"" << endl;
 }
 

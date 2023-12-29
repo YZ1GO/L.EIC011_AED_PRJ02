@@ -6,6 +6,7 @@
 #define AED_AIRPORTS_SCRIPT_H
 
 #include "Consult.h"
+#include "OutputData.h"
 
 /**
  * @class Script
@@ -39,6 +40,8 @@ private:
      * @brief Object responsible for handling consultations.
      */
     Consult consult;
+
+    Graph<Airport> dataGraph;
 
     bool travelChosen{};                                ///< Indicates whether the menu for travel has been chosen.
 
