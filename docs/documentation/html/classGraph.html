@@ -64,6 +64,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classGraph-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Graph&lt; T &gt; Class Template Reference</div>  </div>
@@ -113,6 +115,31 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac76ac8c9999e9696ffb836801603e0c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#ac76ac8c9999e9696ffb836801603e0c2">setupInDegreeAndOutDegree</a> ()</td></tr>
 <tr class="memdesc:ac76ac8c9999e9696ffb836801603e0c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up the inDegree and outDegree of vertices in the graph.  <a href="classGraph.html#ac76ac8c9999e9696ffb836801603e0c2">More...</a><br /></td></tr>
 <tr class="separator:ac76ac8c9999e9696ffb836801603e0c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ab2bb8011642e0d5e6a71e0981d661056"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#ab2bb8011642e0d5e6a71e0981d661056">dfsVisit</a> (<a class="el" href="classVertex.html">Vertex</a>&lt; T &gt; *v, vector&lt; T &gt; &amp;res) const</td></tr>
+<tr class="memdesc:ab2bb8011642e0d5e6a71e0981d661056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a depth-first search visit starting from a given vertex.  <a href="classGraph.html#ab2bb8011642e0d5e6a71e0981d661056">More...</a><br /></td></tr>
+<tr class="separator:ab2bb8011642e0d5e6a71e0981d661056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a1714c4fb63ab41f69ef1be50532488a9"><td class="memItemLeft" align="right" valign="top"><a id="a1714c4fb63ab41f69ef1be50532488a9"></a>
+vector&lt; <a class="el" href="classVertex.html">Vertex</a>&lt; T &gt; * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a1714c4fb63ab41f69ef1be50532488a9">vertexSet</a></td></tr>
+<tr class="memdesc:a1714c4fb63ab41f69ef1be50532488a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The collection of vertices in the graph. <br /></td></tr>
+<tr class="separator:a1714c4fb63ab41f69ef1be50532488a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e0cd13bd9e91a125a484a0817c030a1"><td class="memItemLeft" align="right" valign="top"><a id="a1e0cd13bd9e91a125a484a0817c030a1"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a1e0cd13bd9e91a125a484a0817c030a1">_index_</a></td></tr>
+<tr class="memdesc:a1e0cd13bd9e91a125a484a0817c030a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The used internally. <br /></td></tr>
+<tr class="separator:a1e0cd13bd9e91a125a484a0817c030a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a261998fc1e44c878c595c2b0a05680be"><td class="memItemLeft" align="right" valign="top"><a id="a261998fc1e44c878c595c2b0a05680be"></a>
+stack&lt; <a class="el" href="classVertex.html">Vertex</a>&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a261998fc1e44c878c595c2b0a05680be">_stack_</a></td></tr>
+<tr class="memdesc:a261998fc1e44c878c595c2b0a05680be"><td class="mdescLeft">&#160;</td><td class="mdescRight">The stack used internally. <br /></td></tr>
+<tr class="separator:a261998fc1e44c878c595c2b0a05680be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab06fb542caac016248829c9e6fd11ec4"><td class="memItemLeft" align="right" valign="top"><a id="ab06fb542caac016248829c9e6fd11ec4"></a>
+list&lt; list&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#ab06fb542caac016248829c9e6fd11ec4">_list_sccs_</a></td></tr>
+<tr class="memdesc:ab06fb542caac016248829c9e6fd11ec4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The list of strongly connected components. <br /></td></tr>
+<tr class="separator:ab06fb542caac016248829c9e6fd11ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class T&gt;<br />
@@ -276,6 +303,53 @@ template&lt;class T &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Vector containing the vertices visited during the DFS. </dd></dl>
+
+</div>
+</div>
+<a id="ab2bb8011642e0d5e6a71e0981d661056"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2bb8011642e0d5e6a71e0981d661056">&#9670;&nbsp;</a></span>dfsVisit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classGraph.html">Graph</a>&lt; T &gt;::dfsVisit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classVertex.html">Vertex</a>&lt; T &gt; *&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>res</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Performs a depth-first search visit starting from a given vertex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Pointer to the starting vertex. </td></tr>
+    <tr><td class="paramname">res</td><td>Vector containing the visited vertices. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

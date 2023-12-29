@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['latitude_222',['latitude',['../structCoordinates.html#a20ea6542be083155699517939b03f259',1,'Coordinates']]],
-  ['longitude_223',['longitude',['../structCoordinates.html#a474951b7ec4e5f12e788abbf852cd88b',1,'Coordinates']]]
+  ['_5findex_5f_359',['_index_',['../classGraph.html#a1e0cd13bd9e91a125a484a0817c030a1',1,'Graph']]],
+  ['_5flist_5fsccs_5f_360',['_list_sccs_',['../classGraph.html#ab06fb542caac016248829c9e6fd11ec4',1,'Graph']]],
+  ['_5fstack_5f_361',['_stack_',['../classGraph.html#a261998fc1e44c878c595c2b0a05680be',1,'Graph']]]
 ];

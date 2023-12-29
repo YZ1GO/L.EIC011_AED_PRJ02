@@ -36,6 +36,26 @@ vector$<$ T $>$ \mbox{\hyperlink{classGraph_af1d4affd1f886bf598d0f4cf4a0cb7cb}{t
 \begin{DoxyCompactList}\small\item\em Performs topological sorting of the graph using depth-\/first search (DFS). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGraph_ac76ac8c9999e9696ffb836801603e0c2}{setup\+In\+Degree\+And\+Out\+Degree}} ()
 \begin{DoxyCompactList}\small\item\em Sets up the in\+Degree and out\+Degree of vertices in the graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classGraph_ab2bb8011642e0d5e6a71e0981d661056}{dfs\+Visit}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$v, vector$<$ T $>$ \&res) const
+\begin{DoxyCompactList}\small\item\em Performs a depth-\/first search visit starting from a given vertex. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classGraph_a1714c4fb63ab41f69ef1be50532488a9}\label{classGraph_a1714c4fb63ab41f69ef1be50532488a9}} 
+vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$ $>$ \mbox{\hyperlink{classGraph_a1714c4fb63ab41f69ef1be50532488a9}{vertex\+Set}}
+\begin{DoxyCompactList}\small\item\em The collection of vertices in the graph. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGraph_a1e0cd13bd9e91a125a484a0817c030a1}\label{classGraph_a1e0cd13bd9e91a125a484a0817c030a1}} 
+int \mbox{\hyperlink{classGraph_a1e0cd13bd9e91a125a484a0817c030a1}{\+\_\+index\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The used internally. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGraph_a261998fc1e44c878c595c2b0a05680be}\label{classGraph_a261998fc1e44c878c595c2b0a05680be}} 
+stack$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $>$ \mbox{\hyperlink{classGraph_a261998fc1e44c878c595c2b0a05680be}{\+\_\+stack\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The stack used internally. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGraph_ab06fb542caac016248829c9e6fd11ec4}\label{classGraph_ab06fb542caac016248829c9e6fd11ec4}} 
+list$<$ list$<$ T $>$ $>$ \mbox{\hyperlink{classGraph_ab06fb542caac016248829c9e6fd11ec4}{\+\_\+list\+\_\+sccs\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The list of strongly connected components. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -146,6 +166,24 @@ Performs a depth-\/first search (DFS) starting from a specific vertex in the gra
 \begin{DoxyReturn}{Returns}
 Vector containing the vertices visited during the DFS. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_ab2bb8011642e0d5e6a71e0981d661056}\label{classGraph_ab2bb8011642e0d5e6a71e0981d661056}} 
+\index{Graph$<$ T $>$@{Graph$<$ T $>$}!dfsVisit@{dfsVisit}}
+\index{dfsVisit@{dfsVisit}!Graph$<$ T $>$@{Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{dfsVisit()}{dfsVisit()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classGraph}{Graph}}$<$ T $>$\+::dfs\+Visit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$}]{v,  }\item[{vector$<$ T $>$ \&}]{res }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Performs a depth-\/first search visit starting from a given vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Pointer to the starting vertex. \\
+\hline
+{\em res} & Vector containing the visited vertices. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classGraph_a8b7b7465fbfd562e2a469f90a437ab75}\label{classGraph_a8b7b7465fbfd562e2a469f90a437ab75}} 
 \index{Graph$<$ T $>$@{Graph$<$ T $>$}!findVertex@{findVertex}}
 \index{findVertex@{findVertex}!Graph$<$ T $>$@{Graph$<$ T $>$}}

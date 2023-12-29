@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['tolower_103',['ToLower',['../Utilities_8h.html#a679cd14f6ab505065b571d2cba4370e8',1,'Utilities.h']]],
-  ['topsort_104',['topsort',['../classGraph.html#af1d4affd1f886bf598d0f4cf4a0cb7cb',1,'Graph']]],
-  ['toradians_105',['ToRadians',['../Utilities_8h.html#ab71afa9ae22b10ecf4b79f34cf208cc5',1,'Utilities.cpp']]],
-  ['trimstring_106',['TrimString',['../Utilities_8h.html#a61146d2609ffbef3c80509b4335728e2',1,'Utilities.h']]]
+  ['removeedge_123',['removeEdge',['../classGraph.html#a8949d071d45bf93e171e275462e1007a',1,'Graph']]],
+  ['removeedgeto_124',['removeEdgeTo',['../classVertex.html#ab2b5b43fb1709a901b78718436763a84',1,'Vertex']]],
+  ['removespaces_125',['RemoveSpaces',['../Utilities_8h.html#aa6d4cd5e047190f0fa8bf759ed16dc20',1,'Utilities.h']]],
+  ['removevertex_126',['removeVertex',['../classGraph.html#af9c903104ad69a7782979fa9caedf163',1,'Graph']]],
+  ['run_127',['run',['../classScript.html#a73a1254b03be5b6150f8029f898615da',1,'Script']]]
 ];

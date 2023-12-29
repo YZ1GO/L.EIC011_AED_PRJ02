@@ -9,6 +9,16 @@ Provides functionalities to perform various queries and analyses on Air Travel F
 
 {\ttfamily \#include $<$Consult.\+h$>$}
 
+
+
+Collaboration diagram for Consult\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classConsult__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -70,6 +80,31 @@ std\+::set$<$ \mbox{\hyperlink{classAirline}{Airline}} $>$ \mbox{\hyperlink{clas
 \begin{DoxyCompactList}\small\item\em Retrieves the set of airlines that operate between two airports. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classConsult_a64ba24f84ec42b4a7dc25f45467180df}{get\+Distance\+Between\+Airports}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$source, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$target)
 \begin{DoxyCompactList}\small\item\em Retrieves the distance between two airports. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classConsult_ab45b0d80a16a70777ddc614a250ce961}{dfs\+Visit\+Flights\+Per\+City}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$v, map$<$ pair$<$ string, string $>$, int $>$ \&res)
+\begin{DoxyCompactList}\small\item\em Performs a depth-\/first search to count flights per city of a country from a given vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classConsult_a32f11ec81285c418eb038348318ba020}{dfs\+Visit\+Flights\+Per\+Airline}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$v, map$<$ \mbox{\hyperlink{classAirline}{Airline}}, int $>$ \&res)
+\begin{DoxyCompactList}\small\item\em Performs a depth-\/first search to count flights per airline from a given vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classConsult_ab963c0c370467cc3926a72e6651e6d1f}{dfs\+Visit\+City\+Airports}} (const string \&city, const string \&country, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$v, vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ \&res)
+\begin{DoxyCompactList}\small\item\em Initiates a depth-\/first search to find airports in a specific city and country. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classConsult_ad19d0c42d836811405ac4f4c63134aea}{dfs\+Available\+Destinations}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$v, std\+::function$<$ void(\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$)$>$ process\+Destination)
+\begin{DoxyCompactList}\small\item\em Initiates a depth-\/first search to process available destinations from a vertex. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classConsult_aa8d7bb709d41d99c7f3f8b5d775d6c65}{search\+Number\+Of\+Reachable\+Destinations\+In\+XStops\+From\+Airport}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$airport, int lay\+Overs, const function$<$ string(\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$)$>$ \&attribute\+Extractor)
+\begin{DoxyCompactList}\small\item\em Searches for the number of reachable destinations from an airport in a specified number of stops. \end{DoxyCompactList}\item 
+vector$<$ pair$<$ \mbox{\hyperlink{classAirport}{Airport}}, int $>$ $>$ \mbox{\hyperlink{classConsult_afbade2c5a55077c48ecfeea29a2b0ee5}{top\+Traffic\+Capacity\+Airports}} ()
+\begin{DoxyCompactList}\small\item\em Finds the top airports with the highest air traffic capacity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classConsult_a9c66d2c42dae908b3e87a55d60214117}{dfs\+Essential\+Airports}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$v, stack$<$ string $>$ \&s, unordered\+\_\+set$<$ string $>$ \&res, int \&i)
+\begin{DoxyCompactList}\small\item\em Initiates a depth-\/first search to identify essential airports. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ \mbox{\hyperlink{classConsult_a7e903bcb715be05df97bc208247ff0bb}{find\+Airports\+By\+Attribute}} (const string \&search\+Name, T(Airport\+::$\ast$get\+Attr)() const)
+\begin{DoxyCompactList}\small\item\em Finds airports based on a specified attribute. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classConsult_a54a1e34ba92a52f8239aa18dab1e64fe}\label{classConsult_a54a1e34ba92a52f8239aa18dab1e64fe}} 
+const \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \& \mbox{\hyperlink{classConsult_a54a1e34ba92a52f8239aa18dab1e64fe}{consult\+Graph}}
+\begin{DoxyCompactList}\small\item\em Reference to the airport graph used for consultation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -114,7 +149,100 @@ Retrieves the set of airlines that operate between two airports.
 \begin{DoxyReturn}{Returns}
 Set of airlines that operate between the specified airports.
 \end{DoxyReturn}
-Time Complexity\+: O(\+E) where E stands for edges (flight routes). \mbox{\Hypertarget{classConsult_a982212ec03b14c2e803a77671fd25e13}\label{classConsult_a982212ec03b14c2e803a77671fd25e13}} 
+Time Complexity\+: O(\+E) where E stands for edges (flight routes). \mbox{\Hypertarget{classConsult_ad19d0c42d836811405ac4f4c63134aea}\label{classConsult_ad19d0c42d836811405ac4f4c63134aea}} 
+\index{Consult@{Consult}!dfsAvailableDestinations@{dfsAvailableDestinations}}
+\index{dfsAvailableDestinations@{dfsAvailableDestinations}!Consult@{Consult}}
+\doxysubsubsection{\texorpdfstring{dfsAvailableDestinations()}{dfsAvailableDestinations()}}
+{\footnotesize\ttfamily void Consult\+::dfs\+Available\+Destinations (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$}]{v,  }\item[{std\+::function$<$ void(\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$)$>$}]{process\+Destination }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Initiates a depth-\/first search to process available destinations from a vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Pointer to the vertex initiating the search. \\
+\hline
+{\em process\+Destination} & Function to process the available destinations. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classConsult_a9c66d2c42dae908b3e87a55d60214117}\label{classConsult_a9c66d2c42dae908b3e87a55d60214117}} 
+\index{Consult@{Consult}!dfsEssentialAirports@{dfsEssentialAirports}}
+\index{dfsEssentialAirports@{dfsEssentialAirports}!Consult@{Consult}}
+\doxysubsubsection{\texorpdfstring{dfsEssentialAirports()}{dfsEssentialAirports()}}
+{\footnotesize\ttfamily void Consult\+::dfs\+Essential\+Airports (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$}]{v,  }\item[{stack$<$ string $>$ \&}]{s,  }\item[{unordered\+\_\+set$<$ string $>$ \&}]{res,  }\item[{int \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Initiates a depth-\/first search to identify essential airports. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Pointer to the vertex initiating the search. \\
+\hline
+{\em s} & Stack used in the search process. \\
+\hline
+{\em res} & Unordered set containing essential airports found. \\
+\hline
+{\em i} & Counter used in the search process. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classConsult_ab963c0c370467cc3926a72e6651e6d1f}\label{classConsult_ab963c0c370467cc3926a72e6651e6d1f}} 
+\index{Consult@{Consult}!dfsVisitCityAirports@{dfsVisitCityAirports}}
+\index{dfsVisitCityAirports@{dfsVisitCityAirports}!Consult@{Consult}}
+\doxysubsubsection{\texorpdfstring{dfsVisitCityAirports()}{dfsVisitCityAirports()}}
+{\footnotesize\ttfamily void Consult\+::dfs\+Visit\+City\+Airports (\begin{DoxyParamCaption}\item[{const string \&}]{city,  }\item[{const string \&}]{country,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$}]{v,  }\item[{vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ \&}]{res }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Initiates a depth-\/first search to find airports in a specific city and country. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em city} & The city to search for. \\
+\hline
+{\em country} & The country to search for. \\
+\hline
+{\em v} & Pointer to the vertex initiating the search. \\
+\hline
+{\em res} & Vector containing vertices representing airports in the given city and country. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classConsult_a32f11ec81285c418eb038348318ba020}\label{classConsult_a32f11ec81285c418eb038348318ba020}} 
+\index{Consult@{Consult}!dfsVisitFlightsPerAirline@{dfsVisitFlightsPerAirline}}
+\index{dfsVisitFlightsPerAirline@{dfsVisitFlightsPerAirline}!Consult@{Consult}}
+\doxysubsubsection{\texorpdfstring{dfsVisitFlightsPerAirline()}{dfsVisitFlightsPerAirline()}}
+{\footnotesize\ttfamily void Consult\+::dfs\+Visit\+Flights\+Per\+Airline (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$}]{v,  }\item[{map$<$ \mbox{\hyperlink{classAirline}{Airline}}, int $>$ \&}]{res }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Performs a depth-\/first search to count flights per airline from a given vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Pointer to the vertex initiating the search. \\
+\hline
+{\em res} & Map containing the count of flights per airline. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classConsult_ab45b0d80a16a70777ddc614a250ce961}\label{classConsult_ab45b0d80a16a70777ddc614a250ce961}} 
+\index{Consult@{Consult}!dfsVisitFlightsPerCity@{dfsVisitFlightsPerCity}}
+\index{dfsVisitFlightsPerCity@{dfsVisitFlightsPerCity}!Consult@{Consult}}
+\doxysubsubsection{\texorpdfstring{dfsVisitFlightsPerCity()}{dfsVisitFlightsPerCity()}}
+{\footnotesize\ttfamily void Consult\+::dfs\+Visit\+Flights\+Per\+City (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$}]{v,  }\item[{map$<$ pair$<$ string, string $>$, int $>$ \&}]{res }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Performs a depth-\/first search to count flights per city of a country from a given vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Pointer to the vertex initiating the search. \\
+\hline
+{\em res} & Map containing the count of flights per city of a country. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classConsult_a982212ec03b14c2e803a77671fd25e13}\label{classConsult_a982212ec03b14c2e803a77671fd25e13}} 
 \index{Consult@{Consult}!findAirportByCode@{findAirportByCode}}
 \index{findAirportByCode@{findAirportByCode}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{findAirportByCode()}{findAirportByCode()}}
@@ -150,7 +278,33 @@ Finds airports based on the airport name.
 \begin{DoxyReturn}{Returns}
 Vector of airport vertices matching the airport name.
 \end{DoxyReturn}
-Time Complexity\+: O(V+(M$\ast$logM)) where V stands for vertices and M for matching airports, O(\+M$\ast$log\+M) for sorting the matching airports. Note\+: Considering the auxiliary function \textquotesingle{}find\+Airports\+By\+Attribute\textquotesingle{}. \mbox{\Hypertarget{classConsult_ab4a4e5d9dfc90d8435c06945f86be158}\label{classConsult_ab4a4e5d9dfc90d8435c06945f86be158}} 
+Time Complexity\+: O(V+(M$\ast$logM)) where V stands for vertices and M for matching airports, O(\+M$\ast$log\+M) for sorting the matching airports. Note\+: Considering the auxiliary function \textquotesingle{}find\+Airports\+By\+Attribute\textquotesingle{}. \mbox{\Hypertarget{classConsult_a7e903bcb715be05df97bc208247ff0bb}\label{classConsult_a7e903bcb715be05df97bc208247ff0bb}} 
+\index{Consult@{Consult}!findAirportsByAttribute@{findAirportsByAttribute}}
+\index{findAirportsByAttribute@{findAirportsByAttribute}!Consult@{Consult}}
+\doxysubsubsection{\texorpdfstring{findAirportsByAttribute()}{findAirportsByAttribute()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ Consult\+::find\+Airports\+By\+Attribute (\begin{DoxyParamCaption}\item[{const string \&}]{search\+Name,  }\item[{T(Airport\+::$\ast$)() const}]{get\+Attr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Finds airports based on a specified attribute. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of attribute to search for (name, city, country). \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em search\+Name} & The value of the attribute to search for. \\
+\hline
+{\em get\+Attr} & Pointer to the member function that retrieves the attribute from \mbox{\hyperlink{classAirport}{Airport}} class. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of airport vertices matching the attribute. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classConsult_ab4a4e5d9dfc90d8435c06945f86be158}\label{classConsult_ab4a4e5d9dfc90d8435c06945f86be158}} 
 \index{Consult@{Consult}!findAirportsByCityName@{findAirportsByCityName}}
 \index{findAirportsByCityName@{findAirportsByCityName}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{findAirportsByCityName()}{findAirportsByCityName()}}
@@ -541,7 +695,29 @@ Count the number of reachable countries in a certain number of stops (layovers) 
 \begin{DoxyReturn}{Returns}
 The number of reachable countries within the specified layovers.
 \end{DoxyReturn}
-Time Complexity\+: O(V+E) where V stands for vertices and E for edges. Note\+: Considering the auxiliary function \textquotesingle{}search\+Number\+Of\+Reachable\+Destinations\+In\+XStops\+From\+Airport\textquotesingle{}. \mbox{\Hypertarget{classConsult_a91d0d2dcd9a897b3e753568988c96c23}\label{classConsult_a91d0d2dcd9a897b3e753568988c96c23}} 
+Time Complexity\+: O(V+E) where V stands for vertices and E for edges. Note\+: Considering the auxiliary function \textquotesingle{}search\+Number\+Of\+Reachable\+Destinations\+In\+XStops\+From\+Airport\textquotesingle{}. \mbox{\Hypertarget{classConsult_aa8d7bb709d41d99c7f3f8b5d775d6c65}\label{classConsult_aa8d7bb709d41d99c7f3f8b5d775d6c65}} 
+\index{Consult@{Consult}!searchNumberOfReachableDestinationsInXStopsFromAirport@{searchNumberOfReachableDestinationsInXStopsFromAirport}}
+\index{searchNumberOfReachableDestinationsInXStopsFromAirport@{searchNumberOfReachableDestinationsInXStopsFromAirport}!Consult@{Consult}}
+\doxysubsubsection{\texorpdfstring{searchNumberOfReachableDestinationsInXStopsFromAirport()}{searchNumberOfReachableDestinationsInXStopsFromAirport()}}
+{\footnotesize\ttfamily int Consult\+::search\+Number\+Of\+Reachable\+Destinations\+In\+XStops\+From\+Airport (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$}]{airport,  }\item[{int}]{lay\+Overs,  }\item[{const function$<$ string(\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$)$>$ \&}]{attribute\+Extractor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Searches for the number of reachable destinations from an airport in a specified number of stops. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em airport} & Pointer to the starting airport. \\
+\hline
+{\em lay\+Overs} & Number of layovers or stops to consider. \\
+\hline
+{\em attribute\+Extractor} & Function to extract an attribute for each reachable destination. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The count of reachable destinations in \textquotesingle{}X\textquotesingle{} stops (number of layovers). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classConsult_a91d0d2dcd9a897b3e753568988c96c23}\label{classConsult_a91d0d2dcd9a897b3e753568988c96c23}} 
 \index{Consult@{Consult}!searchSmallestPathBetweenAirports@{searchSmallestPathBetweenAirports}}
 \index{searchSmallestPathBetweenAirports@{searchSmallestPathBetweenAirports}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchSmallestPathBetweenAirports()}{searchSmallestPathBetweenAirports()}}
@@ -579,7 +755,20 @@ Retrieves the top \textquotesingle{}K\textquotesingle{} airports with the greate
 \begin{DoxyReturn}{Returns}
 A vector of pairs containing airports and their corresponding air traffic capacity.
 \end{DoxyReturn}
-Time Complexity\+: O(\+V$\ast$log\+V) where V stands for the vertices, the sorting function is the most time-\/consuming part of the functions. Note\+: Considering the auxiliary function \textquotesingle{}top\+Traffic\+Capacity\+Airports\textquotesingle{}. 
+Time Complexity\+: O(\+V$\ast$log\+V) where V stands for the vertices, the sorting function is the most time-\/consuming part of the functions. Note\+: Considering the auxiliary function \textquotesingle{}top\+Traffic\+Capacity\+Airports\textquotesingle{}. \mbox{\Hypertarget{classConsult_afbade2c5a55077c48ecfeea29a2b0ee5}\label{classConsult_afbade2c5a55077c48ecfeea29a2b0ee5}} 
+\index{Consult@{Consult}!topTrafficCapacityAirports@{topTrafficCapacityAirports}}
+\index{topTrafficCapacityAirports@{topTrafficCapacityAirports}!Consult@{Consult}}
+\doxysubsubsection{\texorpdfstring{topTrafficCapacityAirports()}{topTrafficCapacityAirports()}}
+{\footnotesize\ttfamily vector$<$ pair$<$ \mbox{\hyperlink{classAirport}{Airport}}, int $>$ $>$ Consult\+::top\+Traffic\+Capacity\+Airports (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Finds the top airports with the highest air traffic capacity. 
+
+\begin{DoxyReturn}{Returns}
+Decreasingly ordered vector of pairs containing airports and their traffic capacities. 
+\end{DoxyReturn}
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

@@ -9,6 +9,16 @@ Class representing a airport.
 
 {\ttfamily \#include $<$Data.\+h$>$}
 
+
+
+Collaboration diagram for Airport\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=161pt]{classAirport__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -41,6 +51,24 @@ double \mbox{\hyperlink{classAirport_a7b168e85da3f6c2494c6935f3e4f8986}{get\+Dis
 \begin{DoxyCompactList}\small\item\em Calculate the distance between the airport\textquotesingle{}s coordinates and another set of coordinates using the Haversine formula. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classAirport_a2d93e2cadbdb3ed9114aff48aa0bac5c}{operator==}} (const \mbox{\hyperlink{classAirport}{Airport}} \&other) const
 \begin{DoxyCompactList}\small\item\em Overloaded equality operator to compare two airports based on their codes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAirport_a9d5275582b3d183d5fd756da38afee77}\label{classAirport_a9d5275582b3d183d5fd756da38afee77}} 
+std\+::string \mbox{\hyperlink{classAirport_a9d5275582b3d183d5fd756da38afee77}{code}}
+\begin{DoxyCompactList}\small\item\em The IATA code of the airport. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classAirport_a7f3bf800ff1d56c6cf5ac2011fd50a5d}\label{classAirport_a7f3bf800ff1d56c6cf5ac2011fd50a5d}} 
+std\+::string \mbox{\hyperlink{classAirport_a7f3bf800ff1d56c6cf5ac2011fd50a5d}{name}}
+\begin{DoxyCompactList}\small\item\em The airport name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classAirport_a97ee68b449c91d3ef1105486176b80d1}\label{classAirport_a97ee68b449c91d3ef1105486176b80d1}} 
+std\+::string \mbox{\hyperlink{classAirport_a97ee68b449c91d3ef1105486176b80d1}{city}}
+\begin{DoxyCompactList}\small\item\em The city where the airport is located. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classAirport_a7f26cdde932db3f9a34bcfd99ff17062}\label{classAirport_a7f26cdde932db3f9a34bcfd99ff17062}} 
+std\+::string \mbox{\hyperlink{classAirport_a7f26cdde932db3f9a34bcfd99ff17062}{country}}
+\begin{DoxyCompactList}\small\item\em The country where the airport is located. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classAirport_a7537bdf563cfdd851fac5b1c34b8d9c1}\label{classAirport_a7537bdf563cfdd851fac5b1c34b8d9c1}} 
+\mbox{\hyperlink{structCoordinates}{Coordinates}} \mbox{\hyperlink{classAirport_a7537bdf563cfdd851fac5b1c34b8d9c1}{location}}
+\begin{DoxyCompactList}\small\item\em The geographic coordinates of the airport. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

@@ -69,11 +69,15 @@ $(function() {
 
 <p>This is the complete list of members for <a class="el" href="classGraph.html">Graph&lt; T &gt;</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="classGraph.html#a0a4a98dece3354414b767a3c23cf62e3">addEdge</a>(const T &amp;source, const T &amp;dest, double distance)</td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classGraph.html#a00be284ea2be3b3d0f0d2e493b70245b">addVertex</a>(const T &amp;in)</td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classGraph.html#aa47a4130165550e208e7a063fce6983a">bfs</a>(const T &amp;source) const</td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classGraph.html#a911798b1a89f8c4ae90ba3eee849cff8">dfs</a>() const</td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classGraph.html#a510522c8221b321a82e687fe2f2cb484">dfs</a>(const T &amp;source) const</td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGraph.html#a1e0cd13bd9e91a125a484a0817c030a1">_index_</a></td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classGraph.html#ab06fb542caac016248829c9e6fd11ec4">_list_sccs_</a></td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGraph.html#a261998fc1e44c878c595c2b0a05680be">_stack_</a></td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classGraph.html#a0a4a98dece3354414b767a3c23cf62e3">addEdge</a>(const T &amp;source, const T &amp;dest, double distance)</td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGraph.html#a00be284ea2be3b3d0f0d2e493b70245b">addVertex</a>(const T &amp;in)</td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classGraph.html#aa47a4130165550e208e7a063fce6983a">bfs</a>(const T &amp;source) const</td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGraph.html#a911798b1a89f8c4ae90ba3eee849cff8">dfs</a>() const</td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classGraph.html#a510522c8221b321a82e687fe2f2cb484">dfs</a>(const T &amp;source) const</td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGraph.html#ab2bb8011642e0d5e6a71e0981d661056">dfsVisit</a>(Vertex&lt; T &gt; *v, vector&lt; T &gt; &amp;res) const</td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr><td class="entry"><a class="el" href="classGraph.html#a8b7b7465fbfd562e2a469f90a437ab75">findVertex</a>(const T &amp;in) const</td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classGraph.html#a0853eac15cdf0f06d63f4b8a7820ec71">getNumVertex</a>() const</td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classGraph.html#a923b43995f81ad9319bbc81a1e433e64">getVertexSet</a>() const</td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"></td></tr>
@@ -81,6 +85,7 @@ $(function() {
   <tr><td class="entry"><a class="el" href="classGraph.html#af9c903104ad69a7782979fa9caedf163">removeVertex</a>(const T &amp;in)</td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classGraph.html#ac76ac8c9999e9696ffb836801603e0c2">setupInDegreeAndOutDegree</a>()</td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classGraph.html#af1d4affd1f886bf598d0f4cf4a0cb7cb">topsort</a>() const</td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGraph.html#a1714c4fb63ab41f69ef1be50532488a9">vertexSet</a></td><td class="entry"><a class="el" href="classGraph.html">Graph&lt; T &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

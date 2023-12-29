@@ -64,6 +64,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="classEdge-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -78,13 +79,13 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab98cc24bd7355eb1c39ffca6fac0c408"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEdge.html#ab98cc24bd7355eb1c39ffca6fac0c408">Edge</a> (<a class="el" href="classVertex.html">Vertex</a>&lt; T &gt; *d, double distance)</td></tr>
+<tr class="memitem:ab98cc24bd7355eb1c39ffca6fac0c408"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEdge.html#ab98cc24bd7355eb1c39ffca6fac0c408">Edge</a> (<a class="el" href="classVertex.html">Vertex</a>&lt; T &gt; *d, double <a class="el" href="classEdge.html#a11d2f061c130cc03798924f2fac484be">distance</a>)</td></tr>
 <tr class="memdesc:ab98cc24bd7355eb1c39ffca6fac0c408"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classEdge.html" title="Class representing an edge in a graph connecting two vertices.">Edge</a> class.  <a href="classEdge.html#ab98cc24bd7355eb1c39ffca6fac0c408">More...</a><br /></td></tr>
 <tr class="separator:ab98cc24bd7355eb1c39ffca6fac0c408"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a2de066dff8513dd788d553fc1d0c81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classVertex.html">Vertex</a>&lt; T &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEdge.html#a9a2de066dff8513dd788d553fc1d0c81">getDest</a> () const</td></tr>
 <tr class="memdesc:a9a2de066dff8513dd788d553fc1d0c81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the destination vertex of this edge.  <a href="classEdge.html#a9a2de066dff8513dd788d553fc1d0c81">More...</a><br /></td></tr>
 <tr class="separator:a9a2de066dff8513dd788d553fc1d0c81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a163ee9f75e35701e6a04ea1c987e4094"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEdge.html#a163ee9f75e35701e6a04ea1c987e4094">setDest</a> (<a class="el" href="classVertex.html">Vertex</a>&lt; T &gt; *dest)</td></tr>
+<tr class="memitem:a163ee9f75e35701e6a04ea1c987e4094"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEdge.html#a163ee9f75e35701e6a04ea1c987e4094">setDest</a> (<a class="el" href="classVertex.html">Vertex</a>&lt; T &gt; *<a class="el" href="classEdge.html#ae4d65678b91bd9d814af4720ad87cd0c">dest</a>)</td></tr>
 <tr class="memdesc:a163ee9f75e35701e6a04ea1c987e4094"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the destination vertex of this edge.  <a href="classEdge.html#a163ee9f75e35701e6a04ea1c987e4094">More...</a><br /></td></tr>
 <tr class="separator:a163ee9f75e35701e6a04ea1c987e4094"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a880901d866d77a6b1411efdda354b71f"><td class="memItemLeft" align="right" valign="top">const std::set&lt; <a class="el" href="classAirline.html">Airline</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEdge.html#a880901d866d77a6b1411efdda354b71f">getAirlines</a> () const</td></tr>
@@ -96,9 +97,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac39299d161c3c804b78bbf41ad8b19e0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEdge.html#ac39299d161c3c804b78bbf41ad8b19e0">getDistance</a> () const</td></tr>
 <tr class="memdesc:ac39299d161c3c804b78bbf41ad8b19e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the distance of this edge.  <a href="classEdge.html#ac39299d161c3c804b78bbf41ad8b19e0">More...</a><br /></td></tr>
 <tr class="separator:ac39299d161c3c804b78bbf41ad8b19e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a887a1e87af50c7524f832add49b92942"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEdge.html#a887a1e87af50c7524f832add49b92942">setDistance</a> (double distance)</td></tr>
+<tr class="memitem:a887a1e87af50c7524f832add49b92942"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEdge.html#a887a1e87af50c7524f832add49b92942">setDistance</a> (double <a class="el" href="classEdge.html#a11d2f061c130cc03798924f2fac484be">distance</a>)</td></tr>
 <tr class="memdesc:a887a1e87af50c7524f832add49b92942"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the distance of this edge.  <a href="classEdge.html#a887a1e87af50c7524f832add49b92942">More...</a><br /></td></tr>
 <tr class="separator:a887a1e87af50c7524f832add49b92942"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ae4d65678b91bd9d814af4720ad87cd0c"><td class="memItemLeft" align="right" valign="top"><a id="ae4d65678b91bd9d814af4720ad87cd0c"></a>
+<a class="el" href="classVertex.html">Vertex</a>&lt; T &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEdge.html#ae4d65678b91bd9d814af4720ad87cd0c">dest</a></td></tr>
+<tr class="memdesc:ae4d65678b91bd9d814af4720ad87cd0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the destination vertex. <br /></td></tr>
+<tr class="separator:ae4d65678b91bd9d814af4720ad87cd0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11d2f061c130cc03798924f2fac484be"><td class="memItemLeft" align="right" valign="top"><a id="a11d2f061c130cc03798924f2fac484be"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEdge.html#a11d2f061c130cc03798924f2fac484be">distance</a></td></tr>
+<tr class="memdesc:a11d2f061c130cc03798924f2fac484be"><td class="mdescLeft">&#160;</td><td class="mdescRight">The distance between source and destination vertices in kilometers. <br /></td></tr>
+<tr class="separator:a11d2f061c130cc03798924f2fac484be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d3f3878ef64309aa30e0c1b5a631981"><td class="memItemLeft" align="right" valign="top"><a id="a4d3f3878ef64309aa30e0c1b5a631981"></a>
+std::set&lt; <a class="el" href="classAirline.html">Airline</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEdge.html#a4d3f3878ef64309aa30e0c1b5a631981">airlines</a></td></tr>
+<tr class="memdesc:a4d3f3878ef64309aa30e0c1b5a631981"><td class="mdescLeft">&#160;</td><td class="mdescRight">The set of airlines associated with this edge. <br /></td></tr>
+<tr class="separator:a4d3f3878ef64309aa30e0c1b5a631981"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
