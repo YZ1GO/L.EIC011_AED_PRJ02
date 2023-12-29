@@ -290,6 +290,8 @@ private:
      */
     vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> getBestPathsAllAirlines(vector<Vertex<Airport>*> source, vector<Vertex<Airport>*> destination);
 
+    vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> getBestPathsSameAirlinesWithCustomLayovers(vector<Vertex<Airport>*> source, vector<Vertex<Airport>*> destination);
+
     vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> getBestPathsAllAirlinesWithCustomLayovers(vector<Vertex<Airport>*> source, vector<Vertex<Airport>*> destination);
 
     /**
