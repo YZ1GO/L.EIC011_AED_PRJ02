@@ -809,7 +809,6 @@ vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> Script::getBe
     return totalPaths;
 }
 
-
 vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> Script::getBestPathsAllAirlines(vector<Vertex<Airport>*> source, vector<Vertex<Airport>*> destination) {
     vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> totalPaths; // Pair of path and distance
     int minLayOvers = numeric_limits<int>::max();

@@ -231,14 +231,65 @@ private:
     void searchAirportByCityAndCountryName();
 
     /**
-     * @brief Display simplified information about the best flight options between a selected source and destination.
+     * @brief Display 2 best flight options: travel by same or any airline from source to destination.
+     *
+     * This function provides the user with options to choose the best flights either within the same airline
+     * or considering all airlines. It also displays the source and destination locations user provided.
      */
     void showBestFlight();
 
+    /**
+     * @brief Display a list of the best flights based on user preferences.
+     *
+     * This function presents the user with a list of the best flight options according to the option of airlines user had chosen,
+     * including the layovers, airports involved, and total distance for each option. The user can choose a specific flight for detailed
+     * information or return to the previous menu.
+     *
+     * @param totalPaths A vector containing information about each best flight option.
+     */
     void showListOfBestFlights(vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> totalPaths);
+
+    /**
+     * @brief Find the best flight paths considering the same airline from source to destination.
+     *
+     * This function searches for the best flight paths between the given source and destination airports, considering
+     * only flights operated by the same airline for each leg of the journey. It returns a vector of pairs, where each pair
+     * represents a valid flight option. Each option includes the set of airlines operating the flight, the flight path
+     * (vector of airport vertices), and the total distance of the flight.
+     *
+     * @param source A vector of airport vertices representing the source airports.
+     * @param destination A vector of airport vertices representing the destination airports.
+     * @return A vector of pairs, each containing a set of airlines, a vector of airport vertices representing the flight path, and the total distance of the flight.
+     */
     vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> getBestPathsSameAirlines (vector<Vertex<Airport>*> source, vector<Vertex<Airport>*> destination);
+
+    /**
+     * @brief Find the best flight paths considering all available airlines flying from source to destination.
+     *
+     * This function searches for the best flight paths between the given source and destination airports, considering
+     * all available airlines for each leg of the journey. It returns a vector of pairs, where each pair represents a valid
+     * flight option. Each option includes an empty set of airlines (considering all airlines), the flight path (vector of
+     * airport vertices), and the total distance of the flight.
+     *
+     * @param source A vector of airport vertices representing the source airports.
+     * @param destination A vector of airport vertices representing the destination airports.
+     * @return A vector of pairs, each containing an empty set of airlines, a vector of airport vertices representing the flight path, and the total distance of the flight.
+     */
     vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> getBestPathsAllAirlines(vector<Vertex<Airport>*> source, vector<Vertex<Airport>*> destination);
+
+    /**
+     * @brief Print details about the best flight trip.
+     *
+     * This function prints detailed information about the best flight trip, including the total distance, airport details,
+     * and available airlines for each leg of the journey.
+     *
+     * @param trip A pair containing a set of airlines, a vector of airport vertices representing the flight path, and the total distance of the flight.
+     */
     void printBestFlightDetails(pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>> trip);
+
+    /**
+     * @brief Print the source and destination information for the travel selection.
+     */
     void printSourceAndDestination();
 };
 
