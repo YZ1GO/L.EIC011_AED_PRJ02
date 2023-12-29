@@ -41,11 +41,11 @@ private:
      */
     Consult consult;
 
-    Graph<Airport> dataGraph;
+    Graph<Airport> dataGraph;                           ///< Graph structure representing the relationships between airports and airlines.
 
     bool travelChosen{};                                ///< Indicates whether the menu for travel has been chosen.
 
-    bool customLayoversChosen{};
+    bool customLayoversChosen{};                        ///< Indicates that the "custom layovers" has been selected
 
     bool sourceChosen{};                                ///< Indicates that the "source" has been selected.
 
@@ -55,7 +55,7 @@ private:
 
     map<string, vector<Vertex<Airport>*>> travelMap;    ///< Stores the airport(s) of the source and the destination.
 
-    vector<Vertex<Airport>*> customLayovers;
+    vector<Vertex<Airport>*> customLayovers;            ///< Stores the selected layover airports chosen by the user.
 
     /**
      * @brief Draws a box around the provided text on the screen.
@@ -233,8 +233,6 @@ private:
      */
     void selectDestiny();
 
-    void selectCustomLayovers();
-
     /**
      * @brief Search for airports based on the user-provided city and country names.
      *
@@ -244,7 +242,21 @@ private:
      */
     void searchAirportByCityAndCountryName();
 
+    /**
+     * @brief Handles extra filters for travel options.
+     *
+     * Allows users to add custom layovers, view best flights, and navigate through extra filtering options for their travel.
+     * Users can select to add specific layover airports that their flights must pass through.
+     */
     void extraFiltersTravel();
+
+    /**
+     * @brief Allows users to select custom layover airports.
+     *
+     * Provides options for users to add custom layover airports by different criteria such as airport code, name, city, or coordinates.
+     * Users can choose from various options to add specific layover airports for their flights.
+     */
+    void selectCustomLayovers();
 
     /**
      * @brief Display 2 best flight options: travel by same or any airline from source to destination.
@@ -293,8 +305,32 @@ private:
      */
     vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> getBestPathsAllAirlines(vector<Vertex<Airport>*> source, vector<Vertex<Airport>*> destination);
 
+    /**
+     * @brief Find the best flight paths considering the same airline from source to destination with custom layovers.
+     *
+     * This function searches for the best flight paths between the given source and destination airports, considering
+     * only flights operated by the same airline for each leg of the journey, with custom layovers. It returns a vector
+     * of pairs, where each pair represents a valid flight option. Each option includes the set of airlines operating the
+     * flight, the flight path (vector of airport vertices), and the total distance of the flight.
+     *
+     * @param source A vector of airport vertices representing the source airports.
+     * @param destination A vector of airport vertices representing the destination airports.
+     * @return A vector of pairs, each containing a set of airlines, a vector of airport vertices representing the flight path, and the total distance of the flight.
+     */
     vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> getBestPathsSameAirlinesWithCustomLayovers(vector<Vertex<Airport>*> source, vector<Vertex<Airport>*> destination);
 
+    /**
+     * @brief Find the best flight paths considering all available airlines from source to destination with custom layovers.
+     *
+     * This function searches for the best flight paths between the given source and destination airports, considering
+     * all available airlines for each leg of the journey, with custom layovers. It returns a vector of pairs, where each pair
+     * represents a valid flight option. Each option includes an empty set of airlines (considering all airlines), the flight path
+     * (vector of airport vertices), and the total distance of the flight.
+     *
+     * @param source A vector of airport vertices representing the source airports.
+     * @param destination A vector of airport vertices representing the destination airports.
+     * @return A vector of pairs, each containing an empty set of airlines, a vector of airport vertices representing the flight path, and the total distance of the flight.
+     */
     vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> getBestPathsAllAirlinesWithCustomLayovers(vector<Vertex<Airport>*> source, vector<Vertex<Airport>*> destination);
 
     /**
@@ -312,6 +348,9 @@ private:
      */
     void printSourceAndDestination();
 
+    /**
+     * @brief Print the selected layover airports chosen by the user.
+     */
     void printCustomLayovers();
 };
 

@@ -67,6 +67,18 @@ std::string makeBold(const T& value) {
     return oss.str();
 };
 
+/**
+ * @brief Merges two vectors into a single vector, considering the continuity of elements between the vectors.
+ *
+ * This function combines two vectors into one, ensuring the continuity of elements between them. It verifies if the last element
+ * of the first vector is equal to the first element of the second vector. If the continuity condition is met, it creates a new
+ * merged vector starting with the elements of the first vector and appending the elements of the second vector from the second
+ * element onwards. If either of the vectors is empty or the continuity condition is not satisfied, an empty vector is returned.
+ *
+ * @param first The first vector to merge.
+ * @param second The second vector to merge.
+ * @return A merged vector if continuity is maintained, otherwise an empty vector.
+ */
 template<typename T>
 std::vector<T> mergeVectors(const std::vector<T>& first, const std::vector<T>& second) {
     if (first.empty() || second.empty()) {
@@ -83,6 +95,5 @@ std::vector<T> mergeVectors(const std::vector<T>& first, const std::vector<T>& s
         return {};
     }
 }
-
 
 #endif //AED_AEROPORTO_UTILITIES_H

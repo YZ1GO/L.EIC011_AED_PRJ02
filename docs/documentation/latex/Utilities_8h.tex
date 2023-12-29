@@ -5,20 +5,20 @@
 Contains utility functions for string manipulation and geographical calculations.  
 
 
+{\ttfamily \#include $<$iostream$>$}\newline
 {\ttfamily \#include $<$string$>$}\newline
 {\ttfamily \#include $<$algorithm$>$}\newline
 {\ttfamily \#include $<$cmath$>$}\newline
 {\ttfamily \#include $<$sstream$>$}\newline
-Include dependency graph for Utilities.\+h\+:
-\nopagebreak
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for Utilities.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=346pt]{Utilities_8h__incl}
+\includegraphics[width=350pt]{Utilities_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -39,7 +39,9 @@ std\+::string \mbox{\hyperlink{Utilities_8h_a679cd14f6ab505065b571d2cba4370e8}{T
 std\+::string \mbox{\hyperlink{Utilities_8h_aa6d4cd5e047190f0fa8bf759ed16dc20}{Remove\+Spaces}} (const std\+::string \&str)
 \begin{DoxyCompactList}\small\item\em Removes spaces from a string. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\std\+::string \mbox{\hyperlink{Utilities_8h_a3bd6ee67b0398de7c3501b9278cd89b9}{make\+Bold}} (const T \&value)
-\begin{DoxyCompactList}\small\item\em Formats a value in bold for terminal output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Formats a value in bold for terminal output. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\std\+::vector$<$ T $>$ \mbox{\hyperlink{Utilities_8h_add8862ce48e51c62471131eb5e8b3f99}{merge\+Vectors}} (const std\+::vector$<$ T $>$ \&first, const std\+::vector$<$ T $>$ \&second)
+\begin{DoxyCompactList}\small\item\em Merges two vectors into a single vector, considering the continuity of elements between the vectors. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -90,6 +92,29 @@ Formats a value in bold for terminal output.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The formatted value in bold. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Utilities_8h_add8862ce48e51c62471131eb5e8b3f99}\label{Utilities_8h_add8862ce48e51c62471131eb5e8b3f99}} 
+\index{Utilities.h@{Utilities.h}!mergeVectors@{mergeVectors}}
+\index{mergeVectors@{mergeVectors}!Utilities.h@{Utilities.h}}
+\doxysubsubsection{\texorpdfstring{mergeVectors()}{mergeVectors()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$T$>$ merge\+Vectors (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{first,  }\item[{const std\+::vector$<$ T $>$ \&}]{second }\end{DoxyParamCaption})}
+
+
+
+Merges two vectors into a single vector, considering the continuity of elements between the vectors. 
+
+This function combines two vectors into one, ensuring the continuity of elements between them. It verifies if the last element of the first vector is equal to the first element of the second vector. If the continuity condition is met, it creates a new merged vector starting with the elements of the first vector and appending the elements of the second vector from the second element onwards. If either of the vectors is empty or the continuity condition is not satisfied, an empty vector is returned.
+
+
+\begin{DoxyParams}{Parameters}
+{\em first} & The first vector to merge. \\
+\hline
+{\em second} & The second vector to merge. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A merged vector if continuity is maintained, otherwise an empty vector. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{Utilities_8h_aa6d4cd5e047190f0fa8bf759ed16dc20}\label{Utilities_8h_aa6d4cd5e047190f0fa8bf759ed16dc20}} 
 \index{Utilities.h@{Utilities.h}!RemoveSpaces@{RemoveSpaces}}

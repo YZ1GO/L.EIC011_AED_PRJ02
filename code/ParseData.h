@@ -20,9 +20,11 @@
  */
 class ParseData {
 private:
-    Graph<Airport> dataGraph;                           ///< Graph structure representing the relationships between airports and airlines.
-    std::set<Airline> airlinesInfo;                     ///< Set containing the airlines information.
-    std::string airportsCSV, airlinesCSV, flightsCSV;   ///< The file path to the CSV containing data to be parse.
+    Graph<Airport> dataGraph;          ///< Graph structure representing the relationships between airports and airlines.
+    std::set<Airline> airlinesInfo;    ///< Set containing the airlines information.
+    std::string airportsCSV;           ///< The file path to the CSV containing airports data to be parse.
+    std::string airlinesCSV;           ///< The file path to the CSV containing airlines data to be parse.
+    std::string flightsCSV;            ///< The file path to the CSV containing flights data to be parse.
 
     /**
     * @brief Parses information about airlines from the airlines CSV file.
