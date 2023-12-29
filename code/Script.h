@@ -304,6 +304,8 @@ private:
      * @brief Print the source and destination information for the travel selection.
      */
     void printSourceAndDestination();
+
+    void printCustomLayovers();
 };
 
 
