@@ -205,12 +205,14 @@ void Script::airportStatistics(Vertex<Airport> *airport) {
         clearScreen();
         printAirportInfo(airport);
 
-        if (travelChosen) {
+        if (travelChosen && !customLayoversChosen) {
             if (!sourceChosen) {
                 cout << "0. Set airport as source" << endl;
             } else {
                 cout << "0. Set airport as destination" << endl;
             }
+        } else if (travelChosen && customLayoversChosen) {
+            cout << "0. Add airport as Layover" << endl;
         }
         cout << "1. See airport statistics" << endl;
         cout << "2. See reachable destinations in a maximum of X stops" << endl;
@@ -226,7 +228,7 @@ void Script::airportStatistics(Vertex<Airport> *airport) {
         clearScreen();
         if (choice == 3) {
             exit = true;
-        } else if (choice == 0 && travelChosen) {
+        } else if (choice == 0 && travelChosen && !customLayoversChosen) {
             if (!sourceChosen) {
                 cityChosenSource = false;
                 travelMap["source"] = {airport};
@@ -235,8 +237,11 @@ void Script::airportStatistics(Vertex<Airport> *airport) {
             else {
                 cityChosenDestiny = false;
                 travelMap["destination"] = {airport};
-                showBestFlight();
+                extraFiltersTravel();
             }
+        } else if (choice == 0 && travelChosen && customLayoversChosen) {
+            customLayovers.push_back(airport);
+            return;
         } else if (choice == 1) {
             givenAirportStatistics(airport);
         } else if (choice == 2) {
@@ -626,10 +631,12 @@ void Script::searchAirportByCityAndCountryName() {
         while (!exit) {
             cout << "\nFound " << makeBold(airports.size()) << " airport(s) in " << city << ", " << country << "\n" << endl;
 
-            if (!sourceChosen) {
-                cout << "0. Set this city and country as source" << endl;
-            } else {
-                cout << "0. Set this city and country as destination" << endl;
+            if (!customLayoversChosen) {
+                if (!sourceChosen) {
+                    cout << "0. Set this city and country as source" << endl;
+                } else {
+                    cout << "0. Set this city and country as destination" << endl;
+                }
             }
 
             int index = 1;
@@ -648,27 +655,113 @@ void Script::searchAirportByCityAndCountryName() {
                 continue;
             }
             clearScreen();
-            cityChosenSource = false;
-            cityChosenDestiny = false;
-            if (choice == 0) {
-                if (!sourceChosen) {
-                    cityChosenSource = true;
-                    travelMap["source"] = airports;
-                    selectDestiny();
+            if (!customLayoversChosen) {
+                cityChosenSource = false;
+                cityChosenDestiny = false;
+                if (choice == 0) {
+                    if (!sourceChosen) {
+                        cityChosenSource = true;
+                        travelMap["source"] = airports;
+                        customLayoversChosen = false;
+                        selectCustomLayovers();
+                    } else {
+                        cityChosenDestiny = true;
+                        travelMap["destination"] = airports;
+                        extraFiltersTravel();
+                    }
+                } else if (choice == airports.size() + 1) {
+                    if (sourceChosen) travelMap["destination"] = {};
+                    exit = true;
+                } else if (choice <= airports.size() && choice > 0) {
+                    airportStatistics(airports[choice - 1]);
                 }
-                else {
-                    cityChosenDestiny = true;
-                    travelMap["destination"] = airports;
-                    showBestFlight();
+            } else {
+                if (choice == airports.size() + 1) {
+                    exit = true;
+                } else if (choice <= airports.size() && choice > 0) {
+                    customLayovers.push_back(airports[choice - 1]);
+                    exit = true;
                 }
-            } else if (choice == airports.size() + 1) {
-                if (sourceChosen) travelMap["destination"] = {};
-                exit = true;
-            } else if (choice <= airports.size() && choice > 0) {
-                airportStatistics(airports[choice - 1]);
             }
         }
     }
+}
+
+void Script::extraFiltersTravel() {
+    while (true) {
+        clearScreen();
+        drawBox("Extra filters");
+
+        if (customLayoversChosen) {
+            cout << makeBold("Current Custom Layovers: ");
+            for (size_t i = 0; i < customLayovers.size(); ++i) {
+                cout << customLayovers[i]->getInfo().getCode();
+                if (i != customLayovers.size() - 1) {
+                    cout << ", ";
+                }
+            }
+            cout << "\n" << endl;
+        }
+
+        cout << "1. Show best flights" << endl;
+        cout << "2. Add custom layovers" << endl;
+        cout << "3. [Back]" << endl;
+
+        int choice;
+        cout << "\nEnter your choice: ";
+        if (!(cin >> choice)) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+        clearScreen();
+
+        if (choice == 3) {
+            return;
+        }
+        if (choice == 1) {
+            showBestFlight();
+        } else if (choice == 2) {
+            if (!customLayoversChosen) {
+                customLayoversChosen = true;
+            }
+            selectCustomLayovers();
+        }
+    }
+}
+void Script::selectCustomLayovers() {
+    vector<MenuItem> addLayover = {
+            {makeBold("Airport by Code"), &Script::searchAirportByAirportCode},
+            {makeBold("Airport by Name"), &Script::searchAirportByAirportName},
+            {makeBold("City"), &Script::searchAirportByCityAndCountryName},
+            {makeBold("Coordinates"), &Script::searchClosestAirport},
+            {"[Back]", &Script::actionGoBack}
+    };
+
+    while (true) {
+        clearScreen();
+        drawBox("Add a Custom Layover");
+        for (int i = 0; i < addLayover.size(); i++) {
+            cout << i + 1 << ". " << addLayover[i].label << endl;
+        }
+
+        int choice;
+        cout << "\nEnter your choice: ";
+        if (!(cin >> choice)) {
+            // Invalid input (not an integer)
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+        clearScreen();
+        if (choice == 5) {
+            return;
+        } else if (choice >= 1 && choice <= addLayover.size()) {
+            (this->*addLayover[choice - 1].action)();
+            return;
+        }
+    }
+
 }
 
 void Script::showBestFlight() {
@@ -676,9 +769,10 @@ void Script::showBestFlight() {
     while (true) {
         clearScreen();
         drawBox("Best Flights");
+        printSourceAndDestination();        //print source & destination (airport/city)
 
         /*user chooses*/
-        cout << "1. Best flights in the same airline" << endl;
+        cout << "\n1. Best flights in the same airline" << endl;
         cout << "2. Best flights considering all airlines" << endl;
         cout << "3. [Back]" << endl;
         int choice_;
@@ -694,8 +788,6 @@ void Script::showBestFlight() {
             return;
         }
         bool sameAirline = (choice_ == 1);
-
-        printSourceAndDestination();        //print source & destination (airport/city)
 
         vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> totalPaths;  // Pair of path and distance
         auto source = travelMap.find("source");
