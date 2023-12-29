@@ -24,11 +24,6 @@ public:
      * This method serves as the entry point for user interaction.
      */
     void run();
-    bool travelChosen{};
-    bool sourceChosen{};
-    bool cityChosenSource{};
-    bool cityChosenDestiny{};
-    map<string, vector<Vertex<Airport>*>> travelMap;
 
 private:
     /**
@@ -44,6 +39,12 @@ private:
      * @brief Object responsible for handling consultations.
      */
     Consult consult;
+
+    bool travelChosen{};                                ///< Indicates whether the menu for travel has been chosen.
+    bool sourceChosen{};                                ///< Indicates that the "source" has been selected.
+    bool cityChosenSource{};                            ///< Indicates that the "source" has been chosen as a city.
+    bool cityChosenDestiny{};                           ///< Indicates that the "destination" has been chosen as a city.
+    map<string, vector<Vertex<Airport>*>> travelMap;    ///< Stores the airport(s) of the source and the destination.
 
     /**
      * @brief Draws a box around the provided text on the screen.
