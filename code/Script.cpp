@@ -692,20 +692,18 @@ void Script::extraFiltersTravel() {
         clearScreen();
         drawBox("Extra filters");
 
+        if (customLayovers.empty()) {
+            customLayoversChosen = false;
+        }
         if (customLayoversChosen) {
-            cout << makeBold("Current Custom Layovers: ");
-            for (size_t i = 0; i < customLayovers.size(); ++i) {
-                cout << customLayovers[i]->getInfo().getCode();
-                if (i != customLayovers.size() - 1) {
-                    cout << ", ";
-                }
-            }
-            cout << "\n" << endl;
+            printCustomLayovers();
+            cout << "0. Clear custom layovers list" << endl;
         }
 
-        cout << "1. Show best flights" << endl;
-        cout << "2. Add custom layovers" << endl;
+        cout << "1. Add custom layovers" << endl;
+        cout << "2. Show best flights" << endl;
         cout << "3. [Back]" << endl;
+        cout << makeBold("\nNote: ") <<"option 1 is to add specific layover airports that your flight must pass through" << endl;
 
         int choice;
         cout << "\nEnter your choice: ";
@@ -719,9 +717,16 @@ void Script::extraFiltersTravel() {
         if (choice == 3) {
             return;
         }
-        if (choice == 1) {
+
+        if (customLayoversChosen) {
+            if (choice == 0) {
+                customLayoversChosen = false;
+                customLayovers.clear();
+            }
+        }
+        if (choice == 2) {
             showBestFlight();
-        } else if (choice == 2) {
+        } else if (choice == 1) {
             if (!customLayoversChosen) {
                 customLayoversChosen = true;
             }
@@ -761,7 +766,6 @@ void Script::selectCustomLayovers() {
             return;
         }
     }
-
 }
 
 void Script::showBestFlight() {
@@ -770,6 +774,10 @@ void Script::showBestFlight() {
         clearScreen();
         drawBox("Best Flights");
         printSourceAndDestination();        //print source & destination (airport/city)
+
+        if (customLayoversChosen) {
+            printCustomLayovers();          //print custom layovers that user choose
+        }
 
         /*user chooses*/
         cout << "\n1. Best flights in the same airline" << endl;
@@ -989,4 +997,15 @@ void Script::printSourceAndDestination() {
     } else {
         printAirportInfoOneline(destination->second[0]->getInfo());
     }
+}
+
+void Script::printCustomLayovers() {
+    cout << makeBold("Custom Layovers: ");
+    for (size_t i = 0; i < customLayovers.size(); ++i) {
+        cout << customLayovers[i]->getInfo().getCode();
+        if (i != customLayovers.size() - 1) {
+            cout << ", ";
+        }
+    }
+    cout << "\n" << endl;
 }
