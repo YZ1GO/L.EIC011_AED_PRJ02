@@ -331,6 +331,7 @@ void Script::searchClosestAirport() {
         if (lat < -90.0 || lat > 90.0 || lon < -180.0 || lon > 180.0) {
             cerr << "ERROR: Invalid coordinates, please enter valid values (latitude: -90.0 ~ 90.0, longitude: -180.0 ~ 180.0)" << endl;
             backToMenu();
+            exit = true;
         } else {
             Coordinates location;
             location.latitude = lat;
