@@ -662,7 +662,7 @@ void Script::searchAirportByCityAndCountryName() {
                     showBestFlight();
                 }
             } else if (choice == airports.size() + 1) {
-                if (sourceChosen) travelMap.clear();
+                if (sourceChosen) travelMap["destination"] = {};
                 exit = true;
             } else if (choice <= airports.size() && choice > 0) {
                 airportStatistics(airports[choice - 1]);
@@ -719,7 +719,6 @@ void Script::showBestFlight() {
 
         showListOfBestFlights(totalPaths);
     }
-    //make it return to travel menu
 }
 
 void Script::showListOfBestFlights(vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> totalPaths) {
