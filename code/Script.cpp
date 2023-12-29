@@ -688,6 +688,7 @@ void Script::searchAirportByCityAndCountryName() {
 }
 
 void Script::extraFiltersTravel() {
+    customLayovers.clear();
     while (true) {
         clearScreen();
         drawBox("Extra filters");
@@ -700,10 +701,10 @@ void Script::extraFiltersTravel() {
             cout << "0. Clear custom layovers list" << endl;
         }
 
-        cout << "1. Add custom layovers" << endl;
-        cout << "2. Show best flights" << endl;
+        cout << "1. Show best flights" << endl;
+        cout << "2. Add custom layovers" << endl;
         cout << "3. [Back]" << endl;
-        cout << makeBold("\nNote: ") <<"option 1 is to add specific layover airports that your flight must pass through" << endl;
+        cout << makeBold("\nNote: ") <<"option 2 is to add specific layover airports that your flight must pass through" << endl;
 
         int choice;
         cout << "\nEnter your choice: ";
@@ -715,6 +716,7 @@ void Script::extraFiltersTravel() {
         clearScreen();
 
         if (choice == 3) {
+            customLayoversChosen = false;
             return;
         }
 
@@ -724,9 +726,9 @@ void Script::extraFiltersTravel() {
                 customLayovers.clear();
             }
         }
-        if (choice == 2) {
+        if (choice == 1) {
             showBestFlight();
-        } else if (choice == 1) {
+        } else if (choice == 2) {
             if (!customLayoversChosen) {
                 customLayoversChosen = true;
             }
@@ -773,14 +775,16 @@ void Script::showBestFlight() {
     while (true) {
         clearScreen();
         drawBox("Best Flights");
-        printSourceAndDestination();        //print source & destination (airport/city)
+        printSourceAndDestination();    //print source & destination (airport/city)
 
         if (customLayoversChosen) {
-            printCustomLayovers();          //print custom layovers that user choose
+            printCustomLayovers();      //print custom layovers that user choose
+        } else {
+            cout << endl;
         }
 
         /*user chooses*/
-        cout << "\n1. Best flights in the same airline" << endl;
+        cout << "1. Best flights in the same airline" << endl;
         cout << "2. Best flights considering all airlines" << endl;
         cout << "3. [Back]" << endl;
         int choice_;
@@ -801,10 +805,18 @@ void Script::showBestFlight() {
         auto source = travelMap.find("source");
         auto destination = travelMap.find("destination");
 
-        if (sameAirline) {
-            totalPaths = getBestPathsSameAirlines(source->second, destination->second);
+        if (customLayoversChosen) {
+            if (sameAirline) {
+
+            } else {
+                totalPaths = getBestPathsAllAirlinesWithCustomLayovers(source->second, destination->second);
+            }
         } else {
-            totalPaths = getBestPathsAllAirlines(source->second, destination->second);
+            if (sameAirline) {
+                totalPaths = getBestPathsSameAirlines(source->second, destination->second);
+            } else {
+                totalPaths = getBestPathsAllAirlines(source->second, destination->second);
+            }
         }
 
         if (totalPaths.empty()) {
@@ -932,6 +944,59 @@ vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> Script::getBe
                         ++it;
                     }
                     totalPaths.push_back({ set<Airline>(), { v, distance } });
+                }
+            }
+        }
+    }
+    return totalPaths;
+}
+
+vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> Script::getBestPathsAllAirlinesWithCustomLayovers(vector<Vertex<Airport>*> source, vector<Vertex<Airport>*> destination) {
+    vector<pair<set<Airline>, pair<vector<Vertex<Airport>*>, double>>> totalPaths; // Pair of path and distance
+    int minLayOvers = numeric_limits<int>::max();
+
+    for (auto sourceAirport : source) {
+        for (auto destinationAirport : destination) {
+            vector<vector<Vertex<Airport>*>> pathsFromSourceToLayover;
+            vector<vector<Vertex<Airport>*>> pathsFromLayoverToDestination;
+
+            // Find paths from source to each custom layover
+            for (auto layoverAirport : customLayovers) { // Assuming customLayovers is the list of layover airports
+                pathsFromSourceToLayover = consult.searchSmallestPathBetweenAirports(sourceAirport, layoverAirport);
+                if (pathsFromSourceToLayover.empty()) {
+                    continue; // If no path found from source to layover, move to the next layover
+                }
+
+                // Find paths from layover to destination
+                for (auto path : pathsFromSourceToLayover) {
+                    pathsFromLayoverToDestination = consult.searchSmallestPathBetweenAirports(path.back(), destinationAirport);
+                    if (pathsFromLayoverToDestination.empty()) {
+                    continue; // If no path found from layover to destination, move to the next layover
+                    }
+
+                    // Combine the paths and calculate the total distance
+                    for (auto layoverToDestPath : pathsFromLayoverToDestination) {
+                        vector<Vertex<Airport>*> totalPath;
+                        totalPath.reserve(path.size() + layoverToDestPath.size() - 1);
+                        totalPath.insert(totalPath.end(), path.begin(), path.end());
+                        totalPath.insert(totalPath.end(), layoverToDestPath.begin() + 1, layoverToDestPath.end()); // Skip the first airport (common in both paths)
+
+                        // Calculate the total distance of the combined path
+                        double distance = 0.0;
+                        for (size_t i = 0; i < totalPath.size() - 1; ++i) {
+                            distance += consult.getDistanceBetweenAirports(totalPath[i], totalPath[i + 1]);
+                        }
+
+                        // Update the total paths based on the criteria
+                        int currentLayOvers = totalPath.size() - 2;
+                        if (currentLayOvers < minLayOvers) {
+                            minLayOvers = currentLayOvers;
+                            totalPaths.clear();
+                        }
+                        if (currentLayOvers == minLayOvers) {
+                            totalPaths.push_back({ set<Airline>(), { totalPath, distance } });
+                        }
+                    }
                 }
             }
         }
