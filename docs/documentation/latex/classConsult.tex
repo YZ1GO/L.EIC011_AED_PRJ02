@@ -112,9 +112,9 @@ Retrieves the set of airlines that operate between two airports.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Set of airlines that operate between the specified airports. 
+Set of airlines that operate between the specified airports.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_a982212ec03b14c2e803a77671fd25e13}\label{classConsult_a982212ec03b14c2e803a77671fd25e13}} 
+Time Complexity\+: O(\+E) where E stands for edges (flight routes). \mbox{\Hypertarget{classConsult_a982212ec03b14c2e803a77671fd25e13}\label{classConsult_a982212ec03b14c2e803a77671fd25e13}} 
 \index{Consult@{Consult}!findAirportByCode@{findAirportByCode}}
 \index{findAirportByCode@{findAirportByCode}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{findAirportByCode()}{findAirportByCode()}}
@@ -130,9 +130,9 @@ Finds an airport vertex based on the airport code.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Pointer to the airport vertex if found, nullptr otherwise. 
+Pointer to the airport vertex if found, nullptr otherwise.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_ab5de4e9e601b759ecbd24eb503041eec}\label{classConsult_ab5de4e9e601b759ecbd24eb503041eec}} 
+Time Complexity\+: O(\+V) where V stands for the airport vertices of the graph. \mbox{\Hypertarget{classConsult_ab5de4e9e601b759ecbd24eb503041eec}\label{classConsult_ab5de4e9e601b759ecbd24eb503041eec}} 
 \index{Consult@{Consult}!findAirportsByAirportName@{findAirportsByAirportName}}
 \index{findAirportsByAirportName@{findAirportsByAirportName}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{findAirportsByAirportName()}{findAirportsByAirportName()}}
@@ -148,9 +148,9 @@ Finds airports based on the airport name.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Vector of airport vertices matching the airport name. 
+Vector of airport vertices matching the airport name.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_ab4a4e5d9dfc90d8435c06945f86be158}\label{classConsult_ab4a4e5d9dfc90d8435c06945f86be158}} 
+Time Complexity\+: O(V+(M$\ast$logM)) where V stands for vertices and M for matching airports, O(\+M$\ast$log\+M) for sorting the matching airports. Note\+: Considering the auxiliary function \textquotesingle{}find\+Airports\+By\+Attribute\textquotesingle{}. \mbox{\Hypertarget{classConsult_ab4a4e5d9dfc90d8435c06945f86be158}\label{classConsult_ab4a4e5d9dfc90d8435c06945f86be158}} 
 \index{Consult@{Consult}!findAirportsByCityName@{findAirportsByCityName}}
 \index{findAirportsByCityName@{findAirportsByCityName}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{findAirportsByCityName()}{findAirportsByCityName()}}
@@ -166,9 +166,9 @@ Finds airports based on the city name.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Vector of airport vertices in the specified city. 
+Vector of airport vertices in the specified city.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_aa98660a0cf33068725af71c8a73f7548}\label{classConsult_aa98660a0cf33068725af71c8a73f7548}} 
+Time Complexity\+: O(V+(M$\ast$logM)) where V stands for vertices and M for matching airports, O(\+M$\ast$log\+M) for sorting the matching airports. Note\+: Considering the auxiliary function \textquotesingle{}find\+Airports\+By\+Attribute\textquotesingle{}. \mbox{\Hypertarget{classConsult_aa98660a0cf33068725af71c8a73f7548}\label{classConsult_aa98660a0cf33068725af71c8a73f7548}} 
 \index{Consult@{Consult}!findAirportsByCountryName@{findAirportsByCountryName}}
 \index{findAirportsByCountryName@{findAirportsByCountryName}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{findAirportsByCountryName()}{findAirportsByCountryName()}}
@@ -184,9 +184,9 @@ Finds airports based on the country name.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Vector of airport vertices in the specified country. 
+Vector of airport vertices in the specified country.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_aa8a785034d57a22aa09b79ed2be3e33c}\label{classConsult_aa8a785034d57a22aa09b79ed2be3e33c}} 
+Time Complexity\+: O(V+(M$\ast$logM)) where V stands for vertices and M for matching airports, O(\+M$\ast$log\+M) for sorting the matching airports. Note\+: Considering the auxiliary function \textquotesingle{}find\+Airports\+By\+Attribute\textquotesingle{}. \mbox{\Hypertarget{classConsult_aa8a785034d57a22aa09b79ed2be3e33c}\label{classConsult_aa8a785034d57a22aa09b79ed2be3e33c}} 
 \index{Consult@{Consult}!findClosestAirports@{findClosestAirports}}
 \index{findClosestAirports@{findClosestAirports}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{findClosestAirports()}{findClosestAirports()}}
@@ -202,9 +202,9 @@ Finds the closest airports to given geographical coordinates.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Vector of airport vertices closest to the specified coordinates. 
+Vector of airport vertices closest to the specified coordinates.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_a7b6afc4a336f5b90fd525dde483e0688}\label{classConsult_a7b6afc4a336f5b90fd525dde483e0688}} 
+Time Complexity\+: O(\+V$\ast$log\+V) where V stands for the vertices, the overall time complexity is dominated by the sorting operation. \mbox{\Hypertarget{classConsult_a7b6afc4a336f5b90fd525dde483e0688}\label{classConsult_a7b6afc4a336f5b90fd525dde483e0688}} 
 \index{Consult@{Consult}!getAirportsInACityAndCountry@{getAirportsInACityAndCountry}}
 \index{getAirportsInACityAndCountry@{getAirportsInACityAndCountry}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{getAirportsInACityAndCountry()}{getAirportsInACityAndCountry()}}
@@ -222,9 +222,9 @@ Finds airports based on the city and country names.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Vector of airport vertices in the specified city and country. 
+Vector of airport vertices in the specified city and country.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_a64ba24f84ec42b4a7dc25f45467180df}\label{classConsult_a64ba24f84ec42b4a7dc25f45467180df}} 
+Time Complexity\+: O(V+E) where V stands for vertices and E for edges. Note\+: Considering the auxiliary function \textquotesingle{}dfs\+Visit\+City\+Airports\textquotesingle{}. \mbox{\Hypertarget{classConsult_a64ba24f84ec42b4a7dc25f45467180df}\label{classConsult_a64ba24f84ec42b4a7dc25f45467180df}} 
 \index{Consult@{Consult}!getDistanceBetweenAirports@{getDistanceBetweenAirports}}
 \index{getDistanceBetweenAirports@{getDistanceBetweenAirports}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{getDistanceBetweenAirports()}{getDistanceBetweenAirports()}}
@@ -242,9 +242,9 @@ Retrieves the distance between two airports.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The distance between the specified airports in kilometers. 
+The distance between the specified airports in kilometers.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_a49a27b3ad9a3fd3d0389b72fa2bce16c}\label{classConsult_a49a27b3ad9a3fd3d0389b72fa2bce16c}} 
+Time Complexity\+: O(\+E) where E stands for edges (flight routes). \mbox{\Hypertarget{classConsult_a49a27b3ad9a3fd3d0389b72fa2bce16c}\label{classConsult_a49a27b3ad9a3fd3d0389b72fa2bce16c}} 
 \index{Consult@{Consult}!searchEssentialAirports@{searchEssentialAirports}}
 \index{searchEssentialAirports@{searchEssentialAirports}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchEssentialAirports()}{searchEssentialAirports()}}
@@ -255,9 +255,9 @@ The distance between the specified airports in kilometers.
 Searches for essential airports using Tarjan\textquotesingle{}s algorithm for finding strongly connected components. 
 
 \begin{DoxyReturn}{Returns}
-An unordered set containing the codes of essential airports. 
+An unordered set containing the codes of essential airports.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_ae4874d3a9e34ae7e830e9d4abffc9aa6}\label{classConsult_ae4874d3a9e34ae7e830e9d4abffc9aa6}} 
+Time Complexity\+: O(V+E) where V stands for vertices and E for edges. Note\+: Considering the auxiliary function \textquotesingle{}dfs\+Essential\+Airports\textquotesingle{}. \mbox{\Hypertarget{classConsult_ae4874d3a9e34ae7e830e9d4abffc9aa6}\label{classConsult_ae4874d3a9e34ae7e830e9d4abffc9aa6}} 
 \index{Consult@{Consult}!searchMaxTripAndCorrespondingPairsOfAirports@{searchMaxTripAndCorrespondingPairsOfAirports}}
 \index{searchMaxTripAndCorrespondingPairsOfAirports@{searchMaxTripAndCorrespondingPairsOfAirports}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchMaxTripAndCorrespondingPairsOfAirports()}{searchMaxTripAndCorrespondingPairsOfAirports()}}
@@ -268,9 +268,9 @@ An unordered set containing the codes of essential airports.
 Searches for the maximum trip and corresponding pairs of airports. 
 
 Finds the longest trip possible within the airport network and retrieves all corresponding paths. \begin{DoxyReturn}{Returns}
-A vector of vectors containing sequences of airports representing the paths of the longest trip(s). 
+A vector of vectors containing sequences of airports representing the paths of the longest trip(s).
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_a00db6d4ce04b15a61bf6dc4652f36c30}\label{classConsult_a00db6d4ce04b15a61bf6dc4652f36c30}} 
+Time Complexity\+: O(V$\ast$(V+E)) where V stands for vertices and E for edges, it needs to iterate over all vertices, and for each vertex, it performs BFS. \mbox{\Hypertarget{classConsult_a00db6d4ce04b15a61bf6dc4652f36c30}\label{classConsult_a00db6d4ce04b15a61bf6dc4652f36c30}} 
 \index{Consult@{Consult}!searchNumberOfAirports@{searchNumberOfAirports}}
 \index{searchNumberOfAirports@{searchNumberOfAirports}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchNumberOfAirports()}{searchNumberOfAirports()}}
@@ -281,9 +281,9 @@ A vector of vectors containing sequences of airports representing the paths of t
 Counts the total number of airports. 
 
 \begin{DoxyReturn}{Returns}
-The number of airports. 
+The number of airports.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_a2b06b12843fa5d2f340be18eda3a21d5}\label{classConsult_a2b06b12843fa5d2f340be18eda3a21d5}} 
+Time Complexity\+: O(1) \mbox{\Hypertarget{classConsult_a2b06b12843fa5d2f340be18eda3a21d5}\label{classConsult_a2b06b12843fa5d2f340be18eda3a21d5}} 
 \index{Consult@{Consult}!searchNumberOfAirportsAvailableForAirport@{searchNumberOfAirportsAvailableForAirport}}
 \index{searchNumberOfAirportsAvailableForAirport@{searchNumberOfAirportsAvailableForAirport}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchNumberOfAirportsAvailableForAirport()}{searchNumberOfAirportsAvailableForAirport()}}
@@ -299,9 +299,9 @@ Counts the number of available airports reachable from a specific airport.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The number of available airports reachable from the specified airport. 
+The number of available airports reachable from the specified airport.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_a0120408d651c44f352051b052310c6c7}\label{classConsult_a0120408d651c44f352051b052310c6c7}} 
+Time Complexity\+: O(V+E) where V stands for vertices and E for edges. Note\+: Considering the auxiliary function \textquotesingle{}dfs\+Available\+Destinations\textquotesingle{}. \mbox{\Hypertarget{classConsult_a0120408d651c44f352051b052310c6c7}\label{classConsult_a0120408d651c44f352051b052310c6c7}} 
 \index{Consult@{Consult}!searchNumberOfAvailableFlightRoutes@{searchNumberOfAvailableFlightRoutes}}
 \index{searchNumberOfAvailableFlightRoutes@{searchNumberOfAvailableFlightRoutes}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchNumberOfAvailableFlightRoutes()}{searchNumberOfAvailableFlightRoutes()}}
@@ -312,9 +312,9 @@ The number of available airports reachable from the specified airport.
 Counts the total number of available flight routes. 
 
 \begin{DoxyReturn}{Returns}
-The number of available flight routes. 
+The number of available flight routes.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_a98b9c047fd885936a0bd65bbd34d1419}\label{classConsult_a98b9c047fd885936a0bd65bbd34d1419}} 
+Time Complexity\+: O(\+V) where V is the number of vertices of the graph \mbox{\Hypertarget{classConsult_a98b9c047fd885936a0bd65bbd34d1419}\label{classConsult_a98b9c047fd885936a0bd65bbd34d1419}} 
 \index{Consult@{Consult}!searchNumberOfAvailableFlights@{searchNumberOfAvailableFlights}}
 \index{searchNumberOfAvailableFlights@{searchNumberOfAvailableFlights}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchNumberOfAvailableFlights()}{searchNumberOfAvailableFlights()}}
@@ -325,9 +325,9 @@ The number of available flight routes.
 Counts the total number of available flights. 
 
 \begin{DoxyReturn}{Returns}
-The number of available flights. 
+The number of available flights.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_aee8b2274523a4a818b6e479192c319d0}\label{classConsult_aee8b2274523a4a818b6e479192c319d0}} 
+Time Complexity\+: O(\+V) where V is the number of vertices of the graph \mbox{\Hypertarget{classConsult_aee8b2274523a4a818b6e479192c319d0}\label{classConsult_aee8b2274523a4a818b6e479192c319d0}} 
 \index{Consult@{Consult}!searchNumberOfCitiesAvailableForAirport@{searchNumberOfCitiesAvailableForAirport}}
 \index{searchNumberOfCitiesAvailableForAirport@{searchNumberOfCitiesAvailableForAirport}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchNumberOfCitiesAvailableForAirport()}{searchNumberOfCitiesAvailableForAirport()}}
@@ -343,9 +343,9 @@ Counts the number of available cities reachable from a specific airport.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The number of available cities reachable from the specified airport. 
+The number of available cities reachable from the specified airport.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_ac2b27e1fcc390115dbe33ec2f12eca19}\label{classConsult_ac2b27e1fcc390115dbe33ec2f12eca19}} 
+Time Complexity\+: O(V+E) where V stands for vertices and E for edges. Note\+: Considering the auxiliary function \textquotesingle{}dfs\+Available\+Destinations\textquotesingle{}. \mbox{\Hypertarget{classConsult_ac2b27e1fcc390115dbe33ec2f12eca19}\label{classConsult_ac2b27e1fcc390115dbe33ec2f12eca19}} 
 \index{Consult@{Consult}!searchNumberOfCountriesAvailableForAirport@{searchNumberOfCountriesAvailableForAirport}}
 \index{searchNumberOfCountriesAvailableForAirport@{searchNumberOfCountriesAvailableForAirport}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchNumberOfCountriesAvailableForAirport()}{searchNumberOfCountriesAvailableForAirport()}}
@@ -361,9 +361,9 @@ Counts the number of available countries reachable from a specific airport.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The number of available countries reachable from the specified airport. 
+The number of available countries reachable from the specified airport.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_a6982bb9452a6cde3df1f507e80b715a4}\label{classConsult_a6982bb9452a6cde3df1f507e80b715a4}} 
+Time Complexity\+: O(V+E) where V stands for vertices and E for edges. Note\+: Considering the auxiliary function \textquotesingle{}dfs\+Available\+Destinations\textquotesingle{}. \mbox{\Hypertarget{classConsult_a6982bb9452a6cde3df1f507e80b715a4}\label{classConsult_a6982bb9452a6cde3df1f507e80b715a4}} 
 \index{Consult@{Consult}!searchNumberOfCountriesFlownToFromAirport@{searchNumberOfCountriesFlownToFromAirport}}
 \index{searchNumberOfCountriesFlownToFromAirport@{searchNumberOfCountriesFlownToFromAirport}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchNumberOfCountriesFlownToFromAirport()}{searchNumberOfCountriesFlownToFromAirport()}}
@@ -379,9 +379,9 @@ Counts the number of countries flown to from a specific airport.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The number of countries flown to from the specified airport. 
+The number of countries flown to from the specified airport.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_ab21489de5df763998fcc8c434cfc3c86}\label{classConsult_ab21489de5df763998fcc8c434cfc3c86}} 
+Time Complexity\+: O(\+E) where E stands for the flight routes (edges). \mbox{\Hypertarget{classConsult_ab21489de5df763998fcc8c434cfc3c86}\label{classConsult_ab21489de5df763998fcc8c434cfc3c86}} 
 \index{Consult@{Consult}!searchNumberOfCountriesFlownToFromCity@{searchNumberOfCountriesFlownToFromCity}}
 \index{searchNumberOfCountriesFlownToFromCity@{searchNumberOfCountriesFlownToFromCity}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchNumberOfCountriesFlownToFromCity()}{searchNumberOfCountriesFlownToFromCity()}}
@@ -399,9 +399,9 @@ Counts the number of countries flown to from a specific city and country.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The number of countries flown to from the specified city and country. 
+The number of countries flown to from the specified city and country.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_a24c1e96eff14ed6dfd763cd521290181}\label{classConsult_a24c1e96eff14ed6dfd763cd521290181}} 
+Time Complexity\+: O(V+\+E+E\textquotesingle{}) where V stands for vertices, E for edges and E\textquotesingle{} for the edges going out from the airports in the specified city. Note\+: Considering the auxiliary function \textquotesingle{}dfs\+Visit\+City\+Airports\textquotesingle{}. \mbox{\Hypertarget{classConsult_a24c1e96eff14ed6dfd763cd521290181}\label{classConsult_a24c1e96eff14ed6dfd763cd521290181}} 
 \index{Consult@{Consult}!searchNumberOfFlightsOutOfAirport@{searchNumberOfFlightsOutOfAirport}}
 \index{searchNumberOfFlightsOutOfAirport@{searchNumberOfFlightsOutOfAirport}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchNumberOfFlightsOutOfAirport()}{searchNumberOfFlightsOutOfAirport()}}
@@ -417,9 +417,9 @@ Counts the number of flights departing from a specific airport.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The number of flights departing from the airport. 
+The number of flights departing from the airport.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_a8457a09678045010ebe3a10ff3d4731b}\label{classConsult_a8457a09678045010ebe3a10ff3d4731b}} 
+Time Complexity\+: O(1) \mbox{\Hypertarget{classConsult_a8457a09678045010ebe3a10ff3d4731b}\label{classConsult_a8457a09678045010ebe3a10ff3d4731b}} 
 \index{Consult@{Consult}!searchNumberOfFlightsOutOfAirportFromDifferentAirlines@{searchNumberOfFlightsOutOfAirportFromDifferentAirlines}}
 \index{searchNumberOfFlightsOutOfAirportFromDifferentAirlines@{searchNumberOfFlightsOutOfAirportFromDifferentAirlines}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchNumberOfFlightsOutOfAirportFromDifferentAirlines()}{searchNumberOfFlightsOutOfAirportFromDifferentAirlines()}}
@@ -435,9 +435,9 @@ Counts the number of flights departing from a specific airport via different air
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The number of flights departing from the airport via different airlines. 
+The number of flights departing from the airport via different airlines.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_abb5f1aca5872f49d5266bd477d2d6c82}\label{classConsult_abb5f1aca5872f49d5266bd477d2d6c82}} 
+Time Complexity\+: O(\+E$\ast$\+A) where E stands for the edges (flight routes) and A for the airlines using the flight route. However it can be considered O(\+E) because the number of airlines for 1 flight route is relatively small and constant. \mbox{\Hypertarget{classConsult_abb5f1aca5872f49d5266bd477d2d6c82}\label{classConsult_abb5f1aca5872f49d5266bd477d2d6c82}} 
 \index{Consult@{Consult}!searchNumberOfFlightsPerAirline@{searchNumberOfFlightsPerAirline}}
 \index{searchNumberOfFlightsPerAirline@{searchNumberOfFlightsPerAirline}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchNumberOfFlightsPerAirline()}{searchNumberOfFlightsPerAirline()}}
@@ -448,9 +448,9 @@ The number of flights departing from the airport via different airlines.
 Searches the number of flights per airline. 
 
 \begin{DoxyReturn}{Returns}
-Map containing the count of flights per airline. 
+Map containing the count of flights per airline.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_a66ab9da5a81f18ae858ae8fd542ff07f}\label{classConsult_a66ab9da5a81f18ae858ae8fd542ff07f}} 
+Time Complexity\+: O(V+\+E+\+V$\ast$A) where V stands for the vertices, E for the edges and A for the airlines. Note\+: Considering the auxiliary function \textquotesingle{}dfs\+Visit\+Flights\+Per\+Airline\textquotesingle{}. \mbox{\Hypertarget{classConsult_a66ab9da5a81f18ae858ae8fd542ff07f}\label{classConsult_a66ab9da5a81f18ae858ae8fd542ff07f}} 
 \index{Consult@{Consult}!searchNumberOfFlightsPerCity@{searchNumberOfFlightsPerCity}}
 \index{searchNumberOfFlightsPerCity@{searchNumberOfFlightsPerCity}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchNumberOfFlightsPerCity()}{searchNumberOfFlightsPerCity()}}
@@ -461,9 +461,9 @@ Map containing the count of flights per airline.
 Searches the number of flights per city of a country. 
 
 \begin{DoxyReturn}{Returns}
-Map containing the count of flights per city of a country. 
+Map containing the count of flights per city of a country.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_a3df29da3e1e2784a6dc49297774a7dfb}\label{classConsult_a3df29da3e1e2784a6dc49297774a7dfb}} 
+Time Complexity\+: O(V+E) where V stands for the airport vertices of the graph and E the flight route edges. Note\+: Considering the auxiliary function \textquotesingle{}dfs\+Visit\+Flights\+Per\+City\textquotesingle{}. \mbox{\Hypertarget{classConsult_a3df29da3e1e2784a6dc49297774a7dfb}\label{classConsult_a3df29da3e1e2784a6dc49297774a7dfb}} 
 \index{Consult@{Consult}!searchNumberOfFlightsToAirport@{searchNumberOfFlightsToAirport}}
 \index{searchNumberOfFlightsToAirport@{searchNumberOfFlightsToAirport}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchNumberOfFlightsToAirport()}{searchNumberOfFlightsToAirport()}}
@@ -479,9 +479,9 @@ Counts the number of flights arriving at a specific airport.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The number of flights arriving at the airport. 
+The number of flights arriving at the airport.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_aca28154052f40abba8cfe4b6bc570834}\label{classConsult_aca28154052f40abba8cfe4b6bc570834}} 
+Time Complexity\+: O(1) \mbox{\Hypertarget{classConsult_aca28154052f40abba8cfe4b6bc570834}\label{classConsult_aca28154052f40abba8cfe4b6bc570834}} 
 \index{Consult@{Consult}!searchNumberOfReachableAirportsInXStopsFromAirport@{searchNumberOfReachableAirportsInXStopsFromAirport}}
 \index{searchNumberOfReachableAirportsInXStopsFromAirport@{searchNumberOfReachableAirportsInXStopsFromAirport}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchNumberOfReachableAirportsInXStopsFromAirport()}{searchNumberOfReachableAirportsInXStopsFromAirport()}}
@@ -499,9 +499,9 @@ Counts the number of reachable airports in a certain number of stops (layovers) 
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The number of reachable airports within the specified layovers. 
+The number of reachable airports within the specified layovers.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_a24fbd1b4533dfe469d44b86e0ae3bc1f}\label{classConsult_a24fbd1b4533dfe469d44b86e0ae3bc1f}} 
+Time Complexity\+: O(V+E) where V stands for vertices and E for edges. Note\+: Considering the auxiliary function \textquotesingle{}search\+Number\+Of\+Reachable\+Destinations\+In\+XStops\+From\+Airport\textquotesingle{}. \mbox{\Hypertarget{classConsult_a24fbd1b4533dfe469d44b86e0ae3bc1f}\label{classConsult_a24fbd1b4533dfe469d44b86e0ae3bc1f}} 
 \index{Consult@{Consult}!searchNumberOfReachableCitiesInXStopsFromAirport@{searchNumberOfReachableCitiesInXStopsFromAirport}}
 \index{searchNumberOfReachableCitiesInXStopsFromAirport@{searchNumberOfReachableCitiesInXStopsFromAirport}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchNumberOfReachableCitiesInXStopsFromAirport()}{searchNumberOfReachableCitiesInXStopsFromAirport()}}
@@ -519,9 +519,9 @@ Counts the number of reachable cities in a certain number of stops (layovers) fr
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The number of reachable cities within the specified layovers. 
+The number of reachable cities within the specified layovers.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_a4af17dc04db0f5bbd9958e1cc7085de5}\label{classConsult_a4af17dc04db0f5bbd9958e1cc7085de5}} 
+Time Complexity\+: O(V+E) where V stands for vertices and E for edges. Note\+: Considering the auxiliary function \textquotesingle{}search\+Number\+Of\+Reachable\+Destinations\+In\+XStops\+From\+Airport\textquotesingle{}. \mbox{\Hypertarget{classConsult_a4af17dc04db0f5bbd9958e1cc7085de5}\label{classConsult_a4af17dc04db0f5bbd9958e1cc7085de5}} 
 \index{Consult@{Consult}!searchNumberOfReachableCountriesInXStopsFromAirport@{searchNumberOfReachableCountriesInXStopsFromAirport}}
 \index{searchNumberOfReachableCountriesInXStopsFromAirport@{searchNumberOfReachableCountriesInXStopsFromAirport}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchNumberOfReachableCountriesInXStopsFromAirport()}{searchNumberOfReachableCountriesInXStopsFromAirport()}}
@@ -539,9 +539,9 @@ Count the number of reachable countries in a certain number of stops (layovers) 
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The number of reachable countries within the specified layovers. 
+The number of reachable countries within the specified layovers.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_a91d0d2dcd9a897b3e753568988c96c23}\label{classConsult_a91d0d2dcd9a897b3e753568988c96c23}} 
+Time Complexity\+: O(V+E) where V stands for vertices and E for edges. Note\+: Considering the auxiliary function \textquotesingle{}search\+Number\+Of\+Reachable\+Destinations\+In\+XStops\+From\+Airport\textquotesingle{}. \mbox{\Hypertarget{classConsult_a91d0d2dcd9a897b3e753568988c96c23}\label{classConsult_a91d0d2dcd9a897b3e753568988c96c23}} 
 \index{Consult@{Consult}!searchSmallestPathBetweenAirports@{searchSmallestPathBetweenAirports}}
 \index{searchSmallestPathBetweenAirports@{searchSmallestPathBetweenAirports}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchSmallestPathBetweenAirports()}{searchSmallestPathBetweenAirports()}}
@@ -559,9 +559,9 @@ Retrieves the smallest path between the specified source and target airports.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A vector of vectors containing sequences of airports representing the smallest path(s) between the source and target airports. 
+A vector of vectors containing sequences of airports representing the smallest path(s) between the source and target airports.
 \end{DoxyReturn}
-\mbox{\Hypertarget{classConsult_a2014f0fee38a951d5b5bc01333f8f7b2}\label{classConsult_a2014f0fee38a951d5b5bc01333f8f7b2}} 
+Time Complexity\+: O(V$\ast$(V+E)) where V stands for vertices and E for edges. \mbox{\Hypertarget{classConsult_a2014f0fee38a951d5b5bc01333f8f7b2}\label{classConsult_a2014f0fee38a951d5b5bc01333f8f7b2}} 
 \index{Consult@{Consult}!searchTopKAirportGreatestAirTrafficCapacity@{searchTopKAirportGreatestAirTrafficCapacity}}
 \index{searchTopKAirportGreatestAirTrafficCapacity@{searchTopKAirportGreatestAirTrafficCapacity}!Consult@{Consult}}
 \doxysubsubsection{\texorpdfstring{searchTopKAirportGreatestAirTrafficCapacity()}{searchTopKAirportGreatestAirTrafficCapacity()}}
@@ -577,9 +577,9 @@ Retrieves the top \textquotesingle{}K\textquotesingle{} airports with the greate
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A vector of pairs containing airports and their corresponding air traffic capacity. 
+A vector of pairs containing airports and their corresponding air traffic capacity.
 \end{DoxyReturn}
-
+Time Complexity\+: O(\+V$\ast$log\+V) where V stands for the vertices, the sorting function is the most time-\/consuming part of the functions. Note\+: Considering the auxiliary function \textquotesingle{}top\+Traffic\+Capacity\+Airports\textquotesingle{}. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

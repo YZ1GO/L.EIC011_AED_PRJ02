@@ -229,7 +229,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Set of airlines that operate between the specified airports. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Set of airlines that operate between the specified airports.</dd></dl>
+<p>Time Complexity: O(E) where E stands for edges (flight routes). </p>
 
 </div>
 </div>
@@ -256,7 +257,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the airport vertex if found, nullptr otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the airport vertex if found, nullptr otherwise.</dd></dl>
+<p>Time Complexity: O(V) where V stands for the airport vertices of the graph. </p>
 
 </div>
 </div>
@@ -283,7 +285,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Vector of airport vertices matching the airport name. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of airport vertices matching the airport name.</dd></dl>
+<p>Time Complexity: O(V+(M*logM)) where V stands for vertices and M for matching airports, O(M*logM) for sorting the matching airports. Note: Considering the auxiliary function 'findAirportsByAttribute'. </p>
 
 </div>
 </div>
@@ -310,7 +313,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Vector of airport vertices in the specified city. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of airport vertices in the specified city.</dd></dl>
+<p>Time Complexity: O(V+(M*logM)) where V stands for vertices and M for matching airports, O(M*logM) for sorting the matching airports. Note: Considering the auxiliary function 'findAirportsByAttribute'. </p>
 
 </div>
 </div>
@@ -337,7 +341,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Vector of airport vertices in the specified country. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of airport vertices in the specified country.</dd></dl>
+<p>Time Complexity: O(V+(M*logM)) where V stands for vertices and M for matching airports, O(M*logM) for sorting the matching airports. Note: Considering the auxiliary function 'findAirportsByAttribute'. </p>
 
 </div>
 </div>
@@ -364,7 +369,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Vector of airport vertices closest to the specified coordinates. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of airport vertices closest to the specified coordinates.</dd></dl>
+<p>Time Complexity: O(V*logV) where V stands for the vertices, the overall time complexity is dominated by the sorting operation. </p>
 
 </div>
 </div>
@@ -402,7 +408,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Vector of airport vertices in the specified city and country. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of airport vertices in the specified city and country.</dd></dl>
+<p>Time Complexity: O(V+E) where V stands for vertices and E for edges. Note: Considering the auxiliary function 'dfsVisitCityAirports'. </p>
 
 </div>
 </div>
@@ -440,7 +447,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The distance between the specified airports in kilometers. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The distance between the specified airports in kilometers.</dd></dl>
+<p>Time Complexity: O(E) where E stands for edges (flight routes). </p>
 
 </div>
 </div>
@@ -460,7 +468,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Searches for essential airports using Tarjan's algorithm for finding strongly connected components. </p>
-<dl class="section return"><dt>Returns</dt><dd>An unordered set containing the codes of essential airports. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An unordered set containing the codes of essential airports.</dd></dl>
+<p>Time Complexity: O(V+E) where V stands for vertices and E for edges. Note: Considering the auxiliary function 'dfsEssentialAirports'. </p>
 
 </div>
 </div>
@@ -481,7 +490,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Searches for the maximum trip and corresponding pairs of airports. </p>
-<p>Finds the longest trip possible within the airport network and retrieves all corresponding paths. </p><dl class="section return"><dt>Returns</dt><dd>A vector of vectors containing sequences of airports representing the paths of the longest trip(s). </dd></dl>
+<p>Finds the longest trip possible within the airport network and retrieves all corresponding paths. </p><dl class="section return"><dt>Returns</dt><dd>A vector of vectors containing sequences of airports representing the paths of the longest trip(s).</dd></dl>
+<p>Time Complexity: O(V*(V+E)) where V stands for vertices and E for edges, it needs to iterate over all vertices, and for each vertex, it performs BFS. </p>
 
 </div>
 </div>
@@ -501,7 +511,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Counts the total number of airports. </p>
-<dl class="section return"><dt>Returns</dt><dd>The number of airports. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of airports.</dd></dl>
+<p>Time Complexity: O(1) </p>
 
 </div>
 </div>
@@ -528,7 +539,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of available airports reachable from the specified airport. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of available airports reachable from the specified airport.</dd></dl>
+<p>Time Complexity: O(V+E) where V stands for vertices and E for edges. Note: Considering the auxiliary function 'dfsAvailableDestinations'. </p>
 
 </div>
 </div>
@@ -548,7 +560,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Counts the total number of available flight routes. </p>
-<dl class="section return"><dt>Returns</dt><dd>The number of available flight routes. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of available flight routes.</dd></dl>
+<p>Time Complexity: O(V) where V is the number of vertices of the graph </p>
 
 </div>
 </div>
@@ -568,7 +581,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Counts the total number of available flights. </p>
-<dl class="section return"><dt>Returns</dt><dd>The number of available flights. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of available flights.</dd></dl>
+<p>Time Complexity: O(V) where V is the number of vertices of the graph </p>
 
 </div>
 </div>
@@ -595,7 +609,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of available cities reachable from the specified airport. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of available cities reachable from the specified airport.</dd></dl>
+<p>Time Complexity: O(V+E) where V stands for vertices and E for edges. Note: Considering the auxiliary function 'dfsAvailableDestinations'. </p>
 
 </div>
 </div>
@@ -622,7 +637,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of available countries reachable from the specified airport. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of available countries reachable from the specified airport.</dd></dl>
+<p>Time Complexity: O(V+E) where V stands for vertices and E for edges. Note: Considering the auxiliary function 'dfsAvailableDestinations'. </p>
 
 </div>
 </div>
@@ -649,7 +665,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of countries flown to from the specified airport. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of countries flown to from the specified airport.</dd></dl>
+<p>Time Complexity: O(E) where E stands for the flight routes (edges). </p>
 
 </div>
 </div>
@@ -687,7 +704,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of countries flown to from the specified city and country. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of countries flown to from the specified city and country.</dd></dl>
+<p>Time Complexity: O(V+E+E') where V stands for vertices, E for edges and E' for the edges going out from the airports in the specified city. Note: Considering the auxiliary function 'dfsVisitCityAirports'. </p>
 
 </div>
 </div>
@@ -714,7 +732,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of flights departing from the airport. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of flights departing from the airport.</dd></dl>
+<p>Time Complexity: O(1) </p>
 
 </div>
 </div>
@@ -741,7 +760,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of flights departing from the airport via different airlines. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of flights departing from the airport via different airlines.</dd></dl>
+<p>Time Complexity: O(E*A) where E stands for the edges (flight routes) and A for the airlines using the flight route. However it can be considered O(E) because the number of airlines for 1 flight route is relatively small and constant. </p>
 
 </div>
 </div>
@@ -761,7 +781,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Searches the number of flights per airline. </p>
-<dl class="section return"><dt>Returns</dt><dd>Map containing the count of flights per airline. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Map containing the count of flights per airline.</dd></dl>
+<p>Time Complexity: O(V+E+V*A) where V stands for the vertices, E for the edges and A for the airlines. Note: Considering the auxiliary function 'dfsVisitFlightsPerAirline'. </p>
 
 </div>
 </div>
@@ -781,7 +802,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Searches the number of flights per city of a country. </p>
-<dl class="section return"><dt>Returns</dt><dd>Map containing the count of flights per city of a country. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Map containing the count of flights per city of a country.</dd></dl>
+<p>Time Complexity: O(V+E) where V stands for the airport vertices of the graph and E the flight route edges. Note: Considering the auxiliary function 'dfsVisitFlightsPerCity'. </p>
 
 </div>
 </div>
@@ -808,7 +830,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of flights arriving at the airport. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of flights arriving at the airport.</dd></dl>
+<p>Time Complexity: O(1) </p>
 
 </div>
 </div>
@@ -846,7 +869,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of reachable airports within the specified layovers. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of reachable airports within the specified layovers.</dd></dl>
+<p>Time Complexity: O(V+E) where V stands for vertices and E for edges. Note: Considering the auxiliary function 'searchNumberOfReachableDestinationsInXStopsFromAirport'. </p>
 
 </div>
 </div>
@@ -884,7 +908,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of reachable cities within the specified layovers. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of reachable cities within the specified layovers.</dd></dl>
+<p>Time Complexity: O(V+E) where V stands for vertices and E for edges. Note: Considering the auxiliary function 'searchNumberOfReachableDestinationsInXStopsFromAirport'. </p>
 
 </div>
 </div>
@@ -922,7 +947,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of reachable countries within the specified layovers. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of reachable countries within the specified layovers.</dd></dl>
+<p>Time Complexity: O(V+E) where V stands for vertices and E for edges. Note: Considering the auxiliary function 'searchNumberOfReachableDestinationsInXStopsFromAirport'. </p>
 
 </div>
 </div>
@@ -960,7 +986,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A vector of vectors containing sequences of airports representing the smallest path(s) between the source and target airports. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of vectors containing sequences of airports representing the smallest path(s) between the source and target airports.</dd></dl>
+<p>Time Complexity: O(V*(V+E)) where V stands for vertices and E for edges. </p>
 
 </div>
 </div>
@@ -987,7 +1014,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A vector of pairs containing airports and their corresponding air traffic capacity. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of pairs containing airports and their corresponding air traffic capacity.</dd></dl>
+<p>Time Complexity: O(V*logV) where V stands for the vertices, the sorting function is the most time-consuming part of the functions. Note: Considering the auxiliary function 'topTrafficCapacityAirports'. </p>
 
 </div>
 </div>

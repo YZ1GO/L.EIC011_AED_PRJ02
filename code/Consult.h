@@ -101,7 +101,7 @@ public:
      * @brief Counts the total number of airports.
      * @return The number of airports.
      *
-     * @complexity O(1)
+     * Time Complexity: O(1)
      */
     int searchNumberOfAirports();
 
@@ -109,7 +109,7 @@ public:
      * @brief Counts the total number of available flights.
      * @return The number of available flights.
      *
-     * @complexity O(V) where V is the number of vertices of the graph
+     * Time Complexity: O(V) where V is the number of vertices of the graph
      */
     int searchNumberOfAvailableFlights();
 
@@ -117,7 +117,7 @@ public:
      * @brief Counts the total number of available flight routes.
      * @return The number of available flight routes.
      *
-     * @complexity O(V) where V is the number of vertices of the graph
+     * Time Complexity: O(V) where V is the number of vertices of the graph
      */
     int searchNumberOfAvailableFlightRoutes();
 
@@ -126,7 +126,7 @@ public:
      * @param airport Pointer to the airport vertex.
      * @return The number of flights departing from the airport.
      *
-     * @complexity O(1)
+     * Time Complexity: O(1)
      */
     int searchNumberOfFlightsOutOfAirport(Vertex<Airport>* airport);
 
@@ -135,7 +135,7 @@ public:
      * @param airport Pointer to the airport vertex.
      * @return The number of flights arriving at the airport.
      *
-     * @complexity O(1)
+     * Time Complexity: O(1)
      */
     int searchNumberOfFlightsToAirport(Vertex<Airport>* airport);
 
@@ -144,7 +144,7 @@ public:
      * @param airport Pointer to the airport vertex.
      * @return The number of flights departing from the airport via different airlines.
      *
-     * @complexity O(E*A) where E stands for the edges (flight routes) and A for the airlines using the flight route.
+     * Time Complexity: O(E*A) where E stands for the edges (flight routes) and A for the airlines using the flight route.
      *             However it can be considered O(E) because the number of airlines for 1 flight route is relatively small and constant.
      */
     int searchNumberOfFlightsOutOfAirportFromDifferentAirlines(Vertex<Airport>* airport);
@@ -153,7 +153,7 @@ public:
      * @brief Searches the number of flights per city of a country.
      * @return Map containing the count of flights per city of a country.
      *
-     * @complexity O(V+E) where V stands for the airport vertices of the graph and E the flight route edges.
+     * Time Complexity: O(V+E) where V stands for the airport vertices of the graph and E the flight route edges.
      *             Note: Considering the auxiliary function 'dfsVisitFlightsPerCity'.
      */
     map<pair<string,string>, int> searchNumberOfFlightsPerCity();
@@ -162,7 +162,7 @@ public:
      * @brief Searches the number of flights per airline.
      * @return Map containing the count of flights per airline.
      *
-     * @complexity O(V+E+V*A) where V stands for the vertices, E for the edges and A for the airlines.
+     * Time Complexity: O(V+E+V*A) where V stands for the vertices, E for the edges and A for the airlines.
      *             Note: Considering the auxiliary function 'dfsVisitFlightsPerAirline'.
      */
     map<Airline, int> searchNumberOfFlightsPerAirline();
@@ -172,7 +172,7 @@ public:
      * @param airport Pointer to the airport vertex.
      * @return The number of countries flown to from the specified airport.
      *
-     * @complexity O(E) where E stands for the flight routes (edges).
+     * Time Complexity: O(E) where E stands for the flight routes (edges).
      */
     int searchNumberOfCountriesFlownToFromAirport(Vertex<Airport>* airport);
 
@@ -182,7 +182,7 @@ public:
      * @param country The country name.
      * @return The number of countries flown to from the specified city and country.
      *
-     * @complexity O(V+E+E') where V stands for vertices, E for edges and E' for the edges going out from the airports in the specified city.
+     * Time Complexity: O(V+E+E') where V stands for vertices, E for edges and E' for the edges going out from the airports in the specified city.
      *             Note: Considering the auxiliary function 'dfsVisitCityAirports'.
      */
     int searchNumberOfCountriesFlownToFromCity(const string& city, const string& country);
@@ -192,7 +192,7 @@ public:
      * @param airport Pointer to the airport vertex.
      * @return The number of available airports reachable from the specified airport.
      *
-     * @complexity O(V+E) where V stands for vertices and E for edges.
+     * Time Complexity: O(V+E) where V stands for vertices and E for edges.
      *             Note: Considering the auxiliary function 'dfsAvailableDestinations'.
      */
     int searchNumberOfAirportsAvailableForAirport(Vertex<Airport>* airport);
@@ -202,7 +202,7 @@ public:
      * @param airport Pointer to the airport vertex.
      * @return The number of available cities reachable from the specified airport.
      *
-     * @complexity O(V+E) where V stands for vertices and E for edges.
+     * Time Complexity: O(V+E) where V stands for vertices and E for edges.
      *             Note: Considering the auxiliary function 'dfsAvailableDestinations'.
      */
     int searchNumberOfCitiesAvailableForAirport(Vertex<Airport>* airport);
@@ -212,7 +212,7 @@ public:
      * @param airport Pointer to the airport vertex.
      * @return The number of available countries reachable from the specified airport.
      *
-     * @complexity O(V+E) where V stands for vertices and E for edges.
+     * Time Complexity: O(V+E) where V stands for vertices and E for edges.
      *             Note: Considering the auxiliary function 'dfsAvailableDestinations'.
      */
     int searchNumberOfCountriesAvailableForAirport(Vertex<Airport>* airport);
@@ -223,7 +223,7 @@ public:
      * @param layOvers The maximum number of layovers.
      * @return The number of reachable airports within the specified layovers.
      *
-     * @complexity O(V+E) where V stands for vertices and E for edges.
+     * Time Complexity: O(V+E) where V stands for vertices and E for edges.
      *             Note: Considering the auxiliary function 'searchNumberOfReachableDestinationsInXStopsFromAirport'.
      */
     int searchNumberOfReachableAirportsInXStopsFromAirport(Vertex<Airport>* airport, int layOvers);
@@ -234,7 +234,7 @@ public:
      * @param layOvers The maximum number of layovers.
      * @return The number of reachable cities within the specified layovers.
      *
-     * @complexity O(V+E) where V stands for vertices and E for edges.
+     * Time Complexity: O(V+E) where V stands for vertices and E for edges.
      *             Note: Considering the auxiliary function 'searchNumberOfReachableDestinationsInXStopsFromAirport'.
      */
     int searchNumberOfReachableCitiesInXStopsFromAirport(Vertex<Airport>* airport, int layOvers);
@@ -245,7 +245,7 @@ public:
      * @param layOvers The maximum number of layovers.
      * @return The number of reachable countries within the specified layovers.
      *
-     * @complexity O(V+E) where V stands for vertices and E for edges.
+     * Time Complexity: O(V+E) where V stands for vertices and E for edges.
      *             Note: Considering the auxiliary function 'searchNumberOfReachableDestinationsInXStopsFromAirport'.
      */
     int searchNumberOfReachableCountriesInXStopsFromAirport(Vertex<Airport>* airport, int layOvers);
@@ -257,7 +257,7 @@ public:
       * @param k The number of top airports to retrieve.
       * @return A vector of pairs containing airports and their corresponding air traffic capacity.
       *
-      * @complexity O(V*logV) where V stands for the vertices, the sorting function is the most time-consuming part of the functions.
+      * Time Complexity: O(V*logV) where V stands for the vertices, the sorting function is the most time-consuming part of the functions.
       *             Note: Considering the auxiliary function 'topTrafficCapacityAirports'.
       */
     vector<pair<Airport,int>> searchTopKAirportGreatestAirTrafficCapacity(const int& k);
@@ -266,7 +266,7 @@ public:
      * @brief Searches for essential airports using Tarjan's algorithm for finding strongly connected components.
      * @return An unordered set containing the codes of essential airports.
      *
-     * @complexity O(V+E) where V stands for vertices and E for edges.
+     * Time Complexity: O(V+E) where V stands for vertices and E for edges.
      *             Note: Considering the auxiliary function 'dfsEssentialAirports'.
      */
     unordered_set<string> searchEssentialAirports();
@@ -276,7 +276,7 @@ public:
      * @details Finds the longest trip possible within the airport network and retrieves all corresponding paths.
      * @return A vector of vectors containing sequences of airports representing the paths of the longest trip(s).
      *
-     * @complexity O(V*(V+E)) where V stands for vertices and E for edges, it needs to iterate over all vertices,
+     * Time Complexity: O(V*(V+E)) where V stands for vertices and E for edges, it needs to iterate over all vertices,
      *             and for each vertex, it performs BFS.
      */
     vector<vector<Vertex<Airport>*>> searchMaxTripAndCorrespondingPairsOfAirports(int& diameter);
@@ -288,7 +288,7 @@ public:
      * @param target The destination airport.
      * @return A vector of vectors containing sequences of airports representing the smallest path(s) between the source and target airports.
      *
-     * @complexity O(V*(V+E)) where V stands for vertices and E for edges.
+     * Time Complexity: O(V*(V+E)) where V stands for vertices and E for edges.
      */
     vector<vector<Vertex<Airport>*>> searchSmallestPathBetweenAirports(Vertex<Airport>* source, Vertex<Airport>* target);
 
@@ -297,7 +297,7 @@ public:
      * @param airportCode The code of the airport to search for.
      * @return Pointer to the airport vertex if found, nullptr otherwise.
      *
-     * @complexity O(V) where V stands for the airport vertices of the graph.
+     * Time Complexity: O(V) where V stands for the airport vertices of the graph.
      */
     Vertex<Airport>* findAirportByCode(const string& airportCode);
 
@@ -306,7 +306,7 @@ public:
      * @param searchName The name of the airport(s) to search for.
      * @return Vector of airport vertices matching the airport name.
      *
-     * @complexity O(V+(M*logM)) where V stands for vertices and M for matching airports, O(M*logM) for sorting the matching airports.
+     * Time Complexity: O(V+(M*logM)) where V stands for vertices and M for matching airports, O(M*logM) for sorting the matching airports.
      *             Note: Considering the auxiliary function 'findAirportsByAttribute'.
      */
     vector<Vertex<Airport>*> findAirportsByAirportName(const string& searchName);
@@ -316,7 +316,7 @@ public:
      * @param searchName The name of the city associated with the airport(s) to search for.
      * @return Vector of airport vertices in the specified city.
      *
-     * @complexity O(V+(M*logM)) where V stands for vertices and M for matching airports, O(M*logM) for sorting the matching airports.
+     * Time Complexity: O(V+(M*logM)) where V stands for vertices and M for matching airports, O(M*logM) for sorting the matching airports.
      *             Note: Considering the auxiliary function 'findAirportsByAttribute'.
      */
     vector<Vertex<Airport>*> findAirportsByCityName(const string& searchName);
@@ -326,7 +326,7 @@ public:
      * @param searchName The name of the country associated with the airport(s) to search for.
      * @return Vector of airport vertices in the specified country.
      *
-     * @complexity O(V+(M*logM)) where V stands for vertices and M for matching airports, O(M*logM) for sorting the matching airports.
+     * Time Complexity: O(V+(M*logM)) where V stands for vertices and M for matching airports, O(M*logM) for sorting the matching airports.
      *             Note: Considering the auxiliary function 'findAirportsByAttribute'.
      */
     vector<Vertex<Airport>*> findAirportsByCountryName(const string& searchName);
@@ -336,7 +336,7 @@ public:
      * @param coordinates The coordinates (latitude and longitude) for which the closest airports are searched.
      * @return Vector of airport vertices closest to the specified coordinates.
      *
-     * @complexity O(V*logV) where V stands for the vertices, the overall time complexity is dominated by the sorting operation.
+     * Time Complexity: O(V*logV) where V stands for the vertices, the overall time complexity is dominated by the sorting operation.
      */
     vector<Vertex<Airport>*> findClosestAirports(const Coordinates& coordinates);
 
@@ -346,7 +346,7 @@ public:
      * @param country The name of the country associated with the airport(s) to search for.
      * @return Vector of airport vertices in the specified city and country.
      *
-     * @complexity O(V+E) where V stands for vertices and E for edges.
+     * Time Complexity: O(V+E) where V stands for vertices and E for edges.
      *             Note: Considering the auxiliary function 'dfsVisitCityAirports'.
      */
     vector<Vertex<Airport>*> getAirportsInACityAndCountry(const string& city, const string& country);
@@ -357,7 +357,7 @@ public:
      * @param target Pointer to the target airport.
      * @return Set of airlines that operate between the specified airports.
      *
-     * @complexity O(E) where E stands for edges (flight routes).
+     * Time Complexity: O(E) where E stands for edges (flight routes).
      */
     std::set<Airline> airlinesThatOperateBetweenAirports(Vertex<Airport>* source, Vertex<Airport>* target);
 
@@ -367,7 +367,7 @@ public:
      * @param target Pointer to the target airport.
      * @return The distance between the specified airports in kilometers.
      *
-     * @complexity O(E) where E stands for edges (flight routes).
+     * Time Complexity: O(E) where E stands for edges (flight routes).
      */
     double getDistanceBetweenAirports(Vertex<Airport>* source, Vertex<Airport>* target);
 };
