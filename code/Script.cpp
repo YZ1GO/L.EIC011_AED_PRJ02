@@ -667,7 +667,7 @@ void Script::searchAirportByCityAndCountryName() {
                         cityChosenSource = true;
                         travelMap["source"] = airports;
                         customLayoversChosen = false;
-                        selectCustomLayovers();
+                        selectDestiny();
                     } else {
                         cityChosenDestiny = true;
                         travelMap["destination"] = airports;
