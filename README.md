@@ -1,5 +1,5 @@
 # Air Travel Flight Management System
-### AED - Project 02, Group G110
+### AED 2023/24 - Project 02, Group G110
 
 ## Overview
 Welcome to our Air Travel Flight Management System! This system is a comprehensive
@@ -8,12 +8,12 @@ flights, and routes within the aviation domain. It's a versatile toolset that pr
 a range of functionalities to explore, query, and manage air travel information efficiently.
 
 ## Features
-- **Data Analysis:** Perform detailed analyses on airport networks, flights, and traffic statistics.
-- **Search Capabilities:** Seamlessly search for flights per city, per airline, and available destinations.
+- **Data Analysis:** Perform in-depth analyses on airport networks, flights, and traffic statistics.
+- **Search Functionality:** Easily search for flights by city, airline, or available destinations.
 - **Route Mapping:** Discover and navigate paths between airports.
-- **Efficient Management:** Access data on flights departing from and arriving at specific airports.
-- **Optimized Trips:** Find optimal trips with an array of extensive filters, providing solutions for diverse travel needs.
-- **Convenient Installation:** Easy setup and execution through provided scripts.
+- **Efficient Management:** Access flight data for specific departure and arrival airports or cities.
+- **Optimized Trips:** Find the best routes with various filters, ensuring tailored travel solutions.
+- **User-Friendly Interface:** Enjoy a simple and intuitive menu-driven system for seamless navigation.
 
 ## Installing
 To build the program code using **makefile**:
@@ -27,3 +27,6 @@ $ make
 ```bash
 $ ./run
 ```
+
+## Documentation
+Find the complete documentation in the [Doxygen HTML documentation](docs/documentation/html/index.html).
