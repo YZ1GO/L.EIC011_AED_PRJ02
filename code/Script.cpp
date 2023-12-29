@@ -1,6 +1,6 @@
 #include "Script.h"
 
-Script::Script(const Graph<Airport>& dataGraph) : consult(dataGraph) {}
+Script::Script(const Graph<Airport>& dataGraph) : dataGraph(dataGraph), consult(dataGraph) {}
 
 void Script::drawBox(const string &text) {
     int width = text.length() + 4;
@@ -68,17 +68,18 @@ void Script::run() {
 
     while (true) {
         vector<MenuItem> mainMenu = {
-                {makeBold("Statistics"), nullptr},
                 {makeBold("Travel"), nullptr},
+                {makeBold("Statistics"), nullptr},
+                {makeBold("Export data as text file"), nullptr},
                 {"[Exit]", nullptr}
         };
 
         int mainChoice = showMenu("MAIN MENU", mainMenu);
-        if (mainChoice == 3) {
+        if (mainChoice == 4) {
             break;
         }
 
-        if (mainChoice == 1) {
+        if (mainChoice == 2) {
             while (true) {
                 vector<MenuItem> networkStatistics = {
                         {makeBold("Global Statistics"), &Script::globalNumber},
@@ -94,7 +95,7 @@ void Script::run() {
                     (this->*networkStatistics[searchChoice - 1].action)();
                 }
             }
-        } else if (mainChoice == 2) {
+        } else if (mainChoice == 1) {
             while (true) {
                 travelChosen = true;
                 vector<MenuItem> travelMenu = {
@@ -111,6 +112,11 @@ void Script::run() {
                     (this->*travelMenu[searchChoice - 1].action)();
                 }
             }
+        } else if (mainChoice == 3) {
+            clearScreen();
+            drawBox("Export data as text file");
+            convertDataGraphToTextFile(dataGraph, "output/global_data.txt");
+            backToMenu();
         }
     }
     clearScreen();

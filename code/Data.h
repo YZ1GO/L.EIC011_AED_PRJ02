@@ -12,7 +12,6 @@
 #define AED_AEROPORTO_DATA_H
 
 #include "Utilities.h"
-#include <iostream>
 #include <vector>
 
 /**
