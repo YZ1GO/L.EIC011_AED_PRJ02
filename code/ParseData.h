@@ -62,6 +62,12 @@ public:
      * @return A constant reference to the constructed airport graph.
      */
     const Graph<Airport>& getDataGraph() const { return dataGraph; }
+
+    /**
+     * @brief Retrieves the airlines information set.
+     * @return A constant reference to the airlines information set.
+     */
+    const std::set<Airline>& getAirlinesInfo() const { return airlinesInfo; }
 };
 
 
