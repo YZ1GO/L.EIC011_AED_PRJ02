@@ -397,6 +397,28 @@ void Script::givenAirportStatistics(Vertex<Airport> *airport) {
     backToMenu();
 }
 
+void Script::searchAirlines() {
+    clearScreen();
+    drawBox("Find airline by airline's code");
+    string code;
+
+    cout << "Type the airline's code: ";
+    cin >> code;
+
+    Airline airline;
+    if (consult.getAirlineFromCode(airline, code)) {
+        clearScreen();
+        drawBox("Airline information");
+        cout << makeBold("    Code: ") << airline.getCode() << endl;
+        cout << makeBold("    Name: ") << airline.getName() << endl;
+        cout << makeBold("Callsign: ") << airline.getCallsign() << endl;
+        cout << makeBold(" Country: ") << airline.getCountry() << endl;
+    } else {
+        cout << "\nNo airline with code " << makeBold(code) << " found" << endl;
+    }
+    backToMenu();
+}
+
 void Script::globalNumber() {
     vector<MenuItem> globalStatistics = {
             {makeBold("Airports"), &Script::numberOfAirports},
@@ -1149,26 +1171,4 @@ void Script::printCustomLayovers() {
         }
     }
     cout << "\n" << endl;
-}
-
-void Script::searchAirlines() {
-    clearScreen();
-    drawBox("Find airline by airline's code");
-    string code;
-
-    cout << "Type the airline's code: ";
-    cin >> code;
-
-    Airline airline;
-    if (consult.getAirlineFromCode(airline, code)) {
-        clearScreen();
-        drawBox("Airline information");
-        cout << makeBold("    Code: ") << airline.getCode() << endl;
-        cout << makeBold("    Name: ") << airline.getName() << endl;
-        cout << makeBold("Callsign: ") << airline.getCallsign() << endl;
-        cout << makeBold(" Country: ") << airline.getCountry() << endl;
-    } else {
-        cout << "\nNo airline with code " << makeBold(code) << " found" << endl;
-    }
-    backToMenu();
 }

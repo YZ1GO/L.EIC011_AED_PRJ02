@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['consult_209',['Consult',['../classConsult.html',1,'']]],
-  ['coordinates_210',['Coordinates',['../structCoordinates.html',1,'']]]
+  ['consult_212',['Consult',['../classConsult.html',1,'']]],
+  ['coordinates_213',['Coordinates',['../structCoordinates.html',1,'']]]
 ];

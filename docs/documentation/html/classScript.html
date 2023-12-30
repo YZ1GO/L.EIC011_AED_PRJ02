@@ -96,9 +96,9 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a868d8f2af5d930b34af56c9ecc364a50"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScript.html#a868d8f2af5d930b34af56c9ecc364a50">Script</a> (const <a class="el" href="classGraph.html">Graph</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; &amp;<a class="el" href="classScript.html#ac043b155ff050e53eedb2f4b009ecc01">dataGraph</a>)</td></tr>
-<tr class="memdesc:a868d8f2af5d930b34af56c9ecc364a50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="classScript.html" title="Handles the interactive operations for the &quot;Air Travel Flight Management System.&quot;.">Script</a> class.  <a href="classScript.html#a868d8f2af5d930b34af56c9ecc364a50">More...</a><br /></td></tr>
-<tr class="separator:a868d8f2af5d930b34af56c9ecc364a50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79d835cde71864c9c70f5381e0361669"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScript.html#a79d835cde71864c9c70f5381e0361669">Script</a> (const <a class="el" href="classGraph.html">Graph</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; &amp;<a class="el" href="classScript.html#ac043b155ff050e53eedb2f4b009ecc01">dataGraph</a>, const std::set&lt; <a class="el" href="classAirline.html">Airline</a> &gt; airlinesInfo)</td></tr>
+<tr class="memdesc:a79d835cde71864c9c70f5381e0361669"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="classScript.html" title="Handles the interactive operations for the &quot;Air Travel Flight Management System.&quot;.">Script</a> class.  <a href="classScript.html#a79d835cde71864c9c70f5381e0361669">More...</a><br /></td></tr>
+<tr class="separator:a79d835cde71864c9c70f5381e0361669"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73a1254b03be5b6150f8029f898615da"><td class="memItemLeft" align="right" valign="top"><a id="a73a1254b03be5b6150f8029f898615da"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScript.html#a73a1254b03be5b6150f8029f898615da">run</a> ()</td></tr>
 <tr class="memdesc:a73a1254b03be5b6150f8029f898615da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates the interactive system and displays the main menu. This method serves as the entry point for user interaction. <br /></td></tr>
@@ -205,6 +205,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScript.html#a9c1d8418cfa15536fc773fe938f94057">searchClosestAirport</a> ()</td></tr>
 <tr class="memdesc:a9c1d8418cfa15536fc773fe938f94057"><td class="mdescLeft">&#160;</td><td class="mdescRight">List all airports closest to user-provided coordinates (latitude, longitude). <br /></td></tr>
 <tr class="separator:a9c1d8418cfa15536fc773fe938f94057"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72540b96a05c5e7d53f26e768b263f1e"><td class="memItemLeft" align="right" valign="top"><a id="a72540b96a05c5e7d53f26e768b263f1e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScript.html#a72540b96a05c5e7d53f26e768b263f1e">searchAirlines</a> ()</td></tr>
+<tr class="memdesc:a72540b96a05c5e7d53f26e768b263f1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find and display information about a specific airline based on the user-provided airport code. <br /></td></tr>
+<tr class="separator:a72540b96a05c5e7d53f26e768b263f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3995e5ebb139632cb81fb7aa42417c64"><td class="memItemLeft" align="right" valign="top"><a id="a3995e5ebb139632cb81fb7aa42417c64"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScript.html#a3995e5ebb139632cb81fb7aa42417c64">selectSource</a> ()</td></tr>
 <tr class="memdesc:a3995e5ebb139632cb81fb7aa42417c64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays a submenu for user to search for a location to set as the flight source. <br /></td></tr>
@@ -294,8 +298,8 @@ vector&lt; <a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" hr
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Handles the interactive operations for the "Air Travel Flight Management System.". </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a868d8f2af5d930b34af56c9ecc364a50"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a868d8f2af5d930b34af56c9ecc364a50">&#9670;&nbsp;</a></span>Script()</h2>
+<a id="a79d835cde71864c9c70f5381e0361669"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79d835cde71864c9c70f5381e0361669">&#9670;&nbsp;</a></span>Script()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -304,8 +308,18 @@ vector&lt; <a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" hr
           <td class="memname">Script::Script </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classGraph.html">Graph</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>dataGraph</em></td><td>)</td>
+          <td class="paramname"><em>dataGraph</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const std::set&lt; <a class="el" href="classAirline.html">Airline</a> &gt;&#160;</td>
+          <td class="paramname"><em>airlinesInfo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -314,6 +328,7 @@ vector&lt; <a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" hr
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dataGraph</td><td>The graph containing airport data for the flight management system. </td></tr>
+    <tr><td class="paramname">airlinesInfo</td><td>The set containing airlines information for the flight management system. </td></tr>
   </table>
   </dd>
 </dl>

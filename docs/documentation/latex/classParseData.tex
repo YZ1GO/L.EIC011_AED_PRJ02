@@ -24,7 +24,9 @@ Collaboration diagram for Parse\+Data\+:\nopagebreak
 \mbox{\hyperlink{classParseData_a432d4eecf2c8e08bad4dd6e30e908ee3}{Parse\+Data}} (const std\+::string \&\mbox{\hyperlink{classParseData_a1138078f45783b89d97958ac3c1c1a84}{airports\+CSV}}, const std\+::string \&\mbox{\hyperlink{classParseData_a763f17d3ef578bfe6c4be7ffd3cccd24}{airlines\+CSV}}, const std\+::string \&\mbox{\hyperlink{classParseData_a22daa118d03f71e0aeeeb49b15b7844f}{flights\+CSV}})
 \begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classParseData}{Parse\+Data}} class. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \& \mbox{\hyperlink{classParseData_aa1763dce3cb6b121cdbd16f44c89b8f4}{get\+Data\+Graph}} () const
-\begin{DoxyCompactList}\small\item\em Retrieves the constructed airport graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Retrieves the constructed airport graph. \end{DoxyCompactList}\item 
+const std\+::set$<$ \mbox{\hyperlink{classAirline}{Airline}} $>$ \& \mbox{\hyperlink{classParseData_a65531d4aa9979dd279a81e9c91c0b534}{get\+Airlines\+Info}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the airlines information set. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -102,6 +104,19 @@ Retrieves information about a specific airline using its code.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Information about the airline with the specified code. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classParseData_a65531d4aa9979dd279a81e9c91c0b534}\label{classParseData_a65531d4aa9979dd279a81e9c91c0b534}} 
+\index{ParseData@{ParseData}!getAirlinesInfo@{getAirlinesInfo}}
+\index{getAirlinesInfo@{getAirlinesInfo}!ParseData@{ParseData}}
+\doxysubsubsection{\texorpdfstring{getAirlinesInfo()}{getAirlinesInfo()}}
+{\footnotesize\ttfamily const std\+::set$<$\mbox{\hyperlink{classAirline}{Airline}}$>$\& Parse\+Data\+::get\+Airlines\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves the airlines information set. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the airlines information set. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classParseData_aa1763dce3cb6b121cdbd16f44c89b8f4}\label{classParseData_aa1763dce3cb6b121cdbd16f44c89b8f4}} 
 \index{ParseData@{ParseData}!getDataGraph@{getDataGraph}}

@@ -10,7 +10,7 @@ var searchData=
   ['airline_10',['Airline',['../classAirline.html#a961f0b05ed383ef85e6990ae5ba5a6cb',1,'Airline::Airline()'],['../classAirline.html',1,'Airline'],['../classAirline.html#a2e6766b5e3a4e3106062c710740a2a32',1,'Airline::Airline()']]],
   ['airlines_11',['airlines',['../classEdge.html#a4d3f3878ef64309aa30e0c1b5a631981',1,'Edge']]],
   ['airlinescsv_12',['airlinesCSV',['../classParseData.html#a763f17d3ef578bfe6c4be7ffd3cccd24',1,'ParseData']]],
-  ['airlinesinfo_13',['airlinesInfo',['../classParseData.html#adac4e413e75fbe7a2634a1ffcd471ef7',1,'ParseData']]],
+  ['airlinesinfo_13',['airlinesInfo',['../classConsult.html#ac57b26dba0fa39baaa7e4e757ad22f29',1,'Consult::airlinesInfo()'],['../classParseData.html#adac4e413e75fbe7a2634a1ffcd471ef7',1,'ParseData::airlinesInfo()']]],
   ['airlinesthatoperatebetweenairports_14',['airlinesThatOperateBetweenAirports',['../classConsult.html#a8dea5769691f3ced45fb875f61aa5bb0',1,'Consult']]],
   ['airport_15',['Airport',['../classAirport.html#a2fc0f2402c94225b9deaf76176bb887f',1,'Airport::Airport()'],['../classAirport.html#a5dffb0a73310d7f87e7ece1eccb89f4f',1,'Airport::Airport(const std::string &amp;c, const std::string &amp;n, const std::string &amp;ci, const std::string &amp;co, Coordinates l)'],['../classAirport.html',1,'Airport']]],
   ['airportscsv_16',['airportsCSV',['../classParseData.html#a1138078f45783b89d97958ac3c1c1a84',1,'ParseData']]],

@@ -88,9 +88,9 @@ Collaboration diagram for Consult:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:addc0e00e8dfbdc47edb336b4fb2c559a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsult.html#addc0e00e8dfbdc47edb336b4fb2c559a">Consult</a> (const <a class="el" href="classGraph.html">Graph</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; &amp;dataGraph)</td></tr>
-<tr class="memdesc:addc0e00e8dfbdc47edb336b4fb2c559a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="classConsult.html" title="Provides functionalities to perform various queries and analyses on Air Travel Flight data.">Consult</a> class.  <a href="classConsult.html#addc0e00e8dfbdc47edb336b4fb2c559a">More...</a><br /></td></tr>
-<tr class="separator:addc0e00e8dfbdc47edb336b4fb2c559a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfcc112f89ac85c8be63edd393220ddd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsult.html#acfcc112f89ac85c8be63edd393220ddd">Consult</a> (const <a class="el" href="classGraph.html">Graph</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; &amp;dataGraph, const std::set&lt; <a class="el" href="classAirline.html">Airline</a> &gt; <a class="el" href="classConsult.html#ac57b26dba0fa39baaa7e4e757ad22f29">airlinesInfo</a>)</td></tr>
+<tr class="memdesc:acfcc112f89ac85c8be63edd393220ddd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="classConsult.html" title="Provides functionalities to perform various queries and analyses on Air Travel Flight data.">Consult</a> class.  <a href="classConsult.html#acfcc112f89ac85c8be63edd393220ddd">More...</a><br /></td></tr>
+<tr class="separator:acfcc112f89ac85c8be63edd393220ddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00db6d4ce04b15a61bf6dc4652f36c30"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsult.html#a00db6d4ce04b15a61bf6dc4652f36c30">searchNumberOfAirports</a> ()</td></tr>
 <tr class="memdesc:a00db6d4ce04b15a61bf6dc4652f36c30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counts the total number of airports.  <a href="classConsult.html#a00db6d4ce04b15a61bf6dc4652f36c30">More...</a><br /></td></tr>
 <tr class="separator:a00db6d4ce04b15a61bf6dc4652f36c30"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,6 +175,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a64ba24f84ec42b4a7dc25f45467180df"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsult.html#a64ba24f84ec42b4a7dc25f45467180df">getDistanceBetweenAirports</a> (<a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *source, <a class="el" href="classVertex.html">Vertex</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; *target)</td></tr>
 <tr class="memdesc:a64ba24f84ec42b4a7dc25f45467180df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the distance between two airports.  <a href="classConsult.html#a64ba24f84ec42b4a7dc25f45467180df">More...</a><br /></td></tr>
 <tr class="separator:a64ba24f84ec42b4a7dc25f45467180df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa351fd64118bff055467f78fe8d03d8d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsult.html#aa351fd64118bff055467f78fe8d03d8d">getAirlineFromCode</a> (<a class="el" href="classAirline.html">Airline</a> &amp;airline, std::string code)</td></tr>
+<tr class="memdesc:aa351fd64118bff055467f78fe8d03d8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves an airline from the airlinesInfo set based on the provided code.  <a href="classConsult.html#aa351fd64118bff055467f78fe8d03d8d">More...</a><br /></td></tr>
+<tr class="separator:aa351fd64118bff055467f78fe8d03d8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -210,12 +213,16 @@ Private Attributes</h2></td></tr>
 const <a class="el" href="classGraph.html">Graph</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsult.html#a54a1e34ba92a52f8239aa18dab1e64fe">consultGraph</a></td></tr>
 <tr class="memdesc:a54a1e34ba92a52f8239aa18dab1e64fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the airport graph used for consultation. <br /></td></tr>
 <tr class="separator:a54a1e34ba92a52f8239aa18dab1e64fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac57b26dba0fa39baaa7e4e757ad22f29"><td class="memItemLeft" align="right" valign="top"><a id="ac57b26dba0fa39baaa7e4e757ad22f29"></a>
+const std::set&lt; <a class="el" href="classAirline.html">Airline</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsult.html#ac57b26dba0fa39baaa7e4e757ad22f29">airlinesInfo</a></td></tr>
+<tr class="memdesc:ac57b26dba0fa39baaa7e4e757ad22f29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the airlines information set for consultation. <br /></td></tr>
+<tr class="separator:ac57b26dba0fa39baaa7e4e757ad22f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Provides functionalities to perform various queries and analyses on Air Travel Flight data. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="addc0e00e8dfbdc47edb336b4fb2c559a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#addc0e00e8dfbdc47edb336b4fb2c559a">&#9670;&nbsp;</a></span>Consult()</h2>
+<a id="acfcc112f89ac85c8be63edd393220ddd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfcc112f89ac85c8be63edd393220ddd">&#9670;&nbsp;</a></span>Consult()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -224,8 +231,18 @@ const <a class="el" href="classGraph.html">Graph</a>&lt; <a class="el" href="cla
           <td class="memname">Consult::Consult </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classGraph.html">Graph</a>&lt; <a class="el" href="classAirport.html">Airport</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>dataGraph</em></td><td>)</td>
+          <td class="paramname"><em>dataGraph</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const std::set&lt; <a class="el" href="classAirline.html">Airline</a> &gt;&#160;</td>
+          <td class="paramname"><em>airlinesInfo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -234,6 +251,7 @@ const <a class="el" href="classGraph.html">Graph</a>&lt; <a class="el" href="cla
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dataGraph</td><td>Reference to the airport graph used for consultation. </td></tr>
+    <tr><td class="paramname">airlinesInfo</td><td>Reference to the airlines information graph used for consultation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -724,6 +742,45 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Vector of airport vertices closest to the specified coordinates.</dd></dl>
 <p>Time Complexity: O(V*logV) where V stands for the vertices, the overall time complexity is dominated by the sorting operation. </p>
+
+</div>
+</div>
+<a id="aa351fd64118bff055467f78fe8d03d8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa351fd64118bff055467f78fe8d03d8d">&#9670;&nbsp;</a></span>getAirlineFromCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Consult::getAirlineFromCode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classAirline.html">Airline</a> &amp;&#160;</td>
+          <td class="paramname"><em>airline</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>code</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves an airline from the airlinesInfo set based on the provided code. </p>
+<p>This function searches for an airline in the airlinesInfo set using a specified code. If the airline is found, it is returned via the 'airline' parameter.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">airline</td><td>[out] The reference to an <a class="el" href="classAirline.html" title="Class representing a airline.">Airline</a> object where the found airline will be stored. </td></tr>
+    <tr><td class="paramname">code</td><td>[in] The code used to search for the airline.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the airline corresponding to the provided code is found and retrieved successfully, false otherwise. </dd></dl>
 
 </div>
 </div>

@@ -26,7 +26,7 @@ struct \mbox{\hyperlink{structScript_1_1MenuItem}{Menu\+Item}}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classScript_a868d8f2af5d930b34af56c9ecc364a50}{Script}} (const \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \&\mbox{\hyperlink{classScript_ac043b155ff050e53eedb2f4b009ecc01}{data\+Graph}})
+\mbox{\hyperlink{classScript_a79d835cde71864c9c70f5381e0361669}{Script}} (const \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \&\mbox{\hyperlink{classScript_ac043b155ff050e53eedb2f4b009ecc01}{data\+Graph}}, const std\+::set$<$ \mbox{\hyperlink{classAirline}{Airline}} $>$ airlines\+Info)
 \begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classScript}{Script}} class. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classScript_a73a1254b03be5b6150f8029f898615da}\label{classScript_a73a1254b03be5b6150f8029f898615da}} 
 void \mbox{\hyperlink{classScript_a73a1254b03be5b6150f8029f898615da}{run}} ()
@@ -106,6 +106,9 @@ void \mbox{\hyperlink{classScript_a97fdb5694e1d1ea90d7beb42b7b6c671}{search\+Air
 \mbox{\Hypertarget{classScript_a9c1d8418cfa15536fc773fe938f94057}\label{classScript_a9c1d8418cfa15536fc773fe938f94057}} 
 void \mbox{\hyperlink{classScript_a9c1d8418cfa15536fc773fe938f94057}{search\+Closest\+Airport}} ()
 \begin{DoxyCompactList}\small\item\em List all airports closest to user-\/provided coordinates (latitude, longitude). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classScript_a72540b96a05c5e7d53f26e768b263f1e}\label{classScript_a72540b96a05c5e7d53f26e768b263f1e}} 
+void \mbox{\hyperlink{classScript_a72540b96a05c5e7d53f26e768b263f1e}{search\+Airlines}} ()
+\begin{DoxyCompactList}\small\item\em Find and display information about a specific airline based on the user-\/provided airport code. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classScript_a3995e5ebb139632cb81fb7aa42417c64}\label{classScript_a3995e5ebb139632cb81fb7aa42417c64}} 
 void \mbox{\hyperlink{classScript_a3995e5ebb139632cb81fb7aa42417c64}{select\+Source}} ()
 \begin{DoxyCompactList}\small\item\em Displays a submenu for user to search for a location to set as the flight source. \end{DoxyCompactList}\item 
@@ -174,11 +177,11 @@ vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirpor
 Handles the interactive operations for the \char`\"{}\+Air Travel Flight Management System.\char`\"{}. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classScript_a868d8f2af5d930b34af56c9ecc364a50}\label{classScript_a868d8f2af5d930b34af56c9ecc364a50}} 
+\mbox{\Hypertarget{classScript_a79d835cde71864c9c70f5381e0361669}\label{classScript_a79d835cde71864c9c70f5381e0361669}} 
 \index{Script@{Script}!Script@{Script}}
 \index{Script@{Script}!Script@{Script}}
 \doxysubsubsection{\texorpdfstring{Script()}{Script()}}
-{\footnotesize\ttfamily Script\+::\+Script (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \&}]{data\+Graph }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Script\+::\+Script (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \&}]{data\+Graph,  }\item[{const std\+::set$<$ \mbox{\hyperlink{classAirline}{Airline}} $>$}]{airlines\+Info }\end{DoxyParamCaption})}
 
 
 
@@ -187,6 +190,8 @@ Constructor for \mbox{\hyperlink{classScript}{Script}} class.
 
 \begin{DoxyParams}{Parameters}
 {\em data\+Graph} & The graph containing airport data for the flight management system. \\
+\hline
+{\em airlines\+Info} & The set containing airlines information for the flight management system. \\
 \hline
 \end{DoxyParams}
 
