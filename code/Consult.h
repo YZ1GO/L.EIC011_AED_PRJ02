@@ -374,7 +374,19 @@ public:
      */
     double getDistanceBetweenAirports(Vertex<Airport>* source, Vertex<Airport>* target);
 
-    Airline getAirlineFromCode(std::string code);
+    /**
+     * @brief Retrieves an airline from the airlinesInfo set based on the provided code.
+     *
+     * This function searches for an airline in the airlinesInfo set using a specified code.
+     * If the airline is found, it is returned via the 'airline' parameter.
+     *
+     * @param airline[out] The reference to an Airline object where the found airline will be stored.
+     * @param code[in] The code used to search for the airline.
+     *
+     * @return true if the airline corresponding to the provided code is found and retrieved successfully,
+     *         false otherwise.
+     */
+    bool getAirlineFromCode(Airline& airline, std::string code);
 };
 
 

@@ -49,6 +49,13 @@ double HarversineDistance(double lat1, double lon1, double lat2, double lon2);
 std::string ToLower(const std::string& input);
 
 /**
+ * @brief Converts a string to uppercase.
+ * @param input The input string to be converted.
+ * @return The uppercase version of the input string.
+ */
+std::string ToUpper(const std::string& input);
+
+/**
  * @brief Removes spaces from a string.
  * @param str The input string to remove spaces from.
  * @return The string without spaces.

@@ -40,6 +40,14 @@ string ToLower(const string& input) {
     return lowercase;
 }
 
+string ToUpper(const string& input) {
+    string uppercase;
+    for (char c : input) {
+        uppercase += toupper(c);
+    }
+    return uppercase;
+}
+
 string RemoveSpaces(const string& str) {
     string result;
     for (char ch : str) {

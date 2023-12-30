@@ -353,6 +353,11 @@ private:
      * @brief Print the selected layover airports chosen by the user.
      */
     void printCustomLayovers();
+
+    /**
+     * @brief Find and display information about a specific airline based on the user-provided airport code.
+     */
+    void searchAirlines();
 };
 
 

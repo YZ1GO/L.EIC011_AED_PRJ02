@@ -505,17 +505,14 @@ double Consult::getDistanceBetweenAirports(Vertex<Airport>* source, Vertex<Airpo
     return distance;
 }
 
-Airline Consult::getAirlineFromCode(string code) {
-    Airline res;
-
+bool Consult::getAirlineFromCode(Airline& airline, string code) {
     Airline airlineToFind = Airline();
-    airlineToFind.setCode(code);
+    airlineToFind.setCode(ToUpper(code));
 
     set<Airline>::iterator it = airlinesInfo.find(airlineToFind);
-
     if (it != airlinesInfo.end()) {
-        res = *it;
+        airline = *it;
+        return true;
     }
-
-    return res;
+    return false;
 }

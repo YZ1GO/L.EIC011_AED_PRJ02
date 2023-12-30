@@ -84,14 +84,15 @@ void Script::run() {
                 vector<MenuItem> networkStatistics = {
                         {makeBold("Global Statistics"), &Script::globalNumber},
                         {makeBold("Airport Statistics"), &Script::searchAirportsMenu},
+                        {makeBold("Search Airlines"), &Script::searchAirlines},
                         {"[Back]", nullptr}
                 };
 
                 int searchChoice = showMenu("NETWORK STATISTICS", networkStatistics);
-                if (searchChoice == 3) {
+                if (searchChoice == 4) {
                     break;  // Go back to the main menu
                 }
-                if (searchChoice >=1 && searchChoice < 3 && networkStatistics[searchChoice - 1].action != nullptr) {
+                if (searchChoice >=1 && searchChoice < 4 && networkStatistics[searchChoice - 1].action != nullptr) {
                     (this->*networkStatistics[searchChoice - 1].action)();
                 }
             }
@@ -1148,4 +1149,26 @@ void Script::printCustomLayovers() {
         }
     }
     cout << "\n" << endl;
+}
+
+void Script::searchAirlines() {
+    clearScreen();
+    drawBox("Find airline by airline's code");
+    string code;
+
+    cout << "Type the airline's code: ";
+    cin >> code;
+
+    Airline airline;
+    if (consult.getAirlineFromCode(airline, code)) {
+        clearScreen();
+        drawBox("Airline information");
+        cout << makeBold("    Code: ") << airline.getCode() << endl;
+        cout << makeBold("    Name: ") << airline.getName() << endl;
+        cout << makeBold("Callsign: ") << airline.getCallsign() << endl;
+        cout << makeBold(" Country: ") << airline.getCountry() << endl;
+    } else {
+        cout << "\nNo airline with code " << makeBold(code) << " found" << endl;
+    }
+    backToMenu();
 }
