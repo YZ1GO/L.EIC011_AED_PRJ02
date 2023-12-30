@@ -1,6 +1,6 @@
 #include "Consult.h"
 
-Consult::Consult(const Graph<Airport> &dataGraph) : consultGraph(dataGraph) {};
+Consult::Consult(const Graph<Airport> &dataGraph, const set<Airline> airlines) : consultGraph(dataGraph) , airlinesInfo(airlines) {};
 
 int Consult::searchNumberOfAirports() {
     return static_cast<int>(consultGraph.getVertexSet().size());
@@ -503,4 +503,19 @@ double Consult::getDistanceBetweenAirports(Vertex<Airport>* source, Vertex<Airpo
         }
     }
     return distance;
+}
+
+Airline Consult::getAirlineFromCode(string code) {
+    Airline res;
+
+    Airline airlineToFind = Airline();
+    airlineToFind.setCode(code);
+
+    set<Airline>::iterator it = airlinesInfo.find(airlineToFind);
+
+    if (it != airlinesInfo.end()) {
+        res = *it;
+    }
+
+    return res;
 }

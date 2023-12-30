@@ -17,8 +17,9 @@ public:
     /**
      * @brief Constructor for Script class.
      * @param dataGraph The graph containing airport data for the flight management system.
+     * @param airlinesInfo The set containing airlines information for the flight management system.
      */
-    Script(const Graph<Airport>& dataGraph);
+    Script(const Graph<Airport>& dataGraph, const std::set<Airline> airlinesInfo);
 
     /**
      * @brief Initiates the interactive system and displays the main menu.

@@ -1,6 +1,6 @@
 #include "Script.h"
 
-Script::Script(const Graph<Airport>& dataGraph) : dataGraph(dataGraph), consult(dataGraph) {}
+Script::Script(const Graph<Airport>& dataGraph, const set<Airline> airlinesInfo) : dataGraph(dataGraph), consult(dataGraph, airlinesInfo) {}
 
 void Script::drawBox(const string &text) {
     int width = text.length() + 4;

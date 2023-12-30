@@ -26,6 +26,8 @@ class Consult {
 private:
     const Graph<Airport>& consultGraph;     ///< Reference to the airport graph used for consultation.
 
+    const std::set<Airline> airlinesInfo;   ///< Reference to the airlines information set for consultation.
+
     /**
      * @brief Performs a depth-first search to count flights per city of a country from a given vertex.
      * @param v Pointer to the vertex initiating the search.
@@ -94,8 +96,9 @@ public:
     /**
      * @brief Constructor for Consult class.
      * @param dataGraph Reference to the airport graph used for consultation.
+     * @param airlinesInfo Reference to the airlines information graph used for consultation.
      */
-    Consult(const Graph<Airport>& dataGraph);
+    Consult(const Graph<Airport>& dataGraph, const std::set<Airline> airlinesInfo);
 
     /**
      * @brief Counts the total number of airports.
@@ -370,6 +373,8 @@ public:
      * Time Complexity: O(E) where E stands for edges (flight routes).
      */
     double getDistanceBetweenAirports(Vertex<Airport>* source, Vertex<Airport>* target);
+
+    Airline getAirlineFromCode(std::string code);
 };
 
 

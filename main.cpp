@@ -6,7 +6,7 @@ int main() {
     std::string airlinesCSV = "data/airlines.csv";
     std::string flightsCSV = "data/flights.csv";
     ParseData parseData(airportsCSV, airlinesCSV, flightsCSV);
-    Script script(parseData.getDataGraph());
+    Script script(parseData.getDataGraph(), parseData.getAirlinesInfo());
 
     script.run();
 
