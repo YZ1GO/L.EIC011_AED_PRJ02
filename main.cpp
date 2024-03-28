@@ -1,5 +1,5 @@
 #include <iostream>
-#include "code/Script.h"
+#include "src/Script.h"
 
 int main() {
     std::string airportsCSV = "data/airports.csv";

@@ -2,7 +2,7 @@
 CXX=g++
 
 # C++ source files to consider in compilation for all programs
-COMMON_CPP_FILES= code/ParseData.cpp code/Utilities.cpp code/Consult.cpp code/Script.cpp
+COMMON_CPP_FILES= src/ParseData.cpp src/Utilities.cpp src/Consult.cpp src/Script.cpp
 
 # Your target program
 PROGRAMS=run
@@ -24,3 +24,6 @@ run: $(COMMON_CPP_FILES) main.cpp
 
 doc: $(DOXYGEN_CONFIG)
 	doxygen $(DOXYGEN_CONFIG)
+
+clean:
+	rm -fr *.dSYM $(PROGRAMS)

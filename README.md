@@ -1,33 +1,68 @@
 # Air Travel Flight Management System
-### AED 2023/24 - Project 02, Group G110
 
-## Overview
-Welcome to our Air Travel Flight Management System! This system is a comprehensive
-solution designed to handle and analyze diverse data pertaining to airports, airlines,
-flights, and routes within the aviation domain. It's a versatile toolset that provides
-a range of functionalities to explore, query, and manage air travel information efficiently.
+The Air Travel Flight Management System is designed to provide users with comprehensive tools for navigating the global air travel network. With functionalities for parsing data, managing flight information, processing user requests, and generating statistical analyses, this system aims to streamline the planning and exploration of air travel options.
+
+This project focuses on implementing a user-friendly interface that allows users to access and understand the complex flight network, make informed decisions about their travel plans, and explore the available flight options efficiently.
 
 ## Features
-- **Data Analysis:** Perform in-depth analyses on airport networks, flights, and traffic statistics.
-- **Search Functionality:** Easily search for flights by city, airline, or available destinations.
-- **Route Mapping:** Discover and navigate paths between airports.
-- **Efficient Management:** Access flight data for specific departure and arrival airports or cities.
-- **Optimized Trips:** Find the best routes with various filters, ensuring tailored travel solutions.
-- **Customized Layovers:** Enable users to personalize layovers during their travel.
-- **User-Friendly Interface:** Enjoy a simple and intuitive menu-driven system for seamless navigation.
 
-## Installing
-To build the program code using **makefile**:
+- **Data Parsing and Graph Representation:**
+    - Efficient parsing and representation of airport, airline, and flight data into a graph structure.
+    - Graph allows for easy CRUD (Create, Read, Update, Delete) operations on airports, airlines, and flights.
 
-1. Build the program using make:
+- **User-Friendly Interface:**
+    - Intuitive menu-driven system for exploring and planning air travel.
+    - Clear and organized layout for easy navigation and decision-making.
+
+- **Global Connectivity View:**
+    - Visualize the global connectivity of the air travel network.
+    - Understand the relationships between airports, airlines, and flights.
+
+- **Statistical Analysis:**
+    - Access comprehensive statistics of the network, including airports and connections.
+    - Gain insights into air traffic distribution, airline presence, and geographical coverage.
+
+- **Best Flight Options:**
+    - Find the optimal flight options based on user-defined criteria.
+    - Choose from the least amount of stops, specific airlines, or preferred destinations.
+
+- **Filtered Flight Search:**
+    - Search for flights with filters based on user preferences.
+    - Customize travel options to match specific airline preferences or minimize transfers.
+
+## Usage
+
+1. Clone the repository:
+```bash
+$ git clone git@github.com:YZ1GO/L.EIC011_AED_PRJ02.git
+```
+
+2. Open project folder in preferred IDE (C++ extensions supported)
+
+3. Build using makefile:
 ```bash
 $ make
 ```
 
-2. Run the program:
+4. Run the program:
 ```bash
 $ ./run
 ```
 
+5. If you wish to recompile everything, clean after testing:
+```bash
+$ make clean
+```
+
 ## Documentation
-Find the complete documentation in the [Doxygen HTML documentation](docs/documentation/html/index.html).
+
+You can find the documentation [here](docs/documentation/html/index.html)
+
+## Try it yourself
+
+You can find the files for the project and the project assignment [here](files) <br>
+[Download Zip File](files/airports.zip?raw=true) <br>
+[Open the pdf file in the browser and follow the assignment to do the project](files/Project2Description.pdf)
+
+## Project Grade: 19.20/20
+Note: Forgot to use hash tables for a constant look up time
