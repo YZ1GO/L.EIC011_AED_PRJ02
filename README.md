@@ -63,6 +63,3 @@ You can find the documentation [here](docs/documentation/html/index.html)
 You can find the files for the project and the project assignment [here](files) <br>
 [Download Zip File](files/airports.zip?raw=true) <br>
 [Open the pdf file in the browser and follow the assignment to do the project](files/Project2Description.pdf)
-
-## Project Grade: 19.20/20
-Note: Forgot to use hash tables for a constant look up time
